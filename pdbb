@@ -24,10 +24,10 @@ program_version="1.0"
 program_description="A minimalist, Pandoc- and Bash-powered blogging program."
 
 # Blog information, displayed on all html webpages
-blog_title="Brian Buccola"                  # title of the blog, shown on every page
-blog_subtitle="logic, language, linux"      # subtitle of the blog, shown on every page
-blog_index_title="Blog Posts"               # title of the main index page
-template_return_to_index="Back to index"    # text for returning to index (or leave empty)
+blog_title="Brian Buccola"              # title of the blog, shown on every page
+blog_subtitle="logic, language, linux"  # subtitle of the blog, shown on every page
+blog_index_title="Blog Posts"           # title of the main index page
+return_to_index="Back to index"         # text for returning to index (or leave empty)
 
 # Blog metadata, used inside html <head>
 blog_author="Brian Buccola"
@@ -60,7 +60,7 @@ head="head.html"                # html inserted between <head></head>
 before_body="before-body.html"  # html inserted before <body>
 after_body="after-body.html"    # html inserted after </body>
 
-# Color handling for program
+# Color handling when running running program in terminal
 red=$(tput setaf 1)             # red
 green=$(tput setaf 2)           # green
 yellow=$(tput setaf 3)          # yellow
@@ -74,6 +74,13 @@ reset=$(tput sgr0)              # reset colors
 
 use_color="true"                # whether the program should output color
                                 # possible values: "true" and "false"
+
+# Colors, e.g. error_color=${bold}${red}
+list_color=${bold}${yellow}     # color to use when listing posts
+info_color=${green}
+warn_color=${bold}${yellow}
+confirm_color=${bold}
+error_color=${bold}${red}
 
 ################################################################################
 ### Functions
@@ -90,7 +97,7 @@ confirm() {
     local -l reply # convert to lowercase
     local msg=$1
     if [[ $use_color = true ]]; then
-        read -p "${bold}${msg} [Y/n] ${reset}" reply
+        read -p "${confirm_color}${msg} [Y/n] ${reset}" reply
     else
         read -p "$msg [Y/n] " reply
     fi
@@ -155,7 +162,7 @@ create_head() {
 # Usage: die [MESSAGE] [...]
 die() {
     if [[ $use_color = true ]]; then
-        printf "${bold}${red}%s:${reset}" "Error"
+        printf "${error_color}%s:${reset}" "Error"
         printf " %s\n" "$@"
     else
         printf "%s:" "Error"
@@ -168,7 +175,7 @@ die() {
 # Usage: edit_post [FILENAME]
 edit_post() {
     # Strip .markdown extension and get basename.
-    local basename="$(basename "$1" .markdown)"
+    local basename=$(basename "$1" .markdown)
     if [[ ! -f "${mkd_dir}/${basename}.markdown" && ! -f "${draft_dir}/${basename}.markdown" ]]; then
         die "Cannot find $1 (or illegal file extension)."
     fi
@@ -179,9 +186,9 @@ edit_post() {
     fi
 
     local post_status="E"
-    until [[ "$post_status" = "P" || "$post_status" = "p" ]]; do
+    until [[ $post_status = P || $post_status = p ]]; do
         # Case 1: Save as draft.
-        if [[ "$post_status" = "D" || "$post_status" = "d" ]]; then
+        if [[ $post_status = D || $post_status = d ]]; then
             mkdir -p "${draft_dir}"
             # Remove corresponding html file.
             if ! rm "${html_dir}/${basename}.html"; then
@@ -200,7 +207,7 @@ edit_post() {
         fi
 
         # Case 2: Remove post.
-        if [[ "$post_status" = "R" || "$post_status" = "r" ]]; then
+        if [[ $post_status = R || $post_status = r ]]; then
             remove_post "${mkd_dir}/${basename}.markdown"
             exit 0
         fi
@@ -211,7 +218,11 @@ edit_post() {
 
         mkd2html_post "${mkd_dir}/${basename}.markdown" # md2html_post updates $basename if necessary
         info "Preview this post at: file://${blog_root_dir}/${html_dir}/${basename}.html."
-        read -p "[P]ost entry, [e]dit again, save as [d]raft, or [r]emove entry? (p/E/d/r) " post_status
+        if [[ $use_color = true ]]; then
+            read -p "${confirm_color}[P]ost entry, [e]dit again, save as [d]raft, or [r]emove entry? [p/E/d/r] ${reset}" post_status
+        else
+            read -p "[P]ost entry, [e]dit again, save as [d]raft, or [r]emove entry? [p/E/d/r] " post_status
+        fi
     done
 
     # Case 4: Post entry.
@@ -234,7 +245,11 @@ get_date() {
 # Print info message.
 # Usage: info [MESSAGE] [...]
 info() {
-    printf "%s\n" "$@"
+    if [[ $use_color = true ]]; then
+        printf "${info_color}%s\n${reset}" "$@"
+    else
+        printf "%s\n" "$@"
+    fi
 }
 
 # List all posts in a pretty table, including formatted dates.
@@ -248,10 +263,14 @@ list_posts() {
         date=$(prettify_date "$date")
         line="$n ^ $title ^ $date"
         # Append $line to end of $lines
-        lines="${lines}$line\n"
+        lines="${lines}${line}\n"
         n=$(( $n + 1 ))
     done
-    printf "${lines}" | column -t -s "^"
+    if [[ $use_color = true ]]; then
+        printf "${list_color}${lines}${reset}" | column -t -s "^"
+    else
+        printf "$lines" | column -t -s "^"
+    fi
 }
 
 # Convert *all* markdown posts to html.
@@ -276,21 +295,20 @@ mkd2html_all_posts() {
 # Usage: mkd2html_index [FILENAME]
 mkd2html_index() {
     info "Converting $1 to html..."
-    if [[ ! -f "$head" ]]; then
+    if [[ ! -f $head ]]; then
         die "Could not find \`$head'. Try running \`$0 setup'."
     fi
 
     local index_title=$(get_title "$1")
     local date=$(get_date "$1")
-    if [[ -z "$index_title" || -z "$date" ]]; then
-        die "Missing title or date metadata."
+    if [[ -z $index_title || -z $date ]]; then
+        die "Corrupt or missing metadata."
     fi
 
     # Create temporary html file with index title, to be added during conversion.
     local tmp_before_body="tmp-before-body.html"
     echo "" >> $tmp_before_body
     echo '<h1 class="post_title">'$index_title'</h1>' >> $tmp_before_body
-    # echo '<p class="date">'$(prettify_date "$date")'</p>' >> $tmp_before_body
     echo "" >> $tmp_before_body
 
     pandoc -s -S --mathjax -c "$style" \
@@ -314,13 +332,13 @@ mkd2html_post() {
     # Parse file for title and date.
     local post_title=$(get_title "$1")
     local date=$(get_date "$1")
-    if [[ -z "$post_title" || -z "$date" ]]; then
-        die "Missing title or date metadata."
+    if [[ -z $post_title || -z $date ]]; then
+        die "Corrupt or missing metadata."
     fi
 
     # Check if title or date metadata conflicts with filename.
     local basename_new=$(convert_string "$date-$post_title")
-    if [[ "$basename_old" != "$basename_new" ]] && confirm "Change in title/date detected. Overwrite old filename(s)?"; then
+    if [[ $basename_old != $basename_new ]] && confirm "Change in title/date detected. Overwrite old filename(s)?"; then
         cp "${mkd_dir}/${basename_old}.markdown" "${mkd_dir}/${basename_new}.markdown"
         info "Updated markdown filename."
         # Check if corresponding html file exists, and remove it.
@@ -330,18 +348,18 @@ mkd2html_post() {
         fi
         # Keep track so that the old markdown can be removed later.
         local remove_old_mkd_file="true"
-        basename="$basename_new"
-    elif [[ "$basename_old" != "$basename_new" ]]; then
+        basename=$basename_new
+    elif [[ $basename_old != $basename_new ]]; then
         # Skip updating filename.
-        basename="$basename_old"
+        basename=$basename_old
     else
-        basename="$basename_new"
+        basename=$basename_new
     fi
 
     # Create temporary html file with post title, etc., to be added during conversion.
     local tmp_before_body="tmp-before-body.html"
     echo "" >> $tmp_before_body
-    echo '<a class="return_to_index" href="../'$index_file'">'$template_return_to_index'</a>' >> $tmp_before_body
+    echo '<a class="return_to_index" href="../'$index_file'">'$return_to_index'</a>' >> $tmp_before_body
     echo '<h1 class="post_title">'$post_title'</h1>' >> $tmp_before_body
     echo '<p class="date">'$(prettify_date "$date")'</p>' >> $tmp_before_body
     echo "" >> $tmp_before_body
@@ -350,6 +368,8 @@ mkd2html_post() {
     mkd_file="${mkd_dir}/${basename}.markdown"
     html_file="${html_dir}/${basename}.html"
 
+    # NB: The reference to $style must be one level up, since the html file
+    # generated here lives below $blog_root_dir, in $html_dir.
     pandoc -s -S --mathjax -c "../$style" \
         -H "$head" -B "$before_body" -B "$tmp_before_body" -A "$after_body" \
         -V pagetitle="$blog_title - $post_title" -V author-meta="$blog_author" \
@@ -357,7 +377,7 @@ mkd2html_post() {
 
     rm "$tmp_before_body"
 
-    if [[ "$remove_old_mkd_file" = "true" ]]; then
+    if [[ $remove_old_mkd_file = true ]]; then
         # Note that "$1" = "${mkd_dir}/${basename_old}.markdown"
         rm "$1"
         info "Removed old markdown file \`${1}'."
@@ -367,9 +387,13 @@ mkd2html_post() {
 # Create new post, automatically adding metadata.
 # Usage: new_post
 new_post() {
-    read -p "Title: " title
+    if [[ $use_color = true ]]; then
+        read -p "${confirm_color}Title: ${reset}" title
+    else
+        read -p "Title: " title
+    fi
     local tmp="${mkd_dir}/$(date +"%Y-%m-%d")-$(convert_string "$title").markdown"
-    if [[ -f "$tmp" ]]; then
+    if [[ -f $tmp ]]; then
         die "The file \`$tmp' already exists."
     fi
 
@@ -431,11 +455,11 @@ rebuild_all() {
 # and then rebuilding the index.
 # Usage: remove_post [FILENAME]
 remove_post() {
-    if [[ ! -f "$1" ]]; then
+    if [[ ! -f $1 ]]; then
         die "Cannot find \`$1'."
     fi
 
-    local basename="$(basename "$1" .markdown)"
+    local basename=$(basename "$1" .markdown)
     if confirm "Remove \`${1}'?"; then
         if ! rm "$1"; then
             die "Problem removing \`$1'."
@@ -510,7 +534,7 @@ EOF
 # Usage: warn [MESSAGE] [...]
 warn() {
     if [[ $use_color = true ]]; then
-        printf "${bold}${yellow}%s:${reset}" "Warning"
+        printf "${warn_color}%s:${reset}" "Warning"
         printf " %s\n" "$@"
     else
         printf "%s:" "Warning"
