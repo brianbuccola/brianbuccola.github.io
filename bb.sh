@@ -35,7 +35,7 @@ google_analytics="UA-38439922-1"
 blog_root_dir="$HOME/blog"  # where blog program and files live
 index_file="index.html"     # main index file listing all posts
 mkd_dir="source"            # directory for markdown posts
-html_dir="public"           # directory for html posts
+html_dir="blog"             # directory for html posts
 draft_dir="drafts"          # directory for draft posts
 
 # Include files
