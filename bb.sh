@@ -13,7 +13,6 @@ blog_title="Brian Buccola"                  # title of the blog, shown on every 
 blog_subtitle="logic, language, linux"      # subtitle of the blog, shown on every page
 
 blog_index_title="Blog Posts"                           # title of the main index page
-blog_footer="Powered by Pandoc and Bash"                # footer text (in html!) than runs on every page
 template_return_to_index="Return to $blog_index_title"  # text for returning to index, or leave empty
 
 blog_license='<a rel="license"
@@ -91,9 +90,8 @@ create_after_body() {
     echo '<p class="footer">' >> $after_body
     echo "$blog_license<br>" >> $after_body
     echo "Copyright &copy; 2012-$(date +"%Y") &ndash; $blog_author<br>" >> $after_body
-    if [[ -n "$blog_footer" ]]; then
-        echo "$blog_footer<br>" >> $after_body
-    fi
+    echo "Powered by Pandoc and Bash." >> $after_body
+    echo 'Source code available <a href="https://github.com/brianbuccola/brianbuccola.github.io">here</a>.' >> $after_body
     echo '</p>' >> $after_body
 }
 
