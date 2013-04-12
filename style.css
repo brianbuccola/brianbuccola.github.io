@@ -1,0 +1,60 @@
+/* Body */
+body {
+    font-family: "PT Serif", serif;
+    font-size: 12pt;
+    line-height: 150%;
+    margin: 5% 22% 5% 22%;
+}
+
+/* Headings */
+h1, h2, h3, h4, h5 {
+    font-family: "PT Sans", sans-serif;
+    line-height: 120%;
+}
+
+/* Blog stuff */
+.blog_title, .blog_subtitle {
+    color: silver;
+    text-align: right;
+}
+
+.blog_subtitle, .date {
+    margin-top: -15px; /* make up for line-height increase */
+}
+
+.date, .footer, .return_to_index {
+    font-family: "PT Sans", sans-serif;
+    font-size: 90%;
+    color: #ababab;
+}
+
+/* Code */
+code {
+    font-family: "Droid Sans Mono", monospace;
+    font-size: 10pt;
+    background-color: #dfdfdf;
+}
+
+pre {
+    background-color: #dfdfdf;
+    border: 1px solid darkgray;
+    border-radius: 7px;
+    margin: 0% 0% 0% 3%;
+    padding: 3px 7px 3px 7px;
+}
+
+/* Links */
+a:link {
+    color: cornflowerblue;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+a:visited {
+    color: tan;
+}
+
+a:hover {
+    color: darkred;
+    text-decoration: underline;
+}
