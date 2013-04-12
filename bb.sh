@@ -29,7 +29,7 @@ blog_email=""
 date_format="%B %d, %Y"
 
 # Google Analytics ID
-google_analytics=""
+google_analytics="UA-38439922-1"
 
 # Blog file and directory structure, all relative to $blog_root_dir
 blog_root_dir="$HOME/blog"  # where blog program and files live
