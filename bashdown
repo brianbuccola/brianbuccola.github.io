@@ -35,7 +35,7 @@ blog_description="Brian Buccola's personal blog"
 blog_keywords="Brian Buccola,linguistics,McGill University"
 
 # License to display in footer
-blog_license='<a rel="license"
+blog_license='<a rel="license" target="_blank"
 href="http://creativecommons.org/licenses/by/3.0/">
 <img alt="Creative Commons License" style="border-width:0"
 src="http://i.creativecommons.org/l/by/3.0/80x15.png" /></a>'
