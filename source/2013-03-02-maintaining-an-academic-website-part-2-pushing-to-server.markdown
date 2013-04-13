@@ -23,7 +23,7 @@ pretty basic script for automating all that each time any part of the site is
 edited.
 
 [my-site]:  http://people.linguistics.mcgill.ca/~brian.buccola/
-[part-1]:   /blog/2013/02/23/maintaining-an-academic-website-part-1/
+[part-1]:   2013-02-23-maintaining-an-academic-website-part-1-editing-the-site.html
 [markdown]: http://daringfireball.net/projects/markdown/
 [pandoc]:   http://johnmacfarlane.net/pandoc/
 
