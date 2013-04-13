@@ -293,7 +293,7 @@ nothing to commit, working directory clean
 This commit is now ready to be pushed to GitHub.
 
 ```bash
-git push -u origin master
+$ git push -u origin master
 ```
 
 This command pushes (all the committed changes from) the `master` branch (more
