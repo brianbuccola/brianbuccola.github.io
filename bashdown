@@ -517,9 +517,8 @@ setup() {
 # Usage: usage
 usage() {
     cat <<EOF
-$program_name v$program_version
-$program_description
-Usage: $0 [COMMAND] [[PARAMETERS]]
+$program_name v$program_version. $program_description
+Usage: $(basename "$0") [COMMAND] [[PARAMETERS]]
 
 Commands:
 new                 Create a new post.
@@ -548,9 +547,9 @@ warn() {
 ################################################################################
 ### Main body of the program
 
-# First check that we're in the blog's root directory.
-if [[ $(pwd) != $blog_root_dir ]]; then
-    die "$program_name must be run inside \`${blog_root_dir}'."
+# First cd into blog's root directory.
+if ! cd $blog_root_dir; then
+    die "Could not cd into \`${blog_root_dir}'."
 fi
 
 # Check that the right number of parameters are given.
