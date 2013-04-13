@@ -31,8 +31,8 @@ return_to_index="Back to index"         # text for returning to index (or leave 
 
 # Blog metadata, used inside html <head>
 blog_author="Brian Buccola"
-blog_description=""
-blog_keywords=""
+blog_description="Brian Buccola's personal blog"
+blog_keywords="Brian Buccola,linguistics,McGill University"
 
 # License to display in footer
 blog_license='<a rel="license"
