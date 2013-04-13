@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# pdbb (PandocBashBlog): A minimalist, Pandoc- and Bash- powered blogging program.
+# Bashdown: A Bash program for blogging in Markdown.
 # Brian Buccola <brian.buccola@gmail.com>, 2013
 
 ################################################################################
@@ -19,9 +19,9 @@
 ### Declarations
 
 # Program information, primarily for usage()
-program_name="pdbb"
+program_name="Bashdown"
 program_version="1.0"
-program_description="A minimalist, Pandoc- and Bash-powered blogging program."
+program_description="A Bash program for blogging in Markdown."
 
 # Blog information, displayed on all html webpages
 blog_title="Brian Buccola"              # title of the blog, shown on every page
