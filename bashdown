@@ -40,6 +40,10 @@ href="http://creativecommons.org/licenses/by/3.0/">
 <img alt="Creative Commons License" style="border-width:0"
 src="http://i.creativecommons.org/l/by/3.0/80x15.png" /></a>'
 
+# Syntax highlighting style. Possible values are: pygments, kate, monochrome,
+# espresso, zenburn, haddock, and tango.
+highlight_style="pygments"
+
 # Favicon filename (the file should be inside $blog_root_dir)
 favicon="favicon.png"
 
@@ -314,7 +318,7 @@ mkd2html_index() {
     echo '<h1 class="post_title">'$index_title'</h1>' >> $tmp_before_body
     echo "" >> $tmp_before_body
 
-    pandoc -s -S --mathjax -c "$style" \
+    pandoc -s -S --mathjax --highlight-style "$highlight_style" -c "$style" \
         -H "$head" -B "$before_body" -B "$tmp_before_body" -A "$about" -A "$after_body" \
         -V pagetitle="$blog_title" -V author-meta="$blog_author" \
         -f markdown -t html5 -o "$index_file" "$1"
@@ -373,7 +377,7 @@ mkd2html_post() {
 
     # NB: The reference to $style must be one level up, since the html file
     # generated here lives below $blog_root_dir, in $html_dir.
-    pandoc -s -S --mathjax -c "../$style" \
+    pandoc -s -S --mathjax --highlight-style "$highlight_style" -c "../$style" \
         -H "$head" -B "$before_body" -B "$tmp_before_body" -A "$after_body" \
         -V pagetitle="$blog_title - $post_title" -V author-meta="$blog_author" \
         -f markdown -t html5 -o "$html_file" "$mkd_file"
