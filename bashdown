@@ -442,7 +442,7 @@ rebuild_index() {
         local title=$(get_title "$f")
         local date=$(get_date "$f")
         local date=$(prettify_date "$date")
-        echo "- [$title](${html_dir}/$(basename "$f" .markdown).html) -- $date" >> $index_mkd_file
+        echo "- [$title](${html_dir}/$(basename "$f" .markdown).html) <span class=\"date\">-- $date</span>" >> $index_mkd_file
     done
 
     mkd2html_index "$index_mkd_file"
