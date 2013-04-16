@@ -36,13 +36,21 @@ hr.footer {
 code, pre {
     font-family: monospace;
     font-size: 10pt;
-    background-color: #eaeaea;
+    background-color: #ffffff;
+    border: 1px solid #e1e1e1;
+    border-radius: 3px;
+    padding: 2px 3px 2px 3px;
 }
 
 pre {
-    background-color: #eaeaea;
-    margin: 0% 0% 0% 3%;
-    padding: 3px 7px 3px 7px;
+    line-height: 150%;
+    padding: 7px 7px 7px 7px;
+    border-color: #cccccc;
+}
+
+pre > code {
+    border: none;
+    padding: 0px 0px 0px 0px;
 }
 
 /* Links */
