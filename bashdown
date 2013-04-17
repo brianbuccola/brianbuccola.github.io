@@ -129,8 +129,12 @@ create_after_body() {
     echo '<p class="footer">' >> $after_body
     echo "$blog_license<br>" >> $after_body
     echo "$blog_author, 2012-$(date +"%Y")<br>" >> $after_body
-    echo "Powered by Pandoc and Bash." >> $after_body
-    echo 'Source code available <a href="https://github.com/brianbuccola/brianbuccola.github.io">here</a>.' >> $after_body
+    echo 'Powered by
+    <a target="_blank" href="http://johnmacfarlane.net/pandoc/">Pandoc</a>,
+    <a target="_blank" href="http://www.gnu.org/software/bash/">Bash</a>, and
+    <a target="_blank" href="https://github.com/">GitHub</a>.' >> $after_body
+    echo 'Source code available
+    <a target="_blank" href="https://github.com/brianbuccola/brianbuccola.github.io">here</a>.' >> $after_body
     echo '</p>' >> $after_body
 }
 
