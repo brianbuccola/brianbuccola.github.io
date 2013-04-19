@@ -109,10 +109,10 @@ use_color="true"                # whether the program should output color
 
 # Colors, e.g. error_color=${bold}${red}
 list_color=${bold}${yellow}     # color to use when listing posts
-info_color=${green}
-warn_color=${bold}${yellow}
-confirm_color=${bold}
-error_color=${bold}${red}
+info_color=${green}             # color to use for info output
+warn_color=${bold}${yellow}     # color to use for `Warning:'
+confirm_color=${bold}           # color to use for confirmation messages
+error_color=${bold}${red}       # color to use for `Error:'
 
 ################################################################################
 #
