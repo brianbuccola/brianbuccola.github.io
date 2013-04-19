@@ -523,6 +523,8 @@ remove_post() {
     fi
 }
 
+# Remove all markdown and html files and start from scratch.
+# Usage: reset
 reset() {
     warn "This will remove ALL markdown and html files."
     if confirm "Continue?"; then
