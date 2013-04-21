@@ -494,11 +494,11 @@ rebuild_all() {
 # and then rebuilding the index.
 # Usage: remove_post [FILENAME]
 remove_post() {
-    if [[ ! -f $1 ]]; then
-        die "Cannot find \`$1'."
+    local basename=$(basename "$1" .markdown)
+    if [[ ! -f "${mkd_dir}/${basename}.markdown" && ! -f "${draft_dir}/${basename}.markdown" ]]; then
+        die "Cannot find \`${basename}' in \`${mkd_dir}/' or \`${draft_dir}/'."
     fi
 
-    local basename=$(basename "$1" .markdown)
     if confirm "Remove \`${1}'?"; then
         if ! rm "$1"; then
             die "Problem removing \`$1'."
