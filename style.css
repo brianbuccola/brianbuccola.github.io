@@ -68,3 +68,8 @@ a:hover {
     color: darkred;
     text-decoration: underline;
 }
+
+/* Math */
+span.math {
+    font-size: 11pt;
+}
