@@ -21,7 +21,7 @@ proof theory.
 ### Syntax
 
 Carpenter builds up the set $\mathbf{Typ}$ of types inductively from a set
-$\mathbf{BasTyp}$ of *basic types*, using just one type constructor: "$\to$".
+$\mathbf{BasTyp}$ of *basic types*, using just one type constructor: $\to$.
 
 **Definition (types).** The set of *types* is the smallest set $\mathbf{Typ}$
 such that
@@ -149,8 +149,8 @@ clause to the definition of types:
 
 3. If $\sigma \in \mathbf{Typ}$, then $[\sigma] \in \mathbf{Typ}$.
 
-So "$[\ ]$" is a unary type constructor (it takes a single type and returns a new
-type), whereas "$\to$" is a binary type constructor (it takes two types and
+So $[\ ]$ is a unary type constructor (it takes a single type and returns a new
+type), whereas $\to$ is a binary type constructor (it takes two types and
 returns a new type).
 
 As for terms, I assume that for each list type $\tau = [\sigma]$ there is a set
@@ -179,10 +179,13 @@ anything to a given list, unlike, say, `list.insert(0, x)` in Python.)
 
 For example, to construct a list of integers (objects of type `Int`), we start
 with `[]` of type `[Int]`, and using `(:)` we add to the front of `[]` an
-integer like `3` to obtain `(:) 3 []`, or using infix notation, `3 : []`. The
-result is of type `[Int]` and is normally written as `[3]`, which hides the
-cons operator. More generally, `[x1, x2, ..., xN]` is syntactic sugar for `x1 :
-( x2 : ( ... ( xN : [] ) ... ) )`.
+integer like `0` to obtain `(:) 0 []`, or using infix notation, `0 : []`. The
+result is of type `[Int]` and is normally written as `[0]`, which hides the
+cons operator. From `[0]` we can obtain `5 : [0]`, written `[5, 0]`, and from
+that we can obtain `3 : [5, 0]`, or `[3, 5, 0]`, and so on.
+
+More generally, `[x1, x2, ..., xN]` is syntactic sugar for `x1 : ( x2 : ( ... (
+xN : [] ) ... ) )`.
 
 #### Back to Terms
 
@@ -193,10 +196,10 @@ adding the following clauses to the definition of the set $\mathbf{Term}_\tau$
 of terms of type $\tau$.
 
 5. If $\tau = [\sigma]$, then $[\ ] \in \mathbf{Term}_\tau$.
-6. If $\tau = [\sigma]$ and $\alpha \in \mathbf{Term}_\tau$ and $\beta \in
-   \mathbf{Term}_\sigma$, then $(\alpha : \beta) \in \mathbf{Term}_\tau$.
+6. If $\tau = [\sigma]$ and $\alpha \in \mathbf{Term}_\sigma$ and $\beta \in
+   \mathbf{Term}_\tau$, then $(\alpha : \beta) \in \mathbf{Term}_\tau$.
 
-Like functional application, "$:$" is a binary term contructor: it takes two
+Like functional application, $:$ is a binary term contructor: it takes two
 terms to produce a new term.
 
 Following Haskell, I make the following conventions:
@@ -215,9 +218,27 @@ $$
 \end{align}
 $$
 
-Note, again, that I'm overloading the symbols "$[\ ]$", since they're used both
-as the type constructor and as a term constructor: a term $[\alpha]$ is of type
-$[\sigma]$.
+Since there is a one-to-one correspondence between $[\alpha, \beta, \dots,
+\gamma]$-looking things and $(\alpha : (\beta : (\dots (\gamma : [\ ])
+\dots)))$-looking things, one might wonder if we can instead reformulate (6) as
+follows (in two steps).
+
+6. If $\tau = [\sigma]$ and $\alpha \in \mathbf{Term}_\sigma$, then
+   $[\alpha] \in \mathbf{Term}_\tau$.
+7. If $\tau = [\sigma]$ and $\alpha \in \mathbf{Term}_\sigma$ and $[\beta] \in
+   \mathbf{Term}_\tau$, then $[\alpha, \beta] \in \mathbf{Term}_\tau$.
+
+(In other words, we can construct a singleton list from a single object, and a
+2-element list from two objects.)
+
+The problem is that (7) cannot be applied recursively. For example, from $0$ we
+can obtain $[0]$ by appyling (6), and from $5$ and $[0]$ we can obtain $[5,0]$
+by applying (7). But we cannot apply (7) to, say, $3$ and $[5,0]$ to obtain
+$[3,5,0]$ because, although $[5,0]$ is of type $[\sigma]$, $5,0$ is not a term
+of any kind, let alone one of type $\sigma$.
+
+For this reason, and for the sake of making cons explicit, I'll stick with the
+first formulation of (6) above.
 
 ### Semantics
 
@@ -236,13 +257,12 @@ $\mathbf{Dom}_{\tau}^{\mathbf{Dom}_\sigma}$, i.e.  a function from
 $\mathbf{Dom}_\sigma$ to $\mathbf{Dom}_\tau$. Product terms denote pairs (and
 more generally, tuples), so the denotation of $\langle \alpha, \beta \rangle$
 of type $\sigma \times \tau$ is a member of $\mathbf{Dom}_\sigma \times
-\mathbf{Dom}_\tau$. But what does/should a list $[\alpha, \dots]$ of type
-$[\sigma]$ denote, set theoretically? A flat set, i.e. a member of the power
-set of $\mathbf{Dom}_\sigma$?  Probably not, because sets don't care about
-order or repetition, whereas lists (as I've defined them) do. What about
-tuples, i.e. members of $\mathbf{Dom}_\sigma \times \dots \times
-\mathbf{Dom}_\sigma$? Maybe, but product terms already do that. Something else?
-I'm not sure.
+\mathbf{Dom}_\tau$. But what does/should a list $\alpha$ of type $[\sigma]$
+denote, set theoretically? A flat set, i.e. a member of the power set of
+$\mathbf{Dom}_\sigma$?  Probably not, because sets don't care about order or
+repetition, whereas lists (as I've defined them) do. What about tuples, i.e.
+members of $\mathbf{Dom}_\sigma \times \dots \times \mathbf{Dom}_\sigma$?
+Maybe, but product terms already do that. Something else?  I'm not sure.
 
 A concrete example might help decide. Suppose we have the type $\mathbf{Ind}$
 for individuals and that $\mathbf{john}, \mathbf{bill}, \mathbf{sue} \in
@@ -265,12 +285,12 @@ Assuming, then, that we want these three lists to denote different things, the
 only reasonable possibility I can think of is to map lists to tuples. For
 example, $[\mathbf{john}, \mathbf{bill}, \mathbf{sue}]$ will denote $\langle
 j,b,s \rangle$, which is an element of $\mathbf{Ind} \times \mathbf{Ind} \times
-\mathbf{Ind}$. In this way, list terms are sort of a specific kind of product
-term, but with two main differences: (i) both products and lists denote tuples,
-but lists are composed of objects of the *same* type, meaning that the tuples
-they denote will contain objects from the *same* domain; and (ii) empty and
-singleton lists are possible, whereas empty and singleton tuples are in general
-(at least for Carpenter) not, as far as I can tell.
+\mathbf{Ind}$. In this way, list terms are essentially like product terms, but
+with two main differences: (i) both products and lists denote tuples, but lists
+are composed of objects of the *same* type, meaning that the tuples they denote
+will contain objects from the *same* domain; and (ii) empty and singleton lists
+are possible, whereas empty and singleton tuples are in general (at least for
+Carpenter) not, as far as I can tell.
 
 The following clauses get added to the definition of denotation.
 
@@ -297,15 +317,14 @@ More generally, $\mathbf{Dom}_{[\sigma]}$ is a set whose members are tuples, of
 varying size, consisting of elements from $\mathbf{Dom}_\sigma$.
 
 This is different from the case of products: the domain of intepretation for,
-say, a pair of terms $\langle \alpha,\beta \rangle$ is $\mathbf{Dom}_{\sigma
-\times \tau}$, which by definition is $\mathbf{Dom}_\sigma \times
-\mathbf{Dom}_\tau$, and which therefore contains only pairs, not tuples of any
-other size; and the domain of interpretation for, say, a triple of terms
-$\langle \alpha,\beta,\gamma \rangle$ is $\mathbf{Dom}_\sigma \times
-\mathbf{Dom}_\tau \times \mathbf{Dom}_\rho$, which contains only triples, not
-tuples of any other size. Hence, whereas, say, $[\alpha, \beta]$ and $[\alpha,
-\beta, \gamma]$ have denotations in the same domain, $\langle \alpha,\beta
-\rangle$ and $\langle \alpha,\beta,\gamma \rangle$ do not.
+say, a pair of terms $\langle \alpha,\beta \rangle$ is $\mathbf{Dom}_\sigma
+\times \mathbf{Dom}_\tau$, which contains only pairs, not tuples of any other
+size; and the domain of interpretation for, say, a triple of terms $\langle
+\alpha,\beta,\gamma \rangle$ is $\mathbf{Dom}_\sigma \times \mathbf{Dom}_\tau
+\times \mathbf{Dom}_\rho$, which contains only triples, not tuples of any other
+size. Hence, whereas, say, $[\alpha, \beta]$ and $[\alpha, \beta, \gamma]$ have
+denotations in the same domain, $\langle \alpha,\beta \rangle$ and $\langle
+\alpha,\beta,\gamma \rangle$ do not.
 
 I'll conclude by mentioning that it's kind of weird to use $\emptyset$ in the
 denotation of lists, but this is necessary because the denotation function is a
@@ -316,4 +335,7 @@ having it denote something like $\emptyset$.
 
 One way to avoid this would be to redefine lists: empty lists are simply not
 possible terms (objects). The smallest list would then be a singleton list,
-which would denote a $1$-tuple.
+which would denote a $1$-tuple, so $[\mathbf{john}]$ would denote $\langle j
+\rangle$ rather than $\langle j,\emptyset \rangle$, and $[\mathbf{john},
+\mathbf{bill}, \mathbf{sue}]$ would denote $\langle j,b,s \rangle$ rather than
+$\langle j,b,s,\emptyset \rangle$.
