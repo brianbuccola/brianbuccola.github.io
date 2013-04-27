@@ -72,13 +72,14 @@ categories:
 - octopress
 end metadata -->
 
-<p><strong><em>Update:</em></strong> <em>Since I wrote this post, I discovered that markdown conversion programs like Pandoc and kramdown can converted extensions of markdown that include footnotes. For example, with Pandoc it suffices to do:</em></p>
+<p><strong><em>Update:</em></strong> <em>Since I wrote this post, I discovered that markdown conversion programs like Pandoc and kramdown can convert extensions of markdown that include footnotes. For example, with Pandoc it suffices to do:</em></p>
 <pre><code>Blah blah blah.[^fn] Lorem ipsum...
 
 [^fn]: Here&#39;s a footnote!</code></pre>
 <p><em>But I will leave this post here since it may be a useful reference for people writing in pure html rather than markdown.</em></p>
 <p>I’ve been toying with how best to incorporate inline references and end–of–post footnotes into my blog posts, and here’s what I’ve come up with. I’ll start with my first, very simplistic attempt, then explain my slightly more complicated but also more flexible (I think) solution.</p>
-<p>This blog is powered by <a href="http://octopress.org/">Octopress</a>, which allows me to write blog posts in <a href="http://daringfireball.net/projects/markdown/">markdown</a> syntax, which is then parsed and converted into HTML by <a href="http://kramdown.rubyforge.org/">kramdown</a>.<a class="ref" id="ref:kd" href="#fn:kd">[1]</a> Markdown has a nice, easy, and highly legible way of creating simple links. Just type one of these.</p>
+<p>This blog is (<strong><em>Update:</em></strong> <em>was</em>) powered by <a href="http://octopress.org/">Octopress</a>, which allows me to write blog posts in <a href="http://daringfireball.net/projects/markdown/">markdown</a> syntax, which is then parsed and converted into HTML by <a href="http://kramdown.rubyforge.org/">kramdown</a>.<a class="ref" id="ref:kd"
+href="#fn:kd">[1]</a> Markdown has a nice, easy, and highly legible way of creating simple links. Just type one of these.</p>
 <pre class="sourceCode html"><code class="sourceCode html">Click [here](url) to see something awesome!
 
 Click [here][blah] to see something awesome!
