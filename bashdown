@@ -412,7 +412,7 @@ mkd2html_post() {
     # generated here lives below ${blog_root_dir}, in ${html_dir.}
     pandoc -s -S --mathjax --highlight-style "${highlight_style}" -c "../${style}" \
         -H "${head}" -B "${before_body}" -B "${tmp_before_body}" -A "${after_body}" \
-        -V pagetitle="${blog_title} - ${post_title}" -V author-meta="${blog_author}" \
+        -V pagetitle="${post_title} - ${blog_title}" -V author-meta="${blog_author}" \
         -f markdown -t html5 -o "${html_file}" "${mkd_file}"
 
     rm "${tmp_before_body}"
