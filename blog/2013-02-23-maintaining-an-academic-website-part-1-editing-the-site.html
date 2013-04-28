@@ -131,7 +131,7 @@ You can download my CV [here](cv.pdf).</code></pre>
 <p>Moreover, pandoc understands a <em>superset</em> of markdown, i.e., a sort of extended markdown. For example, you can add metadata to the top of your markdown file that pandoc can use when creating HTML header info (see below), and you can do other cool things like add footnotes. Following the KISS principle, though, we’ll stick with normal, non–extended markdown.</p>
 <p>(Note that pandoc is not the only conversion tool you can use. Markdown comes with its own perl script, <code>Markdown.pl</code>, and there’s also <a href="http://kramdown.rubyforge.org/">kramdown</a>, <a href="http://maruku.rubyforge.org/">maruku</a>, etc., written in Ruby. But pandoc has some really useful options that’ll make life easier, as we’ll see below. If you prefer Ruby over Haskell, try one of the above.)</p>
 <p>The basic command is:</p>
-<pre class="sourceCode bash"><code class="sourceCode bash">$ pandoc -f markdown -t html5 -o index.html index.markdown</code></pre>
+<pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">pandoc</span> -f markdown -t html5 -o index.html index.markdown</code></pre>
 <p>Legend:</p>
 <ul>
 <li><code>$</code> is the terminal prompt; don’t type this.</li>
@@ -153,7 +153,7 @@ My supercool site
 ...</code></pre>
 <p>When pandoc parses the file, it’ll see the top two lines starting with <code>%</code> and from them generate title and author info for the header. However, I don’t like this method because it dirties up the markdown file, in the sense that <code>index.markdown</code> is now written in pandoc–specific, extended markdown. (If you later decided to convert your file with, say, kramdown, or if you viewed it in your browser on GitHub, then you’d see those two <code>%</code> lines in your HTML output.) But if that doesn’t bother you, by all means use this method.</p>
 <p>A second way to supply title and author info is by explicitly telling pandoc what values to use for its internal author and title <strong>v</strong>ariables:</p>
-<pre class="sourceCode bash"><code class="sourceCode bash">$ pandoc -V <span class="ot">pagetitle=</span><span class="st">&quot;My title&quot;</span> -V author-meta=<span class="st">&quot;My name&quot;</span> ...</code></pre>
+<pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">pandoc</span> -V pagetitle=<span class="st">&quot;My title&quot;</span> -V author-meta=<span class="st">&quot;My name&quot;</span> ...</code></pre>
 <p>Since I use a personalized script (see below) to run pandoc, I prefer this method because I can keep this metainfo inside my script and not inside the markdown file itself. Separation of main content and meta–content is important!</p>
 <p>Now what if you want to add more header info for which pandoc doesn’t have internal variables or command–line options? That’s easy: create <code>header.html</code> (or whatever you want to call it), throw in whatever HTML you want in your header (except title and author), and run</p>
 <pre><code>$ pandoc -H header.html ...</code></pre>
@@ -164,11 +164,11 @@ My supercool site
 <h3 id="putting-it-all-together">Putting it all together</h3>
 <p>All right, so you’ve got <code>index.markdown</code>, and maybe also <code>header.html</code>, <code>before-body.html</code> and <code>after-body.html</code>. You probably also have a CSS stylesheet like <code>mystyle.css</code>, which you can tell pandoc about with <code>-c mystyle.css</code> (or you can refer to it yourself in <code>header.html</code>).</p>
 <p>Here’s what your command will look like:</p>
-<pre class="sourceCode bash"><code class="sourceCode bash">pandoc <span class="kw">\</span>
-    -c mystyle.css <span class="kw">\</span>
-    -H header.html -B before-body.html -A after-body.html <span class="kw">\</span>
-    -V <span class="ot">pagetitle=</span><span class="st">&quot;My title&quot;</span> -V author-meta=<span class="st">&quot;My name&quot;</span> <span class="kw">\</span>
-    -f markdown -t html5 -o index.html index.markdown</code></pre>
+<pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">pandoc</span> \
+    <span class="kw">-c</span> mystyle.css \
+    <span class="kw">-H</span> header.html -B before-body.html -A after-body.html \
+    <span class="kw">-V</span> pagetitle=<span class="st">&quot;My title&quot;</span> -V author-meta=<span class="st">&quot;My name&quot;</span> \
+    <span class="kw">-f</span> markdown -t html5 -o index.html index.markdown</code></pre>
 <p>Wow, that’s a lot to type each time you want to convert a newly modified markdown file into HTML. Better put that inside a script. Let’s also put each of those things into a variable, so that we can easily modify the script command by changing variables rather than the command itself.</p>
 <pre class="sourceCode bash"><code class="sourceCode bash"><span class="co">#!/bin/bash</span>
 
@@ -184,13 +184,13 @@ My supercool site
 <span class="ot">AFTER=</span><span class="st">&quot;./after-body.html&quot;</span>
 
 <span class="co"># Convert markdown to html5.</span>
-pandoc
-    -c <span class="st">&quot;</span><span class="ot">$CSS</span><span class="st">&quot;</span> <span class="kw">\</span>
-    -H <span class="st">&quot;</span><span class="ot">$HEADER</span><span class="st">&quot;</span> -B <span class="st">&quot;</span><span class="ot">$BEFORE</span><span class="st">&quot;</span> -A <span class="st">&quot;</span><span class="ot">$AFTER</span><span class="st">&quot;</span> <span class="kw">\</span>
-    -V <span class="ot">pagetitle=</span><span class="st">&quot;</span><span class="ot">$TITLE</span><span class="st">&quot;</span> -V author-meta=<span class="st">&quot;</span><span class="ot">$AUTHOR</span><span class="st">&quot;</span> <span class="kw">\</span>
-    -f markdown -t html5 -o <span class="st">&quot;</span><span class="ot">$OUT_FILE</span><span class="st">&quot;</span> <span class="st">&quot;</span><span class="ot">$IN_FILE</span><span class="st">&quot;</span></code></pre>
+<span class="kw">pandoc</span>
+    <span class="kw">-c</span> <span class="st">&quot;</span><span class="ot">$CSS</span><span class="st">&quot;</span> \
+    <span class="kw">-H</span> <span class="st">&quot;</span><span class="ot">$HEADER</span><span class="st">&quot;</span> -B <span class="st">&quot;</span><span class="ot">$BEFORE</span><span class="st">&quot;</span> -A <span class="st">&quot;</span><span class="ot">$AFTER</span><span class="st">&quot;</span> \
+    <span class="kw">-V</span> pagetitle=<span class="st">&quot;</span><span class="ot">$TITLE</span><span class="st">&quot;</span> -V author-meta=<span class="st">&quot;</span><span class="ot">$AUTHOR</span><span class="st">&quot;</span> \
+    <span class="kw">-f</span> markdown -t html5 -o <span class="st">&quot;</span><span class="ot">$OUT_FILE</span><span class="st">&quot;</span> <span class="st">&quot;</span><span class="ot">$IN_FILE</span><span class="st">&quot;</span></code></pre>
 <p>Save this as, say, <code>md2html.sh</code>, make it executable with <code>chmod +x md2html.sh</code>, plop it inside the website directory containing <code>index.markdown</code>, and simply run:</p>
-<pre class="sourceCode bash"><code class="sourceCode bash">$ ./md2html.sh</code></pre>
+<pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">./md2html.sh</span></code></pre>
 <p>You should now see <code>index.html</code> in the same directory, which you can open in your browser to inspect and make sure it looks good.</p>
 <p>And there you have it. Now, whenever you need to edit your webpage, you can deal entirely with <code>index.markdown</code> using your favorite text editor, save the changes, and run <code>md2html.sh</code> to (re–)generate <code>index.html</code>. Easy.</p>
 <p>In the next post, I’ll explain how to push your website onto a remote server, e.g., a university server, using ssh and rsync inside a script. The end result is that, in the same way that <code>md2html.sh</code> does the whole conversion in one fell swoop, so too will <code>push-website.sh</code> push your site in one fell swoop: no passwords or GUI clicking required.</p>

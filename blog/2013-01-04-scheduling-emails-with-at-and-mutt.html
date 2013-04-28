@@ -77,39 +77,39 @@ end metadata -->
 <p>I had assumed that most modern email services, like Gmail, allow users to schedule emails to be sent at some later specified time, but a quick Google search reveals that that’s not quite the case. It looks like you need to use a browser extension like <a href="http://www.boomeranggmail.com/">Boomerang</a> or <a href="http://www.rightinbox.com/">Right Inbox</a>.</p>
 <p>But what if you don’t trust browser extensions/third parties to handle private emails? Or what if you don’t use Firefox, Chrome, etc.? (I use <a href="http://portix.bitbucket.org/dwb/">dwb</a>.) In this post I’ll explain how Linux users who are already set up with <a href="http://www.mutt.org/">mutt</a> (or any mail client with similar command-line capability) can harness the powers of <code>at</code> and <code>mutt</code> to schedule emails.</p>
 <p>The <code>at</code> command lets you schedule tasks (shell commands) that are to be executed at a specified time. The basic syntax is <code>at TIMESPEC</code>, where timespec is something like <code>now + 10 minutes</code>, <code>noon tomorrow</code>, <code>11:59pm Dec 31</code>, etc. The <code>at</code> command is run from a terminal, and once you specify the timespec and hit enter, you’re put into an interactive prompt where you list the commands that you want <code>at</code> to execute at the specified time. Hit <code>&lt;Ctrl-D&gt;</code> to finish, or <code>&lt;Ctrl-C&gt;</code> to cancel. For example:</p>
-<pre class="sourceCode bash"><code class="sourceCode bash">$ at now + 1 minute
-warning: commands will be executed using /bin/sh
-at<span class="kw">&gt;</span> <span class="kw">echo</span> <span class="st">&quot;testing out at&quot;</span> <span class="kw">&gt;&gt;</span>~/my-at-test
-at<span class="kw">&gt;</span> <span class="kw">&lt;</span>EOT<span class="kw">&gt;</span>
-job 13 at Fri Jan  4 11:46:00 2013</code></pre>
+<pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">at</span> now + 1 minute
+<span class="kw">warning</span>: commands will be executed using /bin/sh
+<span class="kw">at&gt;</span> echo <span class="st">&quot;testing out at&quot;</span> <span class="kw">&gt;&gt;</span>~/my-at-test
+<span class="kw">at&gt;</span> <span class="kw">&lt;</span>EOT<span class="kw">&gt;</span>
+<span class="kw">job</span> 13 at Fri Jan  4 11:46:00 2013</code></pre>
 <p>In the above code, we tell <code>at</code> that 1 minute from now, it should append the text “testing out at” to the file <code>my-at-test</code> (and create it if it doesn’t already exist).<sup><a href="#fn1" class="footnoteRef" id="fnref1">1</a></sup></p>
 <p>You can run <code>atq</code> to view the queue of current jobs, <code>atrm JOBID</code> to remove a job, and <code>at -c JOBID</code> to view (<strong>c</strong>at) a queued job.</p>
 <p>Since <code>at</code> accepts any shell command, we can schedule emails using mutt’s command-line interface. The basic syntax for sending emails with mutt from the command line is</p>
-<pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">echo</span> <span class="st">&quot;MSG&quot;</span> <span class="kw">|</span> mutt -s SUBJ -- RECIPIENT <span class="co"># for simple messages</span>
-$ mutt -s SUBJ -- RECIPIENT <span class="kw">&lt;</span>MSG         <span class="co"># for longer messages (files)</span></code></pre>
+<pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">echo</span> <span class="st">&quot;MSG&quot;</span> <span class="kw">|</span> <span class="kw">mutt</span> -s SUBJ -- RECIPIENT <span class="co"># for simple messages</span>
+$ <span class="kw">mutt</span> -s SUBJ -- RECIPIENT <span class="kw">&lt;</span>MSG         <span class="co"># for longer messages (files)</span></code></pre>
 <p>Suppose I want to email myself a reminder tomorrow at 10am to call John. Here’s what I do.<sup><a href="#fn2" class="footnoteRef" id="fnref2">2</a></sup></p>
-<pre class="sourceCode bash"><code class="sourceCode bash">$ at 10am tomorrow
-warning: commands will be executed using /bin/sh
-at<span class="kw">&gt;</span> <span class="kw">echo</span> <span class="st">&quot;Remember to call John.&quot;</span> <span class="kw">|</span> mutt -s <span class="st">&quot;Call John&quot;</span> -- me
-at<span class="kw">&gt;</span> <span class="kw">&lt;</span>EOT<span class="kw">&gt;</span>
-job 14 at Sat Jan  5 10:00:00 2013</code></pre>
+<pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">at</span> 10am tomorrow
+<span class="kw">warning</span>: commands will be executed using /bin/sh
+<span class="kw">at&gt;</span> echo <span class="st">&quot;Remember to call John.&quot;</span> <span class="kw">|</span> <span class="kw">mutt</span> -s <span class="st">&quot;Call John&quot;</span> -- me
+<span class="kw">at&gt;</span> <span class="kw">&lt;</span>EOT<span class="kw">&gt;</span>
+<span class="kw">job</span> 14 at Sat Jan  5 10:00:00 2013</code></pre>
 <p>There’s a problem though. If my computer is off tomorrow at 10am, nothing will happen. And if my computer is on but not connected to the internet, then the job will technically be executed (and thus be subsequently removed from the queue), but no mail will be sent.</p>
 <p>Moreover, if my computer is off tomorrow at 10am, then <code>at</code> will execute the command the next time I boot, but unfortunately it’ll do so immediately, before enough time has passed to allow my wifi connection to be established.</p>
 <p>There’s really no complete remedy to these problems except to ensure that the computer is on and connected to the internet at the specified time (which is no problem for people who rarely turn off their computers, or for dedicated servers).</p>
 <p>But if the computer is off and/or not online, there is still a way to ensure that the email is not sent until a wifi connection is established. We just need to write a simple shell script, <code>check-wifi.sh</code>, which only exits once a wifi connection is established.</p>
 <pre class="sourceCode bash"><code class="sourceCode bash"><span class="co">#!/bin/bash</span>
 
-<span class="kw">until [[</span> <span class="ot">-n</span> <span class="st">&quot;</span><span class="ot">$(</span>iwgetid<span class="ot">)</span><span class="st">&quot;</span><span class="kw"> ]]</span>; <span class="kw">do</span>
+<span class="kw">until [[</span> <span class="ot">-n</span> <span class="st">&quot;</span><span class="ot">$(</span><span class="kw">iwgetid</span><span class="ot">)</span><span class="st">&quot;</span><span class="kw"> ]]</span>; <span class="kw">do</span>
     <span class="kw">sleep</span> 1
 <span class="kw">done</span>
 
 <span class="kw">exit</span> 0</code></pre>
 <p><code>iwgetid</code> is a command that returns the ESSID of the current wifi connection if there is one, and nothing otherwise. So this script does the following: keep waiting (sleeping) until <code>iwgetid</code> returns a string of nonzero length, then exit with status 0. (Remember to make it executable: <code>chmod a+x check-wifi.sh</code>.)</p>
 <p>Now we can modify our <code>at</code> commands as follows:</p>
-<pre class="sourceCode bash"><code class="sourceCode bash">$ at 10am tomorrow
-at<span class="kw">&gt;</span> /path/to/check-wifi.sh
-at<span class="kw">&gt;</span> <span class="kw">echo</span> <span class="st">&quot;Remember to call John.&quot;</span> <span class="kw">|</span> mutt -s <span class="st">&quot;Call John&quot;</span> -- me
-at<span class="kw">&gt;</span> <span class="kw">&lt;</span>EOT<span class="kw">&gt;</span></code></pre>
+<pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">at</span> 10am tomorrow
+<span class="kw">at&gt;</span> /path/to/check-wifi.sh
+<span class="kw">at&gt;</span> echo <span class="st">&quot;Remember to call John.&quot;</span> <span class="kw">|</span> <span class="kw">mutt</span> -s <span class="st">&quot;Call John&quot;</span> -- me
+<span class="kw">at&gt;</span> <span class="kw">&lt;</span>EOT<span class="kw">&gt;</span></code></pre>
 <p>Now the email won’t try to be delivered until <code>check-wifi.sh</code> finishes running, i.e., until a wifi connection is established.</p>
 <p>We can also modify <code>check-wifi.sh</code> to time out after, say, 3 minutes of no wifi, and to write something to a log file.</p>
 <pre class="sourceCode bash"><code class="sourceCode bash"><span class="co">#!/bin/bash</span>
@@ -118,7 +118,7 @@ at<span class="kw">&gt;</span> <span class="kw">&lt;</span>EOT<span class="kw">&
 <span class="ot">TIMEOUT=</span>180
 <span class="ot">E_TIMEOUT=</span>70
 
-<span class="kw">until [[</span> <span class="ot">-n</span> <span class="st">&quot;</span><span class="ot">$(</span>iwgetid<span class="ot">)</span><span class="st">&quot;</span><span class="kw"> ]]</span>; <span class="kw">do</span>
+<span class="kw">until [[</span> <span class="ot">-n</span> <span class="st">&quot;</span><span class="ot">$(</span><span class="kw">iwgetid</span><span class="ot">)</span><span class="st">&quot;</span><span class="kw"> ]]</span>; <span class="kw">do</span>
     <span class="kw">sleep</span> 1
     <span class="kw">let</span> <span class="st">&quot;COUNT+=1&quot;</span>
     <span class="co"># wait $TIMEOUT seconds, then exit</span>

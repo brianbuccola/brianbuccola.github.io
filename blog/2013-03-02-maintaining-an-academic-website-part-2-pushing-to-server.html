@@ -108,11 +108,11 @@ stuff, no warranty, yada yada.
 
 bob22@abc:~$</code></pre>
 <p>Bob went from being inside his personal home directory to being on his home directory on his uni server, hence why <code>$</code> is the prompt in both cases. Note, however, that Bob’s local home directory is <code>/home/bob</code>, whereis his remote uni one is (probably) <code>/home/bob22</code>.</p>
-<pre class="sourceCode bash"><code class="sourceCode bash">bob22@abc:~$ <span class="kw">echo</span> <span class="ot">$HOME</span>
-/home/bob22</code></pre>
+<pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">bob22@abc</span>:~$ echo <span class="ot">$HOME</span>
+<span class="kw">/home/bob22</span></code></pre>
 <p>Bob looks around in his home directory, and he notices two folders:</p>
-<pre class="sourceCode bash"><code class="sourceCode bash">bob22@abc:~$ <span class="kw">ls</span>
-private public_html</code></pre>
+<pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">bob22@abc</span>:~$ ls
+<span class="kw">private</span> public_html</code></pre>
 <p>Presumably, <code>private</code> is for stuff that no other students/users of that server has access to; <code>public_html</code> is where Bob needs to put his website. But how does he do that? Right now, he’s “inside” his uni home, with no way look at his PC home, except in another shell, but then in that shell he would have no way to look at his uni home. That is, the two shells could not “communicate”, as it were.</p>
 <h4 id="scp">scp</h4>
 <p>Enter <code>scp</code>, or secure copy. First Bob exits from his uni server with <code>exit</code>, putting him back into his ordinary PC home. Now he can do this:</p>
@@ -138,25 +138,25 @@ $ <span class="kw">mv</span> abc ~/.ssh/</code></pre>
 <pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">scp</span> ~/abc.pub bob22@abc.edu:/home/bob22</code></pre>
 <p>But that’s not quite enough. The way OpenSSH works is that the public key has to be concatenated to a file <code>authorized_keys</code>, located in the remote <code>~/.ssh</code>, which contains all public keys needed by Bob’s remote server. To do that, Bob must ssh one more time onto the server, create <code>~/.ssh</code> if necessary, append <code>abc.pub</code> to <code>authorized_keys</code>, change the permissions on <code>authorized_keys</code> so that only Bob can read and write to it, and finally delete <code>abc.pub</code>.</p>
 <pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">ssh</span> bob22@abc.edu
-Welcome! ...
-bob22@abc:~$ <span class="kw">ls</span>
-abc.pub private public_html
-bob22@abc:~$ <span class="kw">mkdir</span> ~/.ssh
-bob22@abc:~$ <span class="kw">cat</span> ~/abc.pub <span class="kw">&gt;&gt;</span> ~/.ssh/authorized_keys
-bob22@abc:~$ <span class="kw">chmod</span> 600 ~/.ssh/authorized_keys
-bob22@abc:~$ <span class="kw">rm</span> abc.pub
-bob22@abc:~$ <span class="kw">exit</span></code></pre>
+<span class="kw">Welcome</span>! ...
+<span class="kw">bob22@abc</span>:~$ ls
+<span class="kw">abc.pub</span> private public_html
+<span class="kw">bob22@abc</span>:~$ mkdir ~/.ssh
+<span class="kw">bob22@abc</span>:~$ cat ~/abc.pub <span class="kw">&gt;&gt;</span> ~/.ssh/authorized_keys
+<span class="kw">bob22@abc</span>:~$ chmod 600 ~/.ssh/authorized_keys
+<span class="kw">bob22@abc</span>:~$ rm abc.pub
+<span class="kw">bob22@abc</span>:~$ exit</code></pre>
 <p>If all went well, Bob should now be able to ssh onto the server without typing <code>iluvssh</code> every time. Cool!</p>
 <h4 id="ssh-config-file">ssh config file</h4>
 <p>But there’s another snag: What if Bob’s username were actually</p>
-<pre class="sourceCode bash"><code class="sourceCode bash">reallylongfirstname.superlonglastname946537</code></pre>
+<pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">reallylongfirstname.superlonglastname946537</span></code></pre>
 <p>and/or what if his university’s domain name were actually</p>
-<pre class="sourceCode bash"><code class="sourceCode bash">abcdefghijklmnopqrstuvwxyz@abc.de.fghi.jklm.no.pqrst.uvwx.yz.edu</code></pre>
+<pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">abcdefghijklmnopqrstuvwxyz@abc.de.fghi.jklm.no.pqrst.uvwx.yz.edu</span></code></pre>
 <p>It’d be pretty annoying to type all that out every time Bob wanted to <code>ssh</code> onto the server or <code>scp</code> something over to it. Sure, Bob could create a shell alias for it, but ssh offers an easy solution: an ssh config file. Bob can simply create a file <code>~/.ssh/config</code> that looks like this:</p>
-<pre class="sourceCode bash"><code class="sourceCode bash">Host abc
-    User bob22
-    HostName abc.edu
-    IdentityFile ~/.ssh/abc</code></pre>
+<pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">Host</span> abc
+    <span class="kw">User</span> bob22
+    <span class="kw">HostName</span> abc.edu
+    <span class="kw">IdentityFile</span> ~/.ssh/abc</code></pre>
 <p>The keywords are pretty straightforward. The only one worth discussing is <code>Host</code>: this is the name that this particular entry goes by, and it’s that name which, when used in a shell or script, is equivalent to <code>bob22@abc.edu</code>. In other words, typing</p>
 <pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">ssh</span> abc</code></pre>
 <p>is equivalent to typing</p>
@@ -184,11 +184,11 @@ bob22@abc:~$ <span class="kw">exit</span></code></pre>
 <span class="ot">EXCL=</span><span class="st">&quot;</span><span class="ot">$SRC</span><span class="st">/.push-website/exclude-list&quot;</span>
 <span class="ot">LOG=</span><span class="st">&quot;</span><span class="ot">$SRC</span><span class="st">/.push-website/log&quot;</span>
 
-rsync <span class="kw">\</span>
-    -avhhh <span class="kw">\</span>
-    --exclude-from=<span class="ot">$EXCL</span> <span class="kw">\</span>
-    --log-file=<span class="ot">$LOG</span> <span class="kw">\</span>
-    <span class="ot">$SRC</span>/ <span class="ot">$DEST</span>/</code></pre>
+<span class="kw">rsync</span> \
+    <span class="kw">-avhhh</span> \
+    <span class="kw">--exclude-from</span>=<span class="ot">$EXCL</span> \
+    <span class="kw">--log-file</span>=<span class="ot">$LOG</span> \
+    <span class="ot">$SRC</span><span class="kw">/</span> <span class="ot">$DEST</span>/</code></pre>
 <p>Legend:</p>
 <ul>
 <li><code>-a</code> means <strong>a</strong>rchive.</li>
@@ -197,9 +197,9 @@ rsync <span class="kw">\</span>
 </ul>
 <p><strong>Important.</strong> The forward slash, <code>/</code>, in <code>$SRC/</code> is crucial. It tells rsync to transfer the <em>contents</em> of the source directory into the destination directory, rather than transfering <code>$SRC</code> itself. See <code>man rsync</code> for more info. It’s useful to read about all the rsync options.</p>
 <p>So now Bob can update his site very simply by editing <code>index.markdown</code>, running <code>md2html.sh</code> to convert to HTML, and running <code>push-website.sh</code> to push the changes to his university server.</p>
-<pre class="sourceCode bash"><code class="sourceCode bash">~/website $ vim index.markdown      <span class="co"># edit, edit, edit, save, quit</span>
-~/website $ ./md2html.sh            <span class="co"># convert to HTML</span>
-~/website $ ./push-website.sh       <span class="co"># push changes to remote server</span></code></pre>
+<pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">~/website</span> $ vim index.markdown      <span class="co"># edit, edit, edit, save, quit</span>
+<span class="kw">~/website</span> $ ./md2html.sh            <span class="co"># convert to HTML</span>
+<span class="kw">~/website</span> $ ./push-website.sh       <span class="co"># push changes to remote server</span></code></pre>
 <p>Nice! By the way, here are some things that are good to keep in the exclude file:</p>
 <ul>
 <li><code>index.markdown</code></li>
