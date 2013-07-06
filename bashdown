@@ -70,7 +70,8 @@ src="http://i.creativecommons.org/l/by/3.0/80x15.png" /></a>'
 highlight_style="pygments"
 
 # Favicon filename (the file should be inside ${blog_root_dir})
-favicon="favicon.png"
+# favicon="favicon.png"
+favicon=""
 
 # Date format to be displayed in html files
 date_format="%B %d, %Y"
