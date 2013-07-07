@@ -128,7 +128,7 @@ convert_string() {
 }
 
 # Ask for confirmation; return 0 if y(es), else 1.
-# Usage confirm [MESSAGE]
+# Usage: confirm [MESSAGE]
 confirm() {
     local -l reply # convert to lowercase
     local msg="$1"
