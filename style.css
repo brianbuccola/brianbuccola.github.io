@@ -1,9 +1,9 @@
 /* Body */
 body {
   font-family: "PT Serif", serif;
-  font-size: 12pt;
+  font-size: 11pt;
   line-height: 175%;
-  margin: 5% 20% 5% 20%;
+  margin: 5% 25% 5% 25%;
 }
 
 /* Headings */
@@ -71,7 +71,7 @@ a:hover {
 
 /* Math */
 span.math {
-  font-size: 11pt;
+  font-size: 10.5pt;
 }
 
 /* Blockquote */
