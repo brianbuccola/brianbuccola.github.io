@@ -73,3 +73,9 @@ a:hover {
 span.math {
     font-size: 11pt;
 }
+
+/* Blockquote */
+blockquote {
+    font-style: italic;
+    color: gray;
+}
