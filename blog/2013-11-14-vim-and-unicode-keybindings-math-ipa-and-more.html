@@ -78,9 +78,9 @@ map! &lt;C-v&gt;&amp; ∧</code></pre>
 <p>For example, if I’m emailing a student or writing a forum post about the transcription of the word “ring”, I would usually go a site like <a href="http://westonruter.github.io/ipa-chart/keyboard/">this</a>, click-type the transcription, copy it, then paste it—sort of time-consuming. Plus, if I’m not connected to the internet, then I can’t use this method at all. But if I have the following mappings in my <code>.vimrc</code></p>
 <pre><code>map! &lt;C-v&gt;I ɪ
 map! &lt;C-v&gt;N ŋ
-map! &lt;C-v&gt;\*r ɹ</code></pre>
+map! &lt;C-v&gt;r ɹ</code></pre>
 <p>then all I do is type</p>
-<pre><code>&quot;Ring&quot; is transcribed: [&lt;C-v&gt;\*r&lt;C-v&gt;I&lt;C-v&gt;N].</code></pre>
+<pre><code>&quot;Ring&quot; is transcribed: [&lt;C-v&gt;r&lt;C-v&gt;I&lt;C-v&gt;N].</code></pre>
 <p>which becomes</p>
 <pre><code>&quot;Ring&quot; is transcribed: [ɹɪŋ].</code></pre>
 <p>By the way, you don’t <em>need</em> the <code>&lt;C-v&gt;</code> prefix, but that’s useful to group these bindings together, and to not override other keys. For example, you could do</p>

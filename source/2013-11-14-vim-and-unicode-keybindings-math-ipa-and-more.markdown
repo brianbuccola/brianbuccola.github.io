@@ -69,11 +69,11 @@ have the following mappings in my `.vimrc`
 
     map! <C-v>I ɪ
     map! <C-v>N ŋ
-    map! <C-v>\*r ɹ
+    map! <C-v>r ɹ
 
 then all I do is type
 
-    "Ring" is transcribed: [<C-v>\*r<C-v>I<C-v>N].
+    "Ring" is transcribed: [<C-v>r<C-v>I<C-v>N].
 
 which becomes
 
