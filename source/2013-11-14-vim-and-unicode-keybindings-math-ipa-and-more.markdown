@@ -92,7 +92,11 @@ to ever type `N`.
 character manually: for example, `<C-v>u2203` comes out as ∃, because the
 unicode encoding for that character is U+2203.
 
-Anyway, to close this out, here are some useful mappings:
+Anyway, to close this out, I've put some useful mappings below. If you want
+more ideas about what to map, check out the Wikipedia page [Unicode/List of
+Useful Symbols](https://en.wikibooks.org/wiki/Unicode/List_of_useful_symbols),
+which has a ton of math, science, music, etc. characters, all of which could be
+handily mapped to in your `.vimrc`. ♫♫ cool! ♪♩♪
 
     " Greek {{{
     " (thanks to connermcd for these)
