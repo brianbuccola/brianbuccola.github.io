@@ -3,6 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
   <meta name="author" content="Brian Buccola">
   <title>Scheduling Emails with at and mutt - Brian Buccola</title>
   <style type="text/css">code{white-space: pre;}</style>
@@ -61,7 +62,6 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <a class="return_to_index" href="../index.html">Back to index</a>
 <h1 class="post_title">Scheduling Emails with at and mutt</h1>
 <p class="date">January 04, 2013</p>
-
 <!-- begin metadata
 title: Scheduling Emails with at and mutt
 date: 2013-01-04 11:08
@@ -82,12 +82,12 @@ end metadata -->
 <span class="kw">at&gt;</span> echo <span class="st">&quot;testing out at&quot;</span> <span class="kw">&gt;&gt;</span>~/my-at-test
 <span class="kw">at&gt;</span> <span class="kw">&lt;</span>EOT<span class="kw">&gt;</span>
 <span class="kw">job</span> 13 at Fri Jan  4 11:46:00 2013</code></pre>
-<p>In the above code, we tell <code>at</code> that 1 minute from now, it should append the text “testing out at” to the file <code>my-at-test</code> (and create it if it doesn’t already exist).<sup><a href="#fn1" class="footnoteRef" id="fnref1">1</a></sup></p>
+<p>In the above code, we tell <code>at</code> that 1 minute from now, it should append the text “testing out at” to the file <code>my-at-test</code> (and create it if it doesn’t already exist).<a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a></p>
 <p>You can run <code>atq</code> to view the queue of current jobs, <code>atrm JOBID</code> to remove a job, and <code>at -c JOBID</code> to view (<strong>c</strong>at) a queued job.</p>
 <p>Since <code>at</code> accepts any shell command, we can schedule emails using mutt’s command-line interface. The basic syntax for sending emails with mutt from the command line is</p>
 <pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">echo</span> <span class="st">&quot;MSG&quot;</span> <span class="kw">|</span> <span class="kw">mutt</span> -s SUBJ -- RECIPIENT <span class="co"># for simple messages</span>
 $ <span class="kw">mutt</span> -s SUBJ -- RECIPIENT <span class="kw">&lt;</span>MSG         <span class="co"># for longer messages (files)</span></code></pre>
-<p>Suppose I want to email myself a reminder tomorrow at 10am to call John. Here’s what I do.<sup><a href="#fn2" class="footnoteRef" id="fnref2">2</a></sup></p>
+<p>Suppose I want to email myself a reminder tomorrow at 10am to call John. Here’s what I do.<a href="#fn2" class="footnoteRef" id="fnref2"><sup>2</sup></a></p>
 <pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">at</span> 10am tomorrow
 <span class="kw">warning</span>: commands will be executed using /bin/sh
 <span class="kw">at&gt;</span> echo <span class="st">&quot;Remember to call John.&quot;</span> <span class="kw">|</span> <span class="kw">mutt</span> -s <span class="st">&quot;Call John&quot;</span> -- me
@@ -148,7 +148,7 @@ $ <span class="kw">mutt</span> -s SUBJ -- RECIPIENT <span class="kw">&lt;</span>
 href="http://creativecommons.org/licenses/by/3.0/">
 <img alt="Creative Commons License" style="border-width:0"
 src="http://i.creativecommons.org/l/by/3.0/80x15.png" /></a><br>
-2012-2013 &ndash; Brian Buccola<br>
+2012-2014 &ndash; Brian Buccola<br>
 Powered by
     <a target="_blank" href="http://johnmacfarlane.net/pandoc/">Pandoc</a>,
     <a target="_blank" href="http://www.gnu.org/software/bash/">Bash</a>, and
