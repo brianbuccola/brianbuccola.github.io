@@ -351,7 +351,9 @@ mkd2html_index() {
     echo '<h1 class="post_title">'"${index_title}"'</h1>' >> "${tmp_before_body}"
     echo "" >> "${tmp_before_body}"
 
-    pandoc -s -S --mathjax --highlight-style "${highlight_style}" -c "${style}" \
+    pandoc -s -S \
+        --mathjax="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" \
+        --highlight-style "${highlight_style}" -c "${style}" \
         -H "${head}" -B "${before_body}" -B "${tmp_before_body}" -A "${about}" -A "${after_body}" \
         -V pagetitle="${blog_title}" -V author-meta="${blog_author}" \
         -f markdown -t html5 -o "${index_file}" "$1"
@@ -412,7 +414,7 @@ mkd2html_post() {
     # NB: The reference to ${style} must be one level up, since the html file
     # generated here lives below ${blog_root_dir}, in ${html_dir.}
     pandoc -s -S \
-        --mathjax="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" \
+        --mathjax="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" \
         --highlight-style "${highlight_style}" -c "../${style}" \
         -H "${head}" -B "${before_body}" -B "${tmp_before_body}" -A "${after_body}" \
         -V pagetitle="${post_title} - ${blog_title}" -V author-meta="${blog_author}" \
