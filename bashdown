@@ -573,6 +573,7 @@ convert [filename]  Convert a single markdown post to html.
 setup               Create necessary include files. Run this before doing anything.
 rebuild             Rebuild all html files (posts, include files, and \`${index_file}').
 reset               Remove all markdown and html files and start from scratch.
+help                Show usage and commands (this text).
 EOF
 }
 
@@ -615,6 +616,7 @@ case "$1" in
     rb|rebuild) rebuild_all ;;
     setup) setup ;;
     reset) reset ;;
+    h|help) usage ;;
     *) usage && die "Invalid parameter(s)." ;;
 esac
 
