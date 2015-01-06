@@ -71,7 +71,6 @@ categories:
 - latex
 - octopress
 end metadata -->
-
 <p><strong><em>Update:</em></strong> <em>I no longer maintain this blog using Octopress, but I will leave this post here in case it may be of use to people. For the curious, I now convert my markdown posts to html using <a href="http://johnmacfarlane.net/pandoc/">Pandoc</a>, which has a <code>--mathjax</code> option that renders <span class="math">\(\LaTeX{}\)</span> on the fly.</em></p>
 <p>With the help of Google and some smart Octopress bloggers (<a href="http://www.idryman.org/blog/2012/03/10/writing-math-equations-on-octopress/">here</a>, particularly), I’ve successfully managed to get <span class="math">\(\LaTeX{}\)</span> math to show up in my Octopress blog. Octopress uses <a href="https://github.com/rtomayko/rdiscount">rdiscount</a> as the default <a href="http://daringfireball.net/projects/markdown/">markdown</a> implementation/parser/converter-to-HTML, but unfortunately rdiscount cannot parse or convert <span class="math">\(\LaTeX{}\)</span> code (because <span class="math">\(\LaTeX{}\)</span> code is, of course, not markdown).</p>
 <p>That’s where <a href="http://kramdown.rubyforge.org/">kramdown</a> comes in. It parses and converts a superset of markdown, including <span class="math">\(\LaTeX\)</span>, meaning that together with <a href="http://www.mathjax.org/">MathJax</a> you can have beautiful <span class="math">\(\LaTeX\)</span> math code rendered directly into your browser.</p>
@@ -84,7 +83,6 @@ end metadata -->
 \end{align}
 \]</span></p>
 <!-- more -->
-
 <p>Right-click on any of the math to view the MathJax options, including the option to open the source code in a new window/tab. To get this all up and running, follow these steps.</p>
 <h3 id="install-kramdown">1. Install kramdown</h3>
 <pre><code>gem install kramdown</code></pre>
@@ -142,7 +140,7 @@ end metadata -->
 href="http://creativecommons.org/licenses/by/3.0/">
 <img alt="Creative Commons License" style="border-width:0"
 src="http://i.creativecommons.org/l/by/3.0/80x15.png" /></a><br>
-2012-2014 &ndash; Brian Buccola<br>
+2012-2015 &ndash; Brian Buccola<br>
 Powered by
     <a target="_blank" href="http://johnmacfarlane.net/pandoc/">Pandoc</a>,
     <a target="_blank" href="http://www.gnu.org/software/bash/">Bash</a>, and

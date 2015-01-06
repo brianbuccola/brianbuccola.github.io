@@ -67,7 +67,6 @@ code > span.er { color: #ff0000; font-weight: bold; }
 title: Implementing Lists in the Simply Typed Lambda Calculus
 date: 2013-04-22 11:09
 end metadata -->
-
 <p>One of my goals this summer is to re-read Bob Carpenter’s <em>Type-Logical Grammar</em> and to actually do (at least some of) the exercises. If I manage to follow through with that goal, I’ll write up my solutions (or attempts at solutions) to some of the more interesting or difficult exercises. I’ll start that off with the last exercise from Chapter 2, which says to add to the simply typed lambda calculus the type <span class="math">\(\sigma^*\)</span> for lists of objects of type <span class="math">\(\sigma\)</span>. First, let me review Chapter 2 to set the stage.</p>
 <h2 id="review">Review</h2>
 <p>Chapter 2 deals with the syntax, semantics, and proof theory of the simply typed lambda calculus. I’ll review here the syntax and semantics, but not the proof theory.</p>
@@ -76,7 +75,7 @@ end metadata -->
 <p><strong>Definition (types).</strong> The set of <em>types</em> is the smallest set <span class="math">\(\mathbf{Typ}\)</span> such that</p>
 <ol type="1">
 <li><span class="math">\(\mathbf{BasTyp} \subseteq \mathbf{Typ}\)</span>.</li>
-<li>If <span class="math">\(\sigma, \tau \in \mathbf{Typ}\)</span>, then <span class="math">\((\sigma \to \tau) \in    \mathbf{Typ}\)</span>.</li>
+<li>If <span class="math">\(\sigma, \tau \in \mathbf{Typ}\)</span>, then <span class="math">\((\sigma \to \tau) \in  \mathbf{Typ}\)</span>.</li>
 </ol>
 <p>A type of the form <span class="math">\((\sigma \to \tau)\)</span> is called a <em>functional type</em>.</p>
 <p>For each type <span class="math">\(\tau\)</span>, there is a set <span class="math">\(\mathbf{Var}_\tau\)</span> of variables of type <span class="math">\(\tau\)</span> and a set <span class="math">\(\mathbf{Con}_\tau\)</span> of constants of type <span class="math">\(\tau\)</span>. The set of lambda terms of type <span class="math">\(\tau\)</span> is defined as follows.</p>
@@ -84,8 +83,8 @@ end metadata -->
 <ol type="1">
 <li><span class="math">\(\mathbf{Var}_\tau \subseteq \mathbf{Term}_\tau\)</span>.</li>
 <li><span class="math">\(\mathbf{Con_\tau} \subseteq \mathbf{Term}_\tau\)</span>.</li>
-<li>If <span class="math">\(\alpha \in \mathbf{Term}_{\sigma \to \tau}\)</span> and <span class="math">\(\beta \in    \mathbf{Term}_\sigma\)</span>, then <span class="math">\((\alpha(\beta)) \in \mathbf{Term}_\tau\)</span>.</li>
-<li>If <span class="math">\(\tau = \sigma \to \rho\)</span> and <span class="math">\(x \in \mathbf{Var}_\sigma\)</span> and <span class="math">\(\alpha \in    \mathbf{Term}_\rho\)</span>, then <span class="math">\(\lambda x . (\alpha) \in \mathbf{Term}_\tau\)</span>.</li>
+<li>If <span class="math">\(\alpha \in \mathbf{Term}_{\sigma \to \tau}\)</span> and <span class="math">\(\beta \in  \mathbf{Term}_\sigma\)</span>, then <span class="math">\((\alpha(\beta)) \in \mathbf{Term}_\tau\)</span>.</li>
+<li>If <span class="math">\(\tau = \sigma \to \rho\)</span> and <span class="math">\(x \in \mathbf{Var}_\sigma\)</span> and <span class="math">\(\alpha \in  \mathbf{Term}_\rho\)</span>, then <span class="math">\(\lambda x . (\alpha) \in \mathbf{Term}_\tau\)</span>.</li>
 </ol>
 <p>A term of the form <span class="math">\((\alpha(\beta))\)</span>, usually abbreviated <span class="math">\(\alpha(\beta)\)</span> or <span class="math">\(\alpha\ \beta\)</span>, is a <em>functional application</em> of <span class="math">\(\alpha\)</span> to <span class="math">\(\beta\)</span>. However, a term <span class="math">\(\alpha\)</span> with a functional type <span class="math">\((\sigma \to \tau)\)</span> is not a function per se—<span class="math">\(\alpha(\beta)\)</span> is (the result of) a <em>syntactic</em> operation more akin to term concatenation than functional application. Nevertheless, <span class="math">\(\alpha\)</span> is called functional (it has a functional type) because of how it is <em>interpreted semantically</em> (model theoretically).</p>
 <h3 id="semantics">Semantics</h3>
@@ -94,10 +93,10 @@ end metadata -->
 <p><strong>Definition (model).</strong> A <em>model</em> is a pair <span class="math">\(\langle \mathbf{Dom},I \rangle\)</span> in which <span class="math">\(\mathbf{Dom}\)</span> is a frame, and <span class="math">\(I\)</span> is the <em>interpretation function</em> mapping constants to the appropriate domain, i.e. <span class="math">\(I(\alpha) \in \mathbf{Dom}_\tau\)</span> if <span class="math">\(\alpha \in \textbf{Con}_\tau\)</span>.</p>
 <p><strong>Definition (denotation).</strong> Given a model <span class="math">\(\mathcal{M} = \langle \textbf{Dom}, I \rangle\)</span> and a variable assignment <span class="math">\(\theta\)</span>, the <em>denotation</em> <span class="math">\([\![\alpha]\!]^\theta_\mathcal{M}\)</span> of a term <span class="math">\(\alpha\)</span> with respect to <span class="math">\(\mathcal{M}\)</span> and <span class="math">\(\theta\)</span> is given by:</p>
 <ol type="1">
-<li>If <span class="math">\(\alpha \in \mathbf{Var}_\tau\)</span>, then <span class="math">\([\![\alpha]\!]^\theta_\mathcal{M} =    \theta(\alpha)\)</span>.</li>
-<li>If <span class="math">\(\alpha \in \mathbf{Con}_\tau\)</span>, then <span class="math">\([\![\alpha]\!]^\theta_\mathcal{M} =    I(\alpha)\)</span>.</li>
-<li><span class="math">\([\![\alpha(\beta)]\!]^\theta_\mathcal{M} =    [\![\alpha]\!]^\theta_\mathcal{M} ([\![\beta]\!]^\theta_\mathcal{M}]\!])\)</span>, assuming <span class="math">\(\alpha\)</span> and <span class="math">\(\beta\)</span> are appropriately typed.</li>
-<li><span class="math">\([\![\lambda x . \alpha]\!]^\theta_\mathcal{M} = f\)</span> such that <span class="math">\(f(a) =    [\![\alpha]\!]^{\theta[x:=a]}_\mathcal{M}\)</span>, where <span class="math">\(\theta[x:=a]\)</span> is that variable assignment <span class="math">\(\theta&#39;\)</span> such that <span class="math">\(\theta&#39;(x) = a\)</span> and <span class="math">\(\theta&#39;(y) =    \theta(y)\)</span> for each <span class="math">\(y \neq x\)</span>.</li>
+<li>If <span class="math">\(\alpha \in \mathbf{Var}_\tau\)</span>, then <span class="math">\([\![\alpha]\!]^\theta_\mathcal{M} =  \theta(\alpha)\)</span>.</li>
+<li>If <span class="math">\(\alpha \in \mathbf{Con}_\tau\)</span>, then <span class="math">\([\![\alpha]\!]^\theta_\mathcal{M} =  I(\alpha)\)</span>.</li>
+<li><span class="math">\([\![\alpha(\beta)]\!]^\theta_\mathcal{M} =  [\![\alpha]\!]^\theta_\mathcal{M} ([\![\beta]\!]^\theta_\mathcal{M}]\!])\)</span>, assuming <span class="math">\(\alpha\)</span> and <span class="math">\(\beta\)</span> are appropriately typed.</li>
+<li><span class="math">\([\![\lambda x . \alpha]\!]^\theta_\mathcal{M} = f\)</span> such that <span class="math">\(f(a) =  [\![\alpha]\!]^{\theta[x:=a]}_\mathcal{M}\)</span>, where <span class="math">\(\theta[x:=a]\)</span> is that variable assignment <span class="math">\(\theta&#39;\)</span> such that <span class="math">\(\theta&#39;(x) = a\)</span> and <span class="math">\(\theta&#39;(y) =  \theta(y)\)</span> for each <span class="math">\(y \neq x\)</span>.</li>
 </ol>
 <p>Note that the left-hand side of the equality statement in (3) involves term concatenation (function<em>al</em> application), whereas the right-hand side involves real function application in the strict sense.</p>
 <p>In other words, <span class="math">\(\alpha\)</span> of type <span class="math">\((\sigma \to \tau)\)</span> is a lambda term whose denotation is a function that maps (elements of the domain of) <span class="math">\(\sigma\)</span>-type things to (elements of the domain of) <span class="math">\(\tau\)</span>-type things.</p>
@@ -133,7 +132,7 @@ end metadata -->
 ]\)</span> of type <span class="math">\([\sigma]\)</span>, and a term constructor for adding an object of type <span class="math">\(\sigma\)</span> to a list of type <span class="math">\([\sigma]\)</span> to produce a new such list. I do so by adding the following clauses to the definition of the set <span class="math">\(\mathbf{Term}_\tau\)</span> of terms of type <span class="math">\(\tau\)</span>.</p>
 <ol start="5" type="1">
 <li>If <span class="math">\(\tau = [\sigma]\)</span>, then <span class="math">\([\ ] \in \mathbf{Term}_\tau\)</span>.</li>
-<li>If <span class="math">\(\tau = [\sigma]\)</span> and <span class="math">\(\alpha \in \mathbf{Term}_\sigma\)</span> and <span class="math">\(\beta \in    \mathbf{Term}_\tau\)</span>, then <span class="math">\((\alpha : \beta) \in \mathbf{Term}_\tau\)</span>.</li>
+<li>If <span class="math">\(\tau = [\sigma]\)</span> and <span class="math">\(\alpha \in \mathbf{Term}_\sigma\)</span> and <span class="math">\(\beta \in  \mathbf{Term}_\tau\)</span>, then <span class="math">\((\alpha : \beta) \in \mathbf{Term}_\tau\)</span>.</li>
 </ol>
 <p>Like functional application, <span class="math">\(:\)</span> is a binary term contructor: it takes two terms to produce a new term.</p>
 <p>Following Haskell, I make the following conventions:</p>
@@ -152,7 +151,7 @@ end metadata -->
 <p>Since there is a one-to-one correspondence between <span class="math">\([\alpha, \beta, \dots, \gamma]\)</span>-looking things and <span class="math">\((\alpha : (\beta : (\dots (\gamma : [\ ]) \dots)))\)</span>-looking things, one might wonder if we can instead reformulate (6) as follows (in two steps).</p>
 <ol start="6" type="1">
 <li>If <span class="math">\(\tau = [\sigma]\)</span> and <span class="math">\(\alpha \in \mathbf{Term}_\sigma\)</span>, then <span class="math">\([\alpha] \in \mathbf{Term}_\tau\)</span>.</li>
-<li>If <span class="math">\(\tau = [\sigma]\)</span> and <span class="math">\(\alpha \in \mathbf{Term}_\sigma\)</span> and <span class="math">\([\beta] \in    \mathbf{Term}_\tau\)</span>, then <span class="math">\([\alpha, \beta] \in \mathbf{Term}_\tau\)</span>.</li>
+<li>If <span class="math">\(\tau = [\sigma]\)</span> and <span class="math">\(\alpha \in \mathbf{Term}_\sigma\)</span> and <span class="math">\([\beta] \in  \mathbf{Term}_\tau\)</span>, then <span class="math">\([\alpha, \beta] \in \mathbf{Term}_\tau\)</span>.</li>
 </ol>
 <p>(In other words, we can construct a singleton list from a single object, and a 2-element list from two objects.)</p>
 <p>The problem is that (7) cannot be applied recursively. For example, from <span class="math">\(0\)</span> we can obtain <span class="math">\([0]\)</span> by appyling (6), and from <span class="math">\(5\)</span> and <span class="math">\([0]\)</span> we can obtain <span class="math">\([5,0]\)</span> by applying (7). But we cannot apply (7) to, say, <span class="math">\(3\)</span> and <span class="math">\([5,0]\)</span> to obtain <span class="math">\([3,5,0]\)</span> because, although <span class="math">\([5,0]\)</span> is of type <span class="math">\([\sigma]\)</span>, <span class="math">\(5,0\)</span> is not a term of any kind, let alone one of type <span class="math">\(\sigma\)</span>.</p>
@@ -166,7 +165,7 @@ end metadata -->
 <p>The following clauses get added to the definition of denotation.</p>
 <ol start="5" type="1">
 <li>If <span class="math">\(\tau = [\sigma]\)</span> and <span class="math">\(\alpha = [\ ] \in \mathbf{Term}_\tau\)</span>, then <span class="math">\([\![\alpha]\!]^\theta_\mathcal{M} = \emptyset\)</span>.</li>
-<li><span class="math">\([\![(\alpha : \beta)]\!]^\theta_\mathcal{M} = \langle    [\![\alpha]\!]^\theta_\mathcal{M}, [\![\beta]\!]^\theta_\beta \rangle\)</span>, assuming <span class="math">\(\alpha\)</span> and <span class="math">\(\beta\)</span> are appropriately typed.</li>
+<li><span class="math">\([\![(\alpha : \beta)]\!]^\theta_\mathcal{M} = \langle  [\![\alpha]\!]^\theta_\mathcal{M}, [\![\beta]\!]^\theta_\beta \rangle\)</span>, assuming <span class="math">\(\alpha\)</span> and <span class="math">\(\beta\)</span> are appropriately typed.</li>
 </ol>
 <p>Continuing the example above, <span class="math">\([\mathbf{john}] = (\mathbf{john} : [\ ])\)</span> denotes <span class="math">\(\langle j, \emptyset \rangle \in \mathbf{Dom}_\mathbf{[Ind]}\)</span>. And <span class="math">\([\mathbf{john}, \mathbf{bill}, \mathbf{sue}]\)</span> denotes <span class="math">\(\langle j, \langle b, \langle s,\emptyset \rangle \rangle \rangle \in \mathbf{Dom}_\mathbf{[Ind]}\)</span>. Rewriting tuples in the usual way (analogous to lists above), where <span class="math">\(\langle a,b,c, \dots \rangle =_\mbox{def} \langle a, \langle b,c, \dots \rangle \rangle\)</span>, the latter denotation becomes <span class="math">\(\langle j,b,s,\emptyset \rangle\)</span>.</p>
 <p>So what is the structure of <span class="math">\(\mathbf{Dom}_\mathbf{[Ind]}\)</span>? It’s a set whose members are tuples, of varying size, consisting of individuals (except the last tuple member, which is always <span class="math">\(\emptyset\)</span> except in the case of the empty tuple).</p>
@@ -181,7 +180,7 @@ end metadata -->
 href="http://creativecommons.org/licenses/by/3.0/">
 <img alt="Creative Commons License" style="border-width:0"
 src="http://i.creativecommons.org/l/by/3.0/80x15.png" /></a><br>
-2012-2014 &ndash; Brian Buccola<br>
+2012-2015 &ndash; Brian Buccola<br>
 Powered by
     <a target="_blank" href="http://johnmacfarlane.net/pandoc/">Pandoc</a>,
     <a target="_blank" href="http://www.gnu.org/software/bash/">Bash</a>, and

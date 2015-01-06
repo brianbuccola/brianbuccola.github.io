@@ -73,7 +73,6 @@ categories:
 - bash
 - howto
 end metadata -->
-
 <p>I had assumed that most modern email services, like Gmail, allow users to schedule emails to be sent at some later specified time, but a quick Google search reveals that that’s not quite the case. It looks like you need to use a browser extension like <a href="http://www.boomeranggmail.com/">Boomerang</a> or <a href="http://www.rightinbox.com/">Right Inbox</a>.</p>
 <p>But what if you don’t trust browser extensions/third parties to handle private emails? Or what if you don’t use Firefox, Chrome, etc.? (I use <a href="http://portix.bitbucket.org/dwb/">dwb</a>.) In this post I’ll explain how Linux users who are already set up with <a href="http://www.mutt.org/">mutt</a> (or any mail client with similar command-line capability) can harness the powers of <code>at</code> and <code>mutt</code> to schedule emails.</p>
 <p>The <code>at</code> command lets you schedule tasks (shell commands) that are to be executed at a specified time. The basic syntax is <code>at TIMESPEC</code>, where timespec is something like <code>now + 10 minutes</code>, <code>noon tomorrow</code>, <code>11:59pm Dec 31</code>, etc. The <code>at</code> command is run from a terminal, and once you specify the timespec and hit enter, you’re put into an interactive prompt where you list the commands that you want <code>at</code> to execute at the specified time. Hit <code>&lt;Ctrl-D&gt;</code> to finish, or <code>&lt;Ctrl-C&gt;</code> to cancel. For example:</p>
@@ -148,7 +147,7 @@ $ <span class="kw">mutt</span> -s SUBJ -- RECIPIENT <span class="kw">&lt;</span>
 href="http://creativecommons.org/licenses/by/3.0/">
 <img alt="Creative Commons License" style="border-width:0"
 src="http://i.creativecommons.org/l/by/3.0/80x15.png" /></a><br>
-2012-2014 &ndash; Brian Buccola<br>
+2012-2015 &ndash; Brian Buccola<br>
 Powered by
     <a target="_blank" href="http://johnmacfarlane.net/pandoc/">Pandoc</a>,
     <a target="_blank" href="http://www.gnu.org/software/bash/">Bash</a>, and

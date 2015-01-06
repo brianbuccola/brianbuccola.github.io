@@ -74,11 +74,9 @@ categories:
 - scripts
 - bash
 end metadata -->
-
 <p>This is the second in a series of posts on how I currently maintain my academic website (<a href="http://people.linguistics.mcgill.ca/~brian.buccola/">here</a>). In the <a href="2013-02-23-maintaining-an-academic-website-part-1-editing-the-site.html">first post</a>, I explained how I write and edit my site using the simple and intuitive syntax of <a href="http://daringfireball.net/projects/markdown/">markdown</a>, rather than pure HTML, and convert from markdown to HTML using <a href="http://johnmacfarlane.net/pandoc/">pandoc</a>. I also explained how I modularize my website into (i) main content, the stuff written in markdown, which evolves over time, and (ii) metacontent, which is kept in separate header, footer, etc. files, which is more static; and I showed how pandoc can combine all such content into one standalone HTML page. I gave a pretty basic script for automating all that each time any part of the site is edited.</p>
 <p>In this post I’ll explain how to automate another important aspect of site maintenance: pushing the website from your local PC to the remote server hosting the website, e.g., a university server (McGill’s, in my case). For this task, we’ll be using <a href="http://www.openssh.org/">ssh</a> and <a href="http://rsync.samba.org/">rsync</a>.</p>
 <!-- more -->
-
 <h2 id="pushing-to-server">Pushing to server</h2>
 <p>Alright, so you’ve got a website all set up, and the directory structure looks something like this.</p>
 <pre><code>after-body.html
@@ -185,10 +183,10 @@ $ <span class="kw">mv</span> abc ~/.ssh/</code></pre>
 <span class="ot">LOG=</span><span class="st">&quot;</span><span class="ot">$SRC</span><span class="st">/.push-website/log&quot;</span>
 
 <span class="kw">rsync</span> \
-    <span class="kw">-avhhh</span> \
-    <span class="kw">--exclude-from</span>=<span class="ot">$EXCL</span> \
-    <span class="kw">--log-file</span>=<span class="ot">$LOG</span> \
-    <span class="ot">$SRC</span><span class="kw">/</span> <span class="ot">$DEST</span>/</code></pre>
+    -avhhh \
+    --exclude-from=<span class="ot">$EXCL</span> \
+    --log-file=<span class="ot">$LOG</span> \
+    <span class="ot">$SRC</span>/ <span class="ot">$DEST</span>/</code></pre>
 <p>Legend:</p>
 <ul>
 <li><code>-a</code> means <strong>a</strong>rchive.</li>
@@ -220,7 +218,7 @@ $ <span class="kw">mv</span> abc ~/.ssh/</code></pre>
 href="http://creativecommons.org/licenses/by/3.0/">
 <img alt="Creative Commons License" style="border-width:0"
 src="http://i.creativecommons.org/l/by/3.0/80x15.png" /></a><br>
-2012-2014 &ndash; Brian Buccola<br>
+2012-2015 &ndash; Brian Buccola<br>
 Powered by
     <a target="_blank" href="http://johnmacfarlane.net/pandoc/">Pandoc</a>,
     <a target="_blank" href="http://www.gnu.org/software/bash/">Bash</a>, and

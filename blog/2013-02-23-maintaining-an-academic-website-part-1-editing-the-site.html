@@ -75,7 +75,6 @@ categories:
 - scripts
 - bash
 end metadata -->
-
 <p>This is the first in a series of posts in which I’ll explain how I currently maintain my academic website (<a href="http://people.linguistics.mcgill.ca/~brian.buccola/">here</a>). By “maintain”, I mean everything from editing the site locally on my PC, to pushing the changes to the remote McGill server that hosts the site, to version–controlling it all with git. The best thing about it: no browser (or any GUI at all) is required—everything happens in the terminal—<em>and</em> I still don’t have to deal with HTML. The method should work for any simple website with static content.</p>
 <p>Also, I realize that my site is currently pretty small, and there’s not much to update very often, so my method may seem overly complex, but (i) it was a fun learning experience setting it all up, and (ii) as my site grows, I think my method will make site maintenance way easier than it otherwise would be, while also keeping the actual site simple (see next).</p>
 <p><strong>KISS disclaimer.</strong> Before I begin, I should mention that when it comes to professional websites, I believe that the <a href="http://en.wikipedia.org/wiki/KISS_principle">KISS</a> principle should be followed: <strong>K</strong>eep <strong>i</strong>t <strong>s</strong>imple, <strong>s</strong>tupid! For me, that means no flashy banners or animations, no crazy amount of fonts or colors, etc. For this post, I’ll assume we’re dealing with a website with a single page called <code>index.html</code> (but extending the method to multiple pages should be trivial) consisting of little more than basic text (headers, links, lists) and basic formatting (bold, italics) and maybe an image or two. Of course, feel free to go crazy in your CSS stylesheet… but please, no neon.</p>
@@ -87,7 +86,6 @@ end metadata -->
 </ol>
 <p>Each post in this series will cover one step in detail, including the various scripts I’ve hacked together to automate it all.</p>
 <!-- more -->
-
 <h2 id="editing-the-site">Editing the site</h2>
 <p>Editing your webpage could be as simple as opening <code>index.html</code> in your favorite text editor and hammering away, and in fact, that’s what I used to do. But I really hate editing HTML. To me, the tags make everything ugly and unreadable, and since I’m no web developer, I never know the proper way to do things anyway. Is it <code>&lt;br&gt;</code> or <code>&lt;br /&gt;</code>? Do I close with <code>&lt;/p&gt;</code>, or is that unnecessary? I dunno!</p>
 <p>That’s why now I write exclusively in <a href="http://daringfireball.net/projects/markdown/">markdown</a>. In fact, I write this blog in markdown, I write my notes in markdown, I write emails (mostly) in markdown. When I want HTML, I just use <a href="http://johnmacfarlane.net/pandoc/">pandoc</a> to automagically convert the markdown to HTML and add the necessary HTML header stuff.</p>
@@ -165,10 +163,10 @@ My supercool site
 <p>All right, so you’ve got <code>index.markdown</code>, and maybe also <code>header.html</code>, <code>before-body.html</code> and <code>after-body.html</code>. You probably also have a CSS stylesheet like <code>mystyle.css</code>, which you can tell pandoc about with <code>-c mystyle.css</code> (or you can refer to it yourself in <code>header.html</code>).</p>
 <p>Here’s what your command will look like:</p>
 <pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">pandoc</span> \
-    <span class="kw">-c</span> mystyle.css \
-    <span class="kw">-H</span> header.html -B before-body.html -A after-body.html \
-    <span class="kw">-V</span> pagetitle=<span class="st">&quot;My title&quot;</span> -V author-meta=<span class="st">&quot;My name&quot;</span> \
-    <span class="kw">-f</span> markdown -t html5 -o index.html index.markdown</code></pre>
+    -c mystyle.css \
+    -H header.html -B before-body.html -A after-body.html \
+    -V pagetitle=<span class="st">&quot;My title&quot;</span> -V author-meta=<span class="st">&quot;My name&quot;</span> \
+    -f markdown -t html5 -o index.html index.markdown</code></pre>
 <p>Wow, that’s a lot to type each time you want to convert a newly modified markdown file into HTML. Better put that inside a script. Let’s also put each of those things into a variable, so that we can easily modify the script command by changing variables rather than the command itself.</p>
 <pre class="sourceCode bash"><code class="sourceCode bash"><span class="co">#!/bin/bash</span>
 
@@ -186,9 +184,9 @@ My supercool site
 <span class="co"># Convert markdown to html5.</span>
 <span class="kw">pandoc</span>
     <span class="kw">-c</span> <span class="st">&quot;</span><span class="ot">$CSS</span><span class="st">&quot;</span> \
-    <span class="kw">-H</span> <span class="st">&quot;</span><span class="ot">$HEADER</span><span class="st">&quot;</span> -B <span class="st">&quot;</span><span class="ot">$BEFORE</span><span class="st">&quot;</span> -A <span class="st">&quot;</span><span class="ot">$AFTER</span><span class="st">&quot;</span> \
-    <span class="kw">-V</span> pagetitle=<span class="st">&quot;</span><span class="ot">$TITLE</span><span class="st">&quot;</span> -V author-meta=<span class="st">&quot;</span><span class="ot">$AUTHOR</span><span class="st">&quot;</span> \
-    <span class="kw">-f</span> markdown -t html5 -o <span class="st">&quot;</span><span class="ot">$OUT_FILE</span><span class="st">&quot;</span> <span class="st">&quot;</span><span class="ot">$IN_FILE</span><span class="st">&quot;</span></code></pre>
+    -H <span class="st">&quot;</span><span class="ot">$HEADER</span><span class="st">&quot;</span> -B <span class="st">&quot;</span><span class="ot">$BEFORE</span><span class="st">&quot;</span> -A <span class="st">&quot;</span><span class="ot">$AFTER</span><span class="st">&quot;</span> \
+    -V pagetitle=<span class="st">&quot;</span><span class="ot">$TITLE</span><span class="st">&quot;</span> -V author-meta=<span class="st">&quot;</span><span class="ot">$AUTHOR</span><span class="st">&quot;</span> \
+    -f markdown -t html5 -o <span class="st">&quot;</span><span class="ot">$OUT_FILE</span><span class="st">&quot;</span> <span class="st">&quot;</span><span class="ot">$IN_FILE</span><span class="st">&quot;</span></code></pre>
 <p>Save this as, say, <code>md2html.sh</code>, make it executable with <code>chmod +x md2html.sh</code>, plop it inside the website directory containing <code>index.markdown</code>, and simply run:</p>
 <pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">./md2html.sh</span></code></pre>
 <p>You should now see <code>index.html</code> in the same directory, which you can open in your browser to inspect and make sure it looks good.</p>
@@ -201,7 +199,7 @@ My supercool site
 href="http://creativecommons.org/licenses/by/3.0/">
 <img alt="Creative Commons License" style="border-width:0"
 src="http://i.creativecommons.org/l/by/3.0/80x15.png" /></a><br>
-2012-2014 &ndash; Brian Buccola<br>
+2012-2015 &ndash; Brian Buccola<br>
 Powered by
     <a target="_blank" href="http://johnmacfarlane.net/pandoc/">Pandoc</a>,
     <a target="_blank" href="http://www.gnu.org/software/bash/">Bash</a>, and
