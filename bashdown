@@ -174,10 +174,10 @@ create_head() {
     echo '<meta name="description" content="'"${blog_description}"'">' >> "${head}"
     echo '<meta name="keywords" content="'"${blog_keywords}"'">' >> "${head}"
     echo '<link rel="icon" href="/'"${favicon}"'">' >> "${head}" # Using `/' here means favicon won't show up locally (on preview)
-    echo '<link href="http://fonts.googleapis.com/css?family=PT+Serif:400,700,400italic" rel="stylesheet" type="text/css">' >> "${head}"
-    echo '<link href="http://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic" rel="stylesheet" type="text/css">' >> "${head}"
-    echo '<link href="http://fonts.googleapis.com/css?family=PT+Mono:400,700,400italic" rel="stylesheet" type="text/css">' >> "${head}"
-    echo '<link href="http://fonts.googleapis.com/css?family=Droid+Sans+Mono" rel="stylesheet" type="text/css">' >> "${head}"
+    echo '<link href="https://fonts.googleapis.com/css?family=PT+Serif:400,700,400italic" rel="stylesheet" type="text/css">' >> "${head}"
+    echo '<link href="https://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic" rel="stylesheet" type="text/css">' >> "${head}"
+    echo '<link href="https://fonts.googleapis.com/css?family=PT+Mono:400,700,400italic" rel="stylesheet" type="text/css">' >> "${head}"
+    echo '<link href="https://fonts.googleapis.com/css?family=Droid+Sans+Mono" rel="stylesheet" type="text/css">' >> "${head}"
 
     if [[ -n "${google_analytics}" ]]; then
         echo "
