@@ -214,15 +214,15 @@ die() {
 # Edit a post.
 # Usage: edit_post [FILENAME]
 edit_post() {
-    # Strip .markdown extension and get basename.
-    local basename="$(basename "$1" .markdown)"
-    if [[ ! -f "${mkd_dir}/${basename}.markdown" && ! -f "${draft_dir}/${basename}.markdown" ]]; then
+    # Strip .md extension and get basename.
+    local basename="$(basename "$1" .md)"
+    if [[ ! -f "${mkd_dir}/${basename}.md" && ! -f "${draft_dir}/${basename}.md" ]]; then
         die "Cannot find $1 (or illegal file extension)."
     fi
 
     # If editing a draft, temporarily move it to $mkd_dir.
-    if [[ -f "${draft_dir}/${basename}.markdown" ]]; then
-        mv "${draft_dir}/${basename}.markdown" "${mkd_dir}/${basename}.markdown"
+    if [[ -f "${draft_dir}/${basename}.md" ]]; then
+        mv "${draft_dir}/${basename}.md" "${mkd_dir}/${basename}.md"
     fi
 
     local post_status="E"
@@ -237,10 +237,10 @@ edit_post() {
                 info "Removed \`${html_dir}/${basename}.html'."
             fi
             # Move markdown file to ${draft_dir}.
-            if ! mv "${mkd_dir}/${basename}.markdown" "${draft_dir}/${basename}.markdown"; then
-                die "Could not move \`${mkd_dir}/${basename}.markdown' to \`${draft_dir}'."
+            if ! mv "${mkd_dir}/${basename}.md" "${draft_dir}/${basename}.md"; then
+                die "Could not move \`${mkd_dir}/${basename}.md' to \`${draft_dir}'."
             else
-                info "Saved draft as \`${draft_dir}/${basename}.markdown'."
+                info "Saved draft as \`${draft_dir}/${basename}.md'."
             fi
             rebuild_index
             exit 0
@@ -248,15 +248,15 @@ edit_post() {
 
         # Case 2: Remove post.
         if [[ "${post_status}" = R || "${post_status}" = r ]]; then
-            remove_post "${mkd_dir}/${basename}.markdown"
+            remove_post "${mkd_dir}/${basename}.md"
             exit 0
         fi
 
         # Case 3 (default): Edit post.
         info "Editing post..."
-        ${EDITOR:-vi} "${mkd_dir}/${basename}.markdown"
+        ${EDITOR:-vi} "${mkd_dir}/${basename}.md"
 
-        mkd2html_post "${mkd_dir}/${basename}.markdown" # mkd2html_post updates ${basename} if necessary
+        mkd2html_post "${mkd_dir}/${basename}.md" # mkd2html_post updates ${basename} if necessary
         info "Preview this post at: file://${blog_root_dir}/${html_dir}/${basename}.html."
         if [[ "${use_color}" = true ]]; then
             read -p "${confirm_color}[P]ost entry, [e]dit again, save as [d]raft, or [r]emove entry? [p/E/d/r] ${reset}" post_status
@@ -297,7 +297,7 @@ info() {
 list_posts() {
     lines="\n"
     n=1
-    for f in $(ls ${mkd_dir}/*.markdown | sort); do
+    for f in $(ls ${mkd_dir}/*.md | sort); do
         title="$(get_title "$f")"
         date="$(get_date "$f")"
         date="$(prettify_date "${date}")"
@@ -320,13 +320,13 @@ mkd2html_all_posts() {
     rm "${html_dir}/*.html" &> /dev/null
 
     # Check for markdown files.
-    ls ${mkd_dir}/*.markdown &> /dev/null
+    ls ${mkd_dir}/*.md &> /dev/null
     if [[ $? -ne 0 ]]; then
         warn "Could not find any markdown files."
         return
     fi
 
-    for f in $(ls ${mkd_dir}/*.markdown); do
+    for f in $(ls ${mkd_dir}/*.md); do
         mkd2html_post "$f"
     done
 }
@@ -366,9 +366,9 @@ mkd2html_index() {
 # Usage: mkd2html_post [FILENAME]
 mkd2html_post() {
     info "Converting \`$1' to html..."
-    # Strip .markdown extension and get basename
-    local basename_old="$(basename "$1" .markdown)"
-    if [[ ! -f "${mkd_dir}/${basename_old}.markdown" ]]; then
+    # Strip .md extension and get basename
+    local basename_old="$(basename "$1" .md)"
+    if [[ ! -f "${mkd_dir}/${basename_old}.md" ]]; then
         die "Could not find \`$1' in \`${mkd_dir}'."
     fi
 
@@ -382,7 +382,7 @@ mkd2html_post() {
     # Check if title or date metadata conflicts with filename.
     local basename_new="$(convert_string "${date}-${post_title}")"
     if [[ "${basename_old}" != "${basename_new}" ]] && confirm "Change in title/date detected. Overwrite old filename(s)?"; then
-        cp "${mkd_dir}/${basename_old}.markdown" "${mkd_dir}/${basename_new}.markdown"
+        cp "${mkd_dir}/${basename_old}.md" "${mkd_dir}/${basename_new}.md"
         info "Updated markdown filename."
         # Check if corresponding html file exists, and remove it.
         if [[ -f "${html_dir}/${basename_old}.html" ]]; then
@@ -408,7 +408,7 @@ mkd2html_post() {
     echo "" >> "${tmp_before_body}"
 
     # Declare some global variables to use outside of this function.
-    mkd_file="${mkd_dir}/${basename}.markdown"
+    mkd_file="${mkd_dir}/${basename}.md"
     html_file="${html_dir}/${basename}.html"
 
     # NB: The reference to ${style} must be one level up, since the html file
@@ -423,7 +423,7 @@ mkd2html_post() {
     rm "${tmp_before_body}"
 
     if [[ "${remove_old_mkd_file}" = true ]]; then
-        # Note that "$1" = "${mkd_dir}/${basename_old}.markdown"
+        # Note that "$1" = "${mkd_dir}/${basename_old}.md"
         rm "$1"
         info "Removed old markdown file \`${1}'."
     fi
@@ -437,7 +437,7 @@ new_post() {
     else
         read -p "Title: " title
     fi
-    local tmp="${mkd_dir}/$(date +"%Y-%m-%d")-$(convert_string "${title}").markdown"
+    local tmp="${mkd_dir}/$(date +"%Y-%m-%d")-$(convert_string "${title}").md"
     if [[ -f "${tmp}" ]]; then
         die "The file \`${tmp}' already exists."
     fi
@@ -462,7 +462,7 @@ prettify_date() {
 # Usage: rebuild_index
 rebuild_index() {
     info ":: Rebuilding index..."
-    local index_mkd_file="$(basename "${index_file}" .html).markdown"
+    local index_mkd_file="$(basename "${index_file}" .html).md"
     # Note: overwrites any previous index_mkd_file.
     echo "<!-- begin metadata" > "${index_mkd_file}"
     echo "title: ${blog_index_title}" >> "${index_mkd_file}"
@@ -471,16 +471,16 @@ rebuild_index() {
     echo "" >> "${index_mkd_file}"
 
     # Test that there are markdown files.
-    ls ${mkd_dir}/*.markdown &> /dev/null
+    ls ${mkd_dir}/*.md &> /dev/null
     if [[ $? -ne 0 ]]; then
         warn "Could not find any markdown files. Building empty index."
     fi
 
-    for f in $(ls ${mkd_dir}/*.markdown 2> /dev/null | sort -r); do
+    for f in $(ls ${mkd_dir}/*.md 2> /dev/null | sort -r); do
         local title="$(get_title "$f")"
         local date="$(get_date "$f")"
         local date="$(prettify_date "${date}")"
-        echo "- [${title}](${html_dir}/$(basename "$f" .markdown).html) <span class=\"date\">-- ${date}</span>" >> "${index_mkd_file}"
+        echo "- [${title}](${html_dir}/$(basename "$f" .md).html) <span class=\"date\">-- ${date}</span>" >> "${index_mkd_file}"
     done
 
     mkd2html_index "${index_mkd_file}"
@@ -500,8 +500,8 @@ rebuild_all() {
 # and then rebuilding the index.
 # Usage: remove_post [FILENAME]
 remove_post() {
-    local basename="$(basename "$1" .markdown)"
-    if [[ ! -f "${mkd_dir}/${basename}.markdown" && ! -f "${draft_dir}/${basename}.markdown" ]]; then
+    local basename="$(basename "$1" .md)"
+    if [[ ! -f "${mkd_dir}/${basename}.md" && ! -f "${draft_dir}/${basename}.md" ]]; then
         die "Cannot find \`${basename}' in \`${mkd_dir}/' or \`${draft_dir}/'."
     fi
 
