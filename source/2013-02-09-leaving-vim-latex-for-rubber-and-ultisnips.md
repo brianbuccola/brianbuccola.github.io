@@ -1,5 +1,5 @@
 <!-- begin metadata
-title: Leaving VIM-LaTeX for Rubber and Ultisnips
+title: Leaving vim-latex for rubber and ultisnips
 date: 2013-02-09 21:08
 categories:
 - latex

@@ -1,5 +1,5 @@
 <!-- begin metadata
-title: A Note on "miss"
+title: A note on "miss"
 date: 2013-02-18 08:49
 categories: 
 - semantics

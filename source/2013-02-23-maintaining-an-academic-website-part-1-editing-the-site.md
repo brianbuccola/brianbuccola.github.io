@@ -1,5 +1,5 @@
 <!-- begin metadata
-title: Maintaining an Academic Website, Part 1: Editing the Site
+title: Maintaining an academic website, part 1: editing the site
 date: 2013-02-23 15:19
 categories: 
 - howto

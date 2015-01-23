@@ -1,5 +1,5 @@
 <!-- begin metadata
-title: Mapping Letters to the Natural Numbers
+title: Mapping letters to the natural numbers
 date: 2012-12-09 16:01
 categories: 
 - semantics

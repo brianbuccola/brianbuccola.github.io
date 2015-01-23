@@ -1,5 +1,5 @@
 <!-- begin metadata
-title: Dealing with Acronyms in LaTeX
+title: Dealing with acronyms in LaTeX
 date: 2013-10-21 12:01
 end metadata -->
 

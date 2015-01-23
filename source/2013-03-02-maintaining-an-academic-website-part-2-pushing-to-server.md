@@ -1,5 +1,5 @@
 <!-- begin metadata
-title: Maintaining an Academic Website, Part 2: Pushing to Server
+title: Maintaining an academic website, part 2: pushing to server
 date: 2013-03-02 11:08
 categories: 
 - howto

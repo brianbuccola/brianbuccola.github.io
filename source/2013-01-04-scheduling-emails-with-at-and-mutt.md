@@ -1,5 +1,5 @@
 <!-- begin metadata
-title: Scheduling Emails with at and mutt
+title: Scheduling emails with at and mutt
 date: 2013-01-04 11:08
 categories: 
 - linux

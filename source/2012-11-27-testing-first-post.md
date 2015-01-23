@@ -1,5 +1,5 @@
 <!-- begin metadata
-title: Testing: First Post
+title: Testing: first post
 date: 2012-11-27 08:07
 categories:
 - general

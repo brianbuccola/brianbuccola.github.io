@@ -1,5 +1,5 @@
 <!-- begin metadata
-title: The Semantics of "unless"
+title: The semantics of "unless"
 date: 2012-11-30 17:48
 categories:
 - linguistics

@@ -1,5 +1,5 @@
 <!-- begin metadata
-title: Multiple SSH Keys and Git
+title: Multiple SSH keys and Git
 date: 2012-11-27 09:26
 categories:
 - linux

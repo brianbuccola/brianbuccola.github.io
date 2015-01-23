@@ -1,5 +1,5 @@
 <!-- begin metadata
-title: References and Footnotes in HTML/CSS
+title: References and footnotes in HTML/CSS
 date: 2012-12-01 15:08
 categories:
 - howto

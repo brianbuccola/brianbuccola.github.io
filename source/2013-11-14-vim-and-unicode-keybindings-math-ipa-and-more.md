@@ -1,5 +1,5 @@
 <!-- begin metadata
-title: Vim and Unicode Keybindings: Math, IPA, and more
+title: Vim and unicode keybindings: math, IPA, and more
 date: 2013-11-14 08:54
 end metadata -->
 

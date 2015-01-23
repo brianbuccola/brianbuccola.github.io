@@ -1,5 +1,5 @@
 <!-- begin metadata
-title: Implementing Lists in the Simply Typed Lambda Calculus
+title: Implementing lists in the simply typed lambda calculus
 date: 2013-04-22 11:09
 end metadata -->
 

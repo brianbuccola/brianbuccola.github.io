@@ -1,5 +1,5 @@
 <!-- begin metadata
-title: LaTeX Math in Octopress
+title: LaTeX math in Octopress
 date: 2012-11-28 13:51
 categories:
 - howto

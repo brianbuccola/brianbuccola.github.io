@@ -1,5 +1,5 @@
 <!-- begin metadata
-title: Maintaining an Academic Website, Part 3: Version Control
+title: Maintaining an academic website, part 3: version control
 date: 2013-04-13 10:11
 end metadata -->
 

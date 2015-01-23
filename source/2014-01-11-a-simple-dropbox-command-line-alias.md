@@ -1,5 +1,5 @@
 <!-- begin metadata
-title: A Simple Dropbox Command-Line Alias
+title: A simple Dropbox command-line alias
 date: 2014-01-11 09:57
 end metadata -->
 

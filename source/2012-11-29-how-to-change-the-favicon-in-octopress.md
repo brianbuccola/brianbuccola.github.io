@@ -1,5 +1,5 @@
 <!-- begin metadata
-title: How to Change the Favicon in Octopress
+title: How to change the favicon in Octopress
 date: 2012-11-29 10:15
 categories:
 - howto
