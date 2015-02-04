@@ -47,7 +47,7 @@ support (with the b43 driver and firmware) to be lacking: weak wifi
 connections, constant dropping, etc. So I still use broadcom-wl. Here's how it
 works.
 
-1. Download broadcom-wl with your favorite package manager, and install it. For
+1. Download broadcom-wl with your favorite AUR helper, and install it. For
 example:
 
 ```bash

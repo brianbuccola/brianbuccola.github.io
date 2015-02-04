@@ -85,7 +85,7 @@ end metadata -->
 <span class="kw">01</span>:00.0 Network controller [0280]: Broadcom Corporation BCM43228 802.11a/b/g/n [14e4:4359]</code></pre>
 <p>This card was <a href="http://wireless.kernel.org/en/users/Drivers/b43">not supported</a> under the Linux kernel until kernel version 3.17. (We’re now on 3.18, as of this writing; when I bought the laptop, we were at 3.16.) The workaround for kernels &lt;3.17 is to use the AUR package <a href="https://aur.archlinux.org/packages/broadcom-wl/">broadcom-wl</a>. However, even once we arrived at 3.17, I found the native support (with the b43 driver and firmware) to be lacking: weak wifi connections, constant dropping, etc. So I still use broadcom-wl. Here’s how it works.</p>
 <ol type="1">
-<li>Download broadcom-wl with your favorite package manager, and install it. For example:</li>
+<li>Download broadcom-wl with your favorite AUR helper, and install it. For example:</li>
 </ol>
 <pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">cower</span> -d broadcom-wl
 $ <span class="kw">cd</span> ~/aur/broadcom-wl
