@@ -11,6 +11,7 @@
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
   <![endif]-->
   <style type="text/css">
+div.sourceCode { overflow-x: auto; }
 table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
   margin: 0; padding: 0; vertical-align: baseline; border: none; }
 table.sourceCode { width: 100%; line-height: 100%; }
@@ -79,30 +80,30 @@ end metadata -->
 <p>I’ve been toying with how best to incorporate inline references and end–of–post footnotes into my blog posts, and here’s what I’ve come up with. I’ll start with my first, very simplistic attempt, then explain my slightly more complicated but also more flexible (I think) solution.</p>
 <p>This blog is (<strong><em>Update:</em></strong> <em>was</em>) powered by <a href="http://octopress.org/">Octopress</a>, which allows me to write blog posts in <a href="http://daringfireball.net/projects/markdown/">markdown</a> syntax, which is then parsed and converted into HTML by <a href="http://kramdown.rubyforge.org/">kramdown</a>.<a class="ref" id="ref:kd"
 href="#fn:kd">[1]</a> Markdown has a nice, easy, and highly legible way of creating simple links. Just type one of these.</p>
-<pre class="sourceCode html"><code class="sourceCode html">Click [here](url) to see something awesome!
+<div class="sourceCode"><pre class="sourceCode html"><code class="sourceCode html">Click [here](url) to see something awesome!
 
 Click [here][blah] to see something awesome!
-[blah]: url</code></pre>
+[blah]: url</code></pre></div>
 <p>Both are expanded into the following.</p>
-<pre class="sourceCode html"><code class="sourceCode html">Click <span class="kw">&lt;a</span><span class="ot"> href=</span><span class="st">&quot;url&quot;</span><span class="kw">&gt;</span>here<span class="kw">&lt;/a&gt;</span> to see something awesome!</code></pre>
+<div class="sourceCode"><pre class="sourceCode html"><code class="sourceCode html">Click <span class="kw">&lt;a</span><span class="ot"> href=</span><span class="st">&quot;url&quot;</span><span class="kw">&gt;</span>here<span class="kw">&lt;/a&gt;</span> to see something awesome!</code></pre></div>
 <p>Now, whether you write in markdown or in HTML, footnotes would seem really easy to do, and in some sense, they are. Simply create a footnote at the bottom of the page that has some sort of element with an <code>id</code>, preferably mnemonic, e.g., <code>&lt;a id=&quot;fn&quot;&gt;...</code>, and then refer to that <code>id</code> in your text in the normal way, by adding a #: either as <code>&lt;a href=&quot;#fn&quot;&gt;1&lt;/a&gt;</code> in HTML, or as <code>[1](#fn)</code> in markdown.</p>
-<pre class="sourceCode html"><code class="sourceCode html">Blah blah blah blah.[1](#fn) More blah...
+<div class="sourceCode"><pre class="sourceCode html"><code class="sourceCode html">Blah blah blah blah.[1](#fn) More blah...
 
 ---
-1.  <span class="kw">&lt;a</span><span class="ot"> id=</span><span class="st">&quot;fn&quot;</span><span class="kw">&gt;&lt;/a&gt;</span> Even more blah...</code></pre>
+1.  <span class="kw">&lt;a</span><span class="ot"> id=</span><span class="st">&quot;fn&quot;</span><span class="kw">&gt;&lt;/a&gt;</span> Even more blah...</code></pre></div>
 <p>But there are some problems with this method. First, it’s ugly.<a href="#fn:ugly">2</a> See how ugly that big underlined number looks? Second, and more importantly, as I’ve written it, there’s no link from the footnote back up to the reference, so once you’re done reading the footnote, you have to go find where you were before. Uncool. There’s nothing worse than a footnote with no link back to the reference.</p>
 <p>One potential solution to both problems is the following: wrap some <code>&lt;sup&gt;&lt;/sup&gt;</code> around the reference text to superscript it, and also use this element to declare an <code>id</code> for the reference. Then you can link from the footnote to the reference using the reference <code>id</code>, together with a useful symbol like ↑ as the link text (<code>&amp;uarr;</code> in HTML; stands for <strong>u</strong>p <strong>arr</strong>ow, of course).</p>
-<pre class="sourceCode html"><code class="sourceCode html">Blah blah blah blah.<span class="kw">&lt;sup</span><span class="ot"> id=</span><span class="st">&quot;ref&quot;</span><span class="kw">&gt;</span>[1](#fn)<span class="kw">&lt;/sup&gt;</span> More blah...
+<div class="sourceCode"><pre class="sourceCode html"><code class="sourceCode html">Blah blah blah blah.<span class="kw">&lt;sup</span><span class="ot"> id=</span><span class="st">&quot;ref&quot;</span><span class="kw">&gt;</span>[1](#fn)<span class="kw">&lt;/sup&gt;</span> More blah...
 
 ---
-1.  <span class="kw">&lt;a</span><span class="ot"> id=</span><span class="st">&quot;fn&quot;</span><span class="ot"> href=</span><span class="st">&quot;#ref&quot;</span><span class="kw">&gt;</span><span class="dv">&amp;uarr;</span><span class="kw">&lt;/a&gt;</span> Even more blah...</code></pre>
+1.  <span class="kw">&lt;a</span><span class="ot"> id=</span><span class="st">&quot;fn&quot;</span><span class="ot"> href=</span><span class="st">&quot;#ref&quot;</span><span class="kw">&gt;</span><span class="dv">&amp;uarr;</span><span class="kw">&lt;/a&gt;</span> Even more blah...</code></pre></div>
 <p>This actually ain’t <em>that</em> bad.<sup id="ref:sup"><a href="#fn:sup">3</a></sup> However, what if we want to customize how the reference number looks? What if we don’t like underline, or we want a special color or font or size? Unfortunately, any style properties of a <code>sup</code> element get overridden if they are also style properties of the <code>a</code> element embedded inside the <code>&lt;sup&gt;&lt;/sup&gt;</code> tags: recall that</p>
-<pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;sup</span> <span class="er">...</span><span class="kw">&gt;</span>[text](url)<span class="kw">&lt;/sup&gt;</span></code></pre>
+<div class="sourceCode"><pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;sup</span> <span class="er">...</span><span class="kw">&gt;</span>[text](url)<span class="kw">&lt;/sup&gt;</span></code></pre></div>
 <p>gets expanded to</p>
-<pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;sup</span> <span class="er">...</span><span class="kw">&gt;&lt;a</span><span class="ot"> href=</span><span class="st">&quot;url&quot;</span><span class="kw">&gt;</span>text<span class="kw">&lt;/a&gt;&lt;/sup&gt;</span></code></pre>
+<div class="sourceCode"><pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;sup</span> <span class="er">...</span><span class="kw">&gt;&lt;a</span><span class="ot"> href=</span><span class="st">&quot;url&quot;</span><span class="kw">&gt;</span>text<span class="kw">&lt;/a&gt;&lt;/sup&gt;</span></code></pre></div>
 <p>In Octopress, that means that <code>sup {text-decoration: none;}</code>, <code>sup {font-size: small;}</code>, etc. have no effect on superscript reference links because <code>a</code> already has its own <code>text-decoration</code> and <code>font-size</code> values.</p>
 <p>The solution I’ve come up with to all these problems is to define two new classes of anchors (<code>a</code> elements): one for references and one for footnotes. I like my reference numbers to be small and superscript, with no underline, and I like my up arrow to be normal size and superscript, with no underline.</p>
-<pre class="sourceCode css"><code class="sourceCode css">a<span class="fl">.ref</span> <span class="kw">{</span>
+<div class="sourceCode"><pre class="sourceCode css"><code class="sourceCode css">a<span class="fl">.ref</span> <span class="kw">{</span>
   <span class="kw">vertical-align:</span> <span class="dt">super</span><span class="kw">;</span>
   <span class="kw">font-size:</span> <span class="dt">small</span><span class="kw">;</span>
   <span class="kw">text-decoration:</span> <span class="dt">none</span><span class="kw">;</span>
@@ -121,17 +122,17 @@ a<span class="fl">.fn</span> <span class="kw">{</span>
                        $focus: $link-color-hover,
                        $visited: $link-color-visited,
                        $active: $link-color-active)<span class="kw">;</span>
-<span class="kw">}</span></code></pre>
+<span class="kw">}</span></code></pre></div>
 <p>The <code>@include ...</code> stuff adds all the color variables from <code>/sass/custom/_colors.scss</code>. Without that, the links would be black.</p>
 <p>These two classes now mean I do references and footnotes as follows.</p>
-<pre class="sourceCode html"><code class="sourceCode html">Blah blah.<span class="kw">&lt;a</span><span class="ot"> class=</span><span class="st">&quot;ref&quot;</span><span class="ot"> id=</span><span class="st">&quot;ref:blah&quot;</span><span class="ot"> href=</span><span class="st">&quot;#fn:blah&quot;</span><span class="kw">&gt;</span>[1]<span class="kw">&lt;/a&gt;</span> More blah
+<div class="sourceCode"><pre class="sourceCode html"><code class="sourceCode html">Blah blah.<span class="kw">&lt;a</span><span class="ot"> class=</span><span class="st">&quot;ref&quot;</span><span class="ot"> id=</span><span class="st">&quot;ref:blah&quot;</span><span class="ot"> href=</span><span class="st">&quot;#fn:blah&quot;</span><span class="kw">&gt;</span>[1]<span class="kw">&lt;/a&gt;</span> More blah
 
 Aoeu aoeu aoeu.<span class="kw">&lt;a</span><span class="ot"> class=</span><span class="st">&quot;ref&quot;</span><span class="ot"> id=</span><span class="st">&quot;ref:aoeu&quot;</span><span class="ot"> href=</span><span class="st">&quot;#fn:aoeu&quot;</span><span class="kw">&gt;</span>[2]<span class="kw">&lt;/a&gt;</span> More aoeu
 
 ---
 1.  <span class="kw">&lt;a</span><span class="ot"> class=</span><span class="st">&quot;fn&quot;</span><span class="ot"> id=</span><span class="st">&quot;fn:blah&quot;</span><span class="ot"> href=</span><span class="st">&quot;#ref:blah&quot;</span><span class="kw">&gt;</span><span class="dv">&amp;uarr;</span><span class="kw">&lt;/a&gt;</span> Even more blah...
 
-2.  <span class="kw">&lt;a</span><span class="ot"> class=</span><span class="st">&quot;fn&quot;</span><span class="ot"> id=</span><span class="st">&quot;fn:aoeu&quot;</span><span class="ot"> href=</span><span class="st">&quot;#ref:aoeu&quot;</span><span class="kw">&gt;</span><span class="dv">&amp;uarr;</span><span class="kw">&lt;/a&gt;</span> Even more aoeu...</code></pre>
+2.  <span class="kw">&lt;a</span><span class="ot"> class=</span><span class="st">&quot;fn&quot;</span><span class="ot"> id=</span><span class="st">&quot;fn:aoeu&quot;</span><span class="ot"> href=</span><span class="st">&quot;#ref:aoeu&quot;</span><span class="kw">&gt;</span><span class="dv">&amp;uarr;</span><span class="kw">&lt;/a&gt;</span> Even more aoeu...</code></pre></div>
 <p>In other words, each <em>reference</em> consists of a number, like 1, surrounded by <code>a</code> tags of the <code>ref</code> class, with some mnemonic ref <code>id</code>, pointing to the corresponding fn anchor/<code>id</code>. The corresponding <em>footnote</em> consists of a ↑, surrounded by <code>a</code> tags of the <code>fn</code> class, with some mnemonic fn <code>id</code>, pointing back to the corresponding ref anchor/<code>id</code>.</p>
 <p>I think this works pretty well. Although it clutters my markdown with a bit of HTML, I think the flexibility is worth it. This way, I can easily change how my reference numbers look, or how my footnote arrow looks, or both, and it’ll trickle down to all my posts that use these classes.</p>
 <p>There may be a better way of handling footnotes, but I haven’t seen it or thought of it yet.</p>

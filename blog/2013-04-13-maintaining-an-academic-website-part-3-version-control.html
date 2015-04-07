@@ -11,6 +11,7 @@
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
   <![endif]-->
   <style type="text/css">
+div.sourceCode { overflow-x: auto; }
 table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
   margin: 0; padding: 0; vertical-align: baseline; border: none; }
 table.sourceCode { width: 100%; line-height: 100%; }
@@ -81,34 +82,34 @@ end metadata -->
 <p>First things first, you’ll actually need the <code>git</code> program. On Linux, just grab <code>git</code> using your package manager. Next, you need to tell <code>git</code> your name and email address, which it attaches to the messages you write that explain changes you make.</p>
 <h4 id="username">Username</h4>
 <p>Open a terminal and type the following. (Remember that <code>$</code> is the (end of the) terminal prompt; don’t type it.)</p>
-<pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">git</span> config --global user.name <span class="st">&quot;Your Name&quot;</span></code></pre>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">git</span> config --global user.name <span class="st">&quot;Your Name&quot;</span></code></pre></div>
 <h4 id="email">Email</h4>
 <p>Now add your email address.</p>
-<pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">git</span> config --global user.email <span class="st">&quot;your_email@example.com&quot;</span></code></pre>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">git</span> config --global user.email <span class="st">&quot;your_email@example.com&quot;</span></code></pre></div>
 <p>What the two commands above do is essentially tell <code>git</code> to associate the two values “Your Name” and “your_email@example.com” with the two <em>global</em> variables <code>user.name</code> and <code>user.email</code>, respectively. You can check that it worked by typing</p>
-<pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">git</span> config --global --list</code></pre>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">git</span> config --global --list</code></pre></div>
 <p>which tells <code>git</code> to list all global config options. You can also check them by opening the file <code>.gitconfig</code> in a text editor, but don’t edit this file directly. Use <code>git config</code> instead.</p>
 <h4 id="github">GitHub</h4>
 <p>Now go over to <a href="https://github.com/">GitHub</a>, create an account, and sign in. (You should at some point read through all the “bootcamp” help pages.)</p>
 <p>The ultimate goal here is to have a local “repo(sitory)” on your home computer, e.g. the main directory containing your website files, and a remote repo on GitHub, and, each time you change your website, to push all those changes from the local repo to the remote one, that way GitHub has an exact copy of all versions of your website at all times.</p>
 <p>But before you can push anything to GitHub, you need GitHub to give you access remote access to your account. Luckily, GitHub does this using <code>ssh</code>, which we already learned about in the <a href="2013-03-02-maintaining-an-academic-website-part-2-pushing-to-server.html">previous post</a>. So the setup here is essentially the same: create a new <code>ssh</code> key pair (public and private keys), give GitHub your public key so it can recognize you, and add GitHub to your <code>ssh</code> config file to make your life easy.</p>
 <p>So then, first run</p>
-<pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">mkdir</span> -p ~/.ssh <span class="co"># create this if it doesn&#39;t already exist</span>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">mkdir</span> -p ~/.ssh <span class="co"># create this if it doesn&#39;t already exist</span>
 $ <span class="kw">cd</span> ~/.ssh       <span class="co"># cd into it</span>
-$ <span class="kw">ssh-keygen</span> -f github -t rsa -C <span class="st">&#39;GitHub&#39;</span></code></pre>
+$ <span class="kw">ssh-keygen</span> -f github -t rsa -C <span class="st">&#39;GitHub&#39;</span></code></pre></div>
 <p>to generate the pair of RSA keys, giving them the filenames <code>github</code> and <code>github.pub</code>, respectively. Now go to your GitHub account settings, click “SSH Keys”, and click “Add SSH key”. Give the key a title, and then paste the contents of <code>github.pub</code> (<strong>NOT</strong> <code>github</code>: this is the private key, which you should never disclose) into the text field. One way get the contents of that file is</p>
-<pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">xsel</span> -b <span class="kw">&lt;</span> ~/.ssh/github</code></pre>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">xsel</span> -b <span class="kw">&lt;</span> ~/.ssh/github</code></pre></div>
 <p>if you have <code>xsel</code> installed, which copies the contents of <code>github</code> onto your clipboard so that you can paste the contents into your browser, e.g. with <code>ctrl-V</code>. Or open <code>github.pub</code> in your text editor and highlight and copy everything. In any case, once you’ve managed that, click “Add key”.</p>
 <p>You can check that GitHub recognizes you by <code>ssh</code>-ing into GitHub:</p>
-<pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">ssh</span> -i ~/.ssh/github git@github.com</code></pre>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">ssh</span> -i ~/.ssh/github git@github.com</code></pre></div>
 <p>You should get a message like, “Hello yourusername! You’ve successfully authenticated, but GitHub does not provide shell access.”</p>
 <p>Note that in the above command the username is <code>git</code> rather than your own, and the hostname is <code>github.com</code>. If you have an <code>ssh</code> config file (<code>~/.ssh/config</code>), you can add GitHub so that you don’t have to specify this info, or the key, each time.</p>
-<pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">Host</span> github
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">Host</span> github
     <span class="kw">User</span> git
     <span class="kw">HostName</span> github.com
-    <span class="kw">IdentityFile</span> ~/.ssh/github</code></pre>
+    <span class="kw">IdentityFile</span> ~/.ssh/github</code></pre></div>
 <p>Now you can run the following command, which is identical to the above one.</p>
-<pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">ssh</span> github</code></pre>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">ssh</span> github</code></pre></div>
 <p>Moreover, having a config file will make using <code>git</code> much easier, too.</p>
 <h2 id="creating-a-repo">Creating a Repo</h2>
 <p>It’s time to create a repo(sitory). There will be two instances: one local one, which is the directory containing the contents of your website, and one remote one, hosted by GitHub. Basically, you’ll maintain your website locally, track changes using <code>git</code>, then push those changes to GitHub, so that GitHub will have an exact copy of each version of your website (hence the automatic backups benefit).</p>
@@ -117,17 +118,17 @@ $ <span class="kw">ssh-keygen</span> -f github -t rsa -C <span class="st">&#39;G
 <p>At this point, you have an empty repo on GitHub. Once we create the local instance, we can push changes to the remote GitHub one.</p>
 <h4 id="local-repo">Local Repo</h4>
 <p>Go into your website directory and <em>initialize</em> it with <code>git</code>, which means turn that directory into a <code>git</code> repo, so that <code>git</code> can start tracking everything. Following last post’s example, our friend Bob would do the following.</p>
-<pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">cd</span> ~/website
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">cd</span> ~/website
 <span class="kw">~/website</span> $ git init
-<span class="kw">Initialized</span> empty Git repository in /home/bob/website</code></pre>
+<span class="kw">Initialized</span> empty Git repository in /home/bob/website</code></pre></div>
 <p>Now we need to link up this local repo with the remote GitHub one so that we can start pushing stuff to GitHub. Assuming that Bob’s GitHub username is <code>bobbarker</code> and that he has an entry in his <code>ssh</code> config called <code>Host github</code>, then Bob would run the following command.</p>
-<pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">~/website</span> $ git remote add origin github:bobbarker/my-website.git</code></pre>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">~/website</span> $ git remote add origin github:bobbarker/my-website.git</code></pre></div>
 <p>This command adds a remote called <code>origin</code> (the convention is to always call it <code>origin</code>), located at <code>bobbarker/my-website.git</code>.</p>
 <h2 id="git-basics">Git Basics</h2>
 <p>As you read this section, it might be helpful to periodically run <code>git status</code> to see how things change as we run <code>git</code> commands. It’s good habit anyway to run <code>git status</code> while you work, especially because <code>git</code> usually tells you exactly what you need to do and what commands to run.</p>
 <h4 id="trackingadding-files">Tracking/Adding Files</h4>
 <p>At the moment, Bob’s remote repo is empty, and although the local repo has stuff like <code>index.html</code> and other files and directories, none of them are being <em>tracked</em> by <code>git</code>.</p>
-<pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">~/website</span> $ git status
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">~/website</span> $ git status
 <span class="co"># On branch master</span>
 <span class="co">#</span>
 <span class="co"># Initial commit</span>
@@ -137,12 +138,12 @@ $ <span class="kw">ssh-keygen</span> -f github -t rsa -C <span class="st">&#39;G
 <span class="co">#</span>
 <span class="co">#   index.html</span>
 <span class="co">#   ...</span>
-<span class="kw">nothing</span> added to commit but untracked files present (use <span class="st">&quot;git add&quot;</span> to track)</code></pre>
+<span class="kw">nothing</span> added to commit but untracked files present (use <span class="st">&quot;git add&quot;</span> to track)</code></pre></div>
 <p>What this means is that <code>git</code> is not tracking these files to look for changes. If changes are made, <code>git</code> won’t know, because it has no baseline. The syntax for adding files to be tracked is the following.</p>
-<pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">git</span> add [FILENAME] <span class="co"># add a file, or list of files, to be tracked</span>
-$ <span class="kw">git</span> add .          <span class="co"># add entire directory</span></code></pre>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">git</span> add [FILENAME] <span class="co"># add a file, or list of files, to be tracked</span>
+$ <span class="kw">git</span> add .          <span class="co"># add entire directory</span></code></pre></div>
 <p>For simplicity, let’s assume Bob has added his entire website directory.</p>
-<pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">~/website</span> $ git add .
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">~/website</span> $ git add .
 <span class="kw">~/website</span> $ git status
 <span class="co"># On branch master</span>
 <span class="co">#</span>
@@ -153,18 +154,18 @@ $ <span class="kw">git</span> add .          <span class="co"># add entire direc
 <span class="co">#</span>
 <span class="co">#   new file:   index.html</span>
 <span class="co">#   ...</span>
-<span class="co">#</span></code></pre>
+<span class="co">#</span></code></pre></div>
 <p>Now that <code>git</code> is tracking the files, it tells Bob that there is a “change” to be committed, namely that there is a new file.</p>
 <h4 id="committing-changes">Committing Changes</h4>
 <p>Before doing anything else, Bob should do a <em>commit</em>, essentially creates the first snapshot of his website, as far as <code>git</code> is concerned. Every commit must have a commit message, describing what changes have been made.</p>
-<pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">~/website</span> $ git commit -m <span class="st">&quot;first commit&quot;</span>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">~/website</span> $ git commit -m <span class="st">&quot;first commit&quot;</span>
 [<span class="kw">summary</span> of what was committed]
 <span class="kw">~/website</span> $ git status
 <span class="co"># On branch master</span>
-<span class="kw">nothing</span> to commit, working directory clean</code></pre>
+<span class="kw">nothing</span> to commit, working directory clean</code></pre></div>
 <h4 id="pushing-to-remote">Pushing to Remote</h4>
 <p>This commit is now ready to be pushed to GitHub.</p>
-<pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">git</span> push -u origin master</code></pre>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">git</span> push -u origin master</code></pre></div>
 <p>This command pushes (all the committed changes from) the <code>master</code> branch (more about branches later) over to the <code>origin</code> remote that was created earlier, i.e. the GitHub remote.</p>
 <p>If all was successful, you (or Bob) should be able to see an exact copy of your website directory in your GitHub <code>my-website</code> repo.</p>
 <h4 id="basic-workflow">Basic Workflow</h4>
@@ -187,21 +188,21 @@ $ <span class="kw">git</span> add .          <span class="co"># add entire direc
 <h2 id="git-branches">Git Branches</h2>
 <p>One of best <code>git</code> features is branching. Currently, Bob has only a master branch. Suppose, however, that he wants to completely overhaul the layout of his website. (I’ll talk only about <code>index.html</code> here.) It might take him a month or two of off-and-on working to get his site looking the way he wants it, and he doesn’t want the new and improved version to go live until it’s completely done. Moreover, he still wants to be able to add new papers, etc. to his live website. Essentially, then, Bob needs to be able to work on two versions of his website: the master version, which has the old layout but is still updated with new content, and the in-progress version, which has the new layout.</p>
 <p>Enter branches. Bob creates a new branch of his website repo called <code>new_layout</code>.</p>
-<pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">~/website</span> $ git branch new_layout
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">~/website</span> $ git branch new_layout
 <span class="kw">~/website</span> $ git branch
 <span class="kw">*</span> master
-  <span class="kw">new_layout</span></code></pre>
+  <span class="kw">new_layout</span></code></pre></div>
 <p>The <code>branch</code> command with no arguments lists all branches, and the star indicates which branch you’re currently working on. Bob switches over to the <code>new_layout</code> branch and does some hacking.</p>
-<pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">~/website</span> $ git checkout new_layout
-<span class="kw">Switched</span> to branch <span class="st">&#39;new_layout&#39;</span></code></pre>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">~/website</span> $ git checkout new_layout
+<span class="kw">Switched</span> to branch <span class="st">&#39;new_layout&#39;</span></code></pre></div>
 <p>Bob does a bunch of edits and commits. He can view the results in his browser, etc. Finally, he pushes the commits to GitHub, which creates a <code>new_layout</code> branch there, too. And finally, he switches back to the master branch.</p>
-<pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">~/website</span> $ git checkout master
-<span class="kw">Switched</span> to branch <span class="st">&#39;master&#39;</span></code></pre>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">~/website</span> $ git checkout master
+<span class="kw">Switched</span> to branch <span class="st">&#39;master&#39;</span></code></pre></div>
 <p>Bob now sees the old, untouched version of <code>index.html</code>. He can also add new papers, commit and push them, etc. without affecting the other branch, and he can switch to <code>new_layout</code> whenever he wants to work on the new layout.</p>
 <p>A month passes and finally Bob is ready to use his new layout, so he must merge his <code>new_layout</code> branch into his <code>master</code> branch.</p>
-<pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">~/website</span> $ git merge new_layout</code></pre>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">~/website</span> $ git merge new_layout</code></pre></div>
 <p>This command updates the <code>master</code> branch to include changes from <code>new_layout</code>. (Merging may require some human intervention if <code>git</code> can’t figure everything out.) Once Bob is satisfied that everything is merged properly, he can delete the <code>new_layout</code> branch.</p>
-<pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">~/website</span> $ git branch -d new_layout</code></pre>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">~/website</span> $ git branch -d new_layout</code></pre></div>
 <p>Note that all commits and commit messages made in <code>new_layout</code> become commits in <code>master</code>.</p>
 <h2 id="git-resources">Git Resources</h2>
 <p>In addition to the basic “bootcamp” help offered by GitHub, I found the following website particularly helpful.</p>

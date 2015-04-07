@@ -11,6 +11,7 @@
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
   <![endif]-->
   <style type="text/css">
+div.sourceCode { overflow-x: auto; }
 table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
   margin: 0; padding: 0; vertical-align: baseline; border: none; }
 table.sourceCode { width: 100%; line-height: 100%; }
@@ -67,17 +68,17 @@ code > span.er { color: #ff0000; font-weight: bold; }
 title: Pandoc, MathJax, Google fonts, and HTTPS
 date: 2015-01-06 13:25
 end metadata -->
-<p><strong>tl;dr</strong> For any secure (<code>https</code>) webpage with URLs in its source code to Google fonts or MathJax, those URLs must <em>also</em> be secure (<code>https</code>); otherwise, the fonts, <span class="math">\(\LaTeX{}\)</span>, etc. won’t render.</p>
+<p><strong>tl;dr</strong> For any secure (<code>https</code>) webpage with URLs in its source code to Google fonts or MathJax, those URLs must <em>also</em> be secure (<code>https</code>); otherwise, the fonts, <span class="math inline">\(\LaTeX{}\)</span>, etc. won’t render.</p>
 <p>It’s been nearly a year since I last posted. One of my resolutions this year (my dissertation year!) is to write more, including on this blog. Ideally I’d write about semantics, but for now, just to get back into the swing of things, I’ll be happy to write about anything. To that end, here’s a post.</p>
 <p>I just upgraded <a href="http://johnmacfarlane.net/pandoc/">pandoc</a> yesterday and decided to rebuild my blog to see if any changes would occur. (I write my blog in <a href="http://daringfireball.net/projects/markdown/">markdown</a> and then convert to html using pandoc, so basically I reconverted all my posts markdown -&gt; html.) Aside from the copyright changing from “2012–2014” to “2012–2015”, there was only one subtle, but substantial change, and that has to do with <a href="http://www.mathjax.org/">MathJax</a>.</p>
-<p>MathJax is “an open source JavaScript display engine for mathematics that works in all browsers”. For example, it renders the html code <code>\(f(x) = x^2 + 4x - 3\)</code> into <span class="math">\(f(x) = x^2 + 4x - 3\)</span>. The stuff between <code>\(...\)</code> is <span class="math">\(\LaTeX{}\)</span> code, and <code>\(...\)</code> are the delimiters that MathJax looks out for. But actually, since I write my blog in markdown, I delimit <span class="math">\(\LaTeX{}\)</span> code using <code>$...$</code> (just like in <span class="math">\(\LaTeX{}\)</span> itself) since that’s what <em>pandoc</em> looks out for. In other words:</p>
+<p>MathJax is “an open source JavaScript display engine for mathematics that works in all browsers”. For example, it renders the html code <code>\(f(x) = x^2 + 4x - 3\)</code> into <span class="math inline">\(f(x) = x^2 + 4x - 3\)</span>. The stuff between <code>\(...\)</code> is <span class="math inline">\(\LaTeX{}\)</span> code, and <code>\(...\)</code> are the delimiters that MathJax looks out for. But actually, since I write my blog in markdown, I delimit <span class="math inline">\(\LaTeX{}\)</span> code using <code>$...$</code> (just like in <span class="math inline">\(\LaTeX{}\)</span> itself) since that’s what <em>pandoc</em> looks out for. In other words:</p>
 <ol type="1">
 <li>Write in markdown: <code>$f(x) = x^2 + 4x - 3$</code></li>
 <li>Markdown becomes html (via pandoc): <code>\(f(x) = x^2 + 4x -3\)</code></li>
-<li>Html becomes pretty (via mathjax): <span class="math">\(f(x) = x^2 + 4x -3\)</span></li>
+<li>Html becomes pretty (via mathjax): <span class="math inline">\(f(x) = x^2 + 4x -3\)</span></li>
 </ol>
 <p>MathJax is run as a script within the html source code. All you need is something like this, which links to some MathJax JavaScript:</p>
-<pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;script</span><span class="ot"> src=</span><span class="st">&quot;http://cdn.mathjax.org/mathjax/...&quot;</span><span class="ot"> type=</span><span class="st">&quot;text/javascript&quot;</span><span class="kw">&gt;&lt;/script&gt;</span></code></pre>
+<div class="sourceCode"><pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;script</span><span class="ot"> src=</span><span class="st">&quot;http://cdn.mathjax.org/mathjax/...&quot;</span><span class="ot"> type=</span><span class="st">&quot;text/javascript&quot;</span><span class="kw">&gt;&lt;/script&gt;</span></code></pre></div>
 <p>(The full MathJax source URL is <a href="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">here</a>.)</p>
 <p>The pandoc option <code>--mathjax</code> is supposed to automagically add the source URL, and it did, until the recent pandoc update. After the update, I noticed that the <code>http:</code> part was completely missing. <a href="https://github.com/jgm/pandoc/issues/1847">Apparently</a>, this isn’t really a bug; it was removed for principled reasons. The solution, I thought, was simply to change from using <code>--mathjax</code> to explicitly using</p>
 <pre><code>--mathjax=&quot;http://cdn.mathjax.org/mathjax/...&quot;</code></pre>
@@ -85,7 +86,7 @@ end metadata -->
 <p>I also noticed something else: my Google fonts were rendering on my local copy of my blog, but not on the GitHub blog. Were the issues related? Yes, they were. Here’s how.</p>
 <p>I use the Firefox extension HTTPS-Everywhere, which tries to use the more secure <code>https://blah.com/</code> instead of <code>http://blah.com/</code> whenever possible. It turns out that when using the secure version of my blog, <code>https://brianbuccola.github.io/</code>, any insecure (<code>http</code>) Google font URLs or MathJax URLs <em>won’t work</em>. They need to all be changed to <code>https</code>. So that’s what I did</p>
 <pre><code>--mathjax=&quot;https://cdn.mathjax.org/mathjax/...&quot;</code></pre>
-<pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;script</span><span class="ot"> src=</span><span class="st">&quot;https://cdn.mathjax.org/mathjax/...&quot;</span><span class="ot"> type=</span><span class="st">&quot;text/javascript&quot;</span><span class="kw">&gt;&lt;/script&gt;</span></code></pre>
+<div class="sourceCode"><pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;script</span><span class="ot"> src=</span><span class="st">&quot;https://cdn.mathjax.org/mathjax/...&quot;</span><span class="ot"> type=</span><span class="st">&quot;text/javascript&quot;</span><span class="kw">&gt;&lt;/script&gt;</span></code></pre></div>
 <p>and voilà, everything works again.</p>
 <p>Moreover, using <code>https</code> URLs for Google fonts and MathJax <em>still</em> works when using the normal <code>http</code> version of my blog. So as far as I can tell, there’s no downside to always using the secure <code>https</code> URLs in your html source code, as far as text rendering goes.</p>
 <!-- Warning: Do not edit this file; it will be overwritten during blog rebuild. -->

@@ -11,6 +11,7 @@
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
   <![endif]-->
   <style type="text/css">
+div.sourceCode { overflow-x: auto; }
 table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
   margin: 0; padding: 0; vertical-align: baseline; border: none; }
 table.sourceCode { width: 100%; line-height: 100%; }
@@ -71,11 +72,11 @@ categories:
 - latex
 - octopress
 end metadata -->
-<p><strong><em>Update:</em></strong> <em>I no longer maintain this blog using Octopress, but I will leave this post here in case it may be of use to people. For the curious, I now convert my markdown posts to html using <a href="http://johnmacfarlane.net/pandoc/">Pandoc</a>, which has a <code>--mathjax</code> option that renders <span class="math">\(\LaTeX{}\)</span> on the fly.</em></p>
-<p>With the help of Google and some smart Octopress bloggers (<a href="http://www.idryman.org/blog/2012/03/10/writing-math-equations-on-octopress/">here</a>, particularly), I’ve successfully managed to get <span class="math">\(\LaTeX{}\)</span> math to show up in my Octopress blog. Octopress uses <a href="https://github.com/rtomayko/rdiscount">rdiscount</a> as the default <a href="http://daringfireball.net/projects/markdown/">markdown</a> implementation/parser/converter-to-HTML, but unfortunately rdiscount cannot parse or convert <span class="math">\(\LaTeX{}\)</span> code (because <span class="math">\(\LaTeX{}\)</span> code is, of course, not markdown).</p>
-<p>That’s where <a href="http://kramdown.rubyforge.org/">kramdown</a> comes in. It parses and converts a superset of markdown, including <span class="math">\(\LaTeX\)</span>, meaning that together with <a href="http://www.mathjax.org/">MathJax</a> you can have beautiful <span class="math">\(\LaTeX\)</span> math code rendered directly into your browser.</p>
-<p>You can have both inline math, e.g., <span class="math">\(A^{*} = \bigcup_{i=0}^{\infty} A^{i}\)</span>, as well as blocks of math. For example, as Kaplan and Kay (1994) tell us, if <span class="math">\(A\)</span> and <span class="math">\(B\)</span> are regular <span class="math">\(n\)</span>-relations, then so are</p>
-<p><span class="math">\[
+<p><strong><em>Update:</em></strong> <em>I no longer maintain this blog using Octopress, but I will leave this post here in case it may be of use to people. For the curious, I now convert my markdown posts to html using <a href="http://johnmacfarlane.net/pandoc/">Pandoc</a>, which has a <code>--mathjax</code> option that renders <span class="math inline">\(\LaTeX{}\)</span> on the fly.</em></p>
+<p>With the help of Google and some smart Octopress bloggers (<a href="http://www.idryman.org/blog/2012/03/10/writing-math-equations-on-octopress/">here</a>, particularly), I’ve successfully managed to get <span class="math inline">\(\LaTeX{}\)</span> math to show up in my Octopress blog. Octopress uses <a href="https://github.com/rtomayko/rdiscount">rdiscount</a> as the default <a href="http://daringfireball.net/projects/markdown/">markdown</a> implementation/parser/converter-to-HTML, but unfortunately rdiscount cannot parse or convert <span class="math inline">\(\LaTeX{}\)</span> code (because <span class="math inline">\(\LaTeX{}\)</span> code is, of course, not markdown).</p>
+<p>That’s where <a href="http://kramdown.rubyforge.org/">kramdown</a> comes in. It parses and converts a superset of markdown, including <span class="math inline">\(\LaTeX\)</span>, meaning that together with <a href="http://www.mathjax.org/">MathJax</a> you can have beautiful <span class="math inline">\(\LaTeX\)</span> math code rendered directly into your browser.</p>
+<p>You can have both inline math, e.g., <span class="math inline">\(A^{*} = \bigcup_{i=0}^{\infty} A^{i}\)</span>, as well as blocks of math. For example, as Kaplan and Kay (1994) tell us, if <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are regular <span class="math inline">\(n\)</span>-relations, then so are</p>
+<p><span class="math display">\[
 \begin{align}
 \mbox{$n$-way concatenation: } &amp; A \cdot B = \{xy\mid x \in A, y \in B\} \\
 \mbox{Union: } &amp; A\cup B = \{x\mid x \in A \text{ or } x \in B\} \\
@@ -92,7 +93,7 @@ end metadata -->
 <p>Open <code>Gemfile</code>, and change <code>gem rdiscount</code> to <code>gem kramdown</code>, and change the version number to whatever version you installed. This way if you migrate your blog to a new machine, it’ll complain if you try to <code>rake generate</code> before grabbing kramdown (at least I think).</p>
 <h3 id="add-mathjax-script">4. Add MathJax script</h3>
 <p>Add the following MathJax script to <code>source/_layouts/default.html</code>:</p>
-<pre class="sourceCode html"><code class="sourceCode html"><span class="co">&lt;!-- mathjax config similar to math.stackexchange --&gt;</span>
+<div class="sourceCode"><pre class="sourceCode html"><code class="sourceCode html"><span class="co">&lt;!-- mathjax config similar to math.stackexchange --&gt;</span>
 <span class="kw">&lt;script</span><span class="ot"> type=</span><span class="st">&quot;text/x-mathjax-config&quot;</span><span class="kw">&gt;</span>
 <span class="ot">MathJax</span>.<span class="ot">Hub</span>.<span class="fu">Config</span>({
   <span class="dt">jax</span>: [<span class="st">&quot;input/TeX&quot;</span>, <span class="st">&quot;output/HTML-CSS&quot;</span>],
@@ -106,10 +107,10 @@ end metadata -->
   <span class="st">&quot;HTML-CSS&quot;</span>: { <span class="dt">preferredFont</span>: <span class="st">&quot;TeX&quot;</span>, <span class="dt">availableFonts</span>: [<span class="st">&quot;STIX&quot;</span>,<span class="st">&quot;TeX&quot;</span>] }
 });
 &lt;<span class="ot">/script&gt;</span>
-<span class="ot">&lt;script src=&quot;http://cdn.mathjax.org/mathjax/latest/MathJax</span>.<span class="fu">js</span>?config=TeX-AMS_HTML<span class="st">&quot; type=&quot;</span>text/javascript<span class="st">&quot;&gt;&lt;/script&gt;</span></code></pre>
+<span class="ot">&lt;script src=&quot;http://cdn.mathjax.org/mathjax/latest/MathJax</span>.<span class="fu">js</span>?config=TeX-AMS_HTML<span class="st">&quot; type=&quot;</span>text/javascript<span class="st">&quot;&gt;&lt;/script&gt;</span></code></pre></div>
 <h3 id="fix-right-click-bug">5. Fix right-click bug</h3>
 <p>At this point, kramdown and MathJax should both work; however, there’s a bug where if you right-click on any math, the website turns blank for as long as the MathJax contex menu is open. To fix this, open <code>sass/base/_theme.scss</code> and change</p>
-<pre class="sourceCode css"><code class="sourceCode css">body <span class="kw">{</span>
+<div class="sourceCode"><pre class="sourceCode css"><code class="sourceCode css">body <span class="kw">{</span>
   <span class="er">&gt;</span> <span class="er">div</span> <span class="er">{</span>
     <span class="kw">background:</span> $sidebar-bg $noise-bg<span class="kw">;</span>
     <span class="kw">border-bottom:</span> <span class="dt">1px</span> <span class="dt">solid</span> $page-border-bottom<span class="kw">;</span>
@@ -118,9 +119,9 @@ end metadata -->
       <span class="kw">border-right:</span> <span class="dt">1px</span> <span class="dt">solid</span> $sidebar-border<span class="kw">;</span>
     <span class="kw">}</span>
   }
-}</code></pre>
+}</code></pre></div>
 <p>to</p>
-<pre class="sourceCode css"><code class="sourceCode css">body <span class="kw">{</span>
+<div class="sourceCode"><pre class="sourceCode css"><code class="sourceCode css">body <span class="kw">{</span>
   <span class="er">&gt;</span> <span class="er">div#main</span> <span class="er">{</span>
     <span class="kw">background:</span> $sidebar-bg $noise-bg<span class="kw">;</span>
     <span class="kw">border-bottom:</span> <span class="dt">1px</span> <span class="dt">solid</span> $page-border-bottom<span class="kw">;</span>
@@ -129,7 +130,7 @@ end metadata -->
       <span class="kw">border-right:</span> <span class="dt">1px</span> <span class="dt">solid</span> $sidebar-border<span class="kw">;</span>
     <span class="kw">}</span>
   }
-}</code></pre>
+}</code></pre></div>
 <p>In other words, change the first occurrence of <code>div</code> to <code>div#main</code>.</p>
 <p><strong>Important:</strong> If, like me, you customized your background and therefore override this <code>body</code> block in <code>sass/custom/_colors.scss</code>, then you have to change the first occurrence of <code>div</code> to <code>div#main</code> in <strong>both</strong> files.</p>
 <p>Now you can create inline math by surrounding the code with <code>$</code>, and block math by surrounding the code with <code>$$</code>.</p>

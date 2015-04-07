@@ -63,16 +63,16 @@ map! &lt;C-v&gt;-&gt; →
 map! &lt;C-v&gt;&amp; ∧</code></pre>
 <p>then I can easily type out a formula of predicate logic in unicode, which comes out like this:</p>
 <p>∀x∃y[x ≠ y → Px ∧ Ry]</p>
-<p>Of course, on this blog I could also write such a formula in <span class="math">\(\LaTeX{}\)</span>, which comes out like this:</p>
-<p><span class="math">\(\forall x \exists y [x \neq y \to Px \land Ry]\)</span></p>
-<p>I think in general the <span class="math">\(\LaTeX{}\)</span> version probably looks nicer than the unicode version on websites like this, but there are some benefits to using unicode:</p>
+<p>Of course, on this blog I could also write such a formula in <span class="math inline">\(\LaTeX{}\)</span>, which comes out like this:</p>
+<p><span class="math inline">\(\forall x \exists y [x \neq y \to Px \land Ry]\)</span></p>
+<p>I think in general the <span class="math inline">\(\LaTeX{}\)</span> version probably looks nicer than the unicode version on websites like this, but there are some benefits to using unicode:</p>
 <ol type="1">
 <li>Unicode doesn’t need to be rendered by a conversion engine such as Mathjax; it just works.</li>
-<li><p>Unicode is much more legible in source code (e.g., the markdown version of this blog post) than <span class="math">\(\LaTeX{}\)</span>. Compare:</p>
+<li><p>Unicode is much more legible in source code (e.g., the markdown version of this blog post) than <span class="math inline">\(\LaTeX{}\)</span>. Compare:</p>
 <p><code>∀x∃y[x ≠ y → Px ∧ Ry]</code></p>
 <p><code>$\forall x \exists y [x \neq y \to Px \land Ry]$</code></p></li>
-<li>If you use vim to write emails (e.g. with mutt), or forum posts (e.g. with vimperator for Firefox), etc., then you’ll usually want to use unicode, since most email clients and forums cannot render <span class="math">\(\LaTeX{}\)</span>.</li>
-<li><p>There are lots of unicode characters which you can’t write in <span class="math">\(\LaTeX{}\)</span> and/or which Mathjax and other engines can’t handle, such as IPA symbols, which I find myself needing to type relatively often.</p></li>
+<li>If you use vim to write emails (e.g. with mutt), or forum posts (e.g. with vimperator for Firefox), etc., then you’ll usually want to use unicode, since most email clients and forums cannot render <span class="math inline">\(\LaTeX{}\)</span>.</li>
+<li><p>There are lots of unicode characters which you can’t write in <span class="math inline">\(\LaTeX{}\)</span> and/or which Mathjax and other engines can’t handle, such as IPA symbols, which I find myself needing to type relatively often.</p></li>
 </ol>
 <p>For example, if I’m emailing a student or writing a forum post about the transcription of the word “ring”, I would usually go a site like <a href="http://westonruter.github.io/ipa-chart/keyboard/">this</a>, click-type the transcription, copy it, then paste it—sort of time-consuming. Plus, if I’m not connected to the internet, then I can’t use this method at all. But if I have the following mappings in my <code>.vimrc</code></p>
 <pre><code>map! &lt;C-v&gt;I ɪ

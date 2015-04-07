@@ -11,6 +11,7 @@
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
   <![endif]-->
   <style type="text/css">
+div.sourceCode { overflow-x: auto; }
 table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
   margin: 0; padding: 0; vertical-align: baseline; border: none; }
 table.sourceCode { width: 100%; line-height: 100%; }
@@ -81,21 +82,21 @@ end metadata -->
 <p>If you have a solution, please email me!</p>
 <h2 id="wifi">WiFi</h2>
 <p>By far the most serious (but luckily, easiest to solve) issue is the Broadcom wifi card BCM43228:</p>
-<pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">lspci</span> -vnn <span class="kw">|</span> <span class="kw">grep</span> Broadcom
-<span class="kw">01</span>:00.0 Network controller [0280]: Broadcom Corporation BCM43228 802.11a/b/g/n [14e4:4359]</code></pre>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">lspci</span> -vnn <span class="kw">|</span> <span class="kw">grep</span> Broadcom
+<span class="kw">01</span>:00.0 Network controller [0280]: Broadcom Corporation BCM43228 802.11a/b/g/n [14e4:4359]</code></pre></div>
 <p>This card was <a href="http://wireless.kernel.org/en/users/Drivers/b43">not supported</a> under the Linux kernel until kernel version 3.17. (We’re now on 3.18, as of this writing; when I bought the laptop, we were at 3.16.) The workaround for kernels &lt;3.17 is to use the AUR package <a href="https://aur.archlinux.org/packages/broadcom-wl/">broadcom-wl</a>. However, even once we arrived at 3.17, I found the native support (with the b43 driver and firmware) to be lacking: weak wifi connections, constant dropping, etc. So I still use broadcom-wl. Here’s how it works.</p>
 <ol type="1">
 <li>Download broadcom-wl with your favorite AUR helper, and install it. For example:</li>
 </ol>
-<pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">cower</span> -d broadcom-wl
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">cower</span> -d broadcom-wl
 $ <span class="kw">cd</span> ~/aur/broadcom-wl
-$ <span class="kw">makepkg</span> -csi</code></pre>
+$ <span class="kw">makepkg</span> -csi</code></pre></div>
 <ol start="2" type="1">
 <li>Restart computer.</li>
 </ol>
 <p>That’s all! Well, almost. Now, every time you update your kernel, you need to rebuild and reinstall broadcom-wl. For example:</p>
-<pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">cd</span> ~/aur/broadcom-wl
-$ <span class="kw">makepkg</span> -csif</code></pre>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">cd</span> ~/aur/broadcom-wl
+$ <span class="kw">makepkg</span> -csif</code></pre></div>
 <p>The <code>-f</code> flag forces a rebuild and overwrites the current <code>.pkg.tar.xz</code> file.</p>
 <p>(Another option is to use broadcom-wl-dkms, which automatically rebuilds itself after a kernel update.)</p>
 <p>(This solution is obviously specific to Arch Linux, but most major distros should have some analog of the broadcom-wl package available, which should likewise solve the issue.)</p>
@@ -103,7 +104,7 @@ $ <span class="kw">makepkg</span> -csif</code></pre>
 <p>You’re supposed to be able to change the brightness with <code>&lt;Fn-F8&gt;</code> and <code>&lt;Fn-F9&gt;</code> (that is, the function key together with <code>F8</code> or <code>F9</code>). For me, this works fine in console, but <em>not</em> in X11, where most people (including me) spend most of their time. I’ve read that a BIOS upgrade fixes this, but I haven’t tried that.</p>
 <p>My workaround was to write two simple bash scripts, <code>brightness-dec</code> and <code>brightness-inc</code>, to decrease and increase the brightness, respectively, and bind them to <code>&lt;Fn-F8&gt;</code> and <code>&lt;Fn-F9&gt;</code>. You can find them both <a href="https://github.com/brianbuccola/scripts">here</a>.</p>
 <p>I’ll illustrate how <code>brightness-inc</code> works:</p>
-<pre class="sourceCode bash"><code class="sourceCode bash"><span class="co">#!/bin/bash</span>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="co">#!/bin/bash</span>
 
 <span class="ot">max_brightness=</span>255
 <span class="ot">min_brightness=</span>5
@@ -117,13 +118,13 @@ $ <span class="kw">makepkg</span> -csif</code></pre>
   <span class="kw">echo</span> <span class="ot">$min_brightness</span> <span class="kw">|</span> <span class="kw">sudo</span> tee /sys/class/backlight/radeon_bl0/brightness
 <span class="kw">else</span>
   <span class="kw">echo</span> <span class="st">&quot;</span><span class="ot">$new_brightness</span><span class="st">&quot;</span> <span class="kw">|</span> <span class="kw">sudo</span> tee /sys/class/backlight/radeon_bl0/brightness
-<span class="kw">fi</span></code></pre>
+<span class="kw">fi</span></code></pre></div>
 <p>The file <code>/sys/class/backlight/radeon_bl0/brightness</code> contains the current brightness level, which for my Lenovo X140e is between 0 and 255. To change the brightness, just change this file. The problem is that since it’s located in <code>/sys/...</code>, you need root permission to change it. That means that</p>
-<pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">echo</span> <span class="st">&quot;100&quot;</span> <span class="kw">&gt;</span> /sys/...</code></pre>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">echo</span> <span class="st">&quot;100&quot;</span> <span class="kw">&gt;</span> /sys/...</code></pre></div>
 <p>won’t work, but neither will</p>
-<pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">sudo</span> echo <span class="st">&quot;100&quot;</span> <span class="kw">&gt;</span> /sys/...</code></pre>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">sudo</span> echo <span class="st">&quot;100&quot;</span> <span class="kw">&gt;</span> /sys/...</code></pre></div>
 <p>The reason is because in the latter, <code>sudo</code> is only operating on the <code>echo</code> command. It’s like saying, run <code>echo</code> as root, and now (not as root) append the output to <code>/sys/...</code>. To solve this, we use <code>tee</code>, which allows piping from stdin to a file, as root:</p>
-<pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">echo</span> <span class="st">&quot;100&quot;</span> <span class="kw">|</span> <span class="kw">sudo</span> tee /sys/...</code></pre>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">echo</span> <span class="st">&quot;100&quot;</span> <span class="kw">|</span> <span class="kw">sudo</span> tee /sys/...</code></pre></div>
 <p>This command will successfully set the brightness level to 100. That’s the crux of the script; the rest should be pretty self-explanatory.</p>
 <p>There’s one remaining issue, though: we don’t want to run this script in a terminal; we want to bind it to a key. But the script uses <code>sudo</code>, which requires a password to be typed, which you can’t really do outside of a terminal. The solution is to allow <code>tee</code> to be run as root without a password. To do this, you need to change the sudoers file by running <code>visudo</code> (as root) and adding this line:</p>
 <pre><code># Add `tee&#39; to list of commands that user `brian&#39; can run without password
@@ -133,7 +134,7 @@ brian ALL = NOPASSWD: /usr/bin/tee</code></pre>
 <h2 id="no-insert-key">No insert key</h2>
 <p>The laptop keyboard does not come with any physical <code>Insert</code> key. I guess that’s because most people nowadays don’t use it very often. But I do. One of the best features of Linux (well, X11) is the X clipboard: whenever you highlight something, it gets added to the X clipboard (no need to <code>&lt;Ctrl-C&gt;</code>), and you can paste it with <code>&lt;Shift-Insert&gt;</code>. (I also use <code>Insert</code> to go into ignore-mode in <a href="http://www.vimperator.org/vimperator/">Vimperator</a> for Firefox.)</p>
 <p>What I did was bind the Windows key (which was serving no purpose) to <code>Insert</code>. Here’s how:</p>
-<pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">xmodmap</span> -e <span class="st">&quot;keycode 133 = Insert&quot;</span>    <span class="co"># map windows button to insert</span></code></pre>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">xmodmap</span> -e <span class="st">&quot;keycode 133 = Insert&quot;</span>    <span class="co"># map windows button to insert</span></code></pre></div>
 <p>You can find the keycode of a key by running <code>xev</code> (X event program) from a terminal, typing the key, and looking for “keycode” in the output. (Hit <code>&lt;Ctrl-C&gt;</code> to exit <code>xev</code>.)</p>
 <p>Now you can run this <code>xmodmap</code> command in a terminal, and it should work. But the best solution is to include it in your <code>.xinitrc</code> file so that it’s run every time X starts. (I have a whole <code>keyboard-adjust</code> script that adds the Dvorak layout, switches caps and control lock, etc., maps the Windows button to insert, etc.; I then call the whole script from my <code>.xinitrc</code> file.)</p>
 <!-- Warning: Do not edit this file; it will be overwritten during blog rebuild. -->
