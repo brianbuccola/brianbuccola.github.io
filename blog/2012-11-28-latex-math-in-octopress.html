@@ -17,18 +17,35 @@ table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
 table.sourceCode { width: 100%; line-height: 100%; }
 td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
 td.sourceCode { padding-left: 5px; }
-code > span.kw { color: #007020; font-weight: bold; }
-code > span.dt { color: #902000; }
-code > span.dv { color: #40a070; }
-code > span.bn { color: #40a070; }
-code > span.fl { color: #40a070; }
-code > span.ch { color: #4070a0; }
-code > span.st { color: #4070a0; }
-code > span.co { color: #60a0b0; font-style: italic; }
-code > span.ot { color: #007020; }
-code > span.al { color: #ff0000; font-weight: bold; }
-code > span.fu { color: #06287e; }
-code > span.er { color: #ff0000; font-weight: bold; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
   </style>
   <link rel="stylesheet" href="../style.css">
   <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
@@ -95,19 +112,19 @@ end metadata -->
 <p>Add the following MathJax script to <code>source/_layouts/default.html</code>:</p>
 <div class="sourceCode"><pre class="sourceCode html"><code class="sourceCode html"><span class="co">&lt;!-- mathjax config similar to math.stackexchange --&gt;</span>
 <span class="kw">&lt;script</span><span class="ot"> type=</span><span class="st">&quot;text/x-mathjax-config&quot;</span><span class="kw">&gt;</span>
-<span class="ot">MathJax</span>.<span class="ot">Hub</span>.<span class="fu">Config</span>({
-  <span class="dt">jax</span>: [<span class="st">&quot;input/TeX&quot;</span>, <span class="st">&quot;output/HTML-CSS&quot;</span>],
-  <span class="dt">tex2jax</span>: {
-    <span class="dt">inlineMath</span>: [ [<span class="st">&#39;$&#39;</span>, <span class="st">&#39;$&#39;</span>] ],
-    <span class="dt">displayMath</span>: [ [<span class="st">&#39;$$&#39;</span>, <span class="st">&#39;$$&#39;</span>]],
-    <span class="dt">processEscapes</span>: <span class="kw">true</span>,
-    <span class="dt">skipTags</span>: [<span class="st">&#39;script&#39;</span>, <span class="st">&#39;noscript&#39;</span>, <span class="st">&#39;style&#39;</span>, <span class="st">&#39;textarea&#39;</span>, <span class="st">&#39;pre&#39;</span>, <span class="st">&#39;code&#39;</span>]
-  },
-  <span class="dt">messageStyle</span>: <span class="st">&quot;none&quot;</span>,
-  <span class="st">&quot;HTML-CSS&quot;</span>: { <span class="dt">preferredFont</span>: <span class="st">&quot;TeX&quot;</span>, <span class="dt">availableFonts</span>: [<span class="st">&quot;STIX&quot;</span>,<span class="st">&quot;TeX&quot;</span>] }
-});
-&lt;<span class="ot">/script&gt;</span>
-<span class="ot">&lt;script src=&quot;http://cdn.mathjax.org/mathjax/latest/MathJax</span>.<span class="fu">js</span>?config=TeX-AMS_HTML<span class="st">&quot; type=&quot;</span>text/javascript<span class="st">&quot;&gt;&lt;/script&gt;</span></code></pre></div>
+<span class="va">MathJax</span>.<span class="va">Hub</span>.<span class="at">Config</span>(<span class="op">{</span>
+  <span class="dt">jax</span><span class="op">:</span> [<span class="st">&quot;input/TeX&quot;</span><span class="op">,</span> <span class="st">&quot;output/HTML-CSS&quot;</span>]<span class="op">,</span>
+  <span class="dt">tex2jax</span><span class="op">:</span> <span class="op">{</span>
+    <span class="dt">inlineMath</span><span class="op">:</span> [ [<span class="st">&#39;$&#39;</span><span class="op">,</span> <span class="st">&#39;$&#39;</span>] ]<span class="op">,</span>
+    <span class="dt">displayMath</span><span class="op">:</span> [ [<span class="st">&#39;$$&#39;</span><span class="op">,</span> <span class="st">&#39;$$&#39;</span>]]<span class="op">,</span>
+    <span class="dt">processEscapes</span><span class="op">:</span> <span class="kw">true</span><span class="op">,</span>
+    <span class="dt">skipTags</span><span class="op">:</span> [<span class="st">&#39;script&#39;</span><span class="op">,</span> <span class="st">&#39;noscript&#39;</span><span class="op">,</span> <span class="st">&#39;style&#39;</span><span class="op">,</span> <span class="st">&#39;textarea&#39;</span><span class="op">,</span> <span class="st">&#39;pre&#39;</span><span class="op">,</span> <span class="st">&#39;code&#39;</span>]
+  <span class="op">},</span>
+  <span class="dt">messageStyle</span><span class="op">:</span> <span class="st">&quot;none&quot;</span><span class="op">,</span>
+  <span class="st">&quot;HTML-CSS&quot;</span><span class="op">:</span> <span class="op">{</span> <span class="dt">preferredFont</span><span class="op">:</span> <span class="st">&quot;TeX&quot;</span><span class="op">,</span> <span class="dt">availableFonts</span><span class="op">:</span> [<span class="st">&quot;STIX&quot;</span><span class="op">,</span><span class="st">&quot;TeX&quot;</span>] <span class="op">}</span>
+<span class="op">}</span>)<span class="op">;</span>
+<span class="op">&lt;</span><span class="ss">/script&gt;</span>
+<span class="ss">&lt;script src=&quot;http://cdn.mathjax.org/mathjax/latest/MathJax</span>.<span class="at">js</span><span class="op">?</span>config<span class="op">=</span>TeX<span class="op">-</span>AMS_HTML<span class="st">&quot; type=&quot;</span>text/javascript<span class="st">&quot;&gt;&lt;/script&gt;</span></code></pre></div>
 <h3 id="fix-right-click-bug">5. Fix right-click bug</h3>
 <p>At this point, kramdown and MathJax should both work; however, there’s a bug where if you right-click on any math, the website turns blank for as long as the MathJax contex menu is open. To fix this, open <code>sass/base/_theme.scss</code> and change</p>
 <div class="sourceCode"><pre class="sourceCode css"><code class="sourceCode css">body <span class="kw">{</span>
