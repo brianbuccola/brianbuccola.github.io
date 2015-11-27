@@ -6,7 +6,7 @@ permalink: /:title/
 
 # Build settings
 markdown: kramdown
+highlighter: coderay
 kramdown:
   input: GFM
-  syntax_highlighter: coderay
   hard_wrap: false
