@@ -2,7 +2,7 @@
 title: Brian Buccola
 
 # Publishing settings
-permalink: /:title
+permalink: /:title/
 
 # Build settings
 markdown: kramdown
