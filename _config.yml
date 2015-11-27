@@ -8,5 +8,4 @@ permalink: /:title/
 markdown: kramdown
 kramdown:
   input: GFM
-  enable_coderay: true
   hard_wrap: false
