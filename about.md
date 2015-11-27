@@ -1,7 +1,7 @@
 ---
 layout: page
 title: "About"
-permalink: /about
+permalink: /about/
 ---
 
 I am a linguist currently working as a postdoctoral fellow at the [Language,
