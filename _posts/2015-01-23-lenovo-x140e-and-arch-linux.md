@@ -90,7 +90,7 @@ bind them to `<Fn-F8>` and `<Fn-F9>`. You can find them both [here][scripts].
 
 I'll illustrate how `brightness-inc` works:
 
-```bash
+~~~ bash
 #!/bin/bash
 
 max_brightness=255
@@ -106,7 +106,7 @@ elif [[ $new_brightness -lt $min_brightness ]]; then
 else
   echo "$new_brightness" | sudo tee /sys/class/backlight/radeon_bl0/brightness
 fi
-```
+~~~
 
 The file `/sys/class/backlight/radeon_bl0/brightness` contains the current
 brightness level, which for my Lenovo X140e is between 0 and 255. To change the
