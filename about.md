@@ -1,6 +1,6 @@
 ---
 layout: page
-title: About
+title: "About"
 ---
 
 I am a linguist currently working as a postdoctoral fellow at the [Language,
