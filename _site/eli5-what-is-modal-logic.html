@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link href='http://fonts.googleapis.com/css?family=PT+Serif:400,700,400italic' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'>
+
+  <title>Brian Buccola &middot; ELI5: What is modal logic?</title>
+  <meta name="description" content="Someone recently asked me what sort of background knowledge is required to studymodal logic. I thought I’d share my reply here, in case it might be of use to...">
+
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="http://brianbuccola.com/eli5-what-is-modal-logic">
+  <link rel="alternate" type="application/rss+xml" title="Brian Buccola" href="http://brianbuccola.com/feed.xml">
+
+  <!-- mathjax config similar to math.stackexchange -->
+  <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+
+    <!-- <a class="site-title" href="/">Brian Buccola</a> -->
+
+    <nav class="site-nav">
+      <a href="#" class="menu-icon">
+        <svg viewBox="0 0 18 15">
+          <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+      </a>
+
+      <div class="trigger">
+        <a class="page-link" href="/">Home</a>
+        <a class="page-link" href="/about">About</a>
+        <a class="page-link" href="/news">News</a>
+        <a class="page-link" href="/work">Work</a>
+        <a class="page-link" href="/files/buccola-cv.pdf">CV</a>
+        <a class="page-link" href="/contact">Contact</a>
+        <a class="page-link" href="/blog">Blog</a>
+        <a class="page-link" href="/feed.xml"><span class="icon icon--feed"><?xml version="1.0"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"> 
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="128px" height="128px" id="RSSicon" viewBox="0 0 256 256">
+<defs>
+<linearGradient x1="0.085" y1="0.085" x2="0.915" y2="0.915" id="RSSg">
+<stop  offset="0.0" stop-color="#E3702D"/><stop  offset="0.1071" stop-color="#EA7D31"/>
+<stop  offset="0.3503" stop-color="#F69537"/><stop  offset="0.5" stop-color="#FB9E3A"/>
+<stop  offset="0.7016" stop-color="#EA7C31"/><stop  offset="0.8866" stop-color="#DE642B"/>
+<stop  offset="1.0" stop-color="#D95B29"/>
+</linearGradient>
+</defs>
+<rect width="256" height="256" rx="55" ry="55" x="0"  y="0"  fill="#CC5D15"/>
+<rect width="246" height="246" rx="50" ry="50" x="5"  y="5"  fill="#F49C52"/>
+<rect width="236" height="236" rx="47" ry="47" x="10" y="10" fill="url(#RSSg)"/>
+<circle cx="68" cy="189" r="24" fill="#FFF"/>
+<path d="M160 213h-34a82 82 0 0 0 -82 -82v-34a116 116 0 0 1 116 116z" fill="#FFF"/>
+<path d="M184 213A140 140 0 0 0 44 73 V 38a175 175 0 0 1 175 175z" fill="#FFF"/>
+</svg>
+</span></a>
+      </div>
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">ELI5: What is modal logic?</h1>
+    <p class="post-meta"><time datetime="2015-03-23T16:55:00+02:00" itemprop="datePublished">Mar 23, 2015</time></p>
+  </header>
+
+  <div class="post-content" itemprop="articleBody">
+    <p>Someone recently asked me what sort of background knowledge is required to study
+modal logic. I thought I’d share my reply here, in case it might be of use to
+people.</p>
+
+<p>My first taste of modal logic was <a href="https://en.wikipedia.org/wiki/Richard_Montague">Richard Montague</a>’s intensional logic
+(IL), as applied to natural language. IL is a complex combination of
+higher-order typed logic (with typed λ-terms) and two types of modal logic (see
+the end of this post). Needless to say, I struggled long and hard to disentangle
+the pieces and understand them individually. In fact, for a while, I thought
+that modal logic <em>was</em> IL. It was only later that I discovered that, actually,
+even basic propositional logic can be modalized.</p>
+
+<p>I strongly believe now that the study of modal logic (be it in a logic course or
+in a natural language semantics course) should begin modal propositional logic,
+not modal predicate (quantificational) logic. Modality and quantification can
+much more easily be combined once they are each individually well understood.</p>
+
+<p>If you’re new to modal logic and have, up to now, felt a little intimidated or
+confused by it, then hopefully the preceding paragraphs have eased your mind. If
+not, then hopefully the rest of this post will.</p>
+
+<h2 id="explain-it-like-im-5-what-is-modal-logic">Explain it like I’m 5: What is modal logic?</h2>
+
+<p>Modal logic is an extension of other, more basic types of logic, primarily
+classical <em>propositional logic</em> and <em>predicate logic</em>. You can learn modal logic
+once you’ve learned propositional logic. You do <em>not</em> need to know predicate
+logic to learn modal logic, although in practice many modal logics are
+extensions of predicate logic, which itself is an extension of propositional
+logic.</p>
+
+<p>Here are some types of logic, in order (more or less) of increasing complexity.</p>
+
+<ul>
+  <li>
+    <p><strong>Propositional logic</strong> is the simplest logic. It contains <em>propositional
+variables</em> (p, q, r, …) and <em>logical connectives</em> (¬, ∧, ∨, →, …). You can
+create formulas like p, p ∧ q, (p ∨ ¬q) → r, etc. The truth value of a complex
+formula ϕ (one containing logical connectives) is a function of the truth
+values of the immediate subformulas of ϕ, based on the <a href="https://en.wikipedia.org/wiki/Truth_table"><em>truth tables</em></a>
+for the logical connectives.</p>
+  </li>
+  <li>
+    <p><strong>Non-quantificational predicate logic</strong> extends propositional logic by
+creating atomic formulas out of <em>n</em>-place <em>predicate symbols</em> (P, R, S, …),
+i.e. symbols that take <em>n</em> <em>individual symbols</em> (a, b, c, …) to create a
+formula, such as Pa, Rab, Sabc, etc. The individual symbols are taken from a
+<em>domain (or universe) of individuals</em>, D (or U). This logic still contains the
+logical connectives, so you can create complex formulas like Pa ∧ (Rab →
+¬Sabc). As in propositional logic, the truth value of a complex formula ϕ is a
+function of the truth values of the immediate subformulas of ϕ, based on the
+truth tables for the logical connectives.</p>
+  </li>
+  <li>
+    <p><strong>Quantificational (first-order) predicate logic</strong> extends
+non-quantificational predicate logic by adding <em>individual variables</em> (x, y,
+z, …) and <em>quantifier symbobls</em> (∃, ∀) that operate over individual
+variables. You can create formulas like ∀xPx, ∃x∃yRxy, Pa ∧ ∀x(Sxbc → Px),
+etc. The truth value of a formula ϕ with a quantifier depends on whether the
+formula in the immediate scope of the quantifier is true of some (in the case
+of ∃) or all (in the case of ∀) individuals in the domain (roughly speaking).
+For example, ∃xPx is true iff P is holds of <em>some</em> individual in the domain,
+and ∀xPx is true iff P holds of <em>every</em> individual in the domain (roughly
+speaking). (<strong>Second-</strong> and other <strong>higher-order predicate logics</strong> are
+extensions of first-order predicate logic, which allow quantification not only
+over individuals, but also over sets (of sets (…(of sets)…)) of
+individuals.)</p>
+  </li>
+  <li>
+    <p><strong>Modal propositional logic</strong> extends propositional logic by adding
+<em>intensional operators</em> (e.g. ◇, □) and a <em>domain of possible worlds</em> and by
+making truth value assignments world-dependent, meaning that a formula ϕ only
+has a truth value relative to (or “in”) a possible world. This means that it
+no longer makes sense to say that ϕ is true or or that ϕ is false; rather, we
+say that ϕ is true in (relative to) w1, false in w2, and so on. (A formula
+generally has different truth values in different possible worlds.) You can
+make formulas like p, p ∧ q, □p, □p → ◇q, etc. The truth value of a formula ϕ
+with an intensional operator depends on whether the formula in the immediate
+scope of the operator is true in some (in the case of ◇) or all (in the case
+of □) worlds accessible from the world relative to which ϕ is evaluated. For
+example, ◇p is true in w iff p is true in <em>some</em> world v which is accessible
+from w, and □p is true in w iff p is true in <em>every</em> world v which is
+accessible from w. Which worlds are accessible from which other worlds is
+determined by an <em>accessibility relation</em>. Accessibility relations play a huge
+role in modal logic.</p>
+  </li>
+  <li>
+    <p><strong>Modal predicate logic</strong> extends modal propositional logic in the same way
+that non-modal predicate logic extends non-modal propositional logic. It thus
+contains both intensional operators and quantifier symbols, so you can create
+complicated formulas like ◇(Rab → ∃x∀y(¬□Px ∧ □Sxy)).</p>
+  </li>
+</ul>
+
+<p>Different intensional operators and different accessibility relations give rise
+to different modal logics, some of which have been used to model various
+real-world phenomena. Some examples:</p>
+
+<ul>
+  <li>possibility and necessity (<strong>alethic logic</strong>)</li>
+  <li>permission and obligation (<strong>deontic logic</strong>)</li>
+  <li>knowledge (<strong>epistemic logic</strong>)</li>
+  <li>belief (<strong>doxastic logic</strong>)</li>
+  <li>time (<strong>temporal logic</strong>)</li>
+</ul>
+
+<p>In the case of time, possible “worlds” model points in time and are ordered by
+an “earlier than” relation, e.g. “t1 &lt; t2” means t1 is earlier in time than t2.
+Thus, the domain of possible worlds/times/states can have quite a rich
+structure; that is, it need not be a simple set, but can in addition have
+structure (relations, etc.) defined on it.</p>
+
+<p>Montague’s intensional logic actually includes both worlds and times, so that a
+formula ϕ is said to be true (or false) in a particular world, at a particular
+time. Thus, ϕ can be true in w at time t1, but false in w at time t2; and ϕ can
+be true in w1 at time t, but false in w2 at time t; and so forth.</p>
+
+
+  </div>
+
+</article>
+
+      </div>
+    </div>
+
+    <footer class="site-footer">
+  <div class="wrapper">
+    <div class="footer-wrapper">
+      &copy; Brian Buccola. Powered by <a
+         href="https://jekyllrb.com/">Jekyll</a> and <a
+         href="https://github.com/">GitHub</a>.
+    </div>
+  </div>
+</footer>
+
+
+  </body>
+
+</html>

@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link href='http://fonts.googleapis.com/css?family=PT+Serif:400,700,400italic' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'>
+
+  <title>Brian Buccola &middot; Lenovo X140e and (Arch) Linux</title>
+  <meta name="description" content="My previous laptop was an Asus that ran Linux beautifully, until, after a fewyears, several pieces of hardware stopped working (first battery, then wifi,then...">
+
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="http://brianbuccola.com/lenovo-x140e-and-arch-linux">
+  <link rel="alternate" type="application/rss+xml" title="Brian Buccola" href="http://brianbuccola.com/feed.xml">
+
+  <!-- mathjax config similar to math.stackexchange -->
+  <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+
+    <!-- <a class="site-title" href="/">Brian Buccola</a> -->
+
+    <nav class="site-nav">
+      <a href="#" class="menu-icon">
+        <svg viewBox="0 0 18 15">
+          <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+      </a>
+
+      <div class="trigger">
+        <a class="page-link" href="/">Home</a>
+        <a class="page-link" href="/about">About</a>
+        <a class="page-link" href="/news">News</a>
+        <a class="page-link" href="/work">Work</a>
+        <a class="page-link" href="/files/buccola-cv.pdf">CV</a>
+        <a class="page-link" href="/contact">Contact</a>
+        <a class="page-link" href="/blog">Blog</a>
+        <a class="page-link" href="/feed.xml"><span class="icon icon--feed"><?xml version="1.0"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"> 
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="128px" height="128px" id="RSSicon" viewBox="0 0 256 256">
+<defs>
+<linearGradient x1="0.085" y1="0.085" x2="0.915" y2="0.915" id="RSSg">
+<stop  offset="0.0" stop-color="#E3702D"/><stop  offset="0.1071" stop-color="#EA7D31"/>
+<stop  offset="0.3503" stop-color="#F69537"/><stop  offset="0.5" stop-color="#FB9E3A"/>
+<stop  offset="0.7016" stop-color="#EA7C31"/><stop  offset="0.8866" stop-color="#DE642B"/>
+<stop  offset="1.0" stop-color="#D95B29"/>
+</linearGradient>
+</defs>
+<rect width="256" height="256" rx="55" ry="55" x="0"  y="0"  fill="#CC5D15"/>
+<rect width="246" height="246" rx="50" ry="50" x="5"  y="5"  fill="#F49C52"/>
+<rect width="236" height="236" rx="47" ry="47" x="10" y="10" fill="url(#RSSg)"/>
+<circle cx="68" cy="189" r="24" fill="#FFF"/>
+<path d="M160 213h-34a82 82 0 0 0 -82 -82v-34a116 116 0 0 1 116 116z" fill="#FFF"/>
+<path d="M184 213A140 140 0 0 0 44 73 V 38a175 175 0 0 1 175 175z" fill="#FFF"/>
+</svg>
+</span></a>
+      </div>
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">Lenovo X140e and (Arch) Linux</h1>
+    <p class="post-meta"><time datetime="2015-01-23T15:43:00+02:00" itemprop="datePublished">Jan 23, 2015</time></p>
+  </header>
+
+  <div class="post-content" itemprop="articleBody">
+    <p>My previous laptop was an Asus that ran Linux beautifully, until, after a few
+years, several pieces of hardware stopped working (first battery, then wifi,
+then monitor). I had heard great things about Lenovo, specifically how nicely
+they play with Linux, so last summer I bought myself a Lenovo X140e. On the
+whole, I’m quite happy with it, but to my surprise (and sadness), it didn’t
+work out of the box like my Asus did. In this post I’ll detail some of the
+issues I had and my workarounds for dealing with them.</p>
+
+<p>The main issues that I’ve managed to solve are:</p>
+
+<ul>
+  <li><a href="#wifi">wifi</a> (Arch-specific solution)</li>
+  <li><a href="#brightness-keys">brightness keys</a></li>
+  <li><a href="#no-insert-key">no insert key</a></li>
+</ul>
+
+<p>There’s one issue that I <em>haven’t</em> manage to solve:</p>
+
+<ul>
+  <li>jittery touchpad, but only while on AC power</li>
+</ul>
+
+<p>Basically, there’s no issue while on battery power; but on AC power, touching
+the touchpad, even without moving your finger around, causes the cursor to jut
+around back and forth really fast. This (annoying) problem has been confirmed
+elsewhere, but I haven’t found a solution to it.</p>
+
+<p>If you have a solution, please email me!</p>
+
+<h2 id="wifi">WiFi</h2>
+
+<p>By far the most serious (but luckily, easiest to solve) issue is the Broadcom
+wifi card BCM43228:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>lspci -vnn | grep Broadcom
+01:00.0 Network controller <span class="o">[</span>0280]: Broadcom Corporation BCM43228 802.11a/b/g/n <span class="o">[</span>14e4:4359]
+
+</code></pre>
+</div>
+
+<p>This card was <a href="http://wireless.kernel.org/en/users/Drivers/b43">not supported</a> under the Linux kernel until kernel version
+3.17. (We’re now on 3.18, as of this writing; when I bought the laptop, we were
+at 3.16.) The workaround for kernels &lt;3.17 is to use the AUR package
+<a href="https://aur.archlinux.org/packages/broadcom-wl/">broadcom-wl</a>. However, even once we arrived at 3.17, I found the native
+support (with the b43 driver and firmware) to be lacking: weak wifi
+connections, constant dropping, etc. So I still use broadcom-wl. Here’s how it
+works.</p>
+
+<p>First, download broadcom-wl with your favorite AUR helper, and install it. For
+example:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>cower -d broadcom-wl
+<span class="gp">$ </span><span class="nb">cd</span> ~/aur/broadcom-wl
+<span class="gp">$ </span>makepkg -csi
+</code></pre>
+</div>
+
+<p>Second, restart computer.</p>
+
+<p>That’s all! Well, almost. Now, every time you update your kernel, you need to
+rebuild and reinstall broadcom-wl. For example:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span><span class="nb">cd</span> ~/aur/broadcom-wl
+<span class="gp">$ </span>makepkg -csif
+</code></pre>
+</div>
+
+<p>The <code class="highlighter-rouge">-f</code> flag forces a rebuild and overwrites the current <code class="highlighter-rouge">.pkg.tar.xz</code> file.</p>
+
+<p>(Another option is to use broadcom-wl-dkms, which automatically rebuilds itself
+after a kernel update.)</p>
+
+<p>(This solution is obviously specific to Arch Linux, but most major distros
+should have some analog of the broadcom-wl package available, which should
+likewise solve the issue.)</p>
+
+<h2 id="brightness-keys">Brightness keys</h2>
+
+<p>You’re supposed to be able to change the brightness with <code class="highlighter-rouge">&lt;Fn-F8&gt;</code> and
+<code class="highlighter-rouge">&lt;Fn-F9&gt;</code> (that is, the function key together with <code class="highlighter-rouge">F8</code> or <code class="highlighter-rouge">F9</code>). For me, this
+works fine in console, but <em>not</em> in X11, where most people (including me) spend
+most of their time. I’ve read that a BIOS upgrade fixes this, but I haven’t
+tried that.</p>
+
+<p>My workaround was to write two simple bash scripts, <code class="highlighter-rouge">brightness-dec</code> and
+<code class="highlighter-rouge">brightness-inc</code>, to decrease and increase the brightness, respectively, and
+bind them to <code class="highlighter-rouge">&lt;Fn-F8&gt;</code> and <code class="highlighter-rouge">&lt;Fn-F9&gt;</code>. You can find them both <a href="https://github.com/brianbuccola/scripts">here</a>.</p>
+
+<p>I’ll illustrate how <code class="highlighter-rouge">brightness-inc</code> works:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="c">#!/bin/bash</span>
+
+<span class="nv">max_brightness</span><span class="o">=</span>255
+<span class="nv">min_brightness</span><span class="o">=</span>5
+<span class="nv">current_brightness</span><span class="o">=</span><span class="k">$(</span>cat /sys/class/backlight/radeon_bl0/brightness<span class="k">)</span>
+<span class="nv">inc_amt</span><span class="o">=</span>20
+<span class="nv">new_brightness</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span> <span class="k">$((</span><span class="nv">$current_brightness</span> <span class="o">+</span> <span class="nv">$inc_amt</span><span class="k">)))</span>
+
+<span class="k">if</span> <span class="o">[[</span> <span class="nv">$new_brightness</span> -gt <span class="nv">$max_brightness</span> <span class="o">]]</span>; <span class="k">then
+  </span><span class="nb">echo</span> <span class="nv">$max_brightness</span> | sudo tee /sys/class/backlight/radeon_bl0/brightness
+<span class="k">elif</span> <span class="o">[[</span> <span class="nv">$new_brightness</span> -lt <span class="nv">$min_brightness</span> <span class="o">]]</span>; <span class="k">then
+  </span><span class="nb">echo</span> <span class="nv">$min_brightness</span> | sudo tee /sys/class/backlight/radeon_bl0/brightness
+<span class="k">else
+  </span><span class="nb">echo</span> <span class="s2">"</span><span class="nv">$new_brightness</span><span class="s2">"</span> | sudo tee /sys/class/backlight/radeon_bl0/brightness
+<span class="k">fi</span>
+</code></pre>
+</div>
+
+<p>The file <code class="highlighter-rouge">/sys/class/backlight/radeon_bl0/brightness</code> contains the current
+brightness level, which for my Lenovo X140e is between 0 and 255. To change the
+brightness, just change this file. The problem is that since it’s located in
+<code class="highlighter-rouge">/sys/...</code>, you need root permission to change it. That means that</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="nb">echo</span> <span class="s2">"100"</span> &gt; /sys/...
+</code></pre>
+</div>
+<p>won’t work, but neither will</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>sudo <span class="nb">echo</span> <span class="s2">"100"</span> &gt; /sys/...
+</code></pre>
+</div>
+
+<p>The reason is because in the latter, <code class="highlighter-rouge">sudo</code> is only operating on the <code class="highlighter-rouge">echo</code>
+command. It’s like saying, run <code class="highlighter-rouge">echo</code> as root, and now (not as root) append the
+output to <code class="highlighter-rouge">/sys/...</code>. To solve this, we use <code class="highlighter-rouge">tee</code>, which allows piping from
+stdin to a file, as root:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="nb">echo</span> <span class="s2">"100"</span> | sudo tee /sys/...
+</code></pre>
+</div>
+
+<p>This command will successfully set the brightness level to 100. That’s the crux
+of the script; the rest should be pretty self-explanatory.</p>
+
+<p>There’s one remaining issue, though: we don’t want to run this script in a
+terminal; we want to bind it to a key. But the script uses <code class="highlighter-rouge">sudo</code>, which
+requires a password to be typed, which you can’t really do outside of a
+terminal. The solution is to allow <code class="highlighter-rouge">tee</code> to be run as root without a password.
+To do this, you need to change the sudoers file by running <code class="highlighter-rouge">visudo</code> (as root)
+and adding this line:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code># Add `tee' to list of commands that user `brian' can run without password
+brian ALL = NOPASSWD: /usr/bin/tee
+</code></pre>
+</div>
+
+<p>What this does is allow the user “brian” (that’s me) to run <code class="highlighter-rouge">tee</code> as root
+(<code class="highlighter-rouge">sudo tee</code>) without a password. <code class="highlighter-rouge">/usr/bin/tee</code> is of course the full path to
+<code class="highlighter-rouge">tee</code>. To find that out on your system, run <code class="highlighter-rouge">which tee</code> in a terminal.</p>
+
+<p>Now the script can be run effectively. Just bind it to a key in whatever way is
+required by your desktop environment or window manager. (For me, I bind keys in
+<code class="highlighter-rouge">xmonad.hs</code> since I use xmonad.)</p>
+
+<h2 id="no-insert-key">No insert key</h2>
+
+<p>The laptop keyboard does not come with any physical <code class="highlighter-rouge">Insert</code> key. I guess
+that’s because most people nowadays don’t use it very often. But I do. One of
+the best features of Linux (well, X11) is the X clipboard: whenever you
+highlight something, it gets added to the X clipboard (no need to <code class="highlighter-rouge">&lt;Ctrl-C&gt;</code>),
+and you can paste it with <code class="highlighter-rouge">&lt;Shift-Insert&gt;</code>. (I also use <code class="highlighter-rouge">Insert</code> to go into
+ignore-mode in <a href="http://www.vimperator.org/vimperator/">Vimperator</a> for Firefox.)</p>
+
+<p>What I did was bind the Windows key (which was serving no purpose) to <code class="highlighter-rouge">Insert</code>.
+Here’s how:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>xmodmap -e <span class="s2">"keycode 133 = Insert"</span>    <span class="c"># map windows button to insert</span>
+</code></pre>
+</div>
+
+<p>You can find the keycode of a key by running <code class="highlighter-rouge">xev</code> (X event program) from a
+terminal, typing the key, and looking for “keycode” in the output. (Hit
+<code class="highlighter-rouge">&lt;Ctrl-C&gt;</code> to exit <code class="highlighter-rouge">xev</code>.)</p>
+
+<p>Now you can run this <code class="highlighter-rouge">xmodmap</code> command in a terminal, and it should work. But
+the best solution is to include it in your <code class="highlighter-rouge">.xinitrc</code> file so that it’s run
+every time X starts. (I have a whole <code class="highlighter-rouge">keyboard-adjust</code> script that adds the
+Dvorak layout, switches caps and control lock, etc., maps the Windows button to
+insert, etc.; I then call the whole script from my <code class="highlighter-rouge">.xinitrc</code> file.)</p>
+
+
+  </div>
+
+</article>
+
+      </div>
+    </div>
+
+    <footer class="site-footer">
+  <div class="wrapper">
+    <div class="footer-wrapper">
+      &copy; Brian Buccola. Powered by <a
+         href="https://jekyllrb.com/">Jekyll</a> and <a
+         href="https://github.com/">GitHub</a>.
+    </div>
+  </div>
+</footer>
+
+
+  </body>
+
+</html>

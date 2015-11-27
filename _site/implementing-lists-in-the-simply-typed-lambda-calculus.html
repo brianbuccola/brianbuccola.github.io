@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link href='http://fonts.googleapis.com/css?family=PT+Serif:400,700,400italic' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'>
+
+  <title>Brian Buccola &middot; Implementing lists in the simply typed lambda calculus</title>
+  <meta name="description" content="One of my goals this summer is to re-read Bob Carpenter’s Type-LogicalGrammar and to actually do (at least some of) the exercises. If I manage tofollow throu...">
+
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="http://brianbuccola.com/implementing-lists-in-the-simply-typed-lambda-calculus">
+  <link rel="alternate" type="application/rss+xml" title="Brian Buccola" href="http://brianbuccola.com/feed.xml">
+
+  <!-- mathjax config similar to math.stackexchange -->
+  <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+
+    <!-- <a class="site-title" href="/">Brian Buccola</a> -->
+
+    <nav class="site-nav">
+      <a href="#" class="menu-icon">
+        <svg viewBox="0 0 18 15">
+          <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+      </a>
+
+      <div class="trigger">
+        <a class="page-link" href="/">Home</a>
+        <a class="page-link" href="/about">About</a>
+        <a class="page-link" href="/news">News</a>
+        <a class="page-link" href="/work">Work</a>
+        <a class="page-link" href="/files/buccola-cv.pdf">CV</a>
+        <a class="page-link" href="/contact">Contact</a>
+        <a class="page-link" href="/blog">Blog</a>
+        <a class="page-link" href="/feed.xml"><span class="icon icon--feed"><?xml version="1.0"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"> 
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="128px" height="128px" id="RSSicon" viewBox="0 0 256 256">
+<defs>
+<linearGradient x1="0.085" y1="0.085" x2="0.915" y2="0.915" id="RSSg">
+<stop  offset="0.0" stop-color="#E3702D"/><stop  offset="0.1071" stop-color="#EA7D31"/>
+<stop  offset="0.3503" stop-color="#F69537"/><stop  offset="0.5" stop-color="#FB9E3A"/>
+<stop  offset="0.7016" stop-color="#EA7C31"/><stop  offset="0.8866" stop-color="#DE642B"/>
+<stop  offset="1.0" stop-color="#D95B29"/>
+</linearGradient>
+</defs>
+<rect width="256" height="256" rx="55" ry="55" x="0"  y="0"  fill="#CC5D15"/>
+<rect width="246" height="246" rx="50" ry="50" x="5"  y="5"  fill="#F49C52"/>
+<rect width="236" height="236" rx="47" ry="47" x="10" y="10" fill="url(#RSSg)"/>
+<circle cx="68" cy="189" r="24" fill="#FFF"/>
+<path d="M160 213h-34a82 82 0 0 0 -82 -82v-34a116 116 0 0 1 116 116z" fill="#FFF"/>
+<path d="M184 213A140 140 0 0 0 44 73 V 38a175 175 0 0 1 175 175z" fill="#FFF"/>
+</svg>
+</span></a>
+      </div>
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">Implementing lists in the simply typed lambda calculus</h1>
+    <p class="post-meta"><time datetime="2013-04-22T11:09:00+03:00" itemprop="datePublished">Apr 22, 2013</time></p>
+  </header>
+
+  <div class="post-content" itemprop="articleBody">
+    <p>One of my goals this summer is to re-read Bob Carpenter’s <em>Type-Logical
+Grammar</em> and to actually do (at least some of) the exercises. If I manage to
+follow through with that goal, I’ll write up my solutions (or attempts at
+solutions) to some of the more interesting or difficult exercises. I’ll start
+that off with the last exercise from Chapter 2, which says to add to the simply
+typed lambda calculus the type <script type="math/tex">\sigma^*</script> for lists of objects of type
+<script type="math/tex">\sigma</script>. First, let me review Chapter 2 to set the stage.</p>
+
+<h2 id="review">Review</h2>
+
+<p>Chapter 2 deals with the syntax, semantics, and proof theory of the simply
+typed lambda calculus. I’ll review here the syntax and semantics, but not the
+proof theory.</p>
+
+<h3 id="syntax">Syntax</h3>
+
+<p>Carpenter builds up the set <script type="math/tex">\mathbf{Typ}</script> of types inductively from a set
+<script type="math/tex">\mathbf{BasTyp}</script> of <em>basic types</em>, using just one type constructor: <script type="math/tex">\to</script>.</p>
+
+<p><strong>Definition (types).</strong> The set of <em>types</em> is the smallest set <script type="math/tex">\mathbf{Typ}</script>
+such that</p>
+
+<ol>
+  <li><script type="math/tex">\mathbf{BasTyp} \subseteq \mathbf{Typ}</script>.</li>
+  <li>If <script type="math/tex">\sigma, \tau \in \mathbf{Typ}</script>, then <script type="math/tex">(\sigma \to \tau) \in
+\mathbf{Typ}</script>.</li>
+</ol>
+
+<p>A type of the form <script type="math/tex">(\sigma \to \tau)</script> is called a <em>functional type</em>.</p>
+
+<p>For each type <script type="math/tex">\tau</script>, there is a set <script type="math/tex">\mathbf{Var}_\tau</script> of variables of
+type <script type="math/tex">\tau</script> and a set <script type="math/tex">\mathbf{Con}_\tau</script> of constants of type <script type="math/tex">\tau</script>.
+The set of lambda terms of type <script type="math/tex">\tau</script> is defined as follows.</p>
+
+<p><strong>Definition (terms).</strong> The set of <em>(lambda) terms</em> of type <script type="math/tex">\tau</script> is the
+smallest set <script type="math/tex">\mathbf{Term}_\tau</script> such that</p>
+
+<ol>
+  <li><script type="math/tex">\mathbf{Var}_\tau \subseteq \mathbf{Term}_\tau</script>.</li>
+  <li><script type="math/tex">\mathbf{Con_\tau} \subseteq \mathbf{Term}_\tau</script>.</li>
+  <li>If <script type="math/tex">\alpha \in \mathbf{Term}_{\sigma \to \tau}</script> and <script type="math/tex">\beta \in
+\mathbf{Term}_\sigma</script>, then <script type="math/tex">(\alpha(\beta)) \in \mathbf{Term}_\tau</script>.</li>
+  <li>If <script type="math/tex">\tau = \sigma \to \rho</script> and <script type="math/tex">x \in \mathbf{Var}_\sigma</script> and <script type="math/tex">\alpha
+\in \mathbf{Term}_\rho</script>, then <script type="math/tex">\lambda x . (\alpha) \in
+\mathbf{Term}_\tau</script>.</li>
+</ol>
+
+<p>A term of the form <script type="math/tex">(\alpha(\beta))</script>, usually abbreviated <script type="math/tex">\alpha(\beta)</script>
+or <script type="math/tex">\alpha\ \beta</script>, is a <em>functional application</em> of <script type="math/tex">\alpha</script> to <script type="math/tex">\beta</script>.
+However, a term <script type="math/tex">\alpha</script> with a functional type <script type="math/tex">(\sigma \to \tau)</script> is not
+a function per se—<script type="math/tex">\alpha(\beta)</script> is (the result of) a <em>syntactic</em>
+operation more akin to term concatenation than functional application.
+Nevertheless, <script type="math/tex">\alpha</script> is called functional (it has a functional type)
+because of how it is <em>interpreted semantically</em> (model theoretically).</p>
+
+<h3 id="semantics">Semantics</h3>
+
+<p>In the model theory, functional terms denote functions in the normal
+mathematical sense. Before defining denotations, I need to define frames and
+models.</p>
+
+<p><strong>Definition (frame).</strong> A <em>frame</em> for the set <script type="math/tex">\mathbf{BasTyp}</script> is a
+collection <script type="math/tex">\mathbf{Dom} = \bigcup\mathbf{Dom}_\tau</script> (<script type="math/tex">\tau \in
+\mathbf{BasTyp}</script>) of <em>basic domains</em>.</p>
+
+<p><strong>Definition (model).</strong> A <em>model</em> is a pair <script type="math/tex">\langle \mathbf{Dom},I \rangle</script>
+in which <script type="math/tex">\mathbf{Dom}</script> is a frame, and <script type="math/tex">I</script> is the <em>interpretation
+function</em> mapping constants to the appropriate domain, i.e. <script type="math/tex">I(\alpha) \in
+\mathbf{Dom}_\tau</script> if <script type="math/tex">\alpha \in \textbf{Con}_\tau</script>.</p>
+
+<p><strong>Definition (denotation).</strong> Given a model <script type="math/tex">\mathcal{M} = \langle
+\textbf{Dom}, I \rangle</script> and a variable assignment <script type="math/tex">\theta</script>, the
+<em>denotation</em> <script type="math/tex">[\![\alpha]\!]^\theta_\mathcal{M}</script> of a term <script type="math/tex">\alpha</script> with
+respect to <script type="math/tex">\mathcal{M}</script> and <script type="math/tex">\theta</script> is given by:</p>
+
+<ol>
+  <li>If <script type="math/tex">\alpha \in \mathbf{Var}_\tau</script>, then
+<script type="math/tex">[\![\alpha]\!]^\theta_\mathcal{M} = \theta(\alpha)</script>.</li>
+  <li>If <script type="math/tex">\alpha \in \mathbf{Con}_\tau</script>, then
+<script type="math/tex">[\![\alpha]\!]^\theta_\mathcal{M} = I(\alpha)</script>.</li>
+  <li><script type="math/tex">[\![\alpha(\beta)]\!]^\theta_\mathcal{M} =
+[\![\alpha]\!]^\theta_\mathcal{M} ([\![\beta]\!]^\theta_\mathcal{M}]\!])</script>,
+assuming <script type="math/tex">\alpha</script> and <script type="math/tex">\beta</script> are appropriately typed.</li>
+  <li><script type="math/tex">[\![\lambda x . \alpha]\!]^\theta_\mathcal{M} = f</script> such that <script type="math/tex">f(a) =
+[\![\alpha]\!]^{\theta[x:=a]}_\mathcal{M}</script>, where <script type="math/tex">\theta[x:=a]</script> is that
+variable assignment <script type="math/tex">\theta'</script> such that <script type="math/tex">\theta'(x) = a</script> and
+<script type="math/tex">\theta'(y) = \theta(y)</script> for each <script type="math/tex">y \neq x</script>.</li>
+</ol>
+
+<p>Note that the left-hand side of the equality statement in (3) involves term
+concatenation (function<em>al</em> application), whereas the right-hand side involves
+real function application in the strict sense.</p>
+
+<p>In other words, <script type="math/tex">\alpha</script> of type <script type="math/tex">(\sigma \to \tau)</script> is a lambda term whose
+denotation is a function that maps (elements of the domain of) <script type="math/tex">\sigma</script>-type
+things to (elements of the domain of) <script type="math/tex">\tau</script>-type things.</p>
+
+<p>Carpenter goes on to give the usual axioms for the simply typed lamda calculus
+(<script type="math/tex">\alpha</script>-, <script type="math/tex">\beta</script>-, and <script type="math/tex">\eta</script>-reduction schemata) and the usual rules
+of inference (reflexivity, transitivity, congruence, and equivalence) and to
+prove that the resulting system is both sound and complete.</p>
+
+<h3 id="product-and-sum-types">Product and Sum Types</h3>
+
+<p>The latter part of the chapter adds product and sum types to the system.
+Product types allow functional terms to take multiple arguments at one time (in
+a certain sense), while sum types introduce functional terms that can act
+polymorphically.</p>
+
+<h2 id="exercise-list-types">Exercise: List Types</h2>
+
+<p>Let me now turn to the actual exercise.</p>
+
+<blockquote>
+  <p>Consider adding <script type="math/tex">\sigma^*</script> for lists of objects of type <script type="math/tex">\sigma</script>. What
+would the terms look like in this scheme and how are they interpreted and
+treated proof-theoretically? Is there any gain in expressive power by
+admitting arbitrary lists? What might we do to interpret infinite sequences?</p>
+</blockquote>
+
+<p>In this post, I’ll only address the first two questions: what do list terms
+look like, and how are they interpreted. For my answer, I’ll be borrowing from
+the functional programming language Haskell.</p>
+
+<h3 id="lists-in-haskell">Lists in Haskell</h3>
+
+<p>In Haskell, lists are things like <code class="highlighter-rouge">[3, 5, 0]</code>, <code class="highlighter-rouge">["hello", "world"]</code>, etc. The
+order of list elements is important, and list elements can repeat. In that
+sense, lists are more like tuples (sequences) than sets, except that whereas a
+tuple (both in Haskell and in Carpenter’s section on product types) can contain
+objects of all different types, list elements must all be of the <em>same</em> type.
+For example, in Haskell, <code class="highlighter-rouge">(3, "hello")</code> is a possible pair, consisting of an
+integer and a string, but <code class="highlighter-rouge">[3, "hello"]</code> is not a possible list.</p>
+
+<p>In Haskell, the list type is written as <code class="highlighter-rouge">[a]</code>, where <code class="highlighter-rouge">a</code> is any type. For
+example, <code class="highlighter-rouge">[3, 5, 0]</code> has type <code class="highlighter-rouge">[Int]</code>, while <code class="highlighter-rouge">["hello", "world"]</code> has type
+<code class="highlighter-rouge">[String]</code>. (NB: In Haskell a string is itself a list of characters, i.e.
+<code class="highlighter-rouge">String</code> is just a type synonym for <code class="highlighter-rouge">[Char]</code>.)</p>
+
+<p>Note that Haskell overloads the symbols <code class="highlighter-rouge">[]</code>: they are used to construct both
+terms (Haskell expressions) and types.</p>
+
+<p>I’ll follow Haskell’s lead by writing <script type="math/tex">[\sigma]</script> instead of Carpenter’s
+<script type="math/tex">\sigma^*</script> for the type of lists containing <script type="math/tex">\sigma</script>-type objects, and I’ll
+similarly overload the symbols <script type="math/tex">[\ ]</script>.</p>
+
+<h3 id="syntax-1">Syntax</h3>
+
+<p>I begin by adding <script type="math/tex">[\sigma]</script> to <script type="math/tex">\mathbf{Typ}</script>. I do so by adding the
+following clause to the definition of types:</p>
+
+<ol>
+  <li>If <script type="math/tex">\sigma \in \mathbf{Typ}</script>, then <script type="math/tex">[\sigma] \in \mathbf{Typ}</script>.</li>
+</ol>
+
+<p>So <script type="math/tex">[\ ]</script> is a unary type constructor (it takes a single type and returns a
+new type), whereas <script type="math/tex">\to</script> is a binary type constructor (it takes two types and
+returns a new type).</p>
+
+<p>As for terms, I assume that for each list type <script type="math/tex">\tau = [\sigma]</script> there is a
+set <script type="math/tex">\mathbf{Var}_\tau</script> of variables of type <script type="math/tex">\tau</script> and a set
+<script type="math/tex">\mathbf{Con}_\tau</script> of constants of type <script type="math/tex">\tau</script>. We now need a way to
+construct arbitrary list terms (similar to how abstraction lets us construct
+functional terms).</p>
+
+<h4 id="haskell-detour">Haskell Detour</h4>
+
+<p>In Haskell, there are two list constructors: <code class="highlighter-rouge">[]</code>, or <em>nil</em> (the empty list),
+and <code class="highlighter-rouge">(:)</code>, or <em>cons</em>. The cons operator has the following type signature:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="p">(</span><span class="o">:</span><span class="p">)</span> <span class="o">::</span> <span class="n">a</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="n">a</span><span class="p">]</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="n">a</span><span class="p">]</span>
+</code></pre>
+</div>
+
+<p>This means it takes something of type <code class="highlighter-rouge">a</code> and something of type <code class="highlighter-rouge">[a]</code> and
+returns something of type <code class="highlighter-rouge">[a]</code>. More precisely, it takes an <code class="highlighter-rouge">a</code>-type
+object—call it <code class="highlighter-rouge">x</code>— and a list of <code class="highlighter-rouge">a</code>-type objects—call it <code class="highlighter-rouge">list</code>—and
+it returns a new list, <code class="highlighter-rouge">list'</code>, whose elements are <code class="highlighter-rouge">x</code> followed by the elements
+of <code class="highlighter-rouge">list</code>. In other words, cons prepends its first argument (an object of type
+<code class="highlighter-rouge">a</code>) to the beginning of its second argument (a list of objects of type <code class="highlighter-rouge">a</code>).
+(Of course, in Haskell a pure function always returns a new object; it doesn’t
+modify objects given as arguments, so cons does not <em>literally</em> prepend
+anything to a given list, unlike, say, <code class="highlighter-rouge">list.insert(0, x)</code> in Python.)</p>
+
+<p>For example, to construct a list of integers (objects of type <code class="highlighter-rouge">Int</code>), we start
+with <code class="highlighter-rouge">[]</code> of type <code class="highlighter-rouge">[Int]</code>, and using <code class="highlighter-rouge">(:)</code> we add to the front of <code class="highlighter-rouge">[]</code> an
+integer like <code class="highlighter-rouge">0</code> to obtain <code class="highlighter-rouge">(:) 0 []</code>, or using infix notation, <code class="highlighter-rouge">0 : []</code>. The
+result is of type <code class="highlighter-rouge">[Int]</code> and is normally written as <code class="highlighter-rouge">[0]</code>, which hides the
+cons operator. From <code class="highlighter-rouge">[0]</code> we can obtain <code class="highlighter-rouge">5 : [0]</code>, written <code class="highlighter-rouge">[5, 0]</code>, and from
+that we can obtain <code class="highlighter-rouge">3 : [5, 0]</code>, or <code class="highlighter-rouge">[3, 5, 0]</code>, and so on.</p>
+
+<p>More generally, <code class="highlighter-rouge">[x1, x2, ..., xN]</code> is syntactic sugar for <code class="highlighter-rouge">x1 : ( x2 : ( ... (
+xN : [] ) ... ) )</code>.</p>
+
+<h4 id="back-to-terms">Back to Terms</h4>
+
+<p>Returning to our lambda terms, we want, for each type <script type="math/tex">\sigma</script>, a nil term
+<script type="math/tex">[\ ]</script> of type <script type="math/tex">[\sigma]</script>, and a term constructor for adding an object of
+type <script type="math/tex">\sigma</script> to a list of type <script type="math/tex">[\sigma]</script> to produce a new such list. I do
+so by adding the following clauses to the definition of the set
+<script type="math/tex">\mathbf{Term}_\tau</script> of terms of type <script type="math/tex">\tau</script>.</p>
+
+<ol>
+  <li>If <script type="math/tex">\tau = [\sigma]</script>, then <script type="math/tex">[\ ] \in \mathbf{Term}_\tau</script>.</li>
+  <li>If <script type="math/tex">\tau = [\sigma]</script> and <script type="math/tex">\alpha \in \mathbf{Term}_\sigma</script> and <script type="math/tex">\beta
+\in \mathbf{Term}_\tau</script>, then <script type="math/tex">(\alpha : \beta) \in \mathbf{Term}_\tau</script>.</li>
+</ol>
+
+<p>Like functional application, <script type="math/tex">:</script> is a binary term contructor: it takes two
+terms to produce a new term.</p>
+
+<p>Following Haskell, I make the following conventions:</p>
+
+<ul>
+  <li><script type="math/tex">[\alpha] =_\mbox{def} (\alpha : [\ ])</script>.</li>
+  <li><script type="math/tex">[\alpha, \beta, \dots] =_\mbox{def} (\alpha : [\beta, \dots])</script>.</li>
+</ul>
+
+<p>The latter schema can be applied recursively for any list of arbitrary length.
+For example</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{align}
+[3, 5, 0] &= (3 : [5, 0])           \\
+          &= (3 : (5 : [0]))        \\
+          &= (3 : (5 : (0 : [\ ])))
+\end{align} %]]></script>
+
+<p>Since there is a one-to-one correspondence between <script type="math/tex">[\alpha, \beta, \dots,
+\gamma]</script>-looking things and <script type="math/tex">(\alpha : (\beta : (\dots (\gamma : [\ ])
+\dots)))</script>-looking things, one might wonder if we can instead reformulate (6)
+as follows (in two steps).</p>
+
+<ol>
+  <li>If <script type="math/tex">\tau = [\sigma]</script> and <script type="math/tex">\alpha \in \mathbf{Term}_\sigma</script>, then
+<script type="math/tex">[\alpha] \in \mathbf{Term}_\tau</script>.</li>
+  <li>If <script type="math/tex">\tau = [\sigma]</script> and <script type="math/tex">\alpha \in \mathbf{Term}_\sigma</script> and <script type="math/tex">[\beta]
+\in \mathbf{Term}_\tau</script>, then <script type="math/tex">[\alpha, \beta] \in \mathbf{Term}_\tau</script>.</li>
+</ol>
+
+<p>(In other words, we can construct a singleton list from a single object, and a
+2-element list from two objects.)</p>
+
+<p>The problem is that (7) cannot be applied recursively. For example, from <script type="math/tex">0</script>
+we can obtain <script type="math/tex">[0]</script> by appyling (6), and from <script type="math/tex">5</script> and <script type="math/tex">[0]</script> we can obtain
+<script type="math/tex">[5,0]</script> by applying (7). But we cannot apply (7) to, say, <script type="math/tex">3</script> and <script type="math/tex">[5,0]</script>
+to obtain <script type="math/tex">[3,5,0]</script> because, although <script type="math/tex">[5,0]</script> is of type <script type="math/tex">[\sigma]</script>,
+<script type="math/tex">5,0</script> is not a term of any kind, let alone one of type <script type="math/tex">\sigma</script>.</p>
+
+<p>For this reason, and for the sake of making cons explicit, I’ll stick with the
+first formulation of (6) above.</p>
+
+<h3 id="semantics-1">Semantics</h3>
+
+<p>Now that I’ve added list types and list terms to the syntax, I need to add
+their denotations to the model theory, and this is where I’m a bit stuck,
+primarily because there are several options and I don’t know which is
+best/normal, or which one Carpenter has in mind.</p>
+
+<p>If <script type="math/tex">\alpha</script> is of a list type, say <script type="math/tex">[\sigma]</script>, then the denotation of
+<script type="math/tex">\alpha</script> is in <script type="math/tex">\mathbf{Dom}_{[\sigma]}</script>, but what precisely is the
+structure of <script type="math/tex">\mathbf{Dom}_{[\sigma]}</script>?</p>
+
+<p>For example, functional terms denote functions, so the denotation of <script type="math/tex">\alpha</script>
+of type <script type="math/tex">(\sigma \to \tau)</script> is a member of
+<script type="math/tex">\mathbf{Dom}_{\tau}^{\mathbf{Dom}_\sigma}</script>, i.e.  a function from
+<script type="math/tex">\mathbf{Dom}_\sigma</script> to <script type="math/tex">\mathbf{Dom}_\tau</script>. Product terms denote pairs
+(and more generally, tuples), so the denotation of <script type="math/tex">\langle \alpha, \beta
+\rangle</script> of type <script type="math/tex">\sigma \times \tau</script> is a member of <script type="math/tex">\mathbf{Dom}_\sigma
+\times \mathbf{Dom}_\tau</script>. But what does/should a list <script type="math/tex">\alpha</script> of type
+<script type="math/tex">[\sigma]</script> denote, set theoretically? A flat set, i.e. a member of the power
+set of <script type="math/tex">\mathbf{Dom}_\sigma</script>?  Probably not, because sets don’t care about
+order or repetition, whereas lists (as I’ve defined them) do. What about
+tuples, i.e. members of <script type="math/tex">\mathbf{Dom}_\sigma \times \dots \times
+\mathbf{Dom}_\sigma</script>? Maybe, but product terms already do that. Something
+else?  I’m not sure.</p>
+
+<p>A concrete example might help decide. Suppose we have the type <script type="math/tex">\mathbf{Ind}</script>
+for individuals and that <script type="math/tex">\mathbf{john}, \mathbf{bill}, \mathbf{sue} \in
+\mathbf{Term}_\mathbf{Ind}</script>. Then we can create a list of these individuals,
+<script type="math/tex">[\mathbf{john}, \mathbf{bill}, \mathbf{sue}]</script>, which is of type
+<script type="math/tex">[\mathbf{Ind}]</script>. Suppose also that in some model <script type="math/tex">\mathcal{M}</script>,
+<script type="math/tex">\mathbf{john}</script> denotes <script type="math/tex">j</script>, <script type="math/tex">\mathbf{bill}</script> denotes <script type="math/tex">b</script>, and
+<script type="math/tex">\mathbf{sue}</script> denotes <script type="math/tex">s</script>, where <script type="math/tex">j,b,s \in \mathbf{Dom}_\mathbf{Ind}</script>.
+Then what should the list of these three individuals denote? Probably <em>not</em> the
+flat set <script type="math/tex">\{j,b,s\} \in \mbox{Pow}(\mathbf{Dom}_\mathbf{Ind})</script>, because then
+<script type="math/tex">[\mathbf{john}, \mathbf{bill}, \mathbf{sue}]</script> and <script type="math/tex">[\mathbf{bill},
+\mathbf{john}, \mathbf{sue}]</script> and <script type="math/tex">[\mathbf{john}, \mathbf{bill},
+\mathbf{bill}, \mathbf{sue}]</script> would all denote the same set (at least if we
+apply the most obvious denotation mapping), which is probably undesirable. One
+reason for introducing lists in the first place is, I assume, so they can serve
+as meaning representations for natural language expressions that care about
+order and repetition.</p>
+
+<p>Assuming, then, that we want these three lists to denote different things, the
+only reasonable possibility I can think of is to map lists to tuples. For
+example, <script type="math/tex">[\mathbf{john}, \mathbf{bill}, \mathbf{sue}]</script> will denote <script type="math/tex">\langle
+j,b,s \rangle</script>, which is an element of <script type="math/tex">\mathbf{Ind} \times \mathbf{Ind}
+\times \mathbf{Ind}</script>. In this way, list terms are essentially like product
+terms, but with two main differences: (i) both products and lists denote
+tuples, but lists are composed of objects of the <em>same</em> type, meaning that the
+tuples they denote will contain objects from the <em>same</em> domain; and (ii) empty
+and singleton lists are possible, whereas empty and singleton tuples are in
+general (at least for Carpenter) not, as far as I can tell.</p>
+
+<p>The following clauses get added to the definition of denotation.</p>
+
+<ol>
+  <li>If <script type="math/tex">\tau = [\sigma]</script> and <script type="math/tex">\alpha = [\ ] \in \mathbf{Term}_\tau</script>, then
+<script type="math/tex">[\![\alpha]\!]^\theta_\mathcal{M} = \emptyset</script>.</li>
+  <li><script type="math/tex">[\![(\alpha : \beta)]\!]^\theta_\mathcal{M} = \langle
+[\![\alpha]\!]^\theta_\mathcal{M}, [\![\beta]\!]^\theta_\beta \rangle</script>,
+assuming <script type="math/tex">\alpha</script> and <script type="math/tex">\beta</script> are appropriately typed.</li>
+</ol>
+
+<p>Continuing the example above, <script type="math/tex">[\mathbf{john}] = (\mathbf{john} : [\ ])</script>
+denotes <script type="math/tex">\langle j, \emptyset \rangle \in \mathbf{Dom}_\mathbf{[Ind]}</script>. And
+<script type="math/tex">[\mathbf{john}, \mathbf{bill}, \mathbf{sue}]</script> denotes <script type="math/tex">\langle j, \langle
+b, \langle s,\emptyset \rangle \rangle \rangle \in
+\mathbf{Dom}_\mathbf{[Ind]}</script>. Rewriting tuples in the usual way (analogous to
+lists above), where <script type="math/tex">\langle a,b,c, \dots \rangle =_\mbox{def} \langle a,
+\langle b,c, \dots \rangle \rangle</script>, the latter denotation becomes <script type="math/tex">\langle
+j,b,s,\emptyset \rangle</script>.</p>
+
+<p>So what is the structure of <script type="math/tex">\mathbf{Dom}_\mathbf{[Ind]}</script>? It’s a set whose
+members are tuples, of varying size, consisting of individuals (except the last
+tuple member, which is always <script type="math/tex">\emptyset</script> except in the case of the empty
+tuple).</p>
+
+<p>More generally, <script type="math/tex">\mathbf{Dom}_{[\sigma]}</script> is a set whose members are tuples,
+of varying size, consisting of elements from <script type="math/tex">\mathbf{Dom}_\sigma</script>.</p>
+
+<p>This is different from the case of products: the domain of intepretation for,
+say, a pair of terms <script type="math/tex">\langle \alpha,\beta \rangle</script> is <script type="math/tex">\mathbf{Dom}_\sigma
+\times \mathbf{Dom}_\tau</script>, which contains only pairs, not tuples of any other
+size; and the domain of interpretation for, say, a triple of terms <script type="math/tex">\langle
+\alpha,\beta,\gamma \rangle</script> is <script type="math/tex">\mathbf{Dom}_\sigma \times \mathbf{Dom}_\tau
+\times \mathbf{Dom}_\rho</script>, which contains only triples, not tuples of any
+other size. Hence, whereas, say, <script type="math/tex">[\alpha, \beta]</script> and <script type="math/tex">[\alpha, \beta,
+\gamma]</script> have denotations in the same domain, <script type="math/tex">\langle \alpha,\beta \rangle</script>
+and <script type="math/tex">\langle \alpha,\beta,\gamma \rangle</script> do not.</p>
+
+<p>I’ll conclude by mentioning that it’s kind of weird to use <script type="math/tex">\emptyset</script> in the
+denotation of lists, but this is necessary because the denotation function is a
+total function, and since the empty list, <script type="math/tex">[\ ]</script>, is a term, it requires a
+denotation. If <script type="math/tex">[\ ]</script> is of type <script type="math/tex">[\sigma]</script>, it doesn’t make sense for its
+denotation to include anything from <script type="math/tex">\mathbf{Dom}_\sigma</script>, so we’re stuck
+with having it denote something like <script type="math/tex">\emptyset</script>.</p>
+
+<p>One way to avoid this would be to redefine lists: empty lists are simply not
+possible terms (objects). The smallest list would then be a singleton list,
+which would denote a <script type="math/tex">1</script>-tuple, so <script type="math/tex">[\mathbf{john}]</script> would denote <script type="math/tex">\langle
+j \rangle</script> rather than <script type="math/tex">\langle j,\emptyset \rangle</script>, and <script type="math/tex">[\mathbf{john},
+\mathbf{bill}, \mathbf{sue}]</script> would denote <script type="math/tex">\langle j,b,s \rangle</script> rather
+than <script type="math/tex">\langle j,b,s,\emptyset \rangle</script>.</p>
+
+  </div>
+
+</article>
+
+      </div>
+    </div>
+
+    <footer class="site-footer">
+  <div class="wrapper">
+    <div class="footer-wrapper">
+      &copy; Brian Buccola. Powered by <a
+         href="https://jekyllrb.com/">Jekyll</a> and <a
+         href="https://github.com/">GitHub</a>.
+    </div>
+  </div>
+</footer>
+
+
+  </body>
+
+</html>

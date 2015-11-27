@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link href='http://fonts.googleapis.com/css?family=PT+Serif:400,700,400italic' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'>
+
+  <title>Brian Buccola &middot; Vim and unicode keybindings: math, IPA, and more</title>
+  <meta name="description" content="I recently stumbled on the.vimrc ofconnermcd and noticed that he has an extensivelist of keybindings for inputting Greek and math unicode characters. Forexam...">
+
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="http://brianbuccola.com/vim-and-unicode-keybindings-math-ipa-and-more">
+  <link rel="alternate" type="application/rss+xml" title="Brian Buccola" href="http://brianbuccola.com/feed.xml">
+
+  <!-- mathjax config similar to math.stackexchange -->
+  <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+
+    <!-- <a class="site-title" href="/">Brian Buccola</a> -->
+
+    <nav class="site-nav">
+      <a href="#" class="menu-icon">
+        <svg viewBox="0 0 18 15">
+          <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+      </a>
+
+      <div class="trigger">
+        <a class="page-link" href="/">Home</a>
+        <a class="page-link" href="/about">About</a>
+        <a class="page-link" href="/news">News</a>
+        <a class="page-link" href="/work">Work</a>
+        <a class="page-link" href="/files/buccola-cv.pdf">CV</a>
+        <a class="page-link" href="/contact">Contact</a>
+        <a class="page-link" href="/blog">Blog</a>
+        <a class="page-link" href="/feed.xml"><span class="icon icon--feed"><?xml version="1.0"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"> 
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="128px" height="128px" id="RSSicon" viewBox="0 0 256 256">
+<defs>
+<linearGradient x1="0.085" y1="0.085" x2="0.915" y2="0.915" id="RSSg">
+<stop  offset="0.0" stop-color="#E3702D"/><stop  offset="0.1071" stop-color="#EA7D31"/>
+<stop  offset="0.3503" stop-color="#F69537"/><stop  offset="0.5" stop-color="#FB9E3A"/>
+<stop  offset="0.7016" stop-color="#EA7C31"/><stop  offset="0.8866" stop-color="#DE642B"/>
+<stop  offset="1.0" stop-color="#D95B29"/>
+</linearGradient>
+</defs>
+<rect width="256" height="256" rx="55" ry="55" x="0"  y="0"  fill="#CC5D15"/>
+<rect width="246" height="246" rx="50" ry="50" x="5"  y="5"  fill="#F49C52"/>
+<rect width="236" height="236" rx="47" ry="47" x="10" y="10" fill="url(#RSSg)"/>
+<circle cx="68" cy="189" r="24" fill="#FFF"/>
+<path d="M160 213h-34a82 82 0 0 0 -82 -82v-34a116 116 0 0 1 116 116z" fill="#FFF"/>
+<path d="M184 213A140 140 0 0 0 44 73 V 38a175 175 0 0 1 175 175z" fill="#FFF"/>
+</svg>
+</span></a>
+      </div>
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">Vim and unicode keybindings: math, IPA, and more</h1>
+    <p class="post-meta"><time datetime="2013-11-14T08:54:00+02:00" itemprop="datePublished">Nov 14, 2013</time></p>
+  </header>
+
+  <div class="post-content" itemprop="articleBody">
+    <p>I recently stumbled on the
+<a href="https://github.com/connermcd/dotfiles/blob/github/.vimrc">.vimrc</a> of
+<a href="https://github.com/connermcd">connermcd</a> and noticed that he has an extensive
+list of keybindings for inputting Greek and math unicode characters. For
+example, given the mapping</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>map<span class="p">!</span> <span class="p">&lt;</span>C<span class="p">-</span><span class="k">v</span><span class="p">&gt;!=</span> ≠
+</code></pre>
+</div>
+
+<p>then to input “≠”, just type <code class="highlighter-rouge">&lt;C-v&gt;!=</code>. This is incredibly useful for anyone
+who uses vim to take notes involving mathy things.  Compare:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>a &gt;= b &amp; b &gt;= c -&gt; a &gt;= c # ascii only
+
+a ≥ b ∧ b ≥ c → a ≥ c # nice unicode
+</code></pre>
+</div>
+
+<p>The second line is, I think, much cleaner looking and more legible than the
+first, and only takes a couple extra keystrokes to type out, once you’ve set up
+the appropriate mappings.</p>
+
+<p>For example, I’m currently writing this post in vim, and if I have the
+following mappings</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>map<span class="p">!</span> <span class="p">&lt;</span>C<span class="p">-</span><span class="k">v</span><span class="p">&gt;</span>fa ∀
+map<span class="p">!</span> <span class="p">&lt;</span>C<span class="p">-</span><span class="k">v</span><span class="p">&gt;</span><span class="k">ex</span> ∃
+map<span class="p">!</span> <span class="p">&lt;</span>C<span class="p">-</span><span class="k">v</span><span class="p">&gt;!=</span> ≠
+map<span class="p">!</span> <span class="p">&lt;</span>C<span class="p">-</span><span class="k">v</span><span class="p">&gt;-&gt;</span> →
+map<span class="p">!</span> <span class="p">&lt;</span>C<span class="p">-</span><span class="k">v</span><span class="p">&gt;</span>&amp; ∧
+</code></pre>
+</div>
+
+<p>then I can easily type out a formula of predicate logic in unicode, which comes
+out like this:</p>
+
+<p>∀x∃y[x ≠ y → Px ∧ Ry]</p>
+
+<p>Of course, on this blog I could also write such a formula in <script type="math/tex">\LaTeX{}</script>,
+which comes out like this:</p>
+
+<p><script type="math/tex">\forall x \exists y [x \neq y \to Px \land Ry]</script></p>
+
+<p>I think in general the <script type="math/tex">\LaTeX{}</script> version probably looks nicer than the
+unicode version on websites like this, but there are some benefits to using
+unicode:</p>
+
+<ol>
+  <li>Unicode doesn’t need to be rendered by a conversion engine such as Mathjax;
+it just works.</li>
+  <li>
+    <p>Unicode is much more legible in source code (e.g., the markdown version of
+this blog post) than <script type="math/tex">\LaTeX{}</script>. Compare:</p>
+
+    <p><code class="highlighter-rouge">∀x∃y[x ≠ y → Px ∧ Ry]</code></p>
+
+    <p><code class="highlighter-rouge">$\forall x \exists y [x \neq y \to Px \land Ry]$</code></p>
+  </li>
+  <li>If you use vim to write emails (e.g. with mutt), or forum posts (e.g. with
+vimperator for Firefox), etc., then you’ll usually want to use unicode,
+since most email clients and forums cannot render <script type="math/tex">\LaTeX{}</script>.</li>
+  <li>There are lots of unicode characters which you can’t write in <script type="math/tex">\LaTeX{}</script>
+and/or which Mathjax and other engines can’t handle, such as IPA symbols,
+which I find myself needing to type relatively often.</li>
+</ol>
+
+<p>For example, if I’m emailing a student or writing a forum post about the
+transcription of the word “ring”, I would usually go a site like
+<a href="http://westonruter.github.io/ipa-chart/keyboard/">this</a>, click-type the
+transcription, copy it, then paste it—sort of time-consuming. Plus, if I’m
+not connected to the internet, then I can’t use this method at all. But if I
+have the following mappings in my <code class="highlighter-rouge">.vimrc</code></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>map<span class="p">!</span> <span class="p">&lt;</span>C<span class="p">-</span><span class="k">v</span><span class="p">&gt;</span>I ɪ
+map<span class="p">!</span> <span class="p">&lt;</span>C<span class="p">-</span><span class="k">v</span><span class="p">&gt;</span>N ŋ
+map<span class="p">!</span> <span class="p">&lt;</span>C<span class="p">-</span><span class="k">v</span><span class="p">&gt;</span><span class="k">r</span> ɹ
+</code></pre>
+</div>
+
+<p>then all I do is type</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>"Ring" is transcribed: [&lt;C-v&gt;r&lt;C-v&gt;I&lt;C-v&gt;N].
+</code></pre>
+</div>
+
+<p>which becomes</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>"Ring" is transcribed: [ɹɪŋ].
+</code></pre>
+</div>
+
+<p>By the way, you don’t <em>need</em> the <code class="highlighter-rouge">&lt;C-v&gt;</code> prefix, but that’s useful to group
+these bindings together, and to not override other keys. For example, you could
+do</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>map<span class="p">!</span> N ŋ
+</code></pre>
+</div>
+
+<p>but then any time you pressed <code class="highlighter-rouge">N</code>, <code class="highlighter-rouge">ŋ</code> would appear, making it very difficult
+to ever type <code class="highlighter-rouge">N</code>.</p>
+
+<p><code class="highlighter-rouge">&lt;C-v&gt;</code> makes sense as a prefix because it’s what you press to type a unicode
+character manually: for example, <code class="highlighter-rouge">&lt;C-v&gt;u2203</code> comes out as ∃, because the
+unicode encoding for that character is U+2203.</p>
+
+<p>Anyway, to close this out, I’ve put some useful mappings below. If you want
+more ideas about what to map, check out the Wikipedia page <a href="https://en.wikibooks.org/wiki/Unicode/List_of_useful_symbols">Unicode/List of
+Useful Symbols</a>,
+which has a ton of math, science, music, etc. characters, all of which could be
+handily mapped to in your <code class="highlighter-rouge">.vimrc</code>. ♫♫ cool! ♪♩♪</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>
+<span class="c">" Greek {{{</span>
+<span class="c">" (thanks to connermcd for these)</span>
+map<span class="p">!</span> <span class="p">&lt;</span>C<span class="p">-</span><span class="k">v</span><span class="p">&gt;</span>GA Γ
+map<span class="p">!</span> <span class="p">&lt;</span>C<span class="p">-</span><span class="k">v</span><span class="p">&gt;</span>DE Δ
+map<span class="p">!</span> <span class="p">&lt;</span>C<span class="p">-</span><span class="k">v</span><span class="p">&gt;</span>TH Θ
+map<span class="p">!</span> <span class="p">&lt;</span>C<span class="p">-</span><span class="k">v</span><span class="p">&gt;</span>LA Λ
+map<span class="p">!</span> <span class="p">&lt;</span>C<span class="p">-</span><span class="k">v</span><span class="p">&gt;</span>XI Ξ
+map<span class="p">!</span> <span class="p">&lt;</span>C<span class="p">-</span><span class="k">v</span><span class="p">&gt;</span>PI Π
+map<span class="p">!</span> <span class="p">&lt;</span>C<span class="p">-</span><span class="k">v</span><span class="p">&gt;</span>SI Σ
+map<span class="p">!</span> <span class="p">&lt;</span>C<span class="p">-</span><span class="k">v</span><span class="p">&gt;</span>PH Φ
+map<span class="p">!</span> <span class="p">&lt;</span>C<span class="p">-</span><span class="k">v</span><span class="p">&gt;</span>PS Ψ
+map<span class="p">!</span> <span class="p">&lt;</span>C<span class="p">-</span><span class="k">v</span><span class="p">&gt;</span>OM Ω
+map<span class="p">!</span> <span class="p">&lt;</span>C<span class="p">-</span><span class="k">v</span><span class="p">&gt;</span><span class="k">al</span> α
+map<span class="p">!</span> <span class="p">&lt;</span>C<span class="p">-</span><span class="k">v</span><span class="p">&gt;</span>be β
+map<span class="p">!</span> <span class="p">&lt;</span>C<span class="p">-</span><span class="k">v</span><span class="p">&gt;</span>ga γ
+map<span class="p">!</span> <span class="p">&lt;</span>C<span class="p">-</span><span class="k">v</span><span class="p">&gt;</span><span class="k">de</span> δ
+map<span class="p">!</span> <span class="p">&lt;</span>C<span class="p">-</span><span class="k">v</span><span class="p">&gt;</span>ep ε
+map<span class="p">!</span> <span class="p">&lt;</span>C<span class="p">-</span><span class="k">v</span><span class="p">&gt;</span>ze ζ
+map<span class="p">!</span> <span class="p">&lt;</span>C<span class="p">-</span><span class="k">v</span><span class="p">&gt;</span>et η
+map<span class="p">!</span> <span class="p">&lt;</span>C<span class="p">-</span><span class="k">v</span><span class="p">&gt;</span><span class="k">th</span> θ
+map<span class="p">!</span> <span class="p">&lt;</span>C<span class="p">-</span><span class="k">v</span><span class="p">&gt;</span>io ι
+map<span class="p">!</span> <span class="p">&lt;</span>C<span class="p">-</span><span class="k">v</span><span class="p">&gt;</span>ka κ
+map<span class="p">!</span> <span class="p">&lt;</span>C<span class="p">-</span><span class="k">v</span><span class="p">&gt;</span><span class="k">la</span> λ
+map<span class="p">!</span> <span class="p">&lt;</span>C<span class="p">-</span><span class="k">v</span><span class="p">&gt;</span>mu μ
+map<span class="p">!</span> <span class="p">&lt;</span>C<span class="p">-</span><span class="k">v</span><span class="p">&gt;</span>xi ξ
+map<span class="p">!</span> <span class="p">&lt;</span>C<span class="p">-</span><span class="k">v</span><span class="p">&gt;</span>pi π
+map<span class="p">!</span> <span class="p">&lt;</span>C<span class="p">-</span><span class="k">v</span><span class="p">&gt;</span>rh ρ
+map<span class="p">!</span> <span class="p">&lt;</span>C<span class="p">-</span><span class="k">v</span><span class="p">&gt;</span><span class="k">si</span> σ
+map<span class="p">!</span> <span class="p">&lt;</span>C<span class="p">-</span><span class="k">v</span><span class="p">&gt;</span><span class="k">ta</span> τ
+map<span class="p">!</span> <span class="p">&lt;</span>C<span class="p">-</span><span class="k">v</span><span class="p">&gt;</span><span class="k">ps</span> ψ
+map<span class="p">!</span> <span class="p">&lt;</span>C<span class="p">-</span><span class="k">v</span><span class="p">&gt;</span>om ω
+map<span class="p">!</span> <span class="p">&lt;</span>C<span class="p">-</span><span class="k">v</span><span class="p">&gt;</span>ph ϕ
+<span class="c">" }}}</span>
+<span class="c">" Math {{{</span>
+map<span class="p">!</span> <span class="p">&lt;</span>C<span class="p">-</span><span class="k">v</span><span class="p">&gt;-&gt;</span> →
+map<span class="p">!</span> <span class="p">&lt;</span>C<span class="p">-</span><span class="k">v</span><span class="p">&gt;&lt;</span> ⇌
+map<span class="p">!</span> <span class="p">&lt;</span>C<span class="p">-</span><span class="k">v</span><span class="p">&gt;</span><span class="k">n</span> ↑
+map<span class="p">!</span> <span class="p">&lt;</span>C<span class="p">-</span><span class="k">v</span><span class="p">&gt;</span><span class="k">v</span> ↓
+map<span class="p">!</span> <span class="p">&lt;</span>C<span class="p">-</span><span class="k">v</span><span class="p">&gt;=</span> ∝
+map<span class="p">!</span> <span class="p">&lt;</span>C<span class="p">-</span><span class="k">v</span><span class="p">&gt;~</span> ≈
+map<span class="p">!</span> <span class="p">&lt;</span>C<span class="p">-</span><span class="k">v</span><span class="p">&gt;!=</span> ≠
+map<span class="p">!</span> <span class="p">&lt;</span>C<span class="p">-</span><span class="k">v</span><span class="p">&gt;!&gt;</span> ⇸
+map<span class="p">!</span> <span class="p">&lt;</span>C<span class="p">-</span><span class="k">v</span><span class="p">&gt;~&gt;</span> ↝
+map<span class="p">!</span> <span class="p">&lt;</span>C<span class="p">-</span><span class="k">v</span><span class="p">&gt;&gt;=</span> ≥
+map<span class="p">!</span> <span class="p">&lt;</span>C<span class="p">-</span><span class="k">v</span><span class="p">&gt;&lt;=</span> ≤
+map<span class="p">!</span> <span class="p">&lt;</span>C<span class="p">-</span><span class="k">v</span><span class="p">&gt;</span><span class="m">0</span> °
+map<span class="p">!</span> <span class="p">&lt;</span>C<span class="p">-</span><span class="k">v</span><span class="p">&gt;</span><span class="k">ce</span> ¢
+map<span class="p">!</span> <span class="p">&lt;</span>C<span class="p">-</span><span class="k">v</span><span class="p">&gt;</span>* •
+map<span class="p">!</span> <span class="p">&lt;</span>C<span class="p">-</span><span class="k">v</span><span class="p">&gt;</span><span class="k">co</span> ⌘
+map<span class="p">!</span> <span class="p">&lt;</span>C<span class="p">-</span><span class="k">v</span><span class="p">&gt;</span>fa ∀
+map<span class="p">!</span> <span class="p">&lt;</span>C<span class="p">-</span><span class="k">v</span><span class="p">&gt;</span><span class="k">ex</span> ∃
+map<span class="p">!</span> <span class="p">&lt;</span>C<span class="p">-</span><span class="k">v</span><span class="p">&gt;</span>&amp; ∧
+map<span class="p">!</span> <span class="p">&lt;</span>C<span class="p">-</span><span class="k">v</span><span class="p">&gt;</span>or ∨
+<span class="c">" }}}</span>
+<span class="c">" IPA {{{</span>
+<span class="c">" vowels</span>
+map<span class="p">!</span> <span class="p">&lt;</span>C<span class="p">-</span><span class="k">v</span><span class="p">&gt;-</span><span class="k">i</span> ɨ
+map<span class="p">!</span> <span class="p">&lt;</span>C<span class="p">-</span><span class="k">v</span><span class="p">&gt;-</span><span class="k">u</span> ʉ
+map<span class="p">!</span> <span class="p">&lt;</span>C<span class="p">-</span><span class="k">v</span><span class="p">&gt;</span><span class="k">m</span> ɯ
+map<span class="p">!</span> <span class="p">&lt;</span>C<span class="p">-</span><span class="k">v</span><span class="p">&gt;</span>I ɪ
+map<span class="p">!</span> <span class="p">&lt;</span>C<span class="p">-</span><span class="k">v</span><span class="p">&gt;</span>Y ʏ
+map<span class="p">!</span> <span class="p">&lt;</span>C<span class="p">-</span><span class="k">v</span><span class="p">&gt;</span>U ʊ
+map<span class="p">!</span> <span class="p">&lt;</span>C<span class="p">-</span><span class="k">v</span><span class="p">&gt;</span>/<span class="k">o</span> ø
+map<span class="p">!</span> <span class="p">&lt;</span>C<span class="p">-</span><span class="k">v</span><span class="p">&gt;</span>@ ə
+map<span class="p">!</span> <span class="p">&lt;</span>C<span class="p">-</span><span class="k">v</span><span class="p">&gt;</span>E ɛ
+map<span class="p">!</span> <span class="p">&lt;</span>C<span class="p">-</span><span class="k">v</span><span class="p">&gt;</span>oe œ
+map<span class="p">!</span> <span class="p">&lt;</span>C<span class="p">-</span><span class="k">v</span><span class="p">&gt;</span>^ ʌ
+map<span class="p">!</span> <span class="p">&lt;</span>C<span class="p">-</span><span class="k">v</span><span class="p">&gt;</span>O ɔ
+map<span class="p">!</span> <span class="p">&lt;</span>C<span class="p">-</span><span class="k">v</span><span class="p">&gt;</span>ae æ
+map<span class="p">!</span> <span class="p">&lt;</span>C<span class="p">-</span><span class="k">v</span><span class="p">&gt;</span>A ɑ
+<span class="c">" consonants</span>
+map<span class="p">!</span> <span class="p">&lt;</span>C<span class="p">-</span><span class="k">v</span><span class="p">&gt;</span>N ŋ
+map<span class="p">!</span> <span class="p">&lt;</span>C<span class="p">-</span><span class="k">v</span><span class="p">&gt;</span><span class="k">r</span> ɹ
+map<span class="p">!</span> <span class="p">&lt;</span>C<span class="p">-</span><span class="k">v</span><span class="p">&gt;</span>mf ɱ
+map<span class="p">!</span> <span class="p">&lt;</span>C<span class="p">-</span><span class="k">v</span><span class="p">&gt;</span>eth ð
+<span class="c">" }}}</span>
+
+</code></pre>
+</div>
+
+  </div>
+
+</article>
+
+      </div>
+    </div>
+
+    <footer class="site-footer">
+  <div class="wrapper">
+    <div class="footer-wrapper">
+      &copy; Brian Buccola. Powered by <a
+         href="https://jekyllrb.com/">Jekyll</a> and <a
+         href="https://github.com/">GitHub</a>.
+    </div>
+  </div>
+</footer>
+
+
+  </body>
+
+</html>

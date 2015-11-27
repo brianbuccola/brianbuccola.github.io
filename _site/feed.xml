@@ -1,0 +1,1518 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Brian Buccola</title>
+    <description></description>
+    <link>http://brianbuccola.com/</link>
+    <atom:link href="http://brianbuccola.com/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Fri, 27 Nov 2015 18:12:36 +0200</pubDate>
+    <lastBuildDate>Fri, 27 Nov 2015 18:12:36 +0200</lastBuildDate>
+    <generator>Jekyll v3.0.0</generator>
+    
+      <item>
+        <title>How to mark all emails as read in Mutt</title>
+        <description>&lt;p&gt;Here’s a simple macro to mark all new emails (messages) as read in Mutt. If you
+want to use it, just add it to your Mutt configuration file (e.g. &lt;code class=&quot;highlighter-rouge&quot;&gt;~/.muttrc&lt;/code&gt;).&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-muttrc&quot;&gt;macro index A \
+    &quot;&amp;lt;tag-pattern&amp;gt;~N&amp;lt;enter&amp;gt;&amp;lt;tag-prefix&amp;gt;&amp;lt;clear-flag&amp;gt;N&amp;lt;untag-pattern&amp;gt;.&amp;lt;enter&amp;gt;&quot; \
+    &quot;mark all new as read&quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;(You could remove the two occurrences of &lt;code class=&quot;highlighter-rouge&quot;&gt;\&lt;/code&gt; and have the macro on a single
+line, but I split it up for legibility’s sake.)&lt;/p&gt;
+
+&lt;p&gt;Let’s parse this bit by bit.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;macro&lt;/code&gt; tells Mutt we’re defining a new macro.&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;index&lt;/code&gt; tells Mutt that the macro is defined only on the index, i.e. the
+screen that lists all your messages.&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;A&lt;/code&gt; is the key that the macro is bound to.&lt;/li&gt;
+  &lt;li&gt;The next part is the actual macro.&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;&quot;mark all new as read&quot;&lt;/code&gt; is the description you’ll see on the help page for
+the index.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Let’s now parse the actual macro command. Essentially, we just tag all new
+messages, then the clear the “new” flag from those tagged messages, then untag
+everything.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;tag-pattern&amp;gt;&lt;/code&gt; is starts a tag pattern; it’s the same as the default
+keybinding &lt;code class=&quot;highlighter-rouge&quot;&gt;l&lt;/code&gt; in a Mutt session.&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;~N&amp;lt;enter&amp;gt;&lt;/code&gt; matches all messages marked as “new”, so that we tag all new messages.&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;tag-prefix&amp;gt;&lt;/code&gt; means apply the next function to all tagged messages; it’s the
+same as the default keybinding &lt;code class=&quot;highlighter-rouge&quot;&gt;;&lt;/code&gt; in a Mutt session.&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;clear-flag&amp;gt;&lt;/code&gt; is the function we want to apply to all tagged messages; it’s
+the same as the default keybinding &lt;code class=&quot;highlighter-rouge&quot;&gt;W&lt;/code&gt; in a mutt session. (&lt;code class=&quot;highlighter-rouge&quot;&gt;w&lt;/code&gt; sets a flag;
+&lt;code class=&quot;highlighter-rouge&quot;&gt;W&lt;/code&gt; clears one.)&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;N&lt;/code&gt; is the “new” flag that we want to clear from all tagged (i.e. new)
+messages.&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;untag-pattern&amp;gt;&lt;/code&gt; starts an untag pattern.&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;.&lt;/code&gt; matches everything, so that we untag everything.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;I got tired of pressing &lt;code class=&quot;highlighter-rouge&quot;&gt;NNNNN...&lt;/code&gt; to mark successive new messages as read, and
+I find this macro to be extremely useful. I hope others do too.&lt;/p&gt;
+
+</description>
+        <pubDate>Tue, 21 Jul 2015 17:52:00 +0300</pubDate>
+        <link>http://brianbuccola.com/how-to-mark-all-emails-as-read-in-mutt</link>
+        <guid isPermaLink="true">http://brianbuccola.com/how-to-mark-all-emails-as-read-in-mutt</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>ELI5: What is modal logic?</title>
+        <description>&lt;p&gt;Someone recently asked me what sort of background knowledge is required to study
+modal logic. I thought I’d share my reply here, in case it might be of use to
+people.&lt;/p&gt;
+
+&lt;p&gt;My first taste of modal logic was &lt;a href=&quot;https://en.wikipedia.org/wiki/Richard_Montague&quot;&gt;Richard Montague&lt;/a&gt;’s intensional logic
+(IL), as applied to natural language. IL is a complex combination of
+higher-order typed logic (with typed λ-terms) and two types of modal logic (see
+the end of this post). Needless to say, I struggled long and hard to disentangle
+the pieces and understand them individually. In fact, for a while, I thought
+that modal logic &lt;em&gt;was&lt;/em&gt; IL. It was only later that I discovered that, actually,
+even basic propositional logic can be modalized.&lt;/p&gt;
+
+&lt;p&gt;I strongly believe now that the study of modal logic (be it in a logic course or
+in a natural language semantics course) should begin modal propositional logic,
+not modal predicate (quantificational) logic. Modality and quantification can
+much more easily be combined once they are each individually well understood.&lt;/p&gt;
+
+&lt;p&gt;If you’re new to modal logic and have, up to now, felt a little intimidated or
+confused by it, then hopefully the preceding paragraphs have eased your mind. If
+not, then hopefully the rest of this post will.&lt;/p&gt;
+
+&lt;h2 id=&quot;explain-it-like-im-5-what-is-modal-logic&quot;&gt;Explain it like I’m 5: What is modal logic?&lt;/h2&gt;
+
+&lt;p&gt;Modal logic is an extension of other, more basic types of logic, primarily
+classical &lt;em&gt;propositional logic&lt;/em&gt; and &lt;em&gt;predicate logic&lt;/em&gt;. You can learn modal logic
+once you’ve learned propositional logic. You do &lt;em&gt;not&lt;/em&gt; need to know predicate
+logic to learn modal logic, although in practice many modal logics are
+extensions of predicate logic, which itself is an extension of propositional
+logic.&lt;/p&gt;
+
+&lt;p&gt;Here are some types of logic, in order (more or less) of increasing complexity.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Propositional logic&lt;/strong&gt; is the simplest logic. It contains &lt;em&gt;propositional
+variables&lt;/em&gt; (p, q, r, …) and &lt;em&gt;logical connectives&lt;/em&gt; (¬, ∧, ∨, →, …). You can
+create formulas like p, p ∧ q, (p ∨ ¬q) → r, etc. The truth value of a complex
+formula ϕ (one containing logical connectives) is a function of the truth
+values of the immediate subformulas of ϕ, based on the &lt;a href=&quot;https://en.wikipedia.org/wiki/Truth_table&quot;&gt;&lt;em&gt;truth tables&lt;/em&gt;&lt;/a&gt;
+for the logical connectives.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Non-quantificational predicate logic&lt;/strong&gt; extends propositional logic by
+creating atomic formulas out of &lt;em&gt;n&lt;/em&gt;-place &lt;em&gt;predicate symbols&lt;/em&gt; (P, R, S, …),
+i.e. symbols that take &lt;em&gt;n&lt;/em&gt; &lt;em&gt;individual symbols&lt;/em&gt; (a, b, c, …) to create a
+formula, such as Pa, Rab, Sabc, etc. The individual symbols are taken from a
+&lt;em&gt;domain (or universe) of individuals&lt;/em&gt;, D (or U). This logic still contains the
+logical connectives, so you can create complex formulas like Pa ∧ (Rab →
+¬Sabc). As in propositional logic, the truth value of a complex formula ϕ is a
+function of the truth values of the immediate subformulas of ϕ, based on the
+truth tables for the logical connectives.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Quantificational (first-order) predicate logic&lt;/strong&gt; extends
+non-quantificational predicate logic by adding &lt;em&gt;individual variables&lt;/em&gt; (x, y,
+z, …) and &lt;em&gt;quantifier symbobls&lt;/em&gt; (∃, ∀) that operate over individual
+variables. You can create formulas like ∀xPx, ∃x∃yRxy, Pa ∧ ∀x(Sxbc → Px),
+etc. The truth value of a formula ϕ with a quantifier depends on whether the
+formula in the immediate scope of the quantifier is true of some (in the case
+of ∃) or all (in the case of ∀) individuals in the domain (roughly speaking).
+For example, ∃xPx is true iff P is holds of &lt;em&gt;some&lt;/em&gt; individual in the domain,
+and ∀xPx is true iff P holds of &lt;em&gt;every&lt;/em&gt; individual in the domain (roughly
+speaking). (&lt;strong&gt;Second-&lt;/strong&gt; and other &lt;strong&gt;higher-order predicate logics&lt;/strong&gt; are
+extensions of first-order predicate logic, which allow quantification not only
+over individuals, but also over sets (of sets (…(of sets)…)) of
+individuals.)&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Modal propositional logic&lt;/strong&gt; extends propositional logic by adding
+&lt;em&gt;intensional operators&lt;/em&gt; (e.g. ◇, □) and a &lt;em&gt;domain of possible worlds&lt;/em&gt; and by
+making truth value assignments world-dependent, meaning that a formula ϕ only
+has a truth value relative to (or “in”) a possible world. This means that it
+no longer makes sense to say that ϕ is true or or that ϕ is false; rather, we
+say that ϕ is true in (relative to) w1, false in w2, and so on. (A formula
+generally has different truth values in different possible worlds.) You can
+make formulas like p, p ∧ q, □p, □p → ◇q, etc. The truth value of a formula ϕ
+with an intensional operator depends on whether the formula in the immediate
+scope of the operator is true in some (in the case of ◇) or all (in the case
+of □) worlds accessible from the world relative to which ϕ is evaluated. For
+example, ◇p is true in w iff p is true in &lt;em&gt;some&lt;/em&gt; world v which is accessible
+from w, and □p is true in w iff p is true in &lt;em&gt;every&lt;/em&gt; world v which is
+accessible from w. Which worlds are accessible from which other worlds is
+determined by an &lt;em&gt;accessibility relation&lt;/em&gt;. Accessibility relations play a huge
+role in modal logic.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Modal predicate logic&lt;/strong&gt; extends modal propositional logic in the same way
+that non-modal predicate logic extends non-modal propositional logic. It thus
+contains both intensional operators and quantifier symbols, so you can create
+complicated formulas like ◇(Rab → ∃x∀y(¬□Px ∧ □Sxy)).&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Different intensional operators and different accessibility relations give rise
+to different modal logics, some of which have been used to model various
+real-world phenomena. Some examples:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;possibility and necessity (&lt;strong&gt;alethic logic&lt;/strong&gt;)&lt;/li&gt;
+  &lt;li&gt;permission and obligation (&lt;strong&gt;deontic logic&lt;/strong&gt;)&lt;/li&gt;
+  &lt;li&gt;knowledge (&lt;strong&gt;epistemic logic&lt;/strong&gt;)&lt;/li&gt;
+  &lt;li&gt;belief (&lt;strong&gt;doxastic logic&lt;/strong&gt;)&lt;/li&gt;
+  &lt;li&gt;time (&lt;strong&gt;temporal logic&lt;/strong&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;In the case of time, possible “worlds” model points in time and are ordered by
+an “earlier than” relation, e.g. “t1 &amp;lt; t2” means t1 is earlier in time than t2.
+Thus, the domain of possible worlds/times/states can have quite a rich
+structure; that is, it need not be a simple set, but can in addition have
+structure (relations, etc.) defined on it.&lt;/p&gt;
+
+&lt;p&gt;Montague’s intensional logic actually includes both worlds and times, so that a
+formula ϕ is said to be true (or false) in a particular world, at a particular
+time. Thus, ϕ can be true in w at time t1, but false in w at time t2; and ϕ can
+be true in w1 at time t, but false in w2 at time t; and so forth.&lt;/p&gt;
+
+</description>
+        <pubDate>Mon, 23 Mar 2015 16:55:00 +0200</pubDate>
+        <link>http://brianbuccola.com/eli5-what-is-modal-logic</link>
+        <guid isPermaLink="true">http://brianbuccola.com/eli5-what-is-modal-logic</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>Seattle cops sorry about arresting 70-year-old black vet</title>
+        <description>&lt;p&gt;Here’s an interesting headline:&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;strong&gt;Seattle Cops Sorry About Arresting 70-Year-Old Black Vet for No Reason&lt;/strong&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;(&lt;a href=&quot;http://gawker.com/seattle-pd-sorry-about-arresting-70-year-old-black-vete-1682456896&quot;&gt;source&lt;/a&gt;)&lt;/p&gt;
+
+&lt;p&gt;Don’t click and read the source article yet. First answer the following
+question.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Question:&lt;/strong&gt; How old was the vet when he was arrested, and how old is he now?&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;70 then, 70 now&lt;/li&gt;
+  &lt;li&gt;Under 70 then, 70 now&lt;/li&gt;
+  &lt;li&gt;70 then, over 70 now&lt;/li&gt;
+  &lt;li&gt;Not enough information to tell&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;If 4 weren’t an option and I had to guess, I’d pick 1. But of course, we really
+don’t have enough information yet.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Fact:&lt;/strong&gt; The arrest occurred last summer, and the vet had a birthday between then and now.&lt;/p&gt;
+
+&lt;p&gt;This fact eliminates choice 1. If, again, 4 weren’t an option and I had to
+guess, now I’d pick 3: He was 70 when they arrested him, and he’s 71 now. In
+fact, even if 4 &lt;em&gt;were&lt;/em&gt; still an option, I’d pick 3 and be pretty confident
+about it.&lt;/p&gt;
+
+&lt;p&gt;It turns out, however, that the vet was 69 when he was arrested and is now 70
+(at least according to the Gawker author).&lt;/p&gt;
+
+&lt;p&gt;Looking at the &lt;a href=&quot;http://gawker.com/okay-ill-bite-is-he-69-or-70-1682458913&quot;&gt;comments&lt;/a&gt;, I’m not the only one who guessed wrong.&lt;/p&gt;
+
+&lt;p&gt;Why did the title confuse us? At first, I thought it had something to do with
+the intensional nature of “be sorry about”, and the fact that the indefinite
+“[a] 70-year-old” is embedded under “sorry about”. But I don’t think that’s
+quite it. Other articles on the same topic have headlines like&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;strong&gt;Desk job for racist Seattle cop who arrested 70-year-old black man for
+carrying gold club&lt;/strong&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;(&lt;a href=&quot;http://boingboing.net/2015/01/30/desk-job-for-racist-seattle-co.html&quot;&gt;source&lt;/a&gt;)&lt;/p&gt;
+
+&lt;p&gt;and sentences in the main text like&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Facing mounting outrage, Seattle Police Chief Kathleen O’Toole announced
+Thursday the removal from street duty of a white patrol officer who made
+racially charged comments on Facebook within two months of arresting a
+70-year-old black man for carrying a golf club.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;(&lt;a href=&quot;http://seattletimes.com/html/localnews/2025578148_golfclubapologyxml.html&quot;&gt;source&lt;/a&gt;)&lt;/p&gt;
+
+&lt;p&gt;I find this usage quite strange. Here are some more strange examples.&lt;/p&gt;
+
+&lt;p&gt;Suppose I currently own a truck that’s been sitting out in the elements for
+years. It’s old, rusty, and hasn’t run in over a decade. But when I bought it
+20 years ago, it was shiny and new and ran perfectly. Then can I say the
+following?&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;(Twenty years ago,) I bought a beat-up, rusty old truck with a broken engine
+and flat tires.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Certainly not. Or how about this:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;(Thirty years ago,) Sally gave birth to a successful, 30-year-old lawyer.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Definitely strange. Or how about this:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Back in 1945, my grandmother married a 90-year-old man.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Even if my grandfather is 90 right now, I cannot say such a sentence.&lt;/p&gt;
+
+&lt;p&gt;Obviously, I’ve contrived these examples in a way that the headline isn’t
+contrived: the timespan in my examples is much larger. But the overall point
+still stands: given enough displacement between two points in time &lt;script type=&quot;math/tex&quot;&gt;t_1&lt;/script&gt; and
+&lt;script type=&quot;math/tex&quot;&gt;t_2&lt;/script&gt;, it becomes odd to describe or refer to someone or something in &lt;script type=&quot;math/tex&quot;&gt;t_1&lt;/script&gt;
+using their properties in &lt;script type=&quot;math/tex&quot;&gt;t_2&lt;/script&gt;. (Matters are probably different for definite
+descriptions, though: &lt;em&gt;Twenty years ago, I met the current US president&lt;/em&gt; sounds
+perfectly fine and unambiguously means I met Barack Obama, not Bill Clinton.)&lt;/p&gt;
+
+&lt;p&gt;And temporal displacement is probably not even what’s at issue here, as the
+following example shows.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;I just drank an empty glass of water.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Just because I just drank a whole glass of water, and the glass is now empty,
+doesn’t mean I can say the above sentence. And in this case the temporal
+displacement between the time I drank the water and my uttering the sentence is
+pretty arbitrarily small.&lt;/p&gt;
+
+&lt;p&gt;My only thought is that maybe the authors were all using “70-year-old” in a
+loose sense, rounding up from 69, and therefore not referring to the man’s
+current age. That would at least explain the latter two sources, which don’t
+mention “69” anywhere (or maybe they actually thought he was literally 70 when
+he was arrested).&lt;/p&gt;
+
+&lt;p&gt;It wouldn’t explain the Gawker headline, though. But maybe the author is just a
+little confused, since first she says&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;This week, the Seattle Police Department issued an apology to a 70-year-old
+black veteran who …&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;and then in the very next sentence&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;William Wingate, a 69-year-old Seattle man who regularly used his golf club
+as a cane, was standing …&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Or maybe… the “69” was just a typo all along. (I can’t actually find any
+other sources that say he was 69 when arrested.) But that would’ve made for a
+more boring blog post.&lt;/p&gt;
+
+</description>
+        <pubDate>Fri, 30 Jan 2015 17:09:00 +0200</pubDate>
+        <link>http://brianbuccola.com/seattle-cops-sorry-about-arresting-70-year-old-black-vet</link>
+        <guid isPermaLink="true">http://brianbuccola.com/seattle-cops-sorry-about-arresting-70-year-old-black-vet</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>How to cite in LaTeX without the citation appearing in the bibliography</title>
+        <description>&lt;p&gt;A friend and colleague of mine asked on Facebook if it’s possible in
+&lt;script type=&quot;math/tex&quot;&gt;\LaTeX{}&lt;/script&gt; to include a citation (or several) in the main text without the
+reference(s) actually appearing in the bibliography section. For example, in
+the following text, Smith (2015) and Johnson (2015) are both cited, but Johnson
+(2015) does not appear in the references section.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;According to Smith (2015), bluejays are the best; but according to Johnson
+(2015), cardinals are better.&lt;/p&gt;
+
+  &lt;p&gt;&lt;strong&gt;References&lt;/strong&gt;&lt;/p&gt;
+
+  &lt;p&gt;Smith, Mary. 2015. &lt;em&gt;All About Birds&lt;/em&gt;. New York, NY: Bird Cage Press.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Note that the &lt;code class=&quot;highlighter-rouge&quot;&gt;bibentry&lt;/code&gt; package allows you to include a &lt;em&gt;whole&lt;/em&gt; citation in
+the main text, e.g. “According to Johnson, Harry (2015) &lt;em&gt;More About Birds&lt;/em&gt;
+…”. But here, we just want “Johnson (2015)”.&lt;/p&gt;
+
+&lt;h2 id=&quot;bibtex-solution&quot;&gt;BibTeX solution&lt;/h2&gt;
+
+&lt;p&gt;As far as I’m aware, this is not (natively) possible with BibTeX: the moment
+you do &lt;code class=&quot;highlighter-rouge&quot;&gt;\cite{&amp;lt;key&amp;gt;}&lt;/code&gt; and then run &lt;code class=&quot;highlighter-rouge&quot;&gt;pdflatex&lt;/code&gt; + &lt;code class=&quot;highlighter-rouge&quot;&gt;bibtex&lt;/code&gt;, the &lt;code class=&quot;highlighter-rouge&quot;&gt;\bibitem&lt;/code&gt;
+associated with &lt;em&gt;&amp;lt;key&amp;gt;&lt;/em&gt; gets added to the &lt;code class=&quot;highlighter-rouge&quot;&gt;.bbl&lt;/code&gt; auxiliary file, which is
+ultimately responsible for the bibliography. Any &lt;code class=&quot;highlighter-rouge&quot;&gt;\bibitems&lt;/code&gt; in there appear in
+the bibliography.&lt;/p&gt;
+
+&lt;p&gt;The hacky suggestion I originally gave was to write, cite, and compile
+everything just as one would normally do when writing a LaTeX document. For
+example, if the file you’re writing is &lt;code class=&quot;highlighter-rouge&quot;&gt;file.tex&lt;/code&gt;, then run:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;pdflatex file
+&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;bibtex file
+&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;pdflatex file
+&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;pdflatex file
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;or, if you’re using a LaTeX front-end/wrapper, then use whatever button/command
+is available for typesetting, such as “Typeset” in MacTeX (I think), or
+&lt;code class=&quot;highlighter-rouge&quot;&gt;latexmk file&lt;/code&gt; if (like me) you use &lt;code class=&quot;highlighter-rouge&quot;&gt;latexmk&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Once you’re finished writing and are absolutely 100% sure you won’t be adding
+or removing or otherwise changing any citations, then open &lt;code class=&quot;highlighter-rouge&quot;&gt;file.bbl&lt;/code&gt; and
+delete any of the bibitems that you wish not to appear in the bibliography.
+After that, simply run &lt;code class=&quot;highlighter-rouge&quot;&gt;pdflatex file&lt;/code&gt; one more time, and you’re done.&lt;/p&gt;
+
+&lt;p&gt;NB: &lt;em&gt;Don’t&lt;/em&gt; rerun &lt;code class=&quot;highlighter-rouge&quot;&gt;bibtex file&lt;/code&gt; (hence, &lt;em&gt;don’t&lt;/em&gt; “Typeset” or run &lt;code class=&quot;highlighter-rouge&quot;&gt;latexmk&lt;/code&gt; or
+do anything that would itself rerun &lt;code class=&quot;highlighter-rouge&quot;&gt;bibtex&lt;/code&gt;), since that would overwrite
+&lt;code class=&quot;highlighter-rouge&quot;&gt;file.bbl&lt;/code&gt;, and you’d be back to where you started.&lt;/p&gt;
+
+&lt;h3 id=&quot;advantage&quot;&gt;Advantage&lt;/h3&gt;
+
+&lt;p&gt;The advantage to this solution is that you can more or less maintain your
+normal LaTeX + BibTeX workflow, up to the very end.&lt;/p&gt;
+
+&lt;h3 id=&quot;disadvantage&quot;&gt;Disadvantage&lt;/h3&gt;
+
+&lt;p&gt;The obvious disadvantage is that, after you’ve gone through all the trouble of
+removing bibitems from &lt;code class=&quot;highlighter-rouge&quot;&gt;file.bbl&lt;/code&gt;, you can no longer typeset your document
+without fear of overwriting &lt;code class=&quot;highlighter-rouge&quot;&gt;file.bbl&lt;/code&gt;. You could, of course, save a copy of
+the precious &lt;code class=&quot;highlighter-rouge&quot;&gt;.bbl&lt;/code&gt; file in case you overwrite it, but then if you want to add
+new citations to your document, you’ll have to merge the new &lt;code class=&quot;highlighter-rouge&quot;&gt;file.bbl&lt;/code&gt; with
+the copy of the older &lt;code class=&quot;highlighter-rouge&quot;&gt;file.bbl&lt;/code&gt;. Quite a mess, and certainly not elegant.&lt;/p&gt;
+
+&lt;h2 id=&quot;biblatex-solution&quot;&gt;Biblatex solution&lt;/h2&gt;
+
+&lt;p&gt;A better option is to use &lt;a href=&quot;http://www.ctan.org/pkg/biblatex&quot;&gt;Biblatex&lt;/a&gt;. I won’t expound here on the
+advantages of Biblatex over BibTeX, or even on the basics of how to use
+Biblatex. (Maybe some other time.) See
+&lt;a href=&quot;https://tex.stackexchange.com/questions/25701/bibtex-vs-biber-and-biblatex-vs-natbib&quot;&gt;here&lt;/a&gt;
+for a discussion of BibTeX vs. Biblatex, and see
+&lt;a href=&quot;https://www.sharelatex.com/blog/2013/07/31/getting-started-with-biblatex.html&quot;&gt;here&lt;/a&gt;
+for a crash course in Biblatex.&lt;/p&gt;
+
+&lt;p&gt;Among its many features, Biblatex allows you to define bibliographic categories
+with &lt;code class=&quot;highlighter-rouge&quot;&gt;\DeclareBibliographyCategory{&amp;lt;category&amp;gt;}&lt;/code&gt; and then assign categories to
+your bibliographic entries with &lt;code class=&quot;highlighter-rouge&quot;&gt;\addtocategory{&amp;lt;category&amp;gt;}{&amp;lt;key&amp;gt;}&lt;/code&gt;. The
+categories can be anything at all. Once you’ve assigned categories to your
+entries, you can use commands that are sensitive to those categories. One such
+command is the &lt;code class=&quot;highlighter-rouge&quot;&gt;\printbibliography&lt;/code&gt; command, which replaces LaTeX’s normal
+&lt;code class=&quot;highlighter-rouge&quot;&gt;\bibliography{...}&lt;/code&gt; command at the end of the document.&lt;/p&gt;
+
+&lt;p&gt;Normally, &lt;code class=&quot;highlighter-rouge&quot;&gt;\printbibliography&lt;/code&gt; does just that: it prints the bibliography. But
+you can give it some options, such as &lt;code class=&quot;highlighter-rouge&quot;&gt;\printbibliography[category=&amp;lt;blah&amp;gt;]&lt;/code&gt;,
+which prints a bibliography containing all and only entries of the category
+&lt;em&gt;blah&lt;/em&gt;. Or you can do &lt;code class=&quot;highlighter-rouge&quot;&gt;\printbibliography[notcategory=&amp;lt;blah&amp;gt;]&lt;/code&gt;, which prints a
+bibliography containing all and only entries that are &lt;em&gt;not&lt;/em&gt; of the category
+&lt;em&gt;blah&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;So the solution is to create a new category for the entries that we want to
+cite in the main text but suppress in the bibliography. We do that by issuing
+&lt;code class=&quot;highlighter-rouge&quot;&gt;\DeclareBibliographyCategory{ignore}&lt;/code&gt; (the category name can be anything) in
+the preamble, and then tagging the entries we want to ignore by issuing
+&lt;code class=&quot;highlighter-rouge&quot;&gt;\addtocategory{ignore}{&amp;lt;key&amp;gt;}&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Here is a minimal working example:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;\documentclass&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;article&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;\usepackage&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;[style=authoryear]&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;biblatex&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;\addbibresource&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;/path/to/references.bib&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;\DeclareBibliographyCategory&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;ignore&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;\addtocategory&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;ignore&lt;span class=&quot;p&quot;&gt;}{&lt;/span&gt;johnson2015&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;\addtocategory&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;ignore&lt;span class=&quot;p&quot;&gt;}{&lt;/span&gt;doe1986&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;nt&quot;&gt;\begin{document}&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;\cite&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;johnson2015&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;,
+&lt;span class=&quot;k&quot;&gt;\cite&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;smith2015&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;,
+&lt;span class=&quot;k&quot;&gt;\cite&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;doe1986&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;,
+&lt;span class=&quot;k&quot;&gt;\cite&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;samson2012&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;\printbibliography&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;[notcategory=ignore]&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;\end{document}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;With this code, all four references will get cited in the main text, but
+Johnson (2015) and Doe (1986) will not appear in the bibliography section.&lt;/p&gt;
+
+&lt;h3 id=&quot;advantage-1&quot;&gt;Advantage&lt;/h3&gt;
+
+&lt;p&gt;The overwhelming advantage here is that this is an elegant (non-hacky) solution
+that capitalizes on a feature of the Biblatex package that was designed
+precisely to solve sticky problems like this that BibTeX is unable to handle.
+No need to manually edit auxiliary files or anything.&lt;/p&gt;
+
+&lt;p&gt;Moreover, the solution is exetnsible: if you decide later that you want to omit
+Smith (2015) from the bibliography, simply add
+&lt;code class=&quot;highlighter-rouge&quot;&gt;\addtocategory{ignore}{smith2015}&lt;/code&gt; to your preamble. if you decide that you
+&lt;em&gt;do&lt;/em&gt; want Johnson (2015) in the bibliography, simply delete or comment out the
+line &lt;code class=&quot;highlighter-rouge&quot;&gt;\addtocategory{johnson2015}&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h3 id=&quot;disadvantage-1&quot;&gt;Disadvantage&lt;/h3&gt;
+
+&lt;p&gt;The only disadvantage that I can see is that you need to use Biblatex. Of
+course, users of Biblatex would hardly see this as a disadvantage. But there
+are certainly at least some minor disadvantages to using Biblatex, especially
+if you’ve never used it before. One is that you have to learn what commands to
+include before and after the document, as well as some new &lt;code class=&quot;highlighter-rouge&quot;&gt;\cite&lt;/code&gt; commands.
+But that’s easy. A more serious potential problem is that you simply cannot use
+Biblatex. For example, you’re submitting to a journal that doesn’t allow it, or
+you’re collaborating with someone who refuses to use/learn it. Hopefully,
+though, in due time, Biblatex will come to supersede BibTeX + &lt;code class=&quot;highlighter-rouge&quot;&gt;natbib&lt;/code&gt;, and
+these will be non-issues.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;NB: The solution presented here is based on a comment by &lt;a href=&quot;http://www.danielgutzmann.com/&quot;&gt;Daniel
+Gutzmann&lt;/a&gt;, who suggested creating several bibliographies based on keywords,
+and then printing only those bibliographies containing (or lacking) a specific
+keyword. The advantage of my solution is that you can still use a single master
+&lt;code class=&quot;highlighter-rouge&quot;&gt;.bib&lt;/code&gt; file and then categorize the entries in the preamble. If you wanted to
+reproduce the effect across several documents, you could hardcode the
+categories onto the entries in the actual &lt;code class=&quot;highlighter-rouge&quot;&gt;.bib&lt;/code&gt; file by adding
+&lt;code class=&quot;highlighter-rouge&quot;&gt;\DeclareBibliographyCategory{&amp;lt;category&amp;gt;}&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;\addtocategory{&amp;lt;key&amp;gt;}&lt;/code&gt; to the
+&lt;code class=&quot;highlighter-rouge&quot;&gt;@preamble&lt;/code&gt; of your &lt;code class=&quot;highlighter-rouge&quot;&gt;.bib&lt;/code&gt; file.&lt;/em&gt;&lt;/p&gt;
+
+</description>
+        <pubDate>Thu, 29 Jan 2015 17:19:00 +0200</pubDate>
+        <link>http://brianbuccola.com/how-to-cite-in-latex-without-the-citation-appearing-in-the-bibliography</link>
+        <guid isPermaLink="true">http://brianbuccola.com/how-to-cite-in-latex-without-the-citation-appearing-in-the-bibliography</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>Lenovo X140e and (Arch) Linux</title>
+        <description>&lt;p&gt;My previous laptop was an Asus that ran Linux beautifully, until, after a few
+years, several pieces of hardware stopped working (first battery, then wifi,
+then monitor). I had heard great things about Lenovo, specifically how nicely
+they play with Linux, so last summer I bought myself a Lenovo X140e. On the
+whole, I’m quite happy with it, but to my surprise (and sadness), it didn’t
+work out of the box like my Asus did. In this post I’ll detail some of the
+issues I had and my workarounds for dealing with them.&lt;/p&gt;
+
+&lt;p&gt;The main issues that I’ve managed to solve are:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;#wifi&quot;&gt;wifi&lt;/a&gt; (Arch-specific solution)&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#brightness-keys&quot;&gt;brightness keys&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#no-insert-key&quot;&gt;no insert key&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;There’s one issue that I &lt;em&gt;haven’t&lt;/em&gt; manage to solve:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;jittery touchpad, but only while on AC power&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Basically, there’s no issue while on battery power; but on AC power, touching
+the touchpad, even without moving your finger around, causes the cursor to jut
+around back and forth really fast. This (annoying) problem has been confirmed
+elsewhere, but I haven’t found a solution to it.&lt;/p&gt;
+
+&lt;p&gt;If you have a solution, please email me!&lt;/p&gt;
+
+&lt;h2 id=&quot;wifi&quot;&gt;WiFi&lt;/h2&gt;
+
+&lt;p&gt;By far the most serious (but luckily, easiest to solve) issue is the Broadcom
+wifi card BCM43228:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;lspci -vnn | grep Broadcom
+01:00.0 Network controller &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;0280]: Broadcom Corporation BCM43228 802.11a/b/g/n &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;14e4:4359]
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;This card was &lt;a href=&quot;http://wireless.kernel.org/en/users/Drivers/b43&quot;&gt;not supported&lt;/a&gt; under the Linux kernel until kernel version
+3.17. (We’re now on 3.18, as of this writing; when I bought the laptop, we were
+at 3.16.) The workaround for kernels &amp;lt;3.17 is to use the AUR package
+&lt;a href=&quot;https://aur.archlinux.org/packages/broadcom-wl/&quot;&gt;broadcom-wl&lt;/a&gt;. However, even once we arrived at 3.17, I found the native
+support (with the b43 driver and firmware) to be lacking: weak wifi
+connections, constant dropping, etc. So I still use broadcom-wl. Here’s how it
+works.&lt;/p&gt;
+
+&lt;p&gt;First, download broadcom-wl with your favorite AUR helper, and install it. For
+example:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;cower -d broadcom-wl
+&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt; ~/aur/broadcom-wl
+&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;makepkg -csi
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Second, restart computer.&lt;/p&gt;
+
+&lt;p&gt;That’s all! Well, almost. Now, every time you update your kernel, you need to
+rebuild and reinstall broadcom-wl. For example:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt; ~/aur/broadcom-wl
+&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;makepkg -csif
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;The &lt;code class=&quot;highlighter-rouge&quot;&gt;-f&lt;/code&gt; flag forces a rebuild and overwrites the current &lt;code class=&quot;highlighter-rouge&quot;&gt;.pkg.tar.xz&lt;/code&gt; file.&lt;/p&gt;
+
+&lt;p&gt;(Another option is to use broadcom-wl-dkms, which automatically rebuilds itself
+after a kernel update.)&lt;/p&gt;
+
+&lt;p&gt;(This solution is obviously specific to Arch Linux, but most major distros
+should have some analog of the broadcom-wl package available, which should
+likewise solve the issue.)&lt;/p&gt;
+
+&lt;h2 id=&quot;brightness-keys&quot;&gt;Brightness keys&lt;/h2&gt;
+
+&lt;p&gt;You’re supposed to be able to change the brightness with &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;Fn-F8&amp;gt;&lt;/code&gt; and
+&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;Fn-F9&amp;gt;&lt;/code&gt; (that is, the function key together with &lt;code class=&quot;highlighter-rouge&quot;&gt;F8&lt;/code&gt; or &lt;code class=&quot;highlighter-rouge&quot;&gt;F9&lt;/code&gt;). For me, this
+works fine in console, but &lt;em&gt;not&lt;/em&gt; in X11, where most people (including me) spend
+most of their time. I’ve read that a BIOS upgrade fixes this, but I haven’t
+tried that.&lt;/p&gt;
+
+&lt;p&gt;My workaround was to write two simple bash scripts, &lt;code class=&quot;highlighter-rouge&quot;&gt;brightness-dec&lt;/code&gt; and
+&lt;code class=&quot;highlighter-rouge&quot;&gt;brightness-inc&lt;/code&gt;, to decrease and increase the brightness, respectively, and
+bind them to &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;Fn-F8&amp;gt;&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;Fn-F9&amp;gt;&lt;/code&gt;. You can find them both &lt;a href=&quot;https://github.com/brianbuccola/scripts&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;I’ll illustrate how &lt;code class=&quot;highlighter-rouge&quot;&gt;brightness-inc&lt;/code&gt; works:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;#!/bin/bash&lt;/span&gt;
+
+&lt;span class=&quot;nv&quot;&gt;max_brightness&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;255
+&lt;span class=&quot;nv&quot;&gt;min_brightness&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;5
+&lt;span class=&quot;nv&quot;&gt;current_brightness&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;cat /sys/class/backlight/radeon_bl0/brightness&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;inc_amt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;20
+&lt;span class=&quot;nv&quot;&gt;new_brightness&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;$((&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$current_brightness&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$inc_amt&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;)))&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[[&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$new_brightness&lt;/span&gt; -gt &lt;span class=&quot;nv&quot;&gt;$max_brightness&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;]]&lt;/span&gt;; &lt;span class=&quot;k&quot;&gt;then
+  &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$max_brightness&lt;/span&gt; | sudo tee /sys/class/backlight/radeon_bl0/brightness
+&lt;span class=&quot;k&quot;&gt;elif&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[[&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$new_brightness&lt;/span&gt; -lt &lt;span class=&quot;nv&quot;&gt;$min_brightness&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;]]&lt;/span&gt;; &lt;span class=&quot;k&quot;&gt;then
+  &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$min_brightness&lt;/span&gt; | sudo tee /sys/class/backlight/radeon_bl0/brightness
+&lt;span class=&quot;k&quot;&gt;else
+  &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$new_brightness&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; | sudo tee /sys/class/backlight/radeon_bl0/brightness
+&lt;span class=&quot;k&quot;&gt;fi&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;The file &lt;code class=&quot;highlighter-rouge&quot;&gt;/sys/class/backlight/radeon_bl0/brightness&lt;/code&gt; contains the current
+brightness level, which for my Lenovo X140e is between 0 and 255. To change the
+brightness, just change this file. The problem is that since it’s located in
+&lt;code class=&quot;highlighter-rouge&quot;&gt;/sys/...&lt;/code&gt;, you need root permission to change it. That means that&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;100&quot;&lt;/span&gt; &amp;gt; /sys/...
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;won’t work, but neither will&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo &lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;100&quot;&lt;/span&gt; &amp;gt; /sys/...
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;The reason is because in the latter, &lt;code class=&quot;highlighter-rouge&quot;&gt;sudo&lt;/code&gt; is only operating on the &lt;code class=&quot;highlighter-rouge&quot;&gt;echo&lt;/code&gt;
+command. It’s like saying, run &lt;code class=&quot;highlighter-rouge&quot;&gt;echo&lt;/code&gt; as root, and now (not as root) append the
+output to &lt;code class=&quot;highlighter-rouge&quot;&gt;/sys/...&lt;/code&gt;. To solve this, we use &lt;code class=&quot;highlighter-rouge&quot;&gt;tee&lt;/code&gt;, which allows piping from
+stdin to a file, as root:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;100&quot;&lt;/span&gt; | sudo tee /sys/...
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;This command will successfully set the brightness level to 100. That’s the crux
+of the script; the rest should be pretty self-explanatory.&lt;/p&gt;
+
+&lt;p&gt;There’s one remaining issue, though: we don’t want to run this script in a
+terminal; we want to bind it to a key. But the script uses &lt;code class=&quot;highlighter-rouge&quot;&gt;sudo&lt;/code&gt;, which
+requires a password to be typed, which you can’t really do outside of a
+terminal. The solution is to allow &lt;code class=&quot;highlighter-rouge&quot;&gt;tee&lt;/code&gt; to be run as root without a password.
+To do this, you need to change the sudoers file by running &lt;code class=&quot;highlighter-rouge&quot;&gt;visudo&lt;/code&gt; (as root)
+and adding this line:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# Add `tee&#39; to list of commands that user `brian&#39; can run without password
+brian ALL = NOPASSWD: /usr/bin/tee
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;What this does is allow the user “brian” (that’s me) to run &lt;code class=&quot;highlighter-rouge&quot;&gt;tee&lt;/code&gt; as root
+(&lt;code class=&quot;highlighter-rouge&quot;&gt;sudo tee&lt;/code&gt;) without a password. &lt;code class=&quot;highlighter-rouge&quot;&gt;/usr/bin/tee&lt;/code&gt; is of course the full path to
+&lt;code class=&quot;highlighter-rouge&quot;&gt;tee&lt;/code&gt;. To find that out on your system, run &lt;code class=&quot;highlighter-rouge&quot;&gt;which tee&lt;/code&gt; in a terminal.&lt;/p&gt;
+
+&lt;p&gt;Now the script can be run effectively. Just bind it to a key in whatever way is
+required by your desktop environment or window manager. (For me, I bind keys in
+&lt;code class=&quot;highlighter-rouge&quot;&gt;xmonad.hs&lt;/code&gt; since I use xmonad.)&lt;/p&gt;
+
+&lt;h2 id=&quot;no-insert-key&quot;&gt;No insert key&lt;/h2&gt;
+
+&lt;p&gt;The laptop keyboard does not come with any physical &lt;code class=&quot;highlighter-rouge&quot;&gt;Insert&lt;/code&gt; key. I guess
+that’s because most people nowadays don’t use it very often. But I do. One of
+the best features of Linux (well, X11) is the X clipboard: whenever you
+highlight something, it gets added to the X clipboard (no need to &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;Ctrl-C&amp;gt;&lt;/code&gt;),
+and you can paste it with &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;Shift-Insert&amp;gt;&lt;/code&gt;. (I also use &lt;code class=&quot;highlighter-rouge&quot;&gt;Insert&lt;/code&gt; to go into
+ignore-mode in &lt;a href=&quot;http://www.vimperator.org/vimperator/&quot;&gt;Vimperator&lt;/a&gt; for Firefox.)&lt;/p&gt;
+
+&lt;p&gt;What I did was bind the Windows key (which was serving no purpose) to &lt;code class=&quot;highlighter-rouge&quot;&gt;Insert&lt;/code&gt;.
+Here’s how:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;xmodmap -e &lt;span class=&quot;s2&quot;&gt;&quot;keycode 133 = Insert&quot;&lt;/span&gt;    &lt;span class=&quot;c&quot;&gt;# map windows button to insert&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;You can find the keycode of a key by running &lt;code class=&quot;highlighter-rouge&quot;&gt;xev&lt;/code&gt; (X event program) from a
+terminal, typing the key, and looking for “keycode” in the output. (Hit
+&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;Ctrl-C&amp;gt;&lt;/code&gt; to exit &lt;code class=&quot;highlighter-rouge&quot;&gt;xev&lt;/code&gt;.)&lt;/p&gt;
+
+&lt;p&gt;Now you can run this &lt;code class=&quot;highlighter-rouge&quot;&gt;xmodmap&lt;/code&gt; command in a terminal, and it should work. But
+the best solution is to include it in your &lt;code class=&quot;highlighter-rouge&quot;&gt;.xinitrc&lt;/code&gt; file so that it’s run
+every time X starts. (I have a whole &lt;code class=&quot;highlighter-rouge&quot;&gt;keyboard-adjust&lt;/code&gt; script that adds the
+Dvorak layout, switches caps and control lock, etc., maps the Windows button to
+insert, etc.; I then call the whole script from my &lt;code class=&quot;highlighter-rouge&quot;&gt;.xinitrc&lt;/code&gt; file.)&lt;/p&gt;
+
+</description>
+        <pubDate>Fri, 23 Jan 2015 15:43:00 +0200</pubDate>
+        <link>http://brianbuccola.com/lenovo-x140e-and-arch-linux</link>
+        <guid isPermaLink="true">http://brianbuccola.com/lenovo-x140e-and-arch-linux</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>Pandoc, MathJax, Google fonts, and HTTPS</title>
+        <description>&lt;p&gt;&lt;strong&gt;tl;dr&lt;/strong&gt; For any secure (&lt;code class=&quot;highlighter-rouge&quot;&gt;https&lt;/code&gt;) webpage with URLs in its source code to
+Google fonts or MathJax, those URLs must &lt;em&gt;also&lt;/em&gt; be secure (&lt;code class=&quot;highlighter-rouge&quot;&gt;https&lt;/code&gt;); otherwise,
+the fonts, &lt;script type=&quot;math/tex&quot;&gt;\LaTeX{}&lt;/script&gt;, etc. won’t render.&lt;/p&gt;
+
+&lt;p&gt;It’s been nearly a year since I last posted. One of my resolutions this year
+(my dissertation year!) is to write more, including on this blog. Ideally I’d
+write about semantics, but for now, just to get back into the swing of things,
+I’ll be happy to write about anything. To that end, here’s a post.&lt;/p&gt;
+
+&lt;p&gt;I just upgraded &lt;a href=&quot;http://johnmacfarlane.net/pandoc/&quot;&gt;pandoc&lt;/a&gt; yesterday and decided to rebuild my blog to see if
+any changes would occur. (I write my blog in &lt;a href=&quot;http://daringfireball.net/projects/markdown/&quot;&gt;markdown&lt;/a&gt; and then convert to
+html using pandoc, so basically I reconverted all my posts markdown -&amp;gt; html.)
+Aside from the copyright changing from “2012–2014” to “2012–2015”, there was
+only one subtle, but substantial change, and that has to do with &lt;a href=&quot;http://www.mathjax.org/&quot;&gt;MathJax&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;MathJax is “an open source JavaScript display engine for mathematics that works
+in all browsers”. For example, it renders the html code &lt;code class=&quot;highlighter-rouge&quot;&gt;\(f(x) = x^2 + 4x -
+3\)&lt;/code&gt; into &lt;script type=&quot;math/tex&quot;&gt;f(x) = x^2 + 4x - 3&lt;/script&gt;. The stuff between &lt;code class=&quot;highlighter-rouge&quot;&gt;\(...\)&lt;/code&gt; is &lt;script type=&quot;math/tex&quot;&gt;\LaTeX{}&lt;/script&gt;
+code, and &lt;code class=&quot;highlighter-rouge&quot;&gt;\(...\)&lt;/code&gt; are the delimiters that MathJax looks out for. But
+actually, since I write my blog in markdown, I delimit &lt;script type=&quot;math/tex&quot;&gt;\LaTeX{}&lt;/script&gt; code using
+&lt;code class=&quot;highlighter-rouge&quot;&gt;$...$&lt;/code&gt; (just like in &lt;script type=&quot;math/tex&quot;&gt;\LaTeX{}&lt;/script&gt; itself) since that’s what &lt;em&gt;pandoc&lt;/em&gt; looks out
+for. In other words:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Write in markdown: &lt;code class=&quot;highlighter-rouge&quot;&gt;$f(x) = x^2 + 4x - 3$&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Markdown becomes html (via pandoc): &lt;code class=&quot;highlighter-rouge&quot;&gt;\(f(x) = x^2 + 4x -3\)&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Html becomes pretty (via mathjax): &lt;script type=&quot;math/tex&quot;&gt;f(x) = x^2 + 4x -3&lt;/script&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;MathJax is run as a script within the html source code. All you need is
+something like this, which links to some MathJax JavaScript:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;script &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;http://cdn.mathjax.org/mathjax/...&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;type=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text/javascript&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;(The full MathJax source URL is &lt;a href=&quot;http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML&quot;&gt;here&lt;/a&gt;.)&lt;/p&gt;
+
+&lt;p&gt;The pandoc option &lt;code class=&quot;highlighter-rouge&quot;&gt;--mathjax&lt;/code&gt; is supposed to automagically add the source URL,
+and it did, until the recent pandoc update. After the update, I noticed that
+the &lt;code class=&quot;highlighter-rouge&quot;&gt;http:&lt;/code&gt; part was completely missing.
+&lt;a href=&quot;https://github.com/jgm/pandoc/issues/1847&quot;&gt;Apparently&lt;/a&gt;, this isn’t really a
+bug; it was removed for principled reasons. The solution, I thought, was simply
+to change from using &lt;code class=&quot;highlighter-rouge&quot;&gt;--mathjax&lt;/code&gt; to explicitly using&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;--mathjax&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;http://cdn.mathjax.org/mathjax/...&quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;I tried that, and it worked! At least, on my &lt;em&gt;local&lt;/em&gt; copy of the blog
+(&lt;code class=&quot;highlighter-rouge&quot;&gt;file:///home/brian/blog/...&lt;/code&gt;). It did &lt;em&gt;not&lt;/em&gt; work when I pushed the changes to
+github (&lt;code class=&quot;highlighter-rouge&quot;&gt;http://brianbuccola.github.io/blog/...&lt;/code&gt;). The MathJax wasn’t rendering
+there. Huh.&lt;/p&gt;
+
+&lt;p&gt;I also noticed something else: my Google fonts were rendering on my local copy
+of my blog, but not on the GitHub blog. Were the issues related? Yes, they
+were. Here’s how.&lt;/p&gt;
+
+&lt;p&gt;I use the Firefox extension HTTPS-Everywhere, which tries to use the more
+secure &lt;code class=&quot;highlighter-rouge&quot;&gt;https://blah.com/&lt;/code&gt; instead of &lt;code class=&quot;highlighter-rouge&quot;&gt;http://blah.com/&lt;/code&gt; whenever possible. It
+turns out that when using the secure version of my blog,
+&lt;code class=&quot;highlighter-rouge&quot;&gt;https://brianbuccola.github.io/&lt;/code&gt;, any insecure (&lt;code class=&quot;highlighter-rouge&quot;&gt;http&lt;/code&gt;) Google font URLs or
+MathJax URLs &lt;em&gt;won’t work&lt;/em&gt;. They need to all be changed to &lt;code class=&quot;highlighter-rouge&quot;&gt;https&lt;/code&gt;. So that’s
+what I did&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;--mathjax&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;https://cdn.mathjax.org/mathjax/...&quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;script &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;https://cdn.mathjax.org/mathjax/...&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;type=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text/javascript&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;and voilà, everything works again.&lt;/p&gt;
+
+&lt;p&gt;Moreover, using &lt;code class=&quot;highlighter-rouge&quot;&gt;https&lt;/code&gt; URLs for Google fonts and MathJax &lt;em&gt;still&lt;/em&gt; works when
+using the normal &lt;code class=&quot;highlighter-rouge&quot;&gt;http&lt;/code&gt; version of my blog. So as far as I can tell, there’s no
+downside to always using the secure &lt;code class=&quot;highlighter-rouge&quot;&gt;https&lt;/code&gt; URLs in your html source code, as
+far as text rendering goes.&lt;/p&gt;
+
+</description>
+        <pubDate>Tue, 06 Jan 2015 13:25:00 +0200</pubDate>
+        <link>http://brianbuccola.com/pandoc-mathjax-google-fonts-and-https</link>
+        <guid isPermaLink="true">http://brianbuccola.com/pandoc-mathjax-google-fonts-and-https</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>A simple Dropbox command-line alias</title>
+        <description>&lt;p&gt;Dropbox has a useful but rather simplistic command-line interface, which I use
+almost exclusively. The reason I call it simplistic is that when you start
+Dropbox with &lt;code class=&quot;highlighter-rouge&quot;&gt;dropbox start&lt;/code&gt;, all you see is&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;dropbox start
+Starting...Done!
+&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;It starts Dropbox then brings you right back to the command-line prompt, at
+which point you have no idea what Dropbox is doing in the background. For me
+it’s important to know when Dropbox is finished syncing because I prefer to
+leave Dropbox off otherwise; that is, once the sync is done, I want to know
+that and then stop Dropbox.&lt;/p&gt;
+
+&lt;p&gt;There is a command &lt;code class=&quot;highlighter-rouge&quot;&gt;dropbox status&lt;/code&gt;, but all that does is check the status
+(whether Dropbox is idle, uploading, downloading, indexing, etc.) at the
+&lt;em&gt;particular&lt;/em&gt; moment you call &lt;code class=&quot;highlighter-rouge&quot;&gt;dropbox status&lt;/code&gt;, and that’s it. I could of
+course keep calling &lt;code class=&quot;highlighter-rouge&quot;&gt;dropbox status&lt;/code&gt; until it starts to return &lt;code class=&quot;highlighter-rouge&quot;&gt;Idle&lt;/code&gt; every
+time&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;dropbox status
+Connecting...
+&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;dropbox status
+Initializing...
+&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;dropbox status
+Starting...
+&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;dropbox status
+Downloading file list...
+&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;dropbox status
+Updating &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;4 files&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+Indexing &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;4 files&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;dropbox status
+Idle
+&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;dropbox status
+Idle
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;but there is an easier way to do this: the Linux command &lt;code class=&quot;highlighter-rouge&quot;&gt;watch&lt;/code&gt;, which
+“execute[s] a program periodically, showing output fullscreen.” Suppose I want
+to check Dropbox’s status every one second. Then I just run&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;watch -n1 dropbox status
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;(The option &lt;code class=&quot;highlighter-rouge&quot;&gt;-n1&lt;/code&gt; is short for &lt;code class=&quot;highlighter-rouge&quot;&gt;--interval 1&lt;/code&gt; and always refers to seconds.)&lt;/p&gt;
+
+&lt;p&gt;To stop watching the program (to exit &lt;code class=&quot;highlighter-rouge&quot;&gt;watch&lt;/code&gt;), just hit &lt;code class=&quot;highlighter-rouge&quot;&gt;Ctrl-C&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;When I run Dropbox, I basically just want to start it, watch what it does until
+it returns &lt;code class=&quot;highlighter-rouge&quot;&gt;Idle&lt;/code&gt; every time, and then stop Dropbox. Here is simple alias (to
+put in &lt;code class=&quot;highlighter-rouge&quot;&gt;.bashrc&lt;/code&gt; or &lt;code class=&quot;highlighter-rouge&quot;&gt;.zshrc&lt;/code&gt; or whatever) that lets me do that:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;alias &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;db&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;dropbox start &amp;amp;&amp;amp; watch -n1 dropbox status &amp;amp;&amp;amp; dropbox stop&#39;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;With this alias, I just type &lt;code class=&quot;highlighter-rouge&quot;&gt;db&lt;/code&gt; at the command line, watch what Dropbox does
+until I keep seeing &lt;code class=&quot;highlighter-rouge&quot;&gt;Idle&lt;/code&gt;, hit &lt;code class=&quot;highlighter-rouge&quot;&gt;Ctrl-C&lt;/code&gt;, and then Dropbox stops automatically.&lt;/p&gt;
+</description>
+        <pubDate>Sat, 11 Jan 2014 09:57:00 +0200</pubDate>
+        <link>http://brianbuccola.com/a-simple-dropbox-command-line-alias</link>
+        <guid isPermaLink="true">http://brianbuccola.com/a-simple-dropbox-command-line-alias</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>Vim and unicode keybindings: math, IPA, and more</title>
+        <description>&lt;p&gt;I recently stumbled on the
+&lt;a href=&quot;https://github.com/connermcd/dotfiles/blob/github/.vimrc&quot;&gt;.vimrc&lt;/a&gt; of
+&lt;a href=&quot;https://github.com/connermcd&quot;&gt;connermcd&lt;/a&gt; and noticed that he has an extensive
+list of keybindings for inputting Greek and math unicode characters. For
+example, given the mapping&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;map&lt;span class=&quot;p&quot;&gt;!&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;C&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;!=&lt;/span&gt; ≠
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;then to input “≠”, just type &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;C-v&amp;gt;!=&lt;/code&gt;. This is incredibly useful for anyone
+who uses vim to take notes involving mathy things.  Compare:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;a &amp;gt;= b &amp;amp; b &amp;gt;= c -&amp;gt; a &amp;gt;= c # ascii only
+
+a ≥ b ∧ b ≥ c → a ≥ c # nice unicode
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;The second line is, I think, much cleaner looking and more legible than the
+first, and only takes a couple extra keystrokes to type out, once you’ve set up
+the appropriate mappings.&lt;/p&gt;
+
+&lt;p&gt;For example, I’m currently writing this post in vim, and if I have the
+following mappings&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;map&lt;span class=&quot;p&quot;&gt;!&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;C&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;fa ∀
+map&lt;span class=&quot;p&quot;&gt;!&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;C&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;ex&lt;/span&gt; ∃
+map&lt;span class=&quot;p&quot;&gt;!&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;C&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;!=&lt;/span&gt; ≠
+map&lt;span class=&quot;p&quot;&gt;!&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;C&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;-&amp;gt;&lt;/span&gt; →
+map&lt;span class=&quot;p&quot;&gt;!&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;C&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;&amp;amp; ∧
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;then I can easily type out a formula of predicate logic in unicode, which comes
+out like this:&lt;/p&gt;
+
+&lt;p&gt;∀x∃y[x ≠ y → Px ∧ Ry]&lt;/p&gt;
+
+&lt;p&gt;Of course, on this blog I could also write such a formula in &lt;script type=&quot;math/tex&quot;&gt;\LaTeX{}&lt;/script&gt;,
+which comes out like this:&lt;/p&gt;
+
+&lt;p&gt;&lt;script type=&quot;math/tex&quot;&gt;\forall x \exists y [x \neq y \to Px \land Ry]&lt;/script&gt;&lt;/p&gt;
+
+&lt;p&gt;I think in general the &lt;script type=&quot;math/tex&quot;&gt;\LaTeX{}&lt;/script&gt; version probably looks nicer than the
+unicode version on websites like this, but there are some benefits to using
+unicode:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Unicode doesn’t need to be rendered by a conversion engine such as Mathjax;
+it just works.&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Unicode is much more legible in source code (e.g., the markdown version of
+this blog post) than &lt;script type=&quot;math/tex&quot;&gt;\LaTeX{}&lt;/script&gt;. Compare:&lt;/p&gt;
+
+    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;∀x∃y[x ≠ y → Px ∧ Ry]&lt;/code&gt;&lt;/p&gt;
+
+    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;$\forall x \exists y [x \neq y \to Px \land Ry]$&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;If you use vim to write emails (e.g. with mutt), or forum posts (e.g. with
+vimperator for Firefox), etc., then you’ll usually want to use unicode,
+since most email clients and forums cannot render &lt;script type=&quot;math/tex&quot;&gt;\LaTeX{}&lt;/script&gt;.&lt;/li&gt;
+  &lt;li&gt;There are lots of unicode characters which you can’t write in &lt;script type=&quot;math/tex&quot;&gt;\LaTeX{}&lt;/script&gt;
+and/or which Mathjax and other engines can’t handle, such as IPA symbols,
+which I find myself needing to type relatively often.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;For example, if I’m emailing a student or writing a forum post about the
+transcription of the word “ring”, I would usually go a site like
+&lt;a href=&quot;http://westonruter.github.io/ipa-chart/keyboard/&quot;&gt;this&lt;/a&gt;, click-type the
+transcription, copy it, then paste it—sort of time-consuming. Plus, if I’m
+not connected to the internet, then I can’t use this method at all. But if I
+have the following mappings in my &lt;code class=&quot;highlighter-rouge&quot;&gt;.vimrc&lt;/code&gt;&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;map&lt;span class=&quot;p&quot;&gt;!&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;C&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;I ɪ
+map&lt;span class=&quot;p&quot;&gt;!&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;C&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;N ŋ
+map&lt;span class=&quot;p&quot;&gt;!&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;C&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;r&lt;/span&gt; ɹ
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;then all I do is type&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&quot;Ring&quot; is transcribed: [&amp;lt;C-v&amp;gt;r&amp;lt;C-v&amp;gt;I&amp;lt;C-v&amp;gt;N].
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;which becomes&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&quot;Ring&quot; is transcribed: [ɹɪŋ].
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;By the way, you don’t &lt;em&gt;need&lt;/em&gt; the &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;C-v&amp;gt;&lt;/code&gt; prefix, but that’s useful to group
+these bindings together, and to not override other keys. For example, you could
+do&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;map&lt;span class=&quot;p&quot;&gt;!&lt;/span&gt; N ŋ
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;but then any time you pressed &lt;code class=&quot;highlighter-rouge&quot;&gt;N&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;ŋ&lt;/code&gt; would appear, making it very difficult
+to ever type &lt;code class=&quot;highlighter-rouge&quot;&gt;N&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;C-v&amp;gt;&lt;/code&gt; makes sense as a prefix because it’s what you press to type a unicode
+character manually: for example, &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;C-v&amp;gt;u2203&lt;/code&gt; comes out as ∃, because the
+unicode encoding for that character is U+2203.&lt;/p&gt;
+
+&lt;p&gt;Anyway, to close this out, I’ve put some useful mappings below. If you want
+more ideas about what to map, check out the Wikipedia page &lt;a href=&quot;https://en.wikibooks.org/wiki/Unicode/List_of_useful_symbols&quot;&gt;Unicode/List of
+Useful Symbols&lt;/a&gt;,
+which has a ton of math, science, music, etc. characters, all of which could be
+handily mapped to in your &lt;code class=&quot;highlighter-rouge&quot;&gt;.vimrc&lt;/code&gt;. ♫♫ cool! ♪♩♪&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+&lt;span class=&quot;c&quot;&gt;&quot; Greek {{{&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;&quot; (thanks to connermcd for these)&lt;/span&gt;
+map&lt;span class=&quot;p&quot;&gt;!&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;C&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;GA Γ
+map&lt;span class=&quot;p&quot;&gt;!&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;C&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;DE Δ
+map&lt;span class=&quot;p&quot;&gt;!&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;C&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;TH Θ
+map&lt;span class=&quot;p&quot;&gt;!&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;C&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;LA Λ
+map&lt;span class=&quot;p&quot;&gt;!&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;C&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;XI Ξ
+map&lt;span class=&quot;p&quot;&gt;!&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;C&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;PI Π
+map&lt;span class=&quot;p&quot;&gt;!&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;C&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;SI Σ
+map&lt;span class=&quot;p&quot;&gt;!&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;C&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;PH Φ
+map&lt;span class=&quot;p&quot;&gt;!&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;C&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;PS Ψ
+map&lt;span class=&quot;p&quot;&gt;!&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;C&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;OM Ω
+map&lt;span class=&quot;p&quot;&gt;!&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;C&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;al&lt;/span&gt; α
+map&lt;span class=&quot;p&quot;&gt;!&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;C&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;be β
+map&lt;span class=&quot;p&quot;&gt;!&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;C&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;ga γ
+map&lt;span class=&quot;p&quot;&gt;!&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;C&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;de&lt;/span&gt; δ
+map&lt;span class=&quot;p&quot;&gt;!&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;C&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;ep ε
+map&lt;span class=&quot;p&quot;&gt;!&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;C&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;ze ζ
+map&lt;span class=&quot;p&quot;&gt;!&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;C&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;et η
+map&lt;span class=&quot;p&quot;&gt;!&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;C&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;th&lt;/span&gt; θ
+map&lt;span class=&quot;p&quot;&gt;!&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;C&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;io ι
+map&lt;span class=&quot;p&quot;&gt;!&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;C&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;ka κ
+map&lt;span class=&quot;p&quot;&gt;!&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;C&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;la&lt;/span&gt; λ
+map&lt;span class=&quot;p&quot;&gt;!&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;C&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;mu μ
+map&lt;span class=&quot;p&quot;&gt;!&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;C&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;xi ξ
+map&lt;span class=&quot;p&quot;&gt;!&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;C&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;pi π
+map&lt;span class=&quot;p&quot;&gt;!&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;C&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;rh ρ
+map&lt;span class=&quot;p&quot;&gt;!&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;C&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;si&lt;/span&gt; σ
+map&lt;span class=&quot;p&quot;&gt;!&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;C&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;ta&lt;/span&gt; τ
+map&lt;span class=&quot;p&quot;&gt;!&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;C&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;ps&lt;/span&gt; ψ
+map&lt;span class=&quot;p&quot;&gt;!&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;C&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;om ω
+map&lt;span class=&quot;p&quot;&gt;!&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;C&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;ph ϕ
+&lt;span class=&quot;c&quot;&gt;&quot; }}}&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;&quot; Math {{{&lt;/span&gt;
+map&lt;span class=&quot;p&quot;&gt;!&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;C&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;-&amp;gt;&lt;/span&gt; →
+map&lt;span class=&quot;p&quot;&gt;!&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;C&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&amp;lt;&lt;/span&gt; ⇌
+map&lt;span class=&quot;p&quot;&gt;!&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;C&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;n&lt;/span&gt; ↑
+map&lt;span class=&quot;p&quot;&gt;!&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;C&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;v&lt;/span&gt; ↓
+map&lt;span class=&quot;p&quot;&gt;!&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;C&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;=&lt;/span&gt; ∝
+map&lt;span class=&quot;p&quot;&gt;!&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;C&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;~&lt;/span&gt; ≈
+map&lt;span class=&quot;p&quot;&gt;!&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;C&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;!=&lt;/span&gt; ≠
+map&lt;span class=&quot;p&quot;&gt;!&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;C&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;!&amp;gt;&lt;/span&gt; ⇸
+map&lt;span class=&quot;p&quot;&gt;!&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;C&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;~&amp;gt;&lt;/span&gt; ↝
+map&lt;span class=&quot;p&quot;&gt;!&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;C&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&amp;gt;=&lt;/span&gt; ≥
+map&lt;span class=&quot;p&quot;&gt;!&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;C&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&amp;lt;=&lt;/span&gt; ≤
+map&lt;span class=&quot;p&quot;&gt;!&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;C&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;0&lt;/span&gt; °
+map&lt;span class=&quot;p&quot;&gt;!&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;C&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;ce&lt;/span&gt; ¢
+map&lt;span class=&quot;p&quot;&gt;!&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;C&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;* •
+map&lt;span class=&quot;p&quot;&gt;!&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;C&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;co&lt;/span&gt; ⌘
+map&lt;span class=&quot;p&quot;&gt;!&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;C&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;fa ∀
+map&lt;span class=&quot;p&quot;&gt;!&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;C&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;ex&lt;/span&gt; ∃
+map&lt;span class=&quot;p&quot;&gt;!&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;C&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;&amp;amp; ∧
+map&lt;span class=&quot;p&quot;&gt;!&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;C&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;or ∨
+&lt;span class=&quot;c&quot;&gt;&quot; }}}&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;&quot; IPA {{{&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;&quot; vowels&lt;/span&gt;
+map&lt;span class=&quot;p&quot;&gt;!&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;C&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;-&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;i&lt;/span&gt; ɨ
+map&lt;span class=&quot;p&quot;&gt;!&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;C&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;-&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;u&lt;/span&gt; ʉ
+map&lt;span class=&quot;p&quot;&gt;!&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;C&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;m&lt;/span&gt; ɯ
+map&lt;span class=&quot;p&quot;&gt;!&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;C&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;I ɪ
+map&lt;span class=&quot;p&quot;&gt;!&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;C&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;Y ʏ
+map&lt;span class=&quot;p&quot;&gt;!&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;C&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;U ʊ
+map&lt;span class=&quot;p&quot;&gt;!&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;C&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;/&lt;span class=&quot;k&quot;&gt;o&lt;/span&gt; ø
+map&lt;span class=&quot;p&quot;&gt;!&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;C&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;@ ə
+map&lt;span class=&quot;p&quot;&gt;!&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;C&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;E ɛ
+map&lt;span class=&quot;p&quot;&gt;!&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;C&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;oe œ
+map&lt;span class=&quot;p&quot;&gt;!&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;C&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;^ ʌ
+map&lt;span class=&quot;p&quot;&gt;!&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;C&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;O ɔ
+map&lt;span class=&quot;p&quot;&gt;!&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;C&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;ae æ
+map&lt;span class=&quot;p&quot;&gt;!&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;C&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;A ɑ
+&lt;span class=&quot;c&quot;&gt;&quot; consonants&lt;/span&gt;
+map&lt;span class=&quot;p&quot;&gt;!&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;C&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;N ŋ
+map&lt;span class=&quot;p&quot;&gt;!&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;C&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;r&lt;/span&gt; ɹ
+map&lt;span class=&quot;p&quot;&gt;!&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;C&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;mf ɱ
+map&lt;span class=&quot;p&quot;&gt;!&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;C&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;eth ð
+&lt;span class=&quot;c&quot;&gt;&quot; }}}&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+</description>
+        <pubDate>Thu, 14 Nov 2013 08:54:00 +0200</pubDate>
+        <link>http://brianbuccola.com/vim-and-unicode-keybindings-math-ipa-and-more</link>
+        <guid isPermaLink="true">http://brianbuccola.com/vim-and-unicode-keybindings-math-ipa-and-more</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>Dealing with acronyms in LaTeX</title>
+        <description>&lt;p&gt;I recently stumbled on what looks to be a very useful &lt;script type=&quot;math/tex&quot;&gt;\LaTeX{}&lt;/script&gt; package
+called &lt;code class=&quot;highlighter-rouge&quot;&gt;acronym&lt;/code&gt;. Its purpose is to simplify the task of defining and using
+acronyms (and initialisms) when writing papers in &lt;script type=&quot;math/tex&quot;&gt;\LaTeX{}&lt;/script&gt; — a &lt;em&gt;very&lt;/em&gt;
+common task in most academic fields, including linguistics.&lt;/p&gt;
+
+&lt;p&gt;The gist of &lt;code class=&quot;highlighter-rouge&quot;&gt;acronym&lt;/code&gt; is that, once you properly define an acronym, you can use
+a single command, &lt;code class=&quot;highlighter-rouge&quot;&gt;\ac{&amp;lt;label&amp;gt;}&lt;/code&gt;, to generate either the “full form” of the
+acronym when it’s the first time the term is used, or the “short form” when the
+term and acronym have already been introduced.&lt;/p&gt;
+
+&lt;p&gt;For example, we might want to do the following:&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Chomsky introduced the notion of Poverty of the Stimulus (POTS) to argue that
+lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
+voluptua.&lt;/p&gt;
+
+  &lt;p&gt;Evidence for POTS comes from the fact that at vero eos et accusam et justo
+duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus
+est Lorem ipsum dolor sit amet.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;where the first occurrence of the term Poverty of the Stimulus is in its “full
+form”, i.e. the long-form term Poverty of the Stimulus plus the short-form
+acronym POTS, and any subsequent occurrence is simply the acronym.&lt;/p&gt;
+
+&lt;p&gt;With &lt;code class=&quot;highlighter-rouge&quot;&gt;acronym&lt;/code&gt; it’s as easy as:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;\documentclass&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;article&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;\usepackage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;acronym&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;\acrodef&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;pots&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;[POTS]&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;Poverty of the Stimulus&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;nt&quot;&gt;\begin{document}&lt;/span&gt;
+
+Chomsky introduced the notion of &lt;span class=&quot;k&quot;&gt;\ac&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;pots&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; to argue that lorem ipsum dolor sit
+amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
+labore et dolore magna aliquyam erat, sed diam voluptua.
+
+Evidence for the &lt;span class=&quot;k&quot;&gt;\ac&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;pots&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; comes from the fact that at vero eos et accusam et
+justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata
+sanctus est Lorem ipsum dolor sit amet.
+
+&lt;span class=&quot;nt&quot;&gt;\end{document}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;The relevant line is: &lt;code class=&quot;highlighter-rouge&quot;&gt;\acrodef{pots}[POTS]{Poverty of the Stimulus}&lt;/code&gt;. The
+command &lt;code class=&quot;highlighter-rouge&quot;&gt;\acrodef&lt;/code&gt; takes two required arguments and one optional argument:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;The acronym &lt;em&gt;label&lt;/em&gt;, in this case &lt;code class=&quot;highlighter-rouge&quot;&gt;pots&lt;/code&gt; (similar to a bibkey in BibTeX).&lt;/li&gt;
+  &lt;li&gt;The &lt;em&gt;acronym&lt;/em&gt; (optional), also called &lt;em&gt;short form&lt;/em&gt; in the documentation, in
+this case &lt;code class=&quot;highlighter-rouge&quot;&gt;POTS&lt;/code&gt;.&lt;/li&gt;
+  &lt;li&gt;The &lt;em&gt;long form&lt;/em&gt;, in this case &lt;code class=&quot;highlighter-rouge&quot;&gt;Poverty of the Stimulus&lt;/code&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;It might seem weird that the acronym is optional, but that’s because if no
+acronym is given, then &lt;code class=&quot;highlighter-rouge&quot;&gt;acronym&lt;/code&gt; will use the label as the acronym. So you
+could do &lt;code class=&quot;highlighter-rouge&quot;&gt;\acrodef{POTS}{Poverty of the Stimulus&lt;/code&gt;, and that would produce
+“POTS”; however, I prefer my labels to be lowercase, because I’m lazy when
+typing.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;acronym&lt;/code&gt; also provides the commands &lt;code class=&quot;highlighter-rouge&quot;&gt;\acf&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;\acl&lt;/code&gt;, and &lt;code class=&quot;highlighter-rouge&quot;&gt;\acs&lt;/code&gt; for producing
+full, long, and short forms manually.&lt;/p&gt;
+
+&lt;p&gt;What if you want the term Poverty of the Stimulus to be &lt;em&gt;italicized&lt;/em&gt; in the
+full form? Then use the command &lt;code class=&quot;highlighter-rouge&quot;&gt;\acfi&lt;/code&gt; (mnemonic: acronym fullform italic).
+&lt;strong&gt;Caveat:&lt;/strong&gt; When using &lt;code class=&quot;highlighter-rouge&quot;&gt;\acfi&lt;/code&gt;, for some reason the acronym does not get marked
+as “used”. Thus, if &lt;code class=&quot;highlighter-rouge&quot;&gt;\acfi{pots}&lt;/code&gt; is the first occurrence of the term, then the
+very next &lt;code class=&quot;highlighter-rouge&quot;&gt;\ac{pots}&lt;/code&gt; will produce the full “Poverty of the Stimulus (POTS)”
+rather than just “POTS”. To rectify this, use the &lt;code class=&quot;highlighter-rouge&quot;&gt;\acused&lt;/code&gt; command, which
+marks its argument as “used”.:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Chomsky introduced the notion of &lt;span class=&quot;k&quot;&gt;\acfi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;pots&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;\acused&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;pots&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; to argue that ...
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;The last thing I’ll mention is that instead of using &lt;code class=&quot;highlighter-rouge&quot;&gt;\acrodef&lt;/code&gt; in the
+document’s preamble, you can instead use the &lt;code class=&quot;highlighter-rouge&quot;&gt;acronym&lt;/code&gt; environment inside the
+document, with acronym entries defined using the &lt;code class=&quot;highlighter-rouge&quot;&gt;\acro&lt;/code&gt; command. The
+difference is that now &lt;code class=&quot;highlighter-rouge&quot;&gt;acronym&lt;/code&gt; will produce a nice listing of all acronyms
+and their long forms. You can even add the &lt;code class=&quot;highlighter-rouge&quot;&gt;withpage&lt;/code&gt; package option to list
+the pages that each acronym first occurs on. I imagine this would be very
+useful for a book or long manuscript to have.&lt;/p&gt;
+
+&lt;p&gt;For a list of all available commands and their descriptions, see the &lt;code class=&quot;highlighter-rouge&quot;&gt;acronym&lt;/code&gt;
+documentation: &lt;code class=&quot;highlighter-rouge&quot;&gt;$ texdoc acronym&lt;/code&gt; in your nearest terminal emulator.&lt;/p&gt;
+</description>
+        <pubDate>Mon, 21 Oct 2013 12:01:00 +0300</pubDate>
+        <link>http://brianbuccola.com/dealing-with-acronyms-in-latex</link>
+        <guid isPermaLink="true">http://brianbuccola.com/dealing-with-acronyms-in-latex</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>Implementing lists in the simply typed lambda calculus</title>
+        <description>&lt;p&gt;One of my goals this summer is to re-read Bob Carpenter’s &lt;em&gt;Type-Logical
+Grammar&lt;/em&gt; and to actually do (at least some of) the exercises. If I manage to
+follow through with that goal, I’ll write up my solutions (or attempts at
+solutions) to some of the more interesting or difficult exercises. I’ll start
+that off with the last exercise from Chapter 2, which says to add to the simply
+typed lambda calculus the type &lt;script type=&quot;math/tex&quot;&gt;\sigma^*&lt;/script&gt; for lists of objects of type
+&lt;script type=&quot;math/tex&quot;&gt;\sigma&lt;/script&gt;. First, let me review Chapter 2 to set the stage.&lt;/p&gt;
+
+&lt;h2 id=&quot;review&quot;&gt;Review&lt;/h2&gt;
+
+&lt;p&gt;Chapter 2 deals with the syntax, semantics, and proof theory of the simply
+typed lambda calculus. I’ll review here the syntax and semantics, but not the
+proof theory.&lt;/p&gt;
+
+&lt;h3 id=&quot;syntax&quot;&gt;Syntax&lt;/h3&gt;
+
+&lt;p&gt;Carpenter builds up the set &lt;script type=&quot;math/tex&quot;&gt;\mathbf{Typ}&lt;/script&gt; of types inductively from a set
+&lt;script type=&quot;math/tex&quot;&gt;\mathbf{BasTyp}&lt;/script&gt; of &lt;em&gt;basic types&lt;/em&gt;, using just one type constructor: &lt;script type=&quot;math/tex&quot;&gt;\to&lt;/script&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Definition (types).&lt;/strong&gt; The set of &lt;em&gt;types&lt;/em&gt; is the smallest set &lt;script type=&quot;math/tex&quot;&gt;\mathbf{Typ}&lt;/script&gt;
+such that&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;script type=&quot;math/tex&quot;&gt;\mathbf{BasTyp} \subseteq \mathbf{Typ}&lt;/script&gt;.&lt;/li&gt;
+  &lt;li&gt;If &lt;script type=&quot;math/tex&quot;&gt;\sigma, \tau \in \mathbf{Typ}&lt;/script&gt;, then &lt;script type=&quot;math/tex&quot;&gt;(\sigma \to \tau) \in
+\mathbf{Typ}&lt;/script&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;A type of the form &lt;script type=&quot;math/tex&quot;&gt;(\sigma \to \tau)&lt;/script&gt; is called a &lt;em&gt;functional type&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;For each type &lt;script type=&quot;math/tex&quot;&gt;\tau&lt;/script&gt;, there is a set &lt;script type=&quot;math/tex&quot;&gt;\mathbf{Var}_\tau&lt;/script&gt; of variables of
+type &lt;script type=&quot;math/tex&quot;&gt;\tau&lt;/script&gt; and a set &lt;script type=&quot;math/tex&quot;&gt;\mathbf{Con}_\tau&lt;/script&gt; of constants of type &lt;script type=&quot;math/tex&quot;&gt;\tau&lt;/script&gt;.
+The set of lambda terms of type &lt;script type=&quot;math/tex&quot;&gt;\tau&lt;/script&gt; is defined as follows.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Definition (terms).&lt;/strong&gt; The set of &lt;em&gt;(lambda) terms&lt;/em&gt; of type &lt;script type=&quot;math/tex&quot;&gt;\tau&lt;/script&gt; is the
+smallest set &lt;script type=&quot;math/tex&quot;&gt;\mathbf{Term}_\tau&lt;/script&gt; such that&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;script type=&quot;math/tex&quot;&gt;\mathbf{Var}_\tau \subseteq \mathbf{Term}_\tau&lt;/script&gt;.&lt;/li&gt;
+  &lt;li&gt;&lt;script type=&quot;math/tex&quot;&gt;\mathbf{Con_\tau} \subseteq \mathbf{Term}_\tau&lt;/script&gt;.&lt;/li&gt;
+  &lt;li&gt;If &lt;script type=&quot;math/tex&quot;&gt;\alpha \in \mathbf{Term}_{\sigma \to \tau}&lt;/script&gt; and &lt;script type=&quot;math/tex&quot;&gt;\beta \in
+\mathbf{Term}_\sigma&lt;/script&gt;, then &lt;script type=&quot;math/tex&quot;&gt;(\alpha(\beta)) \in \mathbf{Term}_\tau&lt;/script&gt;.&lt;/li&gt;
+  &lt;li&gt;If &lt;script type=&quot;math/tex&quot;&gt;\tau = \sigma \to \rho&lt;/script&gt; and &lt;script type=&quot;math/tex&quot;&gt;x \in \mathbf{Var}_\sigma&lt;/script&gt; and &lt;script type=&quot;math/tex&quot;&gt;\alpha
+\in \mathbf{Term}_\rho&lt;/script&gt;, then &lt;script type=&quot;math/tex&quot;&gt;\lambda x . (\alpha) \in
+\mathbf{Term}_\tau&lt;/script&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;A term of the form &lt;script type=&quot;math/tex&quot;&gt;(\alpha(\beta))&lt;/script&gt;, usually abbreviated &lt;script type=&quot;math/tex&quot;&gt;\alpha(\beta)&lt;/script&gt;
+or &lt;script type=&quot;math/tex&quot;&gt;\alpha\ \beta&lt;/script&gt;, is a &lt;em&gt;functional application&lt;/em&gt; of &lt;script type=&quot;math/tex&quot;&gt;\alpha&lt;/script&gt; to &lt;script type=&quot;math/tex&quot;&gt;\beta&lt;/script&gt;.
+However, a term &lt;script type=&quot;math/tex&quot;&gt;\alpha&lt;/script&gt; with a functional type &lt;script type=&quot;math/tex&quot;&gt;(\sigma \to \tau)&lt;/script&gt; is not
+a function per se—&lt;script type=&quot;math/tex&quot;&gt;\alpha(\beta)&lt;/script&gt; is (the result of) a &lt;em&gt;syntactic&lt;/em&gt;
+operation more akin to term concatenation than functional application.
+Nevertheless, &lt;script type=&quot;math/tex&quot;&gt;\alpha&lt;/script&gt; is called functional (it has a functional type)
+because of how it is &lt;em&gt;interpreted semantically&lt;/em&gt; (model theoretically).&lt;/p&gt;
+
+&lt;h3 id=&quot;semantics&quot;&gt;Semantics&lt;/h3&gt;
+
+&lt;p&gt;In the model theory, functional terms denote functions in the normal
+mathematical sense. Before defining denotations, I need to define frames and
+models.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Definition (frame).&lt;/strong&gt; A &lt;em&gt;frame&lt;/em&gt; for the set &lt;script type=&quot;math/tex&quot;&gt;\mathbf{BasTyp}&lt;/script&gt; is a
+collection &lt;script type=&quot;math/tex&quot;&gt;\mathbf{Dom} = \bigcup\mathbf{Dom}_\tau&lt;/script&gt; (&lt;script type=&quot;math/tex&quot;&gt;\tau \in
+\mathbf{BasTyp}&lt;/script&gt;) of &lt;em&gt;basic domains&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Definition (model).&lt;/strong&gt; A &lt;em&gt;model&lt;/em&gt; is a pair &lt;script type=&quot;math/tex&quot;&gt;\langle \mathbf{Dom},I \rangle&lt;/script&gt;
+in which &lt;script type=&quot;math/tex&quot;&gt;\mathbf{Dom}&lt;/script&gt; is a frame, and &lt;script type=&quot;math/tex&quot;&gt;I&lt;/script&gt; is the &lt;em&gt;interpretation
+function&lt;/em&gt; mapping constants to the appropriate domain, i.e. &lt;script type=&quot;math/tex&quot;&gt;I(\alpha) \in
+\mathbf{Dom}_\tau&lt;/script&gt; if &lt;script type=&quot;math/tex&quot;&gt;\alpha \in \textbf{Con}_\tau&lt;/script&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Definition (denotation).&lt;/strong&gt; Given a model &lt;script type=&quot;math/tex&quot;&gt;\mathcal{M} = \langle
+\textbf{Dom}, I \rangle&lt;/script&gt; and a variable assignment &lt;script type=&quot;math/tex&quot;&gt;\theta&lt;/script&gt;, the
+&lt;em&gt;denotation&lt;/em&gt; &lt;script type=&quot;math/tex&quot;&gt;[\![\alpha]\!]^\theta_\mathcal{M}&lt;/script&gt; of a term &lt;script type=&quot;math/tex&quot;&gt;\alpha&lt;/script&gt; with
+respect to &lt;script type=&quot;math/tex&quot;&gt;\mathcal{M}&lt;/script&gt; and &lt;script type=&quot;math/tex&quot;&gt;\theta&lt;/script&gt; is given by:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;If &lt;script type=&quot;math/tex&quot;&gt;\alpha \in \mathbf{Var}_\tau&lt;/script&gt;, then
+&lt;script type=&quot;math/tex&quot;&gt;[\![\alpha]\!]^\theta_\mathcal{M} = \theta(\alpha)&lt;/script&gt;.&lt;/li&gt;
+  &lt;li&gt;If &lt;script type=&quot;math/tex&quot;&gt;\alpha \in \mathbf{Con}_\tau&lt;/script&gt;, then
+&lt;script type=&quot;math/tex&quot;&gt;[\![\alpha]\!]^\theta_\mathcal{M} = I(\alpha)&lt;/script&gt;.&lt;/li&gt;
+  &lt;li&gt;&lt;script type=&quot;math/tex&quot;&gt;[\![\alpha(\beta)]\!]^\theta_\mathcal{M} =
+[\![\alpha]\!]^\theta_\mathcal{M} ([\![\beta]\!]^\theta_\mathcal{M}]\!])&lt;/script&gt;,
+assuming &lt;script type=&quot;math/tex&quot;&gt;\alpha&lt;/script&gt; and &lt;script type=&quot;math/tex&quot;&gt;\beta&lt;/script&gt; are appropriately typed.&lt;/li&gt;
+  &lt;li&gt;&lt;script type=&quot;math/tex&quot;&gt;[\![\lambda x . \alpha]\!]^\theta_\mathcal{M} = f&lt;/script&gt; such that &lt;script type=&quot;math/tex&quot;&gt;f(a) =
+[\![\alpha]\!]^{\theta[x:=a]}_\mathcal{M}&lt;/script&gt;, where &lt;script type=&quot;math/tex&quot;&gt;\theta[x:=a]&lt;/script&gt; is that
+variable assignment &lt;script type=&quot;math/tex&quot;&gt;\theta&#39;&lt;/script&gt; such that &lt;script type=&quot;math/tex&quot;&gt;\theta&#39;(x) = a&lt;/script&gt; and
+&lt;script type=&quot;math/tex&quot;&gt;\theta&#39;(y) = \theta(y)&lt;/script&gt; for each &lt;script type=&quot;math/tex&quot;&gt;y \neq x&lt;/script&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Note that the left-hand side of the equality statement in (3) involves term
+concatenation (function&lt;em&gt;al&lt;/em&gt; application), whereas the right-hand side involves
+real function application in the strict sense.&lt;/p&gt;
+
+&lt;p&gt;In other words, &lt;script type=&quot;math/tex&quot;&gt;\alpha&lt;/script&gt; of type &lt;script type=&quot;math/tex&quot;&gt;(\sigma \to \tau)&lt;/script&gt; is a lambda term whose
+denotation is a function that maps (elements of the domain of) &lt;script type=&quot;math/tex&quot;&gt;\sigma&lt;/script&gt;-type
+things to (elements of the domain of) &lt;script type=&quot;math/tex&quot;&gt;\tau&lt;/script&gt;-type things.&lt;/p&gt;
+
+&lt;p&gt;Carpenter goes on to give the usual axioms for the simply typed lamda calculus
+(&lt;script type=&quot;math/tex&quot;&gt;\alpha&lt;/script&gt;-, &lt;script type=&quot;math/tex&quot;&gt;\beta&lt;/script&gt;-, and &lt;script type=&quot;math/tex&quot;&gt;\eta&lt;/script&gt;-reduction schemata) and the usual rules
+of inference (reflexivity, transitivity, congruence, and equivalence) and to
+prove that the resulting system is both sound and complete.&lt;/p&gt;
+
+&lt;h3 id=&quot;product-and-sum-types&quot;&gt;Product and Sum Types&lt;/h3&gt;
+
+&lt;p&gt;The latter part of the chapter adds product and sum types to the system.
+Product types allow functional terms to take multiple arguments at one time (in
+a certain sense), while sum types introduce functional terms that can act
+polymorphically.&lt;/p&gt;
+
+&lt;h2 id=&quot;exercise-list-types&quot;&gt;Exercise: List Types&lt;/h2&gt;
+
+&lt;p&gt;Let me now turn to the actual exercise.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Consider adding &lt;script type=&quot;math/tex&quot;&gt;\sigma^*&lt;/script&gt; for lists of objects of type &lt;script type=&quot;math/tex&quot;&gt;\sigma&lt;/script&gt;. What
+would the terms look like in this scheme and how are they interpreted and
+treated proof-theoretically? Is there any gain in expressive power by
+admitting arbitrary lists? What might we do to interpret infinite sequences?&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;In this post, I’ll only address the first two questions: what do list terms
+look like, and how are they interpreted. For my answer, I’ll be borrowing from
+the functional programming language Haskell.&lt;/p&gt;
+
+&lt;h3 id=&quot;lists-in-haskell&quot;&gt;Lists in Haskell&lt;/h3&gt;
+
+&lt;p&gt;In Haskell, lists are things like &lt;code class=&quot;highlighter-rouge&quot;&gt;[3, 5, 0]&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;[&quot;hello&quot;, &quot;world&quot;]&lt;/code&gt;, etc. The
+order of list elements is important, and list elements can repeat. In that
+sense, lists are more like tuples (sequences) than sets, except that whereas a
+tuple (both in Haskell and in Carpenter’s section on product types) can contain
+objects of all different types, list elements must all be of the &lt;em&gt;same&lt;/em&gt; type.
+For example, in Haskell, &lt;code class=&quot;highlighter-rouge&quot;&gt;(3, &quot;hello&quot;)&lt;/code&gt; is a possible pair, consisting of an
+integer and a string, but &lt;code class=&quot;highlighter-rouge&quot;&gt;[3, &quot;hello&quot;]&lt;/code&gt; is not a possible list.&lt;/p&gt;
+
+&lt;p&gt;In Haskell, the list type is written as &lt;code class=&quot;highlighter-rouge&quot;&gt;[a]&lt;/code&gt;, where &lt;code class=&quot;highlighter-rouge&quot;&gt;a&lt;/code&gt; is any type. For
+example, &lt;code class=&quot;highlighter-rouge&quot;&gt;[3, 5, 0]&lt;/code&gt; has type &lt;code class=&quot;highlighter-rouge&quot;&gt;[Int]&lt;/code&gt;, while &lt;code class=&quot;highlighter-rouge&quot;&gt;[&quot;hello&quot;, &quot;world&quot;]&lt;/code&gt; has type
+&lt;code class=&quot;highlighter-rouge&quot;&gt;[String]&lt;/code&gt;. (NB: In Haskell a string is itself a list of characters, i.e.
+&lt;code class=&quot;highlighter-rouge&quot;&gt;String&lt;/code&gt; is just a type synonym for &lt;code class=&quot;highlighter-rouge&quot;&gt;[Char]&lt;/code&gt;.)&lt;/p&gt;
+
+&lt;p&gt;Note that Haskell overloads the symbols &lt;code class=&quot;highlighter-rouge&quot;&gt;[]&lt;/code&gt;: they are used to construct both
+terms (Haskell expressions) and types.&lt;/p&gt;
+
+&lt;p&gt;I’ll follow Haskell’s lead by writing &lt;script type=&quot;math/tex&quot;&gt;[\sigma]&lt;/script&gt; instead of Carpenter’s
+&lt;script type=&quot;math/tex&quot;&gt;\sigma^*&lt;/script&gt; for the type of lists containing &lt;script type=&quot;math/tex&quot;&gt;\sigma&lt;/script&gt;-type objects, and I’ll
+similarly overload the symbols &lt;script type=&quot;math/tex&quot;&gt;[\ ]&lt;/script&gt;.&lt;/p&gt;
+
+&lt;h3 id=&quot;syntax-1&quot;&gt;Syntax&lt;/h3&gt;
+
+&lt;p&gt;I begin by adding &lt;script type=&quot;math/tex&quot;&gt;[\sigma]&lt;/script&gt; to &lt;script type=&quot;math/tex&quot;&gt;\mathbf{Typ}&lt;/script&gt;. I do so by adding the
+following clause to the definition of types:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;If &lt;script type=&quot;math/tex&quot;&gt;\sigma \in \mathbf{Typ}&lt;/script&gt;, then &lt;script type=&quot;math/tex&quot;&gt;[\sigma] \in \mathbf{Typ}&lt;/script&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;So &lt;script type=&quot;math/tex&quot;&gt;[\ ]&lt;/script&gt; is a unary type constructor (it takes a single type and returns a
+new type), whereas &lt;script type=&quot;math/tex&quot;&gt;\to&lt;/script&gt; is a binary type constructor (it takes two types and
+returns a new type).&lt;/p&gt;
+
+&lt;p&gt;As for terms, I assume that for each list type &lt;script type=&quot;math/tex&quot;&gt;\tau = [\sigma]&lt;/script&gt; there is a
+set &lt;script type=&quot;math/tex&quot;&gt;\mathbf{Var}_\tau&lt;/script&gt; of variables of type &lt;script type=&quot;math/tex&quot;&gt;\tau&lt;/script&gt; and a set
+&lt;script type=&quot;math/tex&quot;&gt;\mathbf{Con}_\tau&lt;/script&gt; of constants of type &lt;script type=&quot;math/tex&quot;&gt;\tau&lt;/script&gt;. We now need a way to
+construct arbitrary list terms (similar to how abstraction lets us construct
+functional terms).&lt;/p&gt;
+
+&lt;h4 id=&quot;haskell-detour&quot;&gt;Haskell Detour&lt;/h4&gt;
+
+&lt;p&gt;In Haskell, there are two list constructors: &lt;code class=&quot;highlighter-rouge&quot;&gt;[]&lt;/code&gt;, or &lt;em&gt;nil&lt;/em&gt; (the empty list),
+and &lt;code class=&quot;highlighter-rouge&quot;&gt;(:)&lt;/code&gt;, or &lt;em&gt;cons&lt;/em&gt;. The cons operator has the following type signature:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;::&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;This means it takes something of type &lt;code class=&quot;highlighter-rouge&quot;&gt;a&lt;/code&gt; and something of type &lt;code class=&quot;highlighter-rouge&quot;&gt;[a]&lt;/code&gt; and
+returns something of type &lt;code class=&quot;highlighter-rouge&quot;&gt;[a]&lt;/code&gt;. More precisely, it takes an &lt;code class=&quot;highlighter-rouge&quot;&gt;a&lt;/code&gt;-type
+object—call it &lt;code class=&quot;highlighter-rouge&quot;&gt;x&lt;/code&gt;— and a list of &lt;code class=&quot;highlighter-rouge&quot;&gt;a&lt;/code&gt;-type objects—call it &lt;code class=&quot;highlighter-rouge&quot;&gt;list&lt;/code&gt;—and
+it returns a new list, &lt;code class=&quot;highlighter-rouge&quot;&gt;list&#39;&lt;/code&gt;, whose elements are &lt;code class=&quot;highlighter-rouge&quot;&gt;x&lt;/code&gt; followed by the elements
+of &lt;code class=&quot;highlighter-rouge&quot;&gt;list&lt;/code&gt;. In other words, cons prepends its first argument (an object of type
+&lt;code class=&quot;highlighter-rouge&quot;&gt;a&lt;/code&gt;) to the beginning of its second argument (a list of objects of type &lt;code class=&quot;highlighter-rouge&quot;&gt;a&lt;/code&gt;).
+(Of course, in Haskell a pure function always returns a new object; it doesn’t
+modify objects given as arguments, so cons does not &lt;em&gt;literally&lt;/em&gt; prepend
+anything to a given list, unlike, say, &lt;code class=&quot;highlighter-rouge&quot;&gt;list.insert(0, x)&lt;/code&gt; in Python.)&lt;/p&gt;
+
+&lt;p&gt;For example, to construct a list of integers (objects of type &lt;code class=&quot;highlighter-rouge&quot;&gt;Int&lt;/code&gt;), we start
+with &lt;code class=&quot;highlighter-rouge&quot;&gt;[]&lt;/code&gt; of type &lt;code class=&quot;highlighter-rouge&quot;&gt;[Int]&lt;/code&gt;, and using &lt;code class=&quot;highlighter-rouge&quot;&gt;(:)&lt;/code&gt; we add to the front of &lt;code class=&quot;highlighter-rouge&quot;&gt;[]&lt;/code&gt; an
+integer like &lt;code class=&quot;highlighter-rouge&quot;&gt;0&lt;/code&gt; to obtain &lt;code class=&quot;highlighter-rouge&quot;&gt;(:) 0 []&lt;/code&gt;, or using infix notation, &lt;code class=&quot;highlighter-rouge&quot;&gt;0 : []&lt;/code&gt;. The
+result is of type &lt;code class=&quot;highlighter-rouge&quot;&gt;[Int]&lt;/code&gt; and is normally written as &lt;code class=&quot;highlighter-rouge&quot;&gt;[0]&lt;/code&gt;, which hides the
+cons operator. From &lt;code class=&quot;highlighter-rouge&quot;&gt;[0]&lt;/code&gt; we can obtain &lt;code class=&quot;highlighter-rouge&quot;&gt;5 : [0]&lt;/code&gt;, written &lt;code class=&quot;highlighter-rouge&quot;&gt;[5, 0]&lt;/code&gt;, and from
+that we can obtain &lt;code class=&quot;highlighter-rouge&quot;&gt;3 : [5, 0]&lt;/code&gt;, or &lt;code class=&quot;highlighter-rouge&quot;&gt;[3, 5, 0]&lt;/code&gt;, and so on.&lt;/p&gt;
+
+&lt;p&gt;More generally, &lt;code class=&quot;highlighter-rouge&quot;&gt;[x1, x2, ..., xN]&lt;/code&gt; is syntactic sugar for &lt;code class=&quot;highlighter-rouge&quot;&gt;x1 : ( x2 : ( ... (
+xN : [] ) ... ) )&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h4 id=&quot;back-to-terms&quot;&gt;Back to Terms&lt;/h4&gt;
+
+&lt;p&gt;Returning to our lambda terms, we want, for each type &lt;script type=&quot;math/tex&quot;&gt;\sigma&lt;/script&gt;, a nil term
+&lt;script type=&quot;math/tex&quot;&gt;[\ ]&lt;/script&gt; of type &lt;script type=&quot;math/tex&quot;&gt;[\sigma]&lt;/script&gt;, and a term constructor for adding an object of
+type &lt;script type=&quot;math/tex&quot;&gt;\sigma&lt;/script&gt; to a list of type &lt;script type=&quot;math/tex&quot;&gt;[\sigma]&lt;/script&gt; to produce a new such list. I do
+so by adding the following clauses to the definition of the set
+&lt;script type=&quot;math/tex&quot;&gt;\mathbf{Term}_\tau&lt;/script&gt; of terms of type &lt;script type=&quot;math/tex&quot;&gt;\tau&lt;/script&gt;.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;If &lt;script type=&quot;math/tex&quot;&gt;\tau = [\sigma]&lt;/script&gt;, then &lt;script type=&quot;math/tex&quot;&gt;[\ ] \in \mathbf{Term}_\tau&lt;/script&gt;.&lt;/li&gt;
+  &lt;li&gt;If &lt;script type=&quot;math/tex&quot;&gt;\tau = [\sigma]&lt;/script&gt; and &lt;script type=&quot;math/tex&quot;&gt;\alpha \in \mathbf{Term}_\sigma&lt;/script&gt; and &lt;script type=&quot;math/tex&quot;&gt;\beta
+\in \mathbf{Term}_\tau&lt;/script&gt;, then &lt;script type=&quot;math/tex&quot;&gt;(\alpha : \beta) \in \mathbf{Term}_\tau&lt;/script&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Like functional application, &lt;script type=&quot;math/tex&quot;&gt;:&lt;/script&gt; is a binary term contructor: it takes two
+terms to produce a new term.&lt;/p&gt;
+
+&lt;p&gt;Following Haskell, I make the following conventions:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;script type=&quot;math/tex&quot;&gt;[\alpha] =_\mbox{def} (\alpha : [\ ])&lt;/script&gt;.&lt;/li&gt;
+  &lt;li&gt;&lt;script type=&quot;math/tex&quot;&gt;[\alpha, \beta, \dots] =_\mbox{def} (\alpha : [\beta, \dots])&lt;/script&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The latter schema can be applied recursively for any list of arbitrary length.
+For example&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{align}
+[3, 5, 0] &amp;= (3 : [5, 0])           \\
+          &amp;= (3 : (5 : [0]))        \\
+          &amp;= (3 : (5 : (0 : [\ ])))
+\end{align} %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;Since there is a one-to-one correspondence between &lt;script type=&quot;math/tex&quot;&gt;[\alpha, \beta, \dots,
+\gamma]&lt;/script&gt;-looking things and &lt;script type=&quot;math/tex&quot;&gt;(\alpha : (\beta : (\dots (\gamma : [\ ])
+\dots)))&lt;/script&gt;-looking things, one might wonder if we can instead reformulate (6)
+as follows (in two steps).&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;If &lt;script type=&quot;math/tex&quot;&gt;\tau = [\sigma]&lt;/script&gt; and &lt;script type=&quot;math/tex&quot;&gt;\alpha \in \mathbf{Term}_\sigma&lt;/script&gt;, then
+&lt;script type=&quot;math/tex&quot;&gt;[\alpha] \in \mathbf{Term}_\tau&lt;/script&gt;.&lt;/li&gt;
+  &lt;li&gt;If &lt;script type=&quot;math/tex&quot;&gt;\tau = [\sigma]&lt;/script&gt; and &lt;script type=&quot;math/tex&quot;&gt;\alpha \in \mathbf{Term}_\sigma&lt;/script&gt; and &lt;script type=&quot;math/tex&quot;&gt;[\beta]
+\in \mathbf{Term}_\tau&lt;/script&gt;, then &lt;script type=&quot;math/tex&quot;&gt;[\alpha, \beta] \in \mathbf{Term}_\tau&lt;/script&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;(In other words, we can construct a singleton list from a single object, and a
+2-element list from two objects.)&lt;/p&gt;
+
+&lt;p&gt;The problem is that (7) cannot be applied recursively. For example, from &lt;script type=&quot;math/tex&quot;&gt;0&lt;/script&gt;
+we can obtain &lt;script type=&quot;math/tex&quot;&gt;[0]&lt;/script&gt; by appyling (6), and from &lt;script type=&quot;math/tex&quot;&gt;5&lt;/script&gt; and &lt;script type=&quot;math/tex&quot;&gt;[0]&lt;/script&gt; we can obtain
+&lt;script type=&quot;math/tex&quot;&gt;[5,0]&lt;/script&gt; by applying (7). But we cannot apply (7) to, say, &lt;script type=&quot;math/tex&quot;&gt;3&lt;/script&gt; and &lt;script type=&quot;math/tex&quot;&gt;[5,0]&lt;/script&gt;
+to obtain &lt;script type=&quot;math/tex&quot;&gt;[3,5,0]&lt;/script&gt; because, although &lt;script type=&quot;math/tex&quot;&gt;[5,0]&lt;/script&gt; is of type &lt;script type=&quot;math/tex&quot;&gt;[\sigma]&lt;/script&gt;,
+&lt;script type=&quot;math/tex&quot;&gt;5,0&lt;/script&gt; is not a term of any kind, let alone one of type &lt;script type=&quot;math/tex&quot;&gt;\sigma&lt;/script&gt;.&lt;/p&gt;
+
+&lt;p&gt;For this reason, and for the sake of making cons explicit, I’ll stick with the
+first formulation of (6) above.&lt;/p&gt;
+
+&lt;h3 id=&quot;semantics-1&quot;&gt;Semantics&lt;/h3&gt;
+
+&lt;p&gt;Now that I’ve added list types and list terms to the syntax, I need to add
+their denotations to the model theory, and this is where I’m a bit stuck,
+primarily because there are several options and I don’t know which is
+best/normal, or which one Carpenter has in mind.&lt;/p&gt;
+
+&lt;p&gt;If &lt;script type=&quot;math/tex&quot;&gt;\alpha&lt;/script&gt; is of a list type, say &lt;script type=&quot;math/tex&quot;&gt;[\sigma]&lt;/script&gt;, then the denotation of
+&lt;script type=&quot;math/tex&quot;&gt;\alpha&lt;/script&gt; is in &lt;script type=&quot;math/tex&quot;&gt;\mathbf{Dom}_{[\sigma]}&lt;/script&gt;, but what precisely is the
+structure of &lt;script type=&quot;math/tex&quot;&gt;\mathbf{Dom}_{[\sigma]}&lt;/script&gt;?&lt;/p&gt;
+
+&lt;p&gt;For example, functional terms denote functions, so the denotation of &lt;script type=&quot;math/tex&quot;&gt;\alpha&lt;/script&gt;
+of type &lt;script type=&quot;math/tex&quot;&gt;(\sigma \to \tau)&lt;/script&gt; is a member of
+&lt;script type=&quot;math/tex&quot;&gt;\mathbf{Dom}_{\tau}^{\mathbf{Dom}_\sigma}&lt;/script&gt;, i.e.  a function from
+&lt;script type=&quot;math/tex&quot;&gt;\mathbf{Dom}_\sigma&lt;/script&gt; to &lt;script type=&quot;math/tex&quot;&gt;\mathbf{Dom}_\tau&lt;/script&gt;. Product terms denote pairs
+(and more generally, tuples), so the denotation of &lt;script type=&quot;math/tex&quot;&gt;\langle \alpha, \beta
+\rangle&lt;/script&gt; of type &lt;script type=&quot;math/tex&quot;&gt;\sigma \times \tau&lt;/script&gt; is a member of &lt;script type=&quot;math/tex&quot;&gt;\mathbf{Dom}_\sigma
+\times \mathbf{Dom}_\tau&lt;/script&gt;. But what does/should a list &lt;script type=&quot;math/tex&quot;&gt;\alpha&lt;/script&gt; of type
+&lt;script type=&quot;math/tex&quot;&gt;[\sigma]&lt;/script&gt; denote, set theoretically? A flat set, i.e. a member of the power
+set of &lt;script type=&quot;math/tex&quot;&gt;\mathbf{Dom}_\sigma&lt;/script&gt;?  Probably not, because sets don’t care about
+order or repetition, whereas lists (as I’ve defined them) do. What about
+tuples, i.e. members of &lt;script type=&quot;math/tex&quot;&gt;\mathbf{Dom}_\sigma \times \dots \times
+\mathbf{Dom}_\sigma&lt;/script&gt;? Maybe, but product terms already do that. Something
+else?  I’m not sure.&lt;/p&gt;
+
+&lt;p&gt;A concrete example might help decide. Suppose we have the type &lt;script type=&quot;math/tex&quot;&gt;\mathbf{Ind}&lt;/script&gt;
+for individuals and that &lt;script type=&quot;math/tex&quot;&gt;\mathbf{john}, \mathbf{bill}, \mathbf{sue} \in
+\mathbf{Term}_\mathbf{Ind}&lt;/script&gt;. Then we can create a list of these individuals,
+&lt;script type=&quot;math/tex&quot;&gt;[\mathbf{john}, \mathbf{bill}, \mathbf{sue}]&lt;/script&gt;, which is of type
+&lt;script type=&quot;math/tex&quot;&gt;[\mathbf{Ind}]&lt;/script&gt;. Suppose also that in some model &lt;script type=&quot;math/tex&quot;&gt;\mathcal{M}&lt;/script&gt;,
+&lt;script type=&quot;math/tex&quot;&gt;\mathbf{john}&lt;/script&gt; denotes &lt;script type=&quot;math/tex&quot;&gt;j&lt;/script&gt;, &lt;script type=&quot;math/tex&quot;&gt;\mathbf{bill}&lt;/script&gt; denotes &lt;script type=&quot;math/tex&quot;&gt;b&lt;/script&gt;, and
+&lt;script type=&quot;math/tex&quot;&gt;\mathbf{sue}&lt;/script&gt; denotes &lt;script type=&quot;math/tex&quot;&gt;s&lt;/script&gt;, where &lt;script type=&quot;math/tex&quot;&gt;j,b,s \in \mathbf{Dom}_\mathbf{Ind}&lt;/script&gt;.
+Then what should the list of these three individuals denote? Probably &lt;em&gt;not&lt;/em&gt; the
+flat set &lt;script type=&quot;math/tex&quot;&gt;\{j,b,s\} \in \mbox{Pow}(\mathbf{Dom}_\mathbf{Ind})&lt;/script&gt;, because then
+&lt;script type=&quot;math/tex&quot;&gt;[\mathbf{john}, \mathbf{bill}, \mathbf{sue}]&lt;/script&gt; and &lt;script type=&quot;math/tex&quot;&gt;[\mathbf{bill},
+\mathbf{john}, \mathbf{sue}]&lt;/script&gt; and &lt;script type=&quot;math/tex&quot;&gt;[\mathbf{john}, \mathbf{bill},
+\mathbf{bill}, \mathbf{sue}]&lt;/script&gt; would all denote the same set (at least if we
+apply the most obvious denotation mapping), which is probably undesirable. One
+reason for introducing lists in the first place is, I assume, so they can serve
+as meaning representations for natural language expressions that care about
+order and repetition.&lt;/p&gt;
+
+&lt;p&gt;Assuming, then, that we want these three lists to denote different things, the
+only reasonable possibility I can think of is to map lists to tuples. For
+example, &lt;script type=&quot;math/tex&quot;&gt;[\mathbf{john}, \mathbf{bill}, \mathbf{sue}]&lt;/script&gt; will denote &lt;script type=&quot;math/tex&quot;&gt;\langle
+j,b,s \rangle&lt;/script&gt;, which is an element of &lt;script type=&quot;math/tex&quot;&gt;\mathbf{Ind} \times \mathbf{Ind}
+\times \mathbf{Ind}&lt;/script&gt;. In this way, list terms are essentially like product
+terms, but with two main differences: (i) both products and lists denote
+tuples, but lists are composed of objects of the &lt;em&gt;same&lt;/em&gt; type, meaning that the
+tuples they denote will contain objects from the &lt;em&gt;same&lt;/em&gt; domain; and (ii) empty
+and singleton lists are possible, whereas empty and singleton tuples are in
+general (at least for Carpenter) not, as far as I can tell.&lt;/p&gt;
+
+&lt;p&gt;The following clauses get added to the definition of denotation.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;If &lt;script type=&quot;math/tex&quot;&gt;\tau = [\sigma]&lt;/script&gt; and &lt;script type=&quot;math/tex&quot;&gt;\alpha = [\ ] \in \mathbf{Term}_\tau&lt;/script&gt;, then
+&lt;script type=&quot;math/tex&quot;&gt;[\![\alpha]\!]^\theta_\mathcal{M} = \emptyset&lt;/script&gt;.&lt;/li&gt;
+  &lt;li&gt;&lt;script type=&quot;math/tex&quot;&gt;[\![(\alpha : \beta)]\!]^\theta_\mathcal{M} = \langle
+[\![\alpha]\!]^\theta_\mathcal{M}, [\![\beta]\!]^\theta_\beta \rangle&lt;/script&gt;,
+assuming &lt;script type=&quot;math/tex&quot;&gt;\alpha&lt;/script&gt; and &lt;script type=&quot;math/tex&quot;&gt;\beta&lt;/script&gt; are appropriately typed.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Continuing the example above, &lt;script type=&quot;math/tex&quot;&gt;[\mathbf{john}] = (\mathbf{john} : [\ ])&lt;/script&gt;
+denotes &lt;script type=&quot;math/tex&quot;&gt;\langle j, \emptyset \rangle \in \mathbf{Dom}_\mathbf{[Ind]}&lt;/script&gt;. And
+&lt;script type=&quot;math/tex&quot;&gt;[\mathbf{john}, \mathbf{bill}, \mathbf{sue}]&lt;/script&gt; denotes &lt;script type=&quot;math/tex&quot;&gt;\langle j, \langle
+b, \langle s,\emptyset \rangle \rangle \rangle \in
+\mathbf{Dom}_\mathbf{[Ind]}&lt;/script&gt;. Rewriting tuples in the usual way (analogous to
+lists above), where &lt;script type=&quot;math/tex&quot;&gt;\langle a,b,c, \dots \rangle =_\mbox{def} \langle a,
+\langle b,c, \dots \rangle \rangle&lt;/script&gt;, the latter denotation becomes &lt;script type=&quot;math/tex&quot;&gt;\langle
+j,b,s,\emptyset \rangle&lt;/script&gt;.&lt;/p&gt;
+
+&lt;p&gt;So what is the structure of &lt;script type=&quot;math/tex&quot;&gt;\mathbf{Dom}_\mathbf{[Ind]}&lt;/script&gt;? It’s a set whose
+members are tuples, of varying size, consisting of individuals (except the last
+tuple member, which is always &lt;script type=&quot;math/tex&quot;&gt;\emptyset&lt;/script&gt; except in the case of the empty
+tuple).&lt;/p&gt;
+
+&lt;p&gt;More generally, &lt;script type=&quot;math/tex&quot;&gt;\mathbf{Dom}_{[\sigma]}&lt;/script&gt; is a set whose members are tuples,
+of varying size, consisting of elements from &lt;script type=&quot;math/tex&quot;&gt;\mathbf{Dom}_\sigma&lt;/script&gt;.&lt;/p&gt;
+
+&lt;p&gt;This is different from the case of products: the domain of intepretation for,
+say, a pair of terms &lt;script type=&quot;math/tex&quot;&gt;\langle \alpha,\beta \rangle&lt;/script&gt; is &lt;script type=&quot;math/tex&quot;&gt;\mathbf{Dom}_\sigma
+\times \mathbf{Dom}_\tau&lt;/script&gt;, which contains only pairs, not tuples of any other
+size; and the domain of interpretation for, say, a triple of terms &lt;script type=&quot;math/tex&quot;&gt;\langle
+\alpha,\beta,\gamma \rangle&lt;/script&gt; is &lt;script type=&quot;math/tex&quot;&gt;\mathbf{Dom}_\sigma \times \mathbf{Dom}_\tau
+\times \mathbf{Dom}_\rho&lt;/script&gt;, which contains only triples, not tuples of any
+other size. Hence, whereas, say, &lt;script type=&quot;math/tex&quot;&gt;[\alpha, \beta]&lt;/script&gt; and &lt;script type=&quot;math/tex&quot;&gt;[\alpha, \beta,
+\gamma]&lt;/script&gt; have denotations in the same domain, &lt;script type=&quot;math/tex&quot;&gt;\langle \alpha,\beta \rangle&lt;/script&gt;
+and &lt;script type=&quot;math/tex&quot;&gt;\langle \alpha,\beta,\gamma \rangle&lt;/script&gt; do not.&lt;/p&gt;
+
+&lt;p&gt;I’ll conclude by mentioning that it’s kind of weird to use &lt;script type=&quot;math/tex&quot;&gt;\emptyset&lt;/script&gt; in the
+denotation of lists, but this is necessary because the denotation function is a
+total function, and since the empty list, &lt;script type=&quot;math/tex&quot;&gt;[\ ]&lt;/script&gt;, is a term, it requires a
+denotation. If &lt;script type=&quot;math/tex&quot;&gt;[\ ]&lt;/script&gt; is of type &lt;script type=&quot;math/tex&quot;&gt;[\sigma]&lt;/script&gt;, it doesn’t make sense for its
+denotation to include anything from &lt;script type=&quot;math/tex&quot;&gt;\mathbf{Dom}_\sigma&lt;/script&gt;, so we’re stuck
+with having it denote something like &lt;script type=&quot;math/tex&quot;&gt;\emptyset&lt;/script&gt;.&lt;/p&gt;
+
+&lt;p&gt;One way to avoid this would be to redefine lists: empty lists are simply not
+possible terms (objects). The smallest list would then be a singleton list,
+which would denote a &lt;script type=&quot;math/tex&quot;&gt;1&lt;/script&gt;-tuple, so &lt;script type=&quot;math/tex&quot;&gt;[\mathbf{john}]&lt;/script&gt; would denote &lt;script type=&quot;math/tex&quot;&gt;\langle
+j \rangle&lt;/script&gt; rather than &lt;script type=&quot;math/tex&quot;&gt;\langle j,\emptyset \rangle&lt;/script&gt;, and &lt;script type=&quot;math/tex&quot;&gt;[\mathbf{john},
+\mathbf{bill}, \mathbf{sue}]&lt;/script&gt; would denote &lt;script type=&quot;math/tex&quot;&gt;\langle j,b,s \rangle&lt;/script&gt; rather
+than &lt;script type=&quot;math/tex&quot;&gt;\langle j,b,s,\emptyset \rangle&lt;/script&gt;.&lt;/p&gt;
+</description>
+        <pubDate>Mon, 22 Apr 2013 11:09:00 +0300</pubDate>
+        <link>http://brianbuccola.com/implementing-lists-in-the-simply-typed-lambda-calculus</link>
+        <guid isPermaLink="true">http://brianbuccola.com/implementing-lists-in-the-simply-typed-lambda-calculus</guid>
+        
+        
+      </item>
+    
+  </channel>
+</rss>

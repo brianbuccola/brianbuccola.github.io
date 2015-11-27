@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link href='http://fonts.googleapis.com/css?family=PT+Serif:400,700,400italic' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'>
+
+  <title>Brian Buccola &middot; LaTeX math in Octopress</title>
+  <meta name="description" content="Update: I no longer maintain this blog using Octopress, but I will leave thispost here in case it may be of use to people. For the curious, I now convert mym...">
+
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="http://brianbuccola.com/latex-math-in-octopress">
+  <link rel="alternate" type="application/rss+xml" title="Brian Buccola" href="http://brianbuccola.com/feed.xml">
+
+  <!-- mathjax config similar to math.stackexchange -->
+  <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+
+    <!-- <a class="site-title" href="/">Brian Buccola</a> -->
+
+    <nav class="site-nav">
+      <a href="#" class="menu-icon">
+        <svg viewBox="0 0 18 15">
+          <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+      </a>
+
+      <div class="trigger">
+        <a class="page-link" href="/">Home</a>
+        <a class="page-link" href="/about">About</a>
+        <a class="page-link" href="/news">News</a>
+        <a class="page-link" href="/work">Work</a>
+        <a class="page-link" href="/files/buccola-cv.pdf">CV</a>
+        <a class="page-link" href="/contact">Contact</a>
+        <a class="page-link" href="/blog">Blog</a>
+        <a class="page-link" href="/feed.xml"><span class="icon icon--feed"><?xml version="1.0"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"> 
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="128px" height="128px" id="RSSicon" viewBox="0 0 256 256">
+<defs>
+<linearGradient x1="0.085" y1="0.085" x2="0.915" y2="0.915" id="RSSg">
+<stop  offset="0.0" stop-color="#E3702D"/><stop  offset="0.1071" stop-color="#EA7D31"/>
+<stop  offset="0.3503" stop-color="#F69537"/><stop  offset="0.5" stop-color="#FB9E3A"/>
+<stop  offset="0.7016" stop-color="#EA7C31"/><stop  offset="0.8866" stop-color="#DE642B"/>
+<stop  offset="1.0" stop-color="#D95B29"/>
+</linearGradient>
+</defs>
+<rect width="256" height="256" rx="55" ry="55" x="0"  y="0"  fill="#CC5D15"/>
+<rect width="246" height="246" rx="50" ry="50" x="5"  y="5"  fill="#F49C52"/>
+<rect width="236" height="236" rx="47" ry="47" x="10" y="10" fill="url(#RSSg)"/>
+<circle cx="68" cy="189" r="24" fill="#FFF"/>
+<path d="M160 213h-34a82 82 0 0 0 -82 -82v-34a116 116 0 0 1 116 116z" fill="#FFF"/>
+<path d="M184 213A140 140 0 0 0 44 73 V 38a175 175 0 0 1 175 175z" fill="#FFF"/>
+</svg>
+</span></a>
+      </div>
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">LaTeX math in Octopress</h1>
+    <p class="post-meta"><time datetime="2012-11-28T13:51:00+02:00" itemprop="datePublished">Nov 28, 2012</time></p>
+  </header>
+
+  <div class="post-content" itemprop="articleBody">
+    <p><em>Update: I no longer maintain this blog using Octopress, but I will leave this
+post here in case it may be of use to people. For the curious, I now convert my
+markdown posts to html using <a href="http://johnmacfarlane.net/pandoc/">Pandoc</a>, which has a <code class="highlighter-rouge">--mathjax</code> option that
+renders <script type="math/tex">\LaTeX{}</script> on the fly.</em></p>
+
+<p>With the help of Google and some smart Octopress bloggers
+(<a href="http://www.idryman.org/blog/2012/03/10/writing-math-equations-on-octopress/">here</a>,
+particularly), I’ve successfully managed to get <script type="math/tex">\LaTeX{}</script> math to show up in
+my Octopress blog. Octopress uses <a href="https://github.com/rtomayko/rdiscount">rdiscount</a> as the default <a href="http://daringfireball.net/projects/markdown/">markdown</a>
+implementation/parser/converter-to-HTML, but unfortunately rdiscount cannot
+parse or convert <script type="math/tex">\LaTeX{}</script> code (because <script type="math/tex">\LaTeX{}</script> code is, of course, not
+markdown).</p>
+
+<p>That’s where <a href="http://kramdown.rubyforge.org/">kramdown</a> comes in. It parses and converts a superset of
+markdown, including <script type="math/tex">\LaTeX</script>, meaning that together with <a href="http://www.mathjax.org/">MathJax</a> you can
+have beautiful <script type="math/tex">\LaTeX</script> math code rendered directly into your browser.</p>
+
+<p>You can have both inline math, e.g., <script type="math/tex">A^{\ast} = \bigcup_{i=0}^{\infty} A^{i}</script>,
+as well as blocks of math. For example, as Kaplan and Kay (1994) tell us, if
+<script type="math/tex">A</script> and <script type="math/tex">B</script> are regular <script type="math/tex">n</script>-relations, then so are</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{align}
+\mbox{$n$-way concatenation: } & A \cdot B = \{xy\mid x \in A, y \in B\} \\
+\mbox{Union: } & A\cup B = \{x\mid x \in A \text{ or } x \in B\} \\
+\mbox{$n$-way Kleene closure: } & A^{\ast} = \bigcup_{i=0}^{\infty} A^i
+\end{align} %]]></script>
+
+<!-- more -->
+
+<p>Right-click on any of the math to view the MathJax options, including the
+option to open the source code in a new window/tab. To get this all up and
+running, follow these steps.</p>
+
+<h2 id="install-kramdown">1. Install kramdown</h2>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>gem install kramdown
+</code></pre>
+</div>
+
+<h2 id="replace-rdiscount-with-kramdown">2. Replace rdiscount with kramdown</h2>
+
+<p>Open <code class="highlighter-rouge">_config.yml</code>, and change <code class="highlighter-rouge">markdown: rdiscount</code> to <code class="highlighter-rouge">markdown: kramdown</code>.</p>
+
+<h2 id="optional">3. Optional</h2>
+
+<p>Open <code class="highlighter-rouge">Gemfile</code>, and change <code class="highlighter-rouge">gem rdiscount</code> to <code class="highlighter-rouge">gem kramdown</code>, and change the
+version number to whatever version you installed. This way if you migrate your
+blog to a new machine, it’ll complain if you try to <code class="highlighter-rouge">rake generate</code> before
+grabbing kramdown (at least I think).</p>
+
+<h2 id="add-mathjax-script">4. Add MathJax script</h2>
+
+<p>Add the following MathJax script to <code class="highlighter-rouge">source/_layouts/default.html</code>:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="c">&lt;!-- mathjax config similar to math.stackexchange --&gt;</span>
+<span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"text/x-mathjax-config"</span><span class="nt">&gt;</span>
+<span class="nx">MathJax</span><span class="p">.</span><span class="nx">Hub</span><span class="p">.</span><span class="nx">Config</span><span class="p">({</span>
+  <span class="na">tex2jax</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">inlineMath</span><span class="p">:</span> <span class="p">[</span> <span class="p">[</span><span class="s1">'$'</span><span class="p">,</span> <span class="s1">'$'</span><span class="p">]</span> <span class="p">],</span>
+    <span class="na">displayMath</span><span class="p">:</span> <span class="p">[</span> <span class="p">[</span><span class="s1">'$$'</span><span class="p">,</span> <span class="s1">'$$'</span><span class="p">]]</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+<span class="nt">&lt;/script&gt;</span>
+<span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"text/javascript"</span>
+  <span class="na">src=</span><span class="s">"https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;/script&gt;</span>
+</code></pre>
+</div>
+
+<h2 id="fix-right-click-bug">5. Fix right-click bug</h2>
+
+<p>At this point, kramdown and MathJax should both work; however, there’s a bug
+where if you right-click on any math, the website turns blank for as long as
+the MathJax contex menu is open. To fix this, open <code class="highlighter-rouge">sass/base/_theme.scss</code> and
+change</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">body</span> <span class="p">{</span>
+  <span class="err">&gt;</span> <span class="err">div</span> <span class="err">{</span>
+    <span class="nl">background</span><span class="p">:</span> <span class="err">$</span><span class="n">sidebar-bg</span> <span class="err">$</span><span class="n">noise-bg</span><span class="p">;</span>
+    <span class="nl">border-bottom</span><span class="p">:</span> <span class="m">1px</span> <span class="nb">solid</span> <span class="err">$</span><span class="n">page-border-bottom</span><span class="p">;</span>
+    <span class="err">&gt;</span> <span class="err">div</span> <span class="err">{</span>
+      <span class="nl">background</span><span class="p">:</span> <span class="err">$</span><span class="n">main-bg</span> <span class="err">$</span><span class="n">noise-bg</span><span class="p">;</span>
+      <span class="nl">border-right</span><span class="p">:</span> <span class="m">1px</span> <span class="nb">solid</span> <span class="err">$</span><span class="n">sidebar-border</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="err">}</span>
+<span class="err">}</span>
+</code></pre>
+</div>
+
+<p>to</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">body</span> <span class="p">{</span>
+  <span class="err">&gt;</span> <span class="err">div#main</span> <span class="err">{</span>
+    <span class="nl">background</span><span class="p">:</span> <span class="err">$</span><span class="n">sidebar-bg</span> <span class="err">$</span><span class="n">noise-bg</span><span class="p">;</span>
+    <span class="nl">border-bottom</span><span class="p">:</span> <span class="m">1px</span> <span class="nb">solid</span> <span class="err">$</span><span class="n">page-border-bottom</span><span class="p">;</span>
+    <span class="err">&gt;</span> <span class="err">div</span> <span class="err">{</span>
+      <span class="nl">background</span><span class="p">:</span> <span class="err">$</span><span class="n">main-bg</span> <span class="err">$</span><span class="n">noise-bg</span><span class="p">;</span>
+      <span class="nl">border-right</span><span class="p">:</span> <span class="m">1px</span> <span class="nb">solid</span> <span class="err">$</span><span class="n">sidebar-border</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="err">}</span>
+<span class="err">}</span>
+</code></pre>
+</div>
+
+<p>In other words, change the first occurrence of <code class="highlighter-rouge">div</code> to <code class="highlighter-rouge">div#main</code>.</p>
+
+<p><strong>Important:</strong> If, like me, you customized your background and therefore
+override this <code class="highlighter-rouge">body</code> block in <code class="highlighter-rouge">sass/custom/_colors.scss</code>, then you have to
+change the first occurrence of <code class="highlighter-rouge">div</code> to <code class="highlighter-rouge">div#main</code> in <strong>both</strong> files.</p>
+
+<p>Now you can create inline math by surrounding the code with <code class="highlighter-rouge">$</code>, and block math
+by surrounding the code with <code class="highlighter-rouge">$$</code>.</p>
+
+  </div>
+
+</article>
+
+      </div>
+    </div>
+
+    <footer class="site-footer">
+  <div class="wrapper">
+    <div class="footer-wrapper">
+      &copy; Brian Buccola. Powered by <a
+         href="https://jekyllrb.com/">Jekyll</a> and <a
+         href="https://github.com/">GitHub</a>.
+    </div>
+  </div>
+</footer>
+
+
+  </body>
+
+</html>

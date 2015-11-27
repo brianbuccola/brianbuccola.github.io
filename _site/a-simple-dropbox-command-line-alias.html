@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link href='http://fonts.googleapis.com/css?family=PT+Serif:400,700,400italic' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'>
+
+  <title>Brian Buccola &middot; A simple Dropbox command-line alias</title>
+  <meta name="description" content="Dropbox has a useful but rather simplistic command-line interface, which I usealmost exclusively. The reason I call it simplistic is that when you startDropb...">
+
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="http://brianbuccola.com/a-simple-dropbox-command-line-alias">
+  <link rel="alternate" type="application/rss+xml" title="Brian Buccola" href="http://brianbuccola.com/feed.xml">
+
+  <!-- mathjax config similar to math.stackexchange -->
+  <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+
+    <!-- <a class="site-title" href="/">Brian Buccola</a> -->
+
+    <nav class="site-nav">
+      <a href="#" class="menu-icon">
+        <svg viewBox="0 0 18 15">
+          <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+      </a>
+
+      <div class="trigger">
+        <a class="page-link" href="/">Home</a>
+        <a class="page-link" href="/about">About</a>
+        <a class="page-link" href="/news">News</a>
+        <a class="page-link" href="/work">Work</a>
+        <a class="page-link" href="/files/buccola-cv.pdf">CV</a>
+        <a class="page-link" href="/contact">Contact</a>
+        <a class="page-link" href="/blog">Blog</a>
+        <a class="page-link" href="/feed.xml"><span class="icon icon--feed"><?xml version="1.0"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"> 
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="128px" height="128px" id="RSSicon" viewBox="0 0 256 256">
+<defs>
+<linearGradient x1="0.085" y1="0.085" x2="0.915" y2="0.915" id="RSSg">
+<stop  offset="0.0" stop-color="#E3702D"/><stop  offset="0.1071" stop-color="#EA7D31"/>
+<stop  offset="0.3503" stop-color="#F69537"/><stop  offset="0.5" stop-color="#FB9E3A"/>
+<stop  offset="0.7016" stop-color="#EA7C31"/><stop  offset="0.8866" stop-color="#DE642B"/>
+<stop  offset="1.0" stop-color="#D95B29"/>
+</linearGradient>
+</defs>
+<rect width="256" height="256" rx="55" ry="55" x="0"  y="0"  fill="#CC5D15"/>
+<rect width="246" height="246" rx="50" ry="50" x="5"  y="5"  fill="#F49C52"/>
+<rect width="236" height="236" rx="47" ry="47" x="10" y="10" fill="url(#RSSg)"/>
+<circle cx="68" cy="189" r="24" fill="#FFF"/>
+<path d="M160 213h-34a82 82 0 0 0 -82 -82v-34a116 116 0 0 1 116 116z" fill="#FFF"/>
+<path d="M184 213A140 140 0 0 0 44 73 V 38a175 175 0 0 1 175 175z" fill="#FFF"/>
+</svg>
+</span></a>
+      </div>
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">A simple Dropbox command-line alias</h1>
+    <p class="post-meta"><time datetime="2014-01-11T09:57:00+02:00" itemprop="datePublished">Jan 11, 2014</time></p>
+  </header>
+
+  <div class="post-content" itemprop="articleBody">
+    <p>Dropbox has a useful but rather simplistic command-line interface, which I use
+almost exclusively. The reason I call it simplistic is that when you start
+Dropbox with <code class="highlighter-rouge">dropbox start</code>, all you see is</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>dropbox start
+Starting...Done!
+<span class="gp">$ </span>
+</code></pre>
+</div>
+
+<p>It starts Dropbox then brings you right back to the command-line prompt, at
+which point you have no idea what Dropbox is doing in the background. For me
+it’s important to know when Dropbox is finished syncing because I prefer to
+leave Dropbox off otherwise; that is, once the sync is done, I want to know
+that and then stop Dropbox.</p>
+
+<p>There is a command <code class="highlighter-rouge">dropbox status</code>, but all that does is check the status
+(whether Dropbox is idle, uploading, downloading, indexing, etc.) at the
+<em>particular</em> moment you call <code class="highlighter-rouge">dropbox status</code>, and that’s it. I could of
+course keep calling <code class="highlighter-rouge">dropbox status</code> until it starts to return <code class="highlighter-rouge">Idle</code> every
+time</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>dropbox status
+Connecting...
+<span class="gp">$ </span>dropbox status
+Initializing...
+<span class="gp">$ </span>dropbox status
+Starting...
+<span class="gp">$ </span>dropbox status
+Downloading file list...
+<span class="gp">$ </span>dropbox status
+Updating <span class="o">(</span>4 files<span class="o">)</span>
+Indexing <span class="o">(</span>4 files<span class="o">)</span>
+<span class="gp">$ </span>dropbox status
+Idle
+<span class="gp">$ </span>dropbox status
+Idle
+</code></pre>
+</div>
+
+<p>but there is an easier way to do this: the Linux command <code class="highlighter-rouge">watch</code>, which
+“execute[s] a program periodically, showing output fullscreen.” Suppose I want
+to check Dropbox’s status every one second. Then I just run</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>watch -n1 dropbox status
+</code></pre>
+</div>
+
+<p>(The option <code class="highlighter-rouge">-n1</code> is short for <code class="highlighter-rouge">--interval 1</code> and always refers to seconds.)</p>
+
+<p>To stop watching the program (to exit <code class="highlighter-rouge">watch</code>), just hit <code class="highlighter-rouge">Ctrl-C</code>.</p>
+
+<p>When I run Dropbox, I basically just want to start it, watch what it does until
+it returns <code class="highlighter-rouge">Idle</code> every time, and then stop Dropbox. Here is simple alias (to
+put in <code class="highlighter-rouge">.bashrc</code> or <code class="highlighter-rouge">.zshrc</code> or whatever) that lets me do that:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="nb">alias </span><span class="nv">db</span><span class="o">=</span><span class="s1">'dropbox start &amp;&amp; watch -n1 dropbox status &amp;&amp; dropbox stop'</span>
+</code></pre>
+</div>
+
+<p>With this alias, I just type <code class="highlighter-rouge">db</code> at the command line, watch what Dropbox does
+until I keep seeing <code class="highlighter-rouge">Idle</code>, hit <code class="highlighter-rouge">Ctrl-C</code>, and then Dropbox stops automatically.</p>
+
+  </div>
+
+</article>
+
+      </div>
+    </div>
+
+    <footer class="site-footer">
+  <div class="wrapper">
+    <div class="footer-wrapper">
+      &copy; Brian Buccola. Powered by <a
+         href="https://jekyllrb.com/">Jekyll</a> and <a
+         href="https://github.com/">GitHub</a>.
+    </div>
+  </div>
+</footer>
+
+
+  </body>
+
+</html>
