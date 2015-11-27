@@ -1,0 +1,14 @@
+# Site settings
+title: Brian Buccola
+baseurl: ""                            # the subpath of your site, e.g. /blog
+url: "http://brianbuccola.com"         # the base hostname & protocol for your site
+
+# Publishing settings
+permalink: /:title
+
+# Build settings
+markdown: kramdown
+kramdown:
+  input: GFM
+  hard_wrap: false
+  syntax_highlighter: rouge
