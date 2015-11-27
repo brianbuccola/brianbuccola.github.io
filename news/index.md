@@ -1,7 +1,7 @@
 ---
 layout: page
 title: News
-permalink: /news
+permalink: /news/
 ---
 
 *Pst... I'm on the job market! Hire me!*
