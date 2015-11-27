@@ -1,1 +1,1 @@
-Source code to my blog.
+Source code to my website: <http://brianbuccola.com/>.
