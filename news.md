@@ -26,7 +26,7 @@ permalink: /news/
   Societas Linguistica Europaea][sle], which took place at Leiden University,
   September 2-5, 2015.
 
-[sub20]: files/buccola2015sub20.pdf
+[sub20]: /files/buccola2015sub20.pdf
 [tau]: https://humanities.tau.ac.il/linguistics_eng/
 [llcc]: https://scholars.huji.ac.il/llcc
 [huji]: https://new.huji.ac.il/
