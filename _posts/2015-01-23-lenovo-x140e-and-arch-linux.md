@@ -37,7 +37,6 @@ wifi card BCM43228:
 ```bash
 $ lspci -vnn | grep Broadcom
 01:00.0 Network controller [0280]: Broadcom Corporation BCM43228 802.11a/b/g/n [14e4:4359]
-
 ```
 
 This card was [not supported][b43] under the Linux kernel until kernel version
