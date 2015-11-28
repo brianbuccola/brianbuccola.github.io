@@ -13,3 +13,4 @@ kramdown:
 # Gems
 gems:
   - jekyll-redirect-from
+  - jekyll-feed
