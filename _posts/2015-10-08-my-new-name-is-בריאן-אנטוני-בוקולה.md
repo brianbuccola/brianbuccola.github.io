@@ -23,6 +23,10 @@ Woohoo! Here's what's going on:
   back and forth. \[ˈbukoˌla\] seems cross-linguistically easier for people to
   pronounce, since [bj] is quite an uncommon onset cluster.
 
+[be]: https://he.wikipedia.org/wiki/%D7%91%D7%A8%D7%99%D7%90%D7%9F_%D7%90%D7%99%D7%A0%D7%95
+[bm]: https://he.wikipedia.org/wiki/%D7%91%D7%A8%D7%99%D7%90%D7%9F_%D7%9E%D7%99%D7%99
+[bw]: https://he.wikipedia.org/wiki/%D7%91%D7%A8%D7%99%D7%90%D7%9F_%D7%95%D7%99%D7%9C%D7%A1%D7%95%D7%9F
+
 [^t]: Actually, there are *two* Hebrew letters for the sound [t]: ט (*tet*) and
       ת (*tav*). And in fact, Google search for "Anthony in Hebrew" actually
       yields אנתוני, but so far no one has transcribed my middle name like
@@ -46,6 +50,12 @@ write [breɪn], i.e. transliterate the word *brain*.
 So, no matter where I go, no matter what language or alphabet, my name ends up
 being misspelled as *brain*. D'oh!
 
-[be]: https://he.wikipedia.org/wiki/%D7%91%D7%A8%D7%99%D7%90%D7%9F_%D7%90%D7%99%D7%A0%D7%95
-[bm]: https://he.wikipedia.org/wiki/%D7%91%D7%A8%D7%99%D7%90%D7%9F_%D7%9E%D7%99%D7%99
-[bw]: https://he.wikipedia.org/wiki/%D7%91%D7%A8%D7%99%D7%90%D7%9F_%D7%95%D7%99%D7%9C%D7%A1%D7%95%D7%9F
+**Bonus:** A picture of the name plate on my and my colleague Andreas Haida's
+new office. (Ignore the misplaced dot.) Notice, by the way, that *Dr.* is ד״ר.
+The thing between ד (*dalet*) and ר (*resh*) is not a double vav or anything.
+It's [geryashim][ger]---or *double geresh*---which is a special symbol that
+indicates an acronym and other short forms.
+
+[ger]: https://en.wikipedia.org/wiki/Gershayim
+
+![Dr. Brian Buccola](/images/dr-brian-buccola-llcc.jpg){:height="500px"}
