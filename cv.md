@@ -2,6 +2,7 @@
 layout: page
 title: "CV"
 permalink: /cv/
+redirect_from: /cv.html
 ---
 
 *NB: These links spawn a new window/tab.*
