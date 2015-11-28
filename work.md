@@ -2,6 +2,7 @@
 layout: page
 title: Work
 permalink: /work/
+redirect_from: /research.html
 ---
 
 ## Journal Articles
