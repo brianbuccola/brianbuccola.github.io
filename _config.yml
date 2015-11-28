@@ -20,3 +20,12 @@ kramdown:
 gems:
   - jekyll-redirect-from
   - jekyll-feed
+
+# Defaults
+defaults:
+  -
+    scope:
+      path: ""            # empty string means all files
+      type: "posts"       # limit to files in `_posts`
+    values:
+      comments: "true"    # set `comments` to `true` by default for all posts
