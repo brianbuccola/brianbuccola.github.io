@@ -6,11 +6,14 @@ permalink: /about/
 
 I am a linguist currently working as a postdoctoral fellow at the [Language,
 Logic, and Cognition Center][llcc] of the [Hebrew University of
-Jerusalem][huji]. Before that, I did my PhD at [McGill University][mcgill].
+Jerusalem][huji]. Before that, I did my PhD at [McGill University][mcgill]. And
+before that, I studied math and classics (Latin and Ancient Greek) at [Loyola
+University Chicago][luc].
 
 [llcc]: https://scholars.huji.ac.il/llcc
 [huji]: https://new.huji.ac.il/
 [mcgill]: https://www.mcgill.ca/
+[luc]: http://www.luc.edu/
 
 Most of my research revolves around the interpretation of quantificational
 expressions, especially so-called modified numerals, like *fewer than five*,
