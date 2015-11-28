@@ -2,6 +2,7 @@
 layout: post
 title: "Maintaining an academic website, part 3: version control"
 date: 2013-04-13 10:11
+redirect_from: /blog/2013-04-13-maintaining-an-academic-website-part-3-version-control.html
 ---
 
 This is the third and final post in a series detailing how I currently maintain

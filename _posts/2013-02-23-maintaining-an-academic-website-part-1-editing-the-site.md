@@ -2,6 +2,7 @@
 layout: post
 title: "Maintaining an academic website, part 1: editing the site"
 date: 2013-02-23 15:19
+redirect_from: /blog/2013-02-23-maintaining-an-academic-website-part-1-editing-the-site.html
 ---
 
 This is the first in a series of posts in which I'll explain how I currently

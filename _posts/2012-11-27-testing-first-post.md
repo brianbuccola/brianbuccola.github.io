@@ -3,6 +3,7 @@ layout: post
 title: "Testing: first post"
 date: 2012-11-27 08:07
 published: false
+redirect_from: /blog/2012-11-27-testing-first-post.html
 ---
 
 After (re-)reading Matt Might's [blog post][mm] encouraging PhD students to

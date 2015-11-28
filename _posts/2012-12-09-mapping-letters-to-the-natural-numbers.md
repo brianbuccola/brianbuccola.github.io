@@ -2,6 +2,7 @@
 layout: post
 title: "Mapping letters to the natural numbers"
 date: 2012-12-09 16:01
+redirect_from: /blog/2012-12-09-mapping-letters-to-the-natural-numbers.html
 ---
 
 It's the end of the fall semester, and I have one last final exam problem to

@@ -2,6 +2,7 @@
 layout: post
 title: "References and footnotes in HTML/CSS"
 date: 2012-12-01 15:08
+redirect_from: /blog/2012-12-01-references-and-footnotes-in-htmlcss.html
 ---
 
 *Update: Since I wrote this post, I discovered that markdown conversion

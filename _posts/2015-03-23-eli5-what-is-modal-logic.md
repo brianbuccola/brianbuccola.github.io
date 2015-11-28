@@ -2,6 +2,7 @@
 layout: post
 title: "ELI5: What is modal logic?"
 date: 2015-03-23 16:55
+redirect_from: /blog/2015-03-23-eli5-what-is-modal-logic.html
 ---
 
 Someone recently asked me what sort of background knowledge is required to study

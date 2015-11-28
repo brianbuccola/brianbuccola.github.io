@@ -2,6 +2,7 @@
 layout: post
 title: "Implementing lists in the simply typed lambda calculus"
 date: 2013-04-22 11:09
+redirect_from: /blog/2013-04-22-implementing-lists-in-the-simply-typed-lambda-calculus.html
 ---
 
 One of my goals this summer is to re-read Bob Carpenter's *Type-Logical

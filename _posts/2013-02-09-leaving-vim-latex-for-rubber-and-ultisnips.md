@@ -2,6 +2,7 @@
 layout: post
 title: "Leaving vim-latex for rubber and ultisnips"
 date: 2013-02-09 21:08
+redirect_from: /blog/2013-02-09-leaving-vim-latex-for-rubber-and-ultisnips.html
 ---
 
 ***Update:*** *I actually use `latexmk` now instead of rubber, since it already
