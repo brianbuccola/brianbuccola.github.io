@@ -5,8 +5,8 @@ date: 2012-11-29 10:15
 redirect_from: /blog/2012-11-29-how-to-change-the-favicon-in-octopress.html
 ---
 
-*Update: I no longer maintain this blog using Octopress, but I will leave this
-post here in case it may be of use to people.*
+***Update:*** *I no longer maintain this blog using Octopress, but I will leave
+this post here in case it may be of use to people.*
 
 I found several suggestions for how to change the default Octopress favicon (a
 black and grey "O"), such as adding your `favicon.ico` to `source/`, and then

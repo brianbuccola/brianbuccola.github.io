@@ -5,7 +5,7 @@ date: 2012-12-01 15:08
 redirect_from: /blog/2012-12-01-references-and-footnotes-in-htmlcss.html
 ---
 
-*Update: Since I wrote this post, I discovered that markdown conversion
+***Update:*** *Since I wrote this post, I discovered that markdown conversion
 programs like Pandoc and kramdown can convert extensions of markdown that
 include footnotes. For example, it suffices to do:*
 
@@ -23,11 +23,11 @@ end--of--post footnotes into my blog posts, and here's what I've come up with.
 I'll start with my first, very simplistic attempt, then explain my slightly
 more complicated but also more flexible (I think) solution.
 
-This blog is (*Update: was*) powered by [Octopress][op], which allows me to
-write blog posts in [markdown][md] syntax, which is then parsed and converted
-into HTML by [kramdown][kd].<a class="ref" id="ref:kd" href="#fn:kd">[1]</a>
-Markdown has a nice, easy, and highly legible way of creating simple links.
-Just type one of these.
+This blog is (***Update:*** *was*) powered by [Octopress][op], which allows me
+to write blog posts in [markdown][md] syntax, which is then parsed and
+converted into HTML by [kramdown][kd].<a class="ref" id="ref:kd"
+href="#fn:kd">[1]</a> Markdown has a nice, easy, and highly legible way of
+creating simple links. Just type one of these.
 
 ```html
 Click [here](url) to see something awesome!

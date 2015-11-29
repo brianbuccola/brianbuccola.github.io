@@ -5,10 +5,10 @@ date: 2012-11-28 13:51
 redirect_from: /blog/2012-11-28-latex-math-in-octopress.html
 ---
 
-*Update: I no longer maintain this blog using Octopress, but I will leave this
-post here in case it may be of use to people. For the curious, I now convert my
-markdown posts to html using [Pandoc][pd], which has a `--mathjax` option that
-renders $$\LaTeX{}$$ on the fly.*
+***Update:*** *I no longer maintain this blog using Octopress, but I will leave
+this post here in case it may be of use to people. For the curious, I now
+convert my markdown posts to html using [Pandoc][pd], which has a `--mathjax`
+option that renders $$\LaTeX{}$$ on the fly.*
 
 [pd]: http://johnmacfarlane.net/pandoc/
 
