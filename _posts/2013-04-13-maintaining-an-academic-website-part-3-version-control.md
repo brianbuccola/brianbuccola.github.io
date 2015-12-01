@@ -19,9 +19,9 @@ this post, I'll explain how to version control everything using [git][] and
           [Bitbucket][bb], which in addition to Git also supports Mercurial and
           even offers free private repos.
 
-[me]:    http://people.linguistics.mcgill.ca/~brian.buccola/
-[pt1]:   2013-02-23-maintaining-an-academic-website-part-1-editing-the-site.html
-[pt2]:   2013-03-02-maintaining-an-academic-website-part-2-pushing-to-server.html
+[me]:    https://github.com/brianbuccola/mcgill-website
+[pt1]:   /maintaining-an-academic-website-part-1-editing-the-site/
+[pt2]:   /maintaining-an-academic-website-part-2-pushing-to-server/
 [md]:    http://daringfireball.net/projects/markdown/
 [pd]:    http://johnmacfarlane.net/pandoc/
 [ssh]:   http://www.openssh.org/

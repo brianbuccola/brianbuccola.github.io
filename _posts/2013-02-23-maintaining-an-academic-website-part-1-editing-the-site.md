@@ -20,7 +20,7 @@ learning experience setting it all up, and (ii) as my site grows, I think my
 method will make site maintenance way easier than it otherwise would be, while
 also keeping the actual site simple (see next).
 
-[my-site]: http://people.linguistics.mcgill.ca/~brian.buccola/
+[my-site]: https://github.com/brianbuccola/mcgill-website
 
 **KISS disclaimer.** Before I begin, I should mention that when it comes to
 professional websites, I believe that the [KISS][] principle should be
