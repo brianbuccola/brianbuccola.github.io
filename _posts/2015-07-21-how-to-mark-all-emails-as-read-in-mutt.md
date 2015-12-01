@@ -46,4 +46,3 @@ everything.
 
 I got tired of pressing `NNNNN...` to mark successive new messages as read, and
 I find this macro to be extremely useful. I hope others do too.
-
