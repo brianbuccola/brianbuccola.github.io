@@ -19,6 +19,7 @@ kramdown:
 gems:
   - jekyll-redirect-from
   - jekyll-feed
+  - jekyll-sitemap
 
 # Defaults
 defaults:
