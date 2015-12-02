@@ -24,7 +24,7 @@ rewrite rules.
 
 Apart from linguistics, I enjoy tinkering with Linux, learning about functional
 programming (like Haskell), and (when I have time) brewing beer. You can read
-about some of that stuff [here](/blog).
+about some of that stuff [here](/blog/).
 
 The source code for this website is available [on GitHub][repo].
 
