@@ -26,7 +26,8 @@ Apart from linguistics, I enjoy tinkering with Linux, learning about functional
 programming (like Haskell), and (when I have time) brewing beer. You can read
 about some of that stuff [here](/blog/).
 
-The source code for this website is available [on GitHub][repo].
+The source code and license for the content of this website are available [on
+GitHub][repo].
 
 [me-gh]: https://github.com/brianbuccola
 [repo]: https://github.com/brianbuccola/brianbuccola.github.io
