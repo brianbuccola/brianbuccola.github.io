@@ -34,12 +34,12 @@ The hacky suggestion I originally gave was to write, cite, and compile
 everything just as one would normally do when writing a LaTeX document. For
 example, if the file you're writing is `file.tex`, then run:
 
-```bash
+{% highlight bash %}
 $ pdflatex file
 $ bibtex file
 $ pdflatex file
 $ pdflatex file
-```
+{% endhighlight %}
 
 or, if you're using a LaTeX front-end/wrapper, then use whatever button/command
 is available for typesetting, such as "Typeset" in MacTeX (I think), or
@@ -101,7 +101,7 @@ the preamble, and then tagging the entries we want to ignore by issuing
 
 Here is a minimal working example:
 
-```latex
+{% highlight latex %}
 \documentclass{article}
 \usepackage[style=authoryear]{biblatex}
 \addbibresource{/path/to/references.bib}
@@ -118,7 +118,7 @@ Here is a minimal working example:
 
 \printbibliography[notcategory=ignore]
 \end{document}
-```
+{% endhighlight %}
 
 With this code, all four references will get cited in the main text, but
 Johnson (2015) and Doe (1986) will not appear in the bibliography section.

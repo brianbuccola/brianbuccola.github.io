@@ -9,9 +9,7 @@ A question posted on [/r/vim](http://www.reddit.com/r/vim/), the subreddit
 devoted to the [vim][] text editor, has made me think twice about the meaning
 of the verb "miss" and its various forms:
 
-```
-What feature do you miss from vim?
-```
+    What feature do you miss from vim?
 
 ([source][src])
 
@@ -29,21 +27,17 @@ When I first read the question, I thought the original poster (OP) meant: What
 feature *that used to be in vim, but is no longer in vim*, do you miss? I
 probably came to this interpretation by analogy with
 
-```
-I miss feature F in (from) vim.
-```
+    I miss feature F in (from) vim.
 
 which to me implies that vim once supported F but now no longer does. More
 generally, to me "I miss X" implies that X used to exist (in some
 context--dependent sense) but no longer does. For example:
 
-```
-I miss my dog, Rosco.
+    I miss my dog, Rosco.
 
-I miss Italy.
+    I miss Italy.
 
-When I'm in Montreal, I miss eating boiled crawfish.
-```
+    When I'm in Montreal, I miss eating boiled crawfish.
 
 The first sentence implies that Rosco is no longer with the speaker: maybe
 Rosco died, or ran away, or maybe the speaker is away on vacation. The second
@@ -65,15 +59,11 @@ Well, luckily for me, I was not the only one who was confused. Another user,
 TankorSmash,
 [wrote](http://www.reddit.com/r/vim/comments/18n05l/what_feature_do_you_miss_from_vim/c8g762d):
 
-```
-I don't understand, you're implying we don't have vim anymore.
-```
+    I don't understand, you're implying we don't have vim anymore.
 
 to which yet another user, onwardAgain, replied:
 
-```
-I think he means "what functionality would you like that is missing".
-```
+    I think he means "what functionality would you like that is missing".
 
 A couple things to note here. First, whereas I thought the OP was asking about
 *features* that no longer exist, TankorSmash thought the OP was implying that
@@ -96,13 +86,11 @@ Returning now to the Rosco, Italy, and crawfish examples, note that
 transforming them from "miss" sentences to "is missing" sentences produces
 weird results.
 
-```
-My dog, Rosco, is missing.
+    My dog, Rosco, is missing.
 
-Italy is missing.
+    Italy is missing.
 
-When I'm in Montreal, eating boiled crawfish is missing.
-```
+    When I'm in Montreal, eating boiled crawfish is missing.
 
 Only the first one makes any real sense, but even that one means something
 quite different from what "I miss my dog, Rosco" means. Both sentences imply

@@ -30,13 +30,13 @@ hit enter, you're put into an interactive prompt where you list the commands
 that you want `at` to execute at the specified time. Hit `<Ctrl-D>` to finish,
 or `<Ctrl-C>` to cancel. For example:
 
-```bash
+{% highlight bash %}
 $ at now + 1 minute
 warning: commands will be executed using /bin/sh
 at> echo "testing out at" >>~/my-at-test
 at> <EOT>
 job 13 at Fri Jan  4 11:46:00 2013
-```
+{% endhighlight %}
 
 In the above code, we tell `at` that 1 minute from now, it should append the
 text "testing out at" to the file `my-at-test` (and create it if it doesn't
@@ -58,10 +58,10 @@ Since `at` accepts any shell command, we can schedule emails using mutt's
 command-line interface. The basic syntax for sending emails with mutt from the
 command line is
 
-```bash
+{% highlight bash %}
 $ echo "MSG" | mutt -s SUBJ -- RECIPIENT # for simple messages
 $ mutt -s SUBJ -- RECIPIENT <MSG         # for longer messages (files)
-```
+{% endhighlight %}
 
 Suppose I want to email myself a reminder tomorrow at 10am to call John. Here's
 what I do.[^alias]
@@ -69,13 +69,13 @@ what I do.[^alias]
 [^alias]: I have `me` aliased to my email address in `~/.mutt/alias`, which is
           sourced in `.muttrc`.
 
-```bash
+{% highlight bash %}
 $ at 10am tomorrow
 warning: commands will be executed using /bin/sh
 at> echo "Remember to call John." | mutt -s "Call John" -- me
 at> <EOT>
 job 14 at Sat Jan  5 10:00:00 2013
-```
+{% endhighlight %}
 
 There's a problem though. If my computer is off tomorrow at 10am, nothing will
 happen. And if my computer is on but not connected to the internet, then the
@@ -96,7 +96,7 @@ that the email is not sent until a wifi connection is established.  We just
 need to write a simple shell script, `check-wifi.sh`, which only exits once a
 wifi connection is established.
 
-```bash
+{% highlight bash %}
 #!/bin/bash
 
 until [[ -n "$(iwgetid)" ]]; do
@@ -104,7 +104,7 @@ until [[ -n "$(iwgetid)" ]]; do
 done
 
 exit 0
-```
+{% endhighlight %}
 
 `iwgetid` is a command that returns the ESSID of the current wifi connection if
 there is one, and nothing otherwise. So this script does the following: keep
@@ -114,12 +114,12 @@ check-wifi.sh`.)
 
 Now we can modify our `at` commands as follows:
 
-```bash
+{% highlight bash %}
 $ at 10am tomorrow
 at> /path/to/check-wifi.sh
 at> echo "Remember to call John." | mutt -s "Call John" -- me
 at> <EOT>
-```
+{% endhighlight %}
 
 Now the email won't try to be delivered until `check-wifi.sh` finishes running,
 i.e., until a wifi connection is established.
@@ -127,7 +127,7 @@ i.e., until a wifi connection is established.
 We can also modify `check-wifi.sh` to time out after, say, 3 minutes of no
 wifi, and to write something to a log file.
 
-```bash
+{% highlight bash %}
 #!/bin/bash
 
 COUNT=0
@@ -146,7 +146,7 @@ until [[ -n "$(iwgetid)" ]]; do
 done
 
 exit 0
-```
+{% endhighlight %}
 
 The result of all this is that I can schedule an email for, say, 6am tomorrow,
 when my computer is probably off, and it'll get delivered the moment I boot up

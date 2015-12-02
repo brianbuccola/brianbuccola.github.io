@@ -35,10 +35,10 @@ If you have a solution, please email me!
 By far the most serious (but luckily, easiest to solve) issue is the Broadcom
 wifi card BCM43228:
 
-```bash
+{% highlight bash %}
 $ lspci -vnn | grep Broadcom
 01:00.0 Network controller [0280]: Broadcom Corporation BCM43228 802.11a/b/g/n [14e4:4359]
-```
+{% endhighlight %}
 
 This card was [not supported][b43] under the Linux kernel until kernel version
 3.17. (We're now on 3.18, as of this writing; when I bought the laptop, we were
@@ -51,21 +51,21 @@ works.
 First, download broadcom-wl with your favorite AUR helper, and install it. For
 example:
 
-```bash
+{% highlight bash %}
 $ cower -d broadcom-wl
 $ cd ~/aur/broadcom-wl
 $ makepkg -csi
-```
+{% endhighlight %}
 
 Second, restart computer.
 
 That's all! Well, almost. Now, every time you update your kernel, you need to
 rebuild and reinstall broadcom-wl. For example:
 
-```bash
+{% highlight bash %}
 $ cd ~/aur/broadcom-wl
 $ makepkg -csif
-```
+{% endhighlight %}
 
 The `-f` flag forces a rebuild and overwrites the current `.pkg.tar.xz` file.
 
@@ -90,7 +90,7 @@ bind them to `<Fn-F8>` and `<Fn-F9>`. You can find them both [here][scripts].
 
 I'll illustrate how `brightness-inc` works:
 
-```bash
+{% highlight bash %}
 #!/bin/bash
 
 max_brightness=255
@@ -106,30 +106,31 @@ elif [[ $new_brightness -lt $min_brightness ]]; then
 else
   echo "$new_brightness" | sudo tee /sys/class/backlight/radeon_bl0/brightness
 fi
-```
+{% endhighlight %}
 
 The file `/sys/class/backlight/radeon_bl0/brightness` contains the current
 brightness level, which for my Lenovo X140e is between 0 and 255. To change the
 brightness, just change this file. The problem is that since it's located in
 `/sys/...`, you need root permission to change it. That means that
 
-```bash
+{% highlight bash %}
 echo "100" > /sys/...
-```
+{% endhighlight %}
+
 won't work, but neither will
 
-```bash
+{% highlight bash %}
 sudo echo "100" > /sys/...
-```
+{% endhighlight %}
 
 The reason is because in the latter, `sudo` is only operating on the `echo`
 command. It's like saying, run `echo` as root, and now (not as root) append the
 output to `/sys/...`. To solve this, we use `tee`, which allows piping from
 stdin to a file, as root:
 
-```bash
+{% highlight bash %}
 echo "100" | sudo tee /sys/...
-```
+{% endhighlight %}
 
 This command will successfully set the brightness level to 100. That's the crux
 of the script; the rest should be pretty self-explanatory.
@@ -141,10 +142,10 @@ terminal. The solution is to allow `tee` to be run as root without a password.
 To do this, you need to change the sudoers file by running `visudo` (as root)
 and adding this line:
 
-```
+{% highlight bash %}
 # Add `tee' to list of commands that user `brian' can run without password
 brian ALL = NOPASSWD: /usr/bin/tee
-```
+{% endhighlight %}
 
 What this does is allow the user "brian" (that's me) to run `tee` as root
 (`sudo tee`) without a password. `/usr/bin/tee` is of course the full path to
@@ -166,9 +167,9 @@ ignore-mode in [Vimperator][vp] for Firefox.)
 What I did was bind the Windows key (which was serving no purpose) to `Insert`.
 Here's how:
 
-```bash
+{% highlight bash %}
 xmodmap -e "keycode 133 = Insert"    # map windows button to insert
-```
+{% endhighlight %}
 
 You can find the keycode of a key by running `xev` (X event program) from a
 terminal, typing the key, and looking for "keycode" in the output. (Hit

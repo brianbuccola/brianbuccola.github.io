@@ -24,7 +24,8 @@ question.
 If 4 weren't an option and I had to guess, I'd pick 1. But of course, we really
 don't have enough information yet.
 
-**Fact:** The arrest occurred last summer, and the vet had a birthday between then and now.
+**Fact:** The arrest occurred last summer, and the vet had a birthday between
+then and now.
 
 This fact eliminates choice 1. If, again, 4 weren't an option and I had to
 guess, now I'd pick 3: He was 70 when they arrested him, and he's 71 now. In
@@ -62,22 +63,16 @@ years. It's old, rusty, and hasn't run in over a decade. But when I bought it
 20 years ago, it was shiny and new and ran perfectly. Then can I say the
 following?
 
-```
-(Twenty years ago,) I bought a beat-up, rusty old truck with a broken engine
-and flat tires.
-```
+    (Twenty years ago,) I bought a beat-up, rusty old truck with a broken engine
+    and flat tires.
 
 Certainly not. Or how about this:
 
-```
-(Thirty years ago,) Sally gave birth to a successful, 30-year-old lawyer.
-```
+    (Thirty years ago,) Sally gave birth to a successful, 30-year-old lawyer.
 
 Definitely strange. Or how about this:
 
-```
-Back in 1945, my grandmother married a 90-year-old man.
-```
+  Back in 1945, my grandmother married a 90-year-old man.
 
 Even if my grandfather is 90 right now, I cannot say such a sentence.
 
@@ -92,9 +87,7 @@ perfectly fine and unambiguously means I met Barack Obama, not Bill Clinton.)
 And temporal displacement is probably not even what's at issue here, as the
 following example shows.
 
-```
-I just drank an empty glass of water.
-```
+    I just drank an empty glass of water.
 
 Just because I just drank a whole glass of water, and the glass is now empty,
 doesn't mean I can say the above sentence. And in this case the temporal

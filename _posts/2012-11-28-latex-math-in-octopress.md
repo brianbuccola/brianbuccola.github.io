@@ -66,7 +66,7 @@ grabbing kramdown (at least I think).
 
 Add the following MathJax script to `source/_layouts/default.html`:
 
-```html
+{% highlight html %}
 <!-- mathjax config similar to math.stackexchange -->
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
@@ -79,7 +79,7 @@ MathJax.Hub.Config({
 <script type="text/javascript"
   src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
-```
+{% endhighlight %}
 
 ## 5\. Fix right-click bug
 
@@ -88,7 +88,7 @@ where if you right-click on any math, the website turns blank for as long as
 the MathJax contex menu is open. To fix this, open `sass/base/_theme.scss` and
 change
 
-```css
+{% highlight css %}
 body {
   > div {
     background: $sidebar-bg $noise-bg;
@@ -99,11 +99,11 @@ body {
     }
   }
 }
-```
+{% endhighlight %}
 
 to
 
-```css
+{% highlight css %}
 body {
   > div#main {
     background: $sidebar-bg $noise-bg;
@@ -114,7 +114,7 @@ body {
     }
   }
 }
-```
+{% endhighlight %}
 
 In other words, change the first occurrence of `div` to `div#main`.
 

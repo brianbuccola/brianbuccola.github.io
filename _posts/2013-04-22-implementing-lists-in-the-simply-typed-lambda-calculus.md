@@ -167,9 +167,9 @@ functional terms).
 In Haskell, there are two list constructors: `[]`, or *nil* (the empty list),
 and `(:)`, or *cons*. The cons operator has the following type signature:
 
-```haskell
+{% highlight haskell %}
 (:) :: a -> [a] -> [a]
-```
+{% endhighlight %}
 
 This means it takes something of type `a` and something of type `[a]` and
 returns something of type `[a]`. More precisely, it takes an `a`-type

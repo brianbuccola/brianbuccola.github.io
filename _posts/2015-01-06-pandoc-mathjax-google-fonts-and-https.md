@@ -35,9 +35,9 @@ for. In other words:
 MathJax is run as a script within the html source code. All you need is
 something like this, which links to some MathJax JavaScript:
 
-```html
+{% highlight html %}
 <script src="http://cdn.mathjax.org/mathjax/..." type="text/javascript"></script>
-```
+{% endhighlight %}
 
 (The full MathJax source URL is [here][mj-full].)
 
@@ -48,9 +48,9 @@ the `http:` part was completely missing.
 bug; it was removed for principled reasons. The solution, I thought, was simply
 to change from using `--mathjax` to explicitly using
 
-```bash
+{% highlight bash %}
 --mathjax="http://cdn.mathjax.org/mathjax/..."
-```
+{% endhighlight %}
 
 I tried that, and it worked! At least, on my *local* copy of the blog
 (`file:///home/brian/blog/...`). It did *not* work when I pushed the changes to
@@ -68,13 +68,13 @@ turns out that when using the secure version of my blog,
 MathJax URLs *won't work*. They need to all be changed to `https`. So that's
 what I did
 
-```bash
+{% highlight bash %}
 --mathjax="https://cdn.mathjax.org/mathjax/..."
-```
+{% endhighlight %}
 
-```html
+{% highlight html %}
 <script src="https://cdn.mathjax.org/mathjax/..." type="text/javascript"></script>
-```
+{% endhighlight %}
 
 and voilà, everything works again.
 

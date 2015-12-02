@@ -37,21 +37,19 @@ Pushing to server
 Alright, so you've got a website all set up, and the directory structure looks
 something like this.
 
-```
-after-body.html
-before-body.html
-favicon.png
-files
-    \--- handout-stuff.pdf
-    \--- handout-junk.pdf
-header.html
-images
-    \--- pic-of-me.jpg
-index.html
-index.markdown
-md2html.sh
-mystyle.css
-```
+    after-body.html
+    before-body.html
+    favicon.png
+    files
+        \--- handout-stuff.pdf
+        \--- handout-junk.pdf
+    header.html
+    images
+        \--- pic-of-me.jpg
+    index.html
+    index.markdown
+    md2html.sh
+    mystyle.css
 
 (Most of these files are optional; all you really need is `index.markdown`,
 `index.html`, and `md2htmlsh`. But for completeness, I'll assume we're dealing
@@ -81,37 +79,37 @@ Bob, and so his login name is `bob22@abc.edu`. Then he can access the server
 with the following simple command (recall that `$` is the command--line prompt;
 don't type it):
 
-```bash
+{% highlight bash %}
 $ ssh bob22@abc.edu
-```
+{% endhighlight %}
 
 Pretty easy. After executing this command, Bob will be prompted for his
 university password, which happens to be `iluvssh` (but don't tell anyone). He
 enters the password and is greeted with something like:
 
-```
-Welcome to ABC University's server! Blah blah blah, GNU/Linux license
+{% highlight bash %}
+Welcome to the ABC University server! Blah blah blah, GNU/Linux license
 stuff, no warranty, yada yada.
 
 bob22@abc:~$
-```
+{% endhighlight %}
 
 Bob went from being inside his personal home directory to being on his home
 directory on his uni server, hence why `$` is the prompt in both cases. Note,
 however, that Bob's local home directory is `/home/bob`, whereis his remote uni
 one is (probably) `/home/bob22`.
 
-```bash
+{% highlight bash %}
 bob22@abc:~$ echo $HOME
 /home/bob22
-```
+{% endhighlight %}
 
 Bob looks around in his home directory, and he notices two folders:
 
-```bash
+{% highlight bash %}
 bob22@abc:~$ ls
 private public_html
-```
+{% endhighlight %}
 
 Presumably, `private` is for stuff that no other students/users of that server
 has access to; `public_html` is where Bob needs to put his website. But how
@@ -125,9 +123,9 @@ were.
 Enter `scp`, or secure copy. First Bob exits from his uni server with `exit`,
 putting him back into his ordinary PC home. Now he can do this:
 
-```bash
+{% highlight bash %}
 $ scp ~/website/index.html bob22@abc.edu:/home/bob22/public_html
-```
+{% endhighlight %}
 
 This command (securely) copies the file `index.html` from the local home
 directory, `/home/bob`, over to Bob's university home directory, `/home/bob22`,
@@ -148,9 +146,9 @@ should not share the private key (the public one doesn't matter).
 
 The command for all this is:
 
-```bash
+{% highlight bash %}
 $ ssh-keygen -f abc -t rsa -C 'ABC University'
-```
+{% endhighlight %}
 
 Legend:
 
@@ -164,19 +162,19 @@ After running this command, Bob has two files: `abc`, his personal identity
 file, and `abc.pub`, the public one. He should first put `abc` into the
 directory `~/.ssh`, where any other keys are located, too:
 
-```bash
+{% highlight bash %}
 $ mkdir ~/.ssh # create this directory, if not already existing
 $ mv abc ~/.ssh/
-```
+{% endhighlight %}
 
 (Bob could also have simply run `ssh-keygen` from inside `~/.ssh` to begin
 with.)
 
 Now he needs to get `abc.pub` onto the remote server. That's easy:
 
-```bash
+{% highlight bash %}
 $ scp ~/abc.pub bob22@abc.edu:/home/bob22
-```
+{% endhighlight %}
 
 But that's not quite enough. The way OpenSSH works is that the public key has
 to be concatenated to a file `authorized_keys`, located in the remote `~/.ssh`,
@@ -185,7 +183,7 @@ must ssh one more time onto the server, create `~/.ssh` if necessary, append
 `abc.pub` to `authorized_keys`, change the permissions on `authorized_keys` so
 that only Bob can read and write to it, and finally delete `abc.pub`.
 
-```bash
+{% highlight bash %}
 $ ssh bob22@abc.edu
 Welcome! ...
 bob22@abc:~$ ls
@@ -195,7 +193,7 @@ bob22@abc:~$ cat ~/abc.pub >> ~/.ssh/authorized_keys
 bob22@abc:~$ chmod 600 ~/.ssh/authorized_keys
 bob22@abc:~$ rm abc.pub
 bob22@abc:~$ exit
-```
+{% endhighlight %}
 
 If all went well, Bob should now be able to ssh onto the server without
 typing `iluvssh` every time. Cool!
@@ -204,54 +202,54 @@ typing `iluvssh` every time. Cool!
 
 But there's another snag: What if Bob's username were actually
 
-```bash
+{% highlight bash %}
 reallylongfirstname.superlonglastname946537
-```
+{% endhighlight %}
 
 and/or what if his university's domain name were actually
 
-```bash
+{% highlight bash %}
 abcdefghijklmnopqrstuvwxyz@abc.de.fghi.jklm.no.pqrst.uvwx.yz.edu
-```
+{% endhighlight %}
 
 It'd be pretty annoying to type all that out every time Bob wanted to `ssh`
 onto the server or `scp` something over to it. Sure, Bob could create a shell
 alias for it, but ssh offers an easy solution: an ssh config file. Bob can
 simply create a file `~/.ssh/config` that looks like this:
 
-```bash
+{% highlight bash %}
 Host abc
     User bob22
     HostName abc.edu
     IdentityFile ~/.ssh/abc
-```
+{% endhighlight %}
 
 The keywords are pretty straightforward. The only one worth discussing is
 `Host`: this is the name that this particular entry goes by, and it's that name
 which, when used in a shell or script, is equivalent to `bob22@abc.edu`. In
 other words, typing
 
-```bash
+{% highlight bash %}
 $ ssh abc
-```
+{% endhighlight %}
 
 is equivalent to typing
 
-```bash
+{% highlight bash %}
 $ ssh bob22@abc.edu
-```
+{% endhighlight %}
 
 Similarly, typing
 
-```bash
+{% highlight bash %}
 $ scp blah.txt abc:/home/bob22
-```
+{% endhighlight %}
 
 is equivalent to typing
 
-```bash
+{% highlight bash %}
 $ scp blah.txt bob22@abc.edu:/home/bob22
-```
+{% endhighlight %}
 
 You can see how a config file drastically simplifies things.
 
@@ -286,7 +284,7 @@ transfers Bob's website from his local PC to his remote server's `public_html`
 directory. It integrates an include file as well as a log file, both of which
 are stored in a (hidden) directory `~/website/.push-website`.
 
-```bash
+{% highlight bash %}
 #!/bin/bash
 
 SRC="$HOME/website"
@@ -299,7 +297,7 @@ rsync \
     --exclude-from=$EXCL \
     --log-file=$LOG \
     $SRC/ $DEST/
-```
+{% endhighlight %}
 
 Legend:
 
@@ -316,11 +314,11 @@ So now Bob can update his site very simply by editing `index.markdown`, running
 `md2html.sh` to convert to HTML, and running `push-website.sh` to push the
 changes to his university server.
 
-```bash
+{% highlight bash %}
 ~/website $ vim index.markdown      # edit, edit, edit, save, quit
 ~/website $ ./md2html.sh            # convert to HTML
 ~/website $ ./push-website.sh       # push changes to remote server
-```
+{% endhighlight %}
 
 Nice! By the way, here are some things that are good to keep in the exclude
 file:
