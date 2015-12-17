@@ -160,7 +160,7 @@ thought of it yet.
 [md]: http://daringfireball.net/projects/markdown/
 [kd]: http://kramdown.rubyforge.org/
 [rd]: https://github.com/rtomayko/rdiscount
-[lx]: /blog/2012/11/28/latex-math-in-octopress/
+[lx]: /latex-math-in-octopress/
 
 ---
 1.  <a class="fn" id="fn:kd" href="#ref:kd">&uarr;</a> Octopress actually uses
