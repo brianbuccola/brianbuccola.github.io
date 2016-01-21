@@ -89,8 +89,8 @@ outside.[^gz] In symbols: $$b \leftrightarrow \lnot s$$ (mnemonic: $$b =$$
 "beer", $$s =$$ "snow").
 
 [^gz]: Geis, Michael L. and Arnold M.  Zwicky. 1971. On Invited Inferences.
-*Linguistic Inquiry* **2**: 561-6. The term was suggested to the authors by
-Lauri Karttunen.
+       *Linguistic Inquiry* **2**: 561-6. The term was suggested to the authors
+       by Lauri Karttunen.
 
 The same could be said of the "unless" utterance, if "only unless" were
 grammatical: Floyd will go buy beer unless and only unless it's snowing. In
