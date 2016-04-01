@@ -7,7 +7,7 @@ redirect_from: /research.html
 
 ## Journal Articles
 
-- Buccola, Brian and Benjamin Spector. Maximality and modified numerals.
+- Buccola, Brian and Benjamin Spector. Modified numerals and maximality.
   Accepted for publication (with very minor revisions) at *Linguistics and
   Philosophy*. [![pdf][]][l&p]
 
