@@ -7,9 +7,8 @@ redirect_from: /research.html
 
 ## Journal Articles
 
-- Buccola, Brian and Benjamin Spector. Modified numerals and maximality.
-  Accepted for publication (with very minor revisions) at *Linguistics and
-  Philosophy*. [![pdf][]][l&p]
+- Buccola, Brian and Benjamin Spector. Modified numerals and maximality. To
+  appear in *Linguistics and Philosophy*. [![pdf][]][l&p]
 
 - Schwarz, Bernhard, Brian Buccola, and Michael Hamilton. 2012. Two types of
   class B numeral modifiers: A reply to Nouwen 2010. *Semantics and
