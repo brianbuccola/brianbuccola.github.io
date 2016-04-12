@@ -37,7 +37,7 @@ redirect_from: /research.html
 [nels45]: /files/buccola2015nels45.pdf
 [fg]: /files/buccola2013fg.pdf
 
-## Manuscripts
+## Other
 
 - Brian Buccola. 2015. *Maximality in the Semantics of Modified Numerals*. PhD
   thesis, McGill University. [![pdf][]][diss]
