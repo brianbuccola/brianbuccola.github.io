@@ -8,34 +8,34 @@ redirect_from: /research.html
 ## Journal Articles
 
 - Brian Buccola and Benjamin Spector. Modified numerals and maximality. To
-  appear in *Linguistics and Philosophy*. [![pdf][]][LP]
+  appear in *Linguistics and Philosophy*. [![pdf][]][lp]
 
 - Bernhard Schwarz, Brian Buccola, and Michael Hamilton. 2012. Two types of
   class B numeral modifiers: A reply to Nouwen 2010. *Semantics and
-  Pragmatics*, Volume 5, Article 1:1--25. [![pdf][]][SP]
+  Pragmatics*, Volume 5, Article 1:1--25. [![pdf][]][sp]
 
-[LP]: /files/buccola.spector_2016_LP.pdf
-[SP]: http://semprag.org/article/download/sp.5.1/pdf
+[lp]: /files/buccola.spector_2016_lp.pdf
+[sp]: http://semprag.org/article/download/sp.5.1/pdf
 
 ## Proceedings Papers
 
 - Brian Buccola. Severing maximality from *fewer than*: Evidence from
   genericity. To appear in *Proceedings of Sinn und Bedeutung 20*.
-  [![pdf][]][SuB20]
+  [![pdf][]][sub20]
 
 - Brian Buccola. 2015. Variable monotonicity and *less than*: when Van
   Benthem's problem is not a problem. In Thuy Bui and Deniz Özyıldız (eds.),
   *Proceedings of the 45th Annual Meeting of the North East Linguistic Society
-  (NELS 45)*, volume 1, pp. 135--124. [![pdf][]][NELS45]
+  (NELS 45)*, volume 1, pp. 135--124. [![pdf][]][nels45]
 
 - Brian Buccola. 2013. On the Expressivity of Optimality Theory versus Ordered
   Rewrite Rules. In Glyn Morrill and Mark-Jan Nederhof (eds.), *Proceedings of
   Formal Grammar 2012 and 2013*, Lecture Notes in Computer Science 8036, pp.
-  142--158, Springer-Verlag Berlin Heidelberg. [![pdf][]][FG]
+  142--158, Springer-Verlag Berlin Heidelberg. [![pdf][]][fg]
 
-[SuB20]: /files/buccola_2016_SuB20.pdf
-[NELS45]: /files/buccola_2015_NELS45.pdf
-[FG]: /files/buccola_2013_FG.pdf
+[sub20]: /files/buccola_2016_sub20.pdf
+[nels45]: /files/buccola_2015_nels45.pdf
+[fg]: /files/buccola_2013_fg.pdf
 
 ## Other
 
