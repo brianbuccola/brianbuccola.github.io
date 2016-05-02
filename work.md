@@ -19,7 +19,7 @@ redirect_from: /research.html
 
 ## Proceedings Papers
 
-- Brian Buccola. Severing maximality from *fewer than*: Evidence from
+- Brian Buccola. Severing maximality from *fewer than*: evidence from
   genericity. To appear in *Proceedings of Sinn und Bedeutung 20*.
   [![pdf][]][sub20]
 
