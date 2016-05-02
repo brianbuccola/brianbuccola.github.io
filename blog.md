@@ -4,6 +4,10 @@ title: Blog
 permalink: /blog/
 ---
 
+<h2 style="float:right;">
+  <a href="/feed.xml"><span class="icon icon--feed">{% include icon-feed.svg %}</span></a>
+<h2>
+
 <ul class="post-list">
   {% for post in site.posts %}
     <li>
