@@ -29,12 +29,8 @@ about some of that stuff [here](/blog/).
 The source code and license for the content of this website are available [on
 GitHub][repo].
 
-You can contact me by email by clicking <script type="text/javascript">
-<!--
-h='&#x67;&#x6d;&#x61;&#x69;&#108;&#46;&#x63;&#x6f;&#x6d;';a='&#64;';n='&#98;&#114;&#x69;&#x61;&#110;&#46;&#98;&#x75;&#x63;&#x63;&#x6f;&#108;&#x61;';e=n+a+h;
-document.write('<a h'+'ref'+'="ma'+'ilto'+':'+e+'" clas'+'s="em' + 'ail">'+'here'+'<\/'+'a'+'>');
-// -->
-</script><noscript>&#x65;&#x6d;&#x61;&#x69;&#108;&#32;&#40;&#98;&#114;&#x69;&#x61;&#110;&#46;&#98;&#x75;&#x63;&#x63;&#x6f;&#108;&#x61;&#32;&#x61;&#116;&#32;&#x67;&#x6d;&#x61;&#x69;&#108;&#32;&#100;&#x6f;&#116;&#32;&#x63;&#x6f;&#x6d;&#x29;</noscript>.
+You can contact me by email at [brian.buccola@gmail.com][email].
 
 [me-gh]: https://github.com/brianbuccola
 [repo]: https://github.com/brianbuccola/brianbuccola.github.io
+[email]: mailto:brian.buccola@gmail.com
