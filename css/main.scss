@@ -21,6 +21,7 @@ $background-color: #fdfdfd;
 $link-color:       darkblue;
 $link-color-hover: darkred;
 $link-color-visited: lighten($link-color, 50%);
+$link-color-active: lighten($link-color-hover, 50%);
 
 $grey-color:       #828282;
 $grey-color-light: lighten($grey-color, 40%);
