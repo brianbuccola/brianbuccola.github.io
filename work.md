@@ -26,7 +26,7 @@ redirect_from: /research.html
 
 - Brian Buccola. 2015. [Variable monotonicity and *less than*: when Van Benthem's problem is not a problem][nels45]. In Thuy Bui and Deniz Özyıldız (eds.), *Proceedings of the 45th Annual Meeting of the North East Linguistic Society (NELS 45)*, volume 1, pp. 135--124.
 
-- Brian Buccola. 2013. [On the Expressivity of Optimality Theory versus Ordered Rewrite Rules][fg-doi]. In Glyn Morrill and Mark-Jan Nederhof (eds.), *Proceedings of Formal Grammar 2012 and 2013*, Lecture Notes in Computer Science 8036, pp. 142--158, Springer-Verlag Berlin Heidelberg. ([preprint][fg-lb])
+- Brian Buccola. 2013. [On the Expressivity of Optimality Theory versus Ordered Rewrite Rules][fg-doi]. In Glyn Morrill and Mark-Jan Nederhof (eds.), *Formal Grammar*, Lecture Notes in Computer Science 8036, pp. 142--158, Springer-Verlag Berlin Heidelberg. ([preprint][fg-lb])
 
 [sub20]: http://ling.auf.net/lingbuzz/002847
 [nels45]: http://ling.auf.net/lingbuzz/002512
