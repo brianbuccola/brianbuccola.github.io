@@ -18,9 +18,9 @@ $spacing-unit:     30px;
 $text-color:       #111;
 $background-color: #fdfdfd;
 
-$link-color:       darkblue;
+$link-color:       darken(cornflowerblue, 15%);
 $link-color-hover: darkred;
-$link-color-visited: lighten($link-color, 50%);
+$link-color-visited: lighten($link-color, 25%);
 $link-color-active: lighten($link-color-hover, 50%);
 
 $grey-color:       #828282;
