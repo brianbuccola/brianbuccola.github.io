@@ -39,7 +39,7 @@ redirect_from: /research.html
 
 - Brian Buccola. 2013. [Two proofs that classic Optimality Theory is expressively weaker than ordered rewrite rules][eval2]. Montreal, Canada: McGill University second evaluation paper. (Mostly superseded by Buccola 2013, Formal Grammar; see above.)
 
-- Brian Buccola. 2012. [Some remarks on inference patterns involving epistemic modality][eval1]. Montreal, Canada: McGill University second evaluation paper.
+- Brian Buccola. 2012. [Some remarks on inference patterns involving epistemic modality][eval1]. Montreal, Canada: McGill University first evaluation paper.
 
 [dissertation]: http://ling.auf.net/lingbuzz/003039
 [eval2]: http://ling.auf.net/lingbuzz/003038
