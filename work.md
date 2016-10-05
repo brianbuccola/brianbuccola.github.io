@@ -22,7 +22,7 @@ redirect_from: /research.html
 
 ## Proceedings Papers
 
-- Brian Buccola. [Severing maximality from *fewer than*: evidence from genericity][sub20]. To appear in *Proceedings of Sinn und Bedeutung 20*.
+- Brian Buccola. 2016. [Severing maximality from *fewer than*: evidence from genericity][sub20]. In Nadine Bade, Polina Berezovskaya, and Anthea Schöller (eds.), *Proceedings of Sinn und Bedeutung 20*, pp. 127--144.
 
 - Brian Buccola. 2015. [Variable monotonicity and *less than*: when Van Benthem's problem is not a problem][nels45]. In Thuy Bui and Deniz Özyıldız (eds.), *Proceedings of the 45th Annual Meeting of the North East Linguistic Society (NELS 45)*, volume 1, pp. 135--124.
 
