@@ -12,9 +12,9 @@ redirect_from: /research.html
 
 ## Journal Articles
 
-- Brian Buccola and Benjamin Spector. 2016. [Modified numerals and maximality][lp-doi]. *Linguistics and Philosophy*, volume 39, issue 3, pp. 151--199. ([preprint][lp-lb])
+- Brian Buccola and Benjamin Spector. 2016. [Modified numerals and maximality][lp-doi]. *Linguistics and Philosophy* 39(3). 151--199. ([preprint][lp-lb])
 
-- Bernhard Schwarz, Brian Buccola, and Michael Hamilton. 2012. [Two types of class B numeral modifiers: A reply to Nouwen 2010][sp]. *Semantics and Pragmatics*, volume 5, article 1, pp. 1--25.
+- Bernhard Schwarz, Brian Buccola, and Michael Hamilton. 2012. [Two types of class B numeral modifiers: A reply to Nouwen 2010][sp]. *Semantics and Pragmatics* 5(1). 1--25.
 
 [lp-doi]: http://dx.doi.org/10.1007/s10988-016-9187-2
 [lp-lb]: http://ling.auf.net/lingbuzz/002528
@@ -22,11 +22,11 @@ redirect_from: /research.html
 
 ## Proceedings Papers
 
-- Brian Buccola. 2016. [Severing maximality from *fewer than*: evidence from genericity][sub20]. In Nadine Bade, Polina Berezovskaya, and Anthea Schöller (eds.), *Proceedings of Sinn und Bedeutung 20*, pp. 127--144.
+- Brian Buccola. 2016. [Severing maximality from *fewer than*: evidence from genericity][sub20]. *Sinn und Bedeutung* 20. 127--144.
 
-- Brian Buccola. 2015. [Variable monotonicity and *less than*: when Van Benthem's problem is not a problem][nels45]. In Thuy Bui and Deniz Özyıldız (eds.), *Proceedings of the 45th Annual Meeting of the North East Linguistic Society (NELS 45)*, volume 1, pp. 135--124.
+- Brian Buccola. 2015. [Variable monotonicity and *less than*: when Van Benthem's problem is not a problem][nels45]. *North East Linguistic Society (NELS)* 45. 135--124.
 
-- Brian Buccola. 2013. [On the Expressivity of Optimality Theory versus Ordered Rewrite Rules][fg-doi]. In Glyn Morrill and Mark-Jan Nederhof (eds.), *Formal Grammar*, Lecture Notes in Computer Science 8036, pp. 142--158, Springer-Verlag Berlin Heidelberg. ([preprint][fg-lb])
+- Brian Buccola. 2013. [On the Expressivity of Optimality Theory versus Ordered Rewrite Rules][fg-doi]. *Formal Grammar*. 142--158. ([preprint][fg-lb])
 
 [sub20]: http://ling.auf.net/lingbuzz/002847
 [nels45]: http://ling.auf.net/lingbuzz/002512
@@ -35,11 +35,11 @@ redirect_from: /research.html
 
 ## Other
 
-- Brian Buccola. 2015. [*Maximality in the Semantics of Modified Numerals*][dissertation]. PhD thesis, McGill University.
+- Brian Buccola. 2015. [*Maximality in the semantics of modified numerals*][dissertation]. Montreal, Canada: McGill University PhD thesis.
 
-- Brian Buccola. 2013. [Two proofs that classic Optimality Theory is expressively weaker than ordered rewrite rules][eval2]. Second evaluation paper, McGill University. (Mostly superseded by Buccola 2013, Formal Grammar; see above.)
+- Brian Buccola. 2013. [Two proofs that classic Optimality Theory is expressively weaker than ordered rewrite rules][eval2]. Montreal, Canada: McGill University second evaluation paper. (Mostly superseded by Buccola 2013, Formal Grammar; see above.)
 
-- Brian Buccola. 2012. [Some remarks on inference patterns involving epistemic modality][eval1]. First evaluation paper, McGill University.
+- Brian Buccola. 2012. [Some remarks on inference patterns involving epistemic modality][eval1]. Montreal, Canada: McGill University second evaluation paper.
 
 [dissertation]: http://ling.auf.net/lingbuzz/003039
 [eval2]: http://ling.auf.net/lingbuzz/003038
