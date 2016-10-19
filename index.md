@@ -2,7 +2,7 @@
 layout: page
 ---
 <div class="home">
-<a href="mailto:brian.buccola@gmail.com" class="email"><img class="img-circle" title="Email me" alt="Email me" src="/images/brian-tie.jpg"></a>
+<a href="/about/"><img class="img-circle" title="Brian" alt="Brian" src="/images/brian-tie.jpg"></a>
 <br>
 <strong>Brian Buccola</strong><br>
 <a href="/work/">works</a> on meaning, sometimes sound;<br>
