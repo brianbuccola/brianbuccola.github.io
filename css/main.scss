@@ -18,12 +18,12 @@ $spacing-unit:     30px;
 $text-color:       #111;
 $background-color: #fdfdfd;
 
-$link-color:       darken(cornflowerblue, 25%);
+$link-color:       #008fd5;
 $link-color-hover: darkred;
-$link-color-visited: lighten($link-color, 25%);
+$link-color-visited: $link-color;
 $link-color-active: lighten($link-color-hover, 50%);
 
-$grey-color:       #828282;
+$grey-color:       #939598;
 $grey-color-light: lighten($grey-color, 40%);
 $grey-color-dark:  darken($grey-color, 25%);
 
