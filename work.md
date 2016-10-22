@@ -22,7 +22,7 @@ redirect_from: /research.html
 
 ## Proceedings Papers
 
-- Brian Buccola and Andreas Haida. In preparation. A surface-scope analysis of authoritative readings of modified numerals. *Sinn und Bedeutung 21*. ([slides][sub21])
+- Brian Buccola and Andreas Haida. In preparation. A surface-scope analysis of authoritative readings of modified numerals. *Sinn und Bedeutung* 21. ([slides][sub21])
 
 - Brian Buccola. 2016. [Severing maximality from *fewer than*: Evidence from genericity][sub20]. *Sinn und Bedeutung* 20. 127--144.
 
