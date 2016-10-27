@@ -52,9 +52,9 @@ being misspelled as *brain*. D'oh!
 
 **Bonus:** A picture of the name plate on my and my colleague Andreas Haida's
 new office. (Ignore the misplaced dot.) Notice that Andreas's last name, which
-is pronounced \[ˈhaɪdə\], has double vav, so here's another case where יי =
+is pronounced \[ˈhaɪdə\], has a double yod, so here's another case where יי =
 \[aɪ\]. Notice also that *Dr.* is ד״ר. The thing between ד (*dalet*) and ר
-(*resh*) is not a double vav or anything. It's called [geryashim][ger]---or
+(*resh*) is not a double yod or anything. It's called [geryashim][ger]---or
 *double geresh*---which is a special symbol that indicates an acronym and other
 short forms.
 
