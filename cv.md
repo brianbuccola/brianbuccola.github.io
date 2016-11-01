@@ -5,7 +5,11 @@ permalink: /cv/
 redirect_from: /cv.html
 ---
 
-*NB: These links spawn a new window/tab.*
+My CV is available [on GitHub][cv-pdf], which automagically renders the PDF in
+your browser. Click "Download" to download the actual file.
 
-- <a target="_blank" href="https://github.com/brianbuccola/cv/blob/master/buccola-cv.pdf"><img src="/images/pdf_icon.png"></a> &nbsp; (PDF automagically rendered by GitHub; click "raw" to download the actual file.)
-- <a target="_blank" href="https://github.com/brianbuccola/cv/blob/master/buccola-cv.tex"><img src="/images/tex_icon.png"></a> &nbsp; ($$\LaTeX{}$$ source code.)
+If you like layout, feel free to borrow and adapt the [LaTeX source
+code][cv-tex].
+
+[cv-pdf]: https://github.com/brianbuccola/cv/blob/master/buccola-cv.pdf
+[cv-tex]: https://github.com/brianbuccola/cv/blob/master/buccola-cv.tex
