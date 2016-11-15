@@ -14,10 +14,13 @@ redirect_from: /research.html
 
 - Brian Buccola. 2016. A new defense of a classic semantics for bare numerals. In preparation. ([email me][email] for a copy)
 
+- Brian Buccola, Manuel Križ, and Emmanuel Chemla. 2016. [Conceptual alternatives][cog-lb]. Submitted.
+
 - Brian Buccola and Benjamin Spector. 2016. [Modified numerals and maximality][lp-doi]. *Linguistics and Philosophy* 39(3). 151--199. ([preprint][lp-lb])
 
 - Bernhard Schwarz, Brian Buccola, and Michael Hamilton. 2012. [Two types of class B numeral modifiers: A reply to Nouwen 2010][sp]. *Semantics and Pragmatics* 5(1). 1--25.
 
+[cog-lb]: http://ling.auf.net/lingbuzz/003208
 [lp-doi]: http://dx.doi.org/10.1007/s10988-016-9187-2
 [lp-lb]: http://ling.auf.net/lingbuzz/002528
 [sp]: http://dx.doi.org/10.3765/sp.5.1
