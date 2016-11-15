@@ -12,6 +12,8 @@ redirect_from: /research.html
 
 ## Journal Articles
 
+- Brian Buccola. 2016. A new defense of a classic semantics for bare numerals. In preparation. ([email me][email] for a copy)
+
 - Brian Buccola and Benjamin Spector. 2016. [Modified numerals and maximality][lp-doi]. *Linguistics and Philosophy* 39(3). 151--199. ([preprint][lp-lb])
 
 - Bernhard Schwarz, Brian Buccola, and Michael Hamilton. 2012. [Two types of class B numeral modifiers: A reply to Nouwen 2010][sp]. *Semantics and Pragmatics* 5(1). 1--25.
