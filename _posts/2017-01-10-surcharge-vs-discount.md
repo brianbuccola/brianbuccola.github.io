@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Not paying a surcharge vs. getting a discount
-date: 2017-01-17
+date: 2017-01-10
 ---
 
 Semantics in the news (very broadly speaking): Not paying a surcharge vs.
