@@ -28,7 +28,7 @@ redirect_from: /research.html
 
 ## Proceedings Papers
 
-- Brian Buccola and Andreas Haida. In preparation. A surface-scope analysis of authoritative readings of modified numerals. *Sinn und Bedeutung* 21. ([slides][sub21])
+- Brian Buccola and Andreas Haida. 2017. [A surface-scope analysis of authoritative readings of modified numerals][sub21]. *Sinn und Bedeutung* 21.
 
 - Brian Buccola. 2016. [Severing maximality from *fewer than*: Evidence from genericity][sub20]. *Sinn und Bedeutung* 20. 127--144.
 
@@ -36,7 +36,7 @@ redirect_from: /research.html
 
 - Brian Buccola. 2013. [On the expressivity of Optimality Theory versus ordered rewrite rules][fg-doi]. *Formal Grammar*. 142--158. ([preprint][fg-lb])
 
-[sub21]: http://ling.auf.net/lingbuzz/003173
+[sub21]: http://ling.auf.net/lingbuzz/003307
 [sub20]: http://ling.auf.net/lingbuzz/002847
 [nels45]: http://ling.auf.net/lingbuzz/002512
 [fg-doi]: http://dx.doi.org/10.1007/978-3-642-39998-5_9
