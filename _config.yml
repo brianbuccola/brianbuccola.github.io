@@ -6,6 +6,9 @@ author:
   name: Brian Buccola
   uri: http://brianbuccola.com/
 
+# Repository (suppresses error message)
+repository: brianbuccola/brianbuccola.github.io
+
 # Publishing settings
 permalink: /:title/
 
