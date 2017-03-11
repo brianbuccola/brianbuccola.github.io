@@ -83,33 +83,67 @@ works fine in console, but *not* in X11, where most people (including me) spend
 most of their time. I've read that a BIOS upgrade fixes this, but I haven't
 tried that.
 
-My workaround was to write two simple bash scripts, `brightness-dec` and
-`brightness-inc`, to decrease and increase the brightness, respectively, and
-bind them to `<Fn-F8>` and `<Fn-F9>`. You can find them both [here][scripts].
+My workaround was to write a simple bash script, [brt.sh][brt]. The idea:
 
-I'll illustrate how `brightness-inc` works:
+- `brt.sh` (no argument): output current brightness level (0--255).
+- `brt.sh [n]`: set brightness level to *n* (0--255).
+- `brt.sh down`: decrease brightness level by 20 (bind this to `<Fn-F8>`).
+- `brt.sh up`: increase brightness level by 20 (bind this to `<Fn-F9>`).
+
+I'll illustrate how the main part of it works, the `brt_change()` function (the
+rest of the script should be pretty self-explanatory):
 
 ```bash
 #!/bin/bash
 
+brightness_file="/sys/class/backlight/radeon_bl0/brightness"
 max_brightness=255
 min_brightness=5
-current_brightness=$(cat /sys/class/backlight/radeon_bl0/brightness)
-inc_amt=20
-new_brightness=$(echo $(($current_brightness + $inc_amt)))
+current_brightness=$(cat "$brightness_file")
+up_amt=20
+down_amt=20
 
-if [[ $new_brightness -gt $max_brightness ]]; then
-  echo $max_brightness | sudo tee /sys/class/backlight/radeon_bl0/brightness
-elif [[ $new_brightness -lt $min_brightness ]]; then
-  echo $min_brightness | sudo tee /sys/class/backlight/radeon_bl0/brightness
+brt_change() {
+  echo "$1" | sudo tee "$brightness_file"
+}
+
+brt_up() {
+  local new_brightness=$(($current_brightness + $up_amt))
+  if [[ $new_brightness -le $max_brightness ]]; then
+    brt_change "$new_brightness"
+  else
+    brt_change "$max_brightness"
+  fi
+}
+
+brt_down() {
+  local new_brightness=$(($current_brightness - $up_amt))
+  if [[ $new_brightness -ge $min_brightness ]]; then
+    brt_change "$new_brightness"
+  else
+    brt_change "$min_brightness"
+  fi
+}
+
+if [[ $# -eq 1 ]]; then
+  case "$1" in
+    [0-9]*) brt_change "$1" && exit 0;;
+        up) brt_up && exit 0;;
+      down) brt_down && exit 0;;
+         *) echo "Error: invalid argument. Pick a brightness level ($min_brightness-$max_brightness), or say 'up' or 'down'." && exit 1;;
+  esac
+elif [[ $# -eq 0 ]]; then
+  echo "$current_brightness"
+  exit 0
 else
-  echo "$new_brightness" | sudo tee /sys/class/backlight/radeon_bl0/brightness
+  echo "Error: too many arguments."
+  exit 1
 fi
 ```
 
 The file `/sys/class/backlight/radeon_bl0/brightness` contains the current
 brightness level, which for my Lenovo X140e is between 0 and 255. To change the
-brightness, just change this file. The problem is that since it's located in
+brightness, you just change this file. The problem is that since it's located in
 `/sys/...`, you need root permission to change it. That means that
 
 ```bash
@@ -131,8 +165,8 @@ stdin to a file, as root:
 echo "100" | sudo tee /sys/...
 ```
 
-This command will successfully set the brightness level to 100. That's the crux
-of the script; the rest should be pretty self-explanatory.
+This command will successfully set the brightness level to 100, and that's the
+crux of the script.
 
 There's one remaining issue, though: we don't want to run this script in a
 terminal; we want to bind it to a key. But the script uses `sudo`, which
@@ -146,13 +180,19 @@ and adding this line:
 brian ALL = NOPASSWD: /usr/bin/tee
 ```
 
-What this does is allow the user "brian" (that's me) to run `tee` as root
-(`sudo tee`) without a password. `/usr/bin/tee` is of course the full path to
-`tee`. To find that out on your system, run `which tee` in a terminal.
+What this does is allow the user "brian" (that's me) to run `tee` as root (`sudo
+tee`) without a password.[^sudo-tee] `/usr/bin/tee` is of course the full path
+to `tee`. To find that out on your system, run `which tee` in a terminal.
 
-Now the script can be run effectively. Just bind it to a key in whatever way is
-required by your desktop environment or window manager. (For me, I bind keys in
-`xmonad.hs` since I use xmonad.)
+[^sudo-tee]: NB: This is a (potential) security risk, as it allows "brian", or
+    anyone logged in as "brian", to overwrite *any* file! (Example: `echo "all
+    gone" | sudo tee /path/to/important/file`.) Only do this if you're the only
+    one with access to this user profile.
+
+Now the script can be run effectively. Just bind `brt.sh down` and `brt.sh up`
+to `<Fn-F8>` and `<Fn-F9>` (or whatever you want) in whatever way is required by
+your desktop environment or window manager. (For me, I bind keys in `xmonad.hs`
+since I use xmonad.)
 
 ## No insert key
 
@@ -182,5 +222,5 @@ insert, etc.; I then call the whole script from my `.xinitrc` file.)
 
 [b43]:     http://wireless.kernel.org/en/users/Drivers/b43
 [bc]:      https://aur.archlinux.org/packages/broadcom-wl/
-[scripts]: https://github.com/brianbuccola/scripts
+[brt]:     https://github.com/brianbuccola/scripts/blob/master/brt.sh
 [vp]:      http://www.vimperator.org/vimperator/
