@@ -9,11 +9,11 @@ redirect_from: /blog/2012-12-01-references-and-footnotes-in-htmlcss.html
 programs like Pandoc and kramdown can convert extensions of markdown that
 include footnotes. For example, it suffices to do:*
 
-{% highlight html %}
+```markdown
 Blah blah blah.[^fn] Lorem ipsum...
 
 [^fn]: Here's a footnote!
-{% endhighlight %}
+```
 
 *But I will leave this post here since it may be a useful reference for people
 writing in pure html rather than markdown.*
@@ -29,18 +29,18 @@ converted into HTML by [kramdown][kd].<a class="ref" id="ref:kd"
 href="#fn:kd">[1]</a> Markdown has a nice, easy, and highly legible way of
 creating simple links. Just type one of these.
 
-{% highlight html %}
+```markdown
 Click [here](url) to see something awesome!
 
 Click [here][blah] to see something awesome!
 [blah]: url
-{% endhighlight %}
+```
 
 Both are expanded into the following.
 
-{% highlight html %}
+```markdown
 Click <a href="url">here</a> to see something awesome!
-{% endhighlight %}
+```
 
 Now, whether you write in markdown or in HTML, footnotes would seem really easy
 to do, and in some sense, they are. Simply create a footnote at the bottom of
@@ -49,12 +49,12 @@ the page that has some sort of element with an `id`, preferably mnemonic, e.g.,
 by adding a #: either as `<a href="#fn">1</a>` in HTML, or as `[1](#fn)` in
 markdown.
 
-{% highlight html %}
+```markdown
 Blah blah blah blah.[1](#fn) More blah...
 
 ---
 1.  <a id="fn"></a> Even more blah...
-{% endhighlight %}
+```
 
 But there are some problems with this method. First, it's ugly.[2](#fn:ugly)
 See how ugly that big underlined number looks? Second, and more importantly, as
@@ -70,12 +70,12 @@ footnote to the reference using the reference `id`, together with a useful
 symbol like &uarr; as the link text (`&uarr;` in HTML; stands for **u**p
 **arr**ow, of course).
 
-{% highlight html %}
+```markdown
 Blah blah blah blah.<sup id="ref">[1](#fn)</sup> More blah...
 
 ---
 1.  <a id="fn" href="#ref">&uarr;</a> Even more blah...
-{% endhighlight %}
+```
 
 This actually ain't *that* bad.<sup id="ref:sup">[3](#fn:sup)</sup> However,
 what if we want to customize how the reference number looks? What if we don't
@@ -84,15 +84,15 @@ style properties of a `sup` element get overridden if they are also style
 properties of the `a` element embedded inside the `<sup></sup>` tags: recall
 that
 
-{% highlight html %}
+```markdown
 <sup ...>[text](url)</sup>
-{% endhighlight %}
+```
 
 gets expanded to
 
-{% highlight html %}
+```markdown
 <sup ...><a href="url">text</a></sup>
-{% endhighlight %}
+```
 
 In Octopress, that means that `sup {text-decoration: none;}`, `sup {font-size:
 small;}`, etc. have no effect on superscript reference links because `a`
@@ -103,7 +103,7 @@ classes of anchors (`a` elements): one for references and one for footnotes. I
 like my reference numbers to be small and superscript, with no underline, and I
 like my up arrow to be normal size and superscript, with no underline.
 
-{% highlight css %}
+```css
 a.ref {
   vertical-align: super;
   font-size: small;
@@ -124,14 +124,14 @@ a.fn {
                        $visited: $link-color-visited,
                        $active: $link-color-active);
 }
-{% endhighlight %}
+```
 
 The `@include ...` stuff adds all the color variables from
 `/sass/custom/_colors.scss`. Without that, the links would be black.
 
 These two classes now mean I do references and footnotes as follows.
 
-{% highlight html %}
+```markdown
 Blah blah.<a class="ref" id="ref:blah" href="#fn:blah">[1]</a> More blah
 
 Aoeu aoeu aoeu.<a class="ref" id="ref:aoeu" href="#fn:aoeu">[2]</a> More aoeu
@@ -140,7 +140,7 @@ Aoeu aoeu aoeu.<a class="ref" id="ref:aoeu" href="#fn:aoeu">[2]</a> More aoeu
 1.  <a class="fn" id="fn:blah" href="#ref:blah">&uarr;</a> Even more blah...
 
 2.  <a class="fn" id="fn:aoeu" href="#ref:aoeu">&uarr;</a> Even more aoeu...
-{% endhighlight %}
+```
 
 In other words, each *reference* consists of a number, like 1, surrounded by
 `a` tags of the `ref` class, with some mnemonic ref `id`, pointing to the

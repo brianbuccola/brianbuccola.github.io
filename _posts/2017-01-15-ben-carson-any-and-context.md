@@ -26,9 +26,9 @@ More context (especially starting at 1:26):
 
 Oh, I see now!
 
-{% highlight none %}
+```none
 not [[an American]_x [it will be my intention [something_y [I do y to benefit x]]]]
-{% endhighlight %}
+```
 
 Shout out to Andreas Haida for discussing this LF with me.
 

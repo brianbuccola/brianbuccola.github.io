@@ -8,14 +8,14 @@ redirect_from: /blog/2015-07-21-how-to-mark-all-emails-as-read-in-mutt.html
 Here's a simple macro to mark all new emails (messages) as read in Mutt. If you
 want to use it, just add it to your Mutt configuration file (e.g. `~/.muttrc`).
 
-{% highlight bash %}
+```bash
 macro index A \
     "<tag-pattern>~N<enter><tag-prefix><clear-flag>N<untag-pattern>.<enter>" \
     "mark all new as read"
-{% endhighlight %}
+```
 
-(You could remove the two occurrences of `\` and have the macro on a single
-line, but I split it up for legibility's sake.)
+(You could remove the two backslashes and have the macro on a single line, but I
+split it up for legibility's sake.)
 
 Let's parse this bit by bit.
 

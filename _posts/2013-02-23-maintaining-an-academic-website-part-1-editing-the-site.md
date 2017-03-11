@@ -82,7 +82,7 @@ Markdown was designed as a way to write highly readable plain text that can be
 converted into HTML while also faithfully reproducing lists, textual emphasis,
 links, etc. Take, for example, the following simple HTML code:
 
-{% highlight html %}
+```html
 <h1>My supercool site</h1>
 
 Welcome to the <em>best</em> academic site in the world! Here are my research
@@ -95,13 +95,13 @@ interests:
 </ul>
 
 You can download my CV <a href="cv.pdf">here</a>!
-{% endhighlight %}
+```
 
 Okay, okay, it's not as ugly and illegible as I made it out to be (that is, as
 long you don't start adding javascript and `div` and `span` tags everywhere),
 but compare it with the totally equivalent markdown version:
 
-{% highlight html %}
+```html
 My supercool site
 =================
 
@@ -112,7 +112,7 @@ Welcome to the *best* site in the world! Here are my research interests:
 - More stuff
 
 You can download my CV [here](cv.pdf).
-{% endhighlight %}
+```
 
 If you've never seen markdown before, you might not even realize that there's
 anything "special" about the text above. By "special", I mean syntactically:
@@ -161,9 +161,9 @@ try one of the above.)
 
 The basic command is:
 
-{% highlight bash %}
+```bash
 $ pandoc -f markdown -t html5 -o index.html index.markdown
-{% endhighlight %}
+```
 
 Legend:
 
@@ -193,7 +193,7 @@ However, using `-s` still won't add a title or an author. There are two ways to
 do that. First, as mentioned above, you can add pandoc--specific metadata to
 your markdown file, like this:
 
-{% highlight html %}
+```html
 % My title
 % My name
 
@@ -201,7 +201,7 @@ My supercool site
 =================
 
 ...
-{% endhighlight %}
+```
 
 When pandoc parses the file, it'll see the top two lines starting with `%` and
 from them generate title and author info for the header. However, I don't like
@@ -214,9 +214,9 @@ output.) But if that doesn't bother you, by all means use this method.
 A second way to supply title and author info is by explicitly telling pandoc
 what values to use for its internal author and title **v**ariables:
 
-{% highlight bash %}
+```bash
 $ pandoc -V pagetitle="My title" -V author-meta="My name" ...
-{% endhighlight %}
+```
 
 Since I use a personalized script (see below) to run pandoc, I prefer this
 method because I can keep this metainfo inside my script and not inside the
@@ -228,9 +228,9 @@ internal variables or command--line options? That's easy: create `header.html`
 (or whatever you want to call it), throw in whatever HTML you want in your
 header (except title and author), and run
 
-{% highlight bash %}
+```bash
 $ pandoc -H header.html ...
-{% endhighlight %}
+```
 
 Your `header.html` is a great place to add optional stuff like `description`
 and `keyword` metadata, the URL to your favicon (if you have one), and any
@@ -263,20 +263,20 @@ mystyle.css` (or you can refer to it yourself in `header.html`).
 
 Here's what your command will look like:
 
-{% highlight bash %}
+```bash
 pandoc \
     -c mystyle.css \
     -H header.html -B before-body.html -A after-body.html \
     -V pagetitle="My title" -V author-meta="My name" \
     -f markdown -t html5 -o index.html index.markdown
-{% endhighlight %}
+```
 
 Wow, that's a lot to type each time you want to convert a newly modified
 markdown file into HTML. Better put that inside a script. Let's also put each
 of those things into a variable, so that we can easily modify the script
 command by changing variables rather than the command itself.
 
-{% highlight bash %}
+```bash
 #!/bin/bash
 
 TITLE="My title"
@@ -296,15 +296,15 @@ pandoc
     -H "$HEADER" -B "$BEFORE" -A "$AFTER" \
     -V pagetitle="$TITLE" -V author-meta="$AUTHOR" \
     -f markdown -t html5 -o "$OUT_FILE" "$IN_FILE"
-{% endhighlight %}
+```
 
 Save this as, say, `md2html.sh`, make it executable with `chmod +x md2html.sh`,
 plop it inside the website directory containing `index.markdown`, and simply
 run:
 
-{% highlight bash %}
+```bash
 $ ./md2html.sh
-{% endhighlight %}
+```
 
 You should now see `index.html` in the same directory, which you can open in
 your browser to inspect and make sure it looks good.

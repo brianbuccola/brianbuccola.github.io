@@ -13,9 +13,9 @@ black and grey "O"), such as adding your `favicon.ico` to `source/`, and then
 editing `source/_includes/custom/head.html` with the line
 
 {% raw %}
-{% highlight jekyll %}
+```jekyll
 {% assign favicon = '/favicon.ico' %}
-{% endhighlight %}
+```
 {% endraw %}
 
 For some reason that didn't work for me. Maybe it's because my `favicon.ico`
@@ -26,9 +26,9 @@ either.
 The solution was to convert to `png` using [ImageMagick][im]'s `convert`
 command:
 
-{% highlight bash %}
+```bash
 $ convert favicon.ico favicon.png
-{% endhighlight %}
+```
 
 After that, I was able both to view the favicon in `feh` and to replace the
 default Octopress favicon, without even touching

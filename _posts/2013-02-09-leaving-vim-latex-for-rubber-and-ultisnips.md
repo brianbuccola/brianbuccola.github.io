@@ -34,25 +34,25 @@ for handling "all tasks related to the compilation of LaTeX documents". That
 especially means compiling multiple times to fix labels as well as doing the
 whole
 
-{% highlight bash %}
+```bash
 $ pdflatex
 $ bibtex
 $ pdflatex
 $ pdflatex
-{% endhighlight %}
+```
 
 runaround. As expected, `rubber` also comes with a slew of options and can
 compile to any of the usual formats.
 
 Here are the two macros I wrote:
 
-{% highlight vim %}
+```vim
 " LaTeX (rubber) macro
 nnoremap <leader>c :w<CR>:!rubber --pdf --warn all %<CR>
 
 " View PDF macro; '%:r' is current file's root (base) name.
 nnoremap <leader>v :!mupdf %:r.pdf &<CR><CR>
-{% endhighlight %}
+```
 
 The first macro (mnemonic: **c**ompile) saves the current file and then runs
 `rubber --pdf --warn all` on it, which compiles to `pdf` using `pdflatex` and
@@ -65,14 +65,14 @@ with the last extension removed (same as GNU/Linux `basename`).
 If you only want these macros to be available when editing a tex file, then
 group them into an `augroup`:
 
-{% highlight vim %}
+```vim
 " LaTeX macros for compiling and viewing
 augroup latex_macros " {
     autocmd!
     autocmd FileType tex :nnoremap <leader>c :w<CR>:!rubber --pdf --warn all %<CR>
     autocmd FileType tex :nnoremap <leader>v :!mupdf %:r.pdf &<CR><CR>
 augroup END " }
-{% endhighlight %}
+```
 
 I like this method because I have other compiling and viewing macros for other
 filetypes, such as a macro that converts markdown to html with [pandoc][pd]. I

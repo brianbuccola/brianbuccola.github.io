@@ -36,15 +36,21 @@ pass the option `consoleblank=60` to the kernel, e.g. by adding this option as
 a kernel parameter in your boot loader configuration file. I use
 [Syslinux][syslinux] as my boot loader, so for me, I simply edit the file
 
-    /boot/syslinux/syslinux.cfg
+```bash
+/boot/syslinux/syslinux.cfg
+```
 
 so that the line
 
-    APPEND root=/dev/sda1 rw
+```bash
+APPEND root=/dev/sda1 rw
+```
 
 becomes
 
-    APPEND root=/dev/sda1 rw consoleblank=60
+```bash
+APPEND root=/dev/sda1 rw consoleblank=60
+```
 
 If you use GRUB, you would do the same thing but edit the GRUB configuration
 file. See [here][kernel parameters] for more info about passing options to the
@@ -64,7 +70,9 @@ output before reading further. The important sections are "Screen Saver" and
 
 Now then, the `s` option lets you set screen saver parameters. For example,
 
-    xset s 600
+```bash
+xset s 600
+```
 
 activates the "screen saver" after 600 seconds (10 minutes). For me, activating
 the "screen saver" is equivalent to blanking the screen---you can test this by
@@ -84,12 +92,16 @@ For me, standby, suspend, and off are all equivalent to blanking the screen,
 but I guess on some computers they will do different things. You can test them
 yourself by running, for example,
 
-    xset dpms force standby
+```bash
+xset dpms force standby
+```
 
 To force standby, suspend, and off modes after 300s, 400s, and 500s,
 respectively, run
 
-    xset dpms 300 400 500
+```bash
+xset dpms 300 400 500
+```
 
 Once you figure out the command that you want, just add it to your X startup
 file, `~/.xinitrc`, to run the command whenever you start X.
@@ -117,7 +129,9 @@ Once you're satisfied that slock works and you like it (or once you pick a
 different locker), you can use the `xautolock` command to run `slock` every 10
 minutes by adding this command to your `~/.xnitrc`.
 
-    xautolock -time 10 -locker slock &
+```bash
+xautolock -time 10 -locker slock &
+```
 
 (If you decided on a different locker, just replace `slock` with your locker's
 name, e.g. `physlock`.)

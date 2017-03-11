@@ -32,7 +32,7 @@ acronym POTS, and any subsequent occurrence is simply the acronym.
 
 With `acronym` it's as easy as:
 
-{% highlight latex %}
+```latex
 \documentclass{article}
 
 \usepackage{acronym}
@@ -49,7 +49,7 @@ justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata
 sanctus est Lorem ipsum dolor sit amet.
 
 \end{document}
-{% endhighlight %}
+```
 
 The relevant line is: `\acrodef{pots}[POTS]{Poverty of the Stimulus}`. The
 command `\acrodef` takes two required arguments and one optional argument:
@@ -76,9 +76,9 @@ very next `\ac{pots}` will produce the full "Poverty of the Stimulus (POTS)"
 rather than just "POTS". To rectify this, use the `\acused` command, which
 marks its argument as "used".:
 
-{% highlight latex %}
+```latex
 Chomsky introduced the notion of \acfi{pots} \acused{pots} to argue that ...
-{% endhighlight %}
+```
 
 The last thing I'll mention is that instead of using `\acrodef` in the
 document's preamble, you can instead use the `acronym` environment inside the

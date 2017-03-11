@@ -80,26 +80,26 @@ you make.
 Open a terminal and type the following. (Remember that `$` is the (end of the)
 terminal prompt; don't type it.)
 
-{% highlight bash %}
+```bash
 $ git config --global user.name "Your Name"
-{% endhighlight %}
+```
 
 #### Email
 
 Now add your email address.
 
-{% highlight bash %}
+```bash
 $ git config --global user.email "your_email@example.com"
-{% endhighlight %}
+```
 
 What the two commands above do is essentially tell `git` to associate the two
 values "Your Name" and "your_email@example.com" with the two *global* variables
 `user.name` and `user.email`, respectively. You can check that it worked by
 typing
 
-{% highlight bash %}
+```bash
 $ git config --global --list
-{% endhighlight %}
+```
 
 which tells `git` to list all global config options. You can also check them by
 opening the file `.gitconfig` in a text editor, but don't edit this file
@@ -125,11 +125,11 @@ give GitHub your public key so it can recognize you, and add GitHub to your
 
 So then, first run
 
-{% highlight bash %}
+```bash
 $ mkdir -p ~/.ssh # create this if it doesn't already exist
 $ cd ~/.ssh       # cd into it
 $ ssh-keygen -f github -t rsa -C 'GitHub'
-{% endhighlight %}
+```
 
 to generate the pair of RSA keys, giving them the filenames `github` and
 `github.pub`, respectively. Now go to your GitHub account settings, click "SSH
@@ -138,9 +138,9 @@ contents of `github.pub` (**NOT** `github`: this is the private key, which you
 should never disclose) into the text field. One way get the contents of that
 file is
 
-{% highlight bash %}
+```bash
 $ xsel -b < ~/.ssh/github
-{% endhighlight %}
+```
 
 if you have `xsel` installed, which copies the contents of `github` onto your
 clipboard so that you can paste the contents into your browser, e.g. with
@@ -149,9 +149,9 @@ everything. In any case, once you've managed that, click "Add key".
 
 You can check that GitHub recognizes you by `ssh`-ing into GitHub:
 
-{% highlight bash %}
+```bash
 $ ssh -i ~/.ssh/github git@github.com
-{% endhighlight %}
+```
 
 You should get a message like, "Hello yourusername! You've successfully
 authenticated, but GitHub does not provide shell access."
@@ -161,18 +161,18 @@ the hostname is `github.com`. If you have an `ssh` config file
 (`~/.ssh/config`), you can add GitHub so that you don't have to specify this
 info, or the key, each time.
 
-{% highlight bash %}
+```bash
 Host github
     User git
     HostName github.com
     IdentityFile ~/.ssh/github
-{% endhighlight %}
+```
 
 Now you can run the following command, which is identical to the above one.
 
-{% highlight bash %}
+```bash
 $ ssh github
-{% endhighlight %}
+```
 
 Moreover, having a config file will make using `git` much easier, too.
 
@@ -202,20 +202,20 @@ Go into your website directory and *initialize* it with `git`, which means turn
 that directory into a `git` repo, so that `git` can start tracking everything.
 Following last post's example, our friend Bob would do the following.
 
-{% highlight bash %}
+```bash
 $ cd ~/website
 ~/website $ git init
 Initialized empty Git repository in /home/bob/website
-{% endhighlight %}
+```
 
 Now we need to link up this local repo with the remote GitHub one so that we
 can start pushing stuff to GitHub. Assuming that Bob's GitHub username is
 `bobbarker` and that he has an entry in his `ssh` config called `Host github`,
 then Bob would run the following command.
 
-{% highlight bash %}
+```bash
 ~/website $ git remote add origin github:bobbarker/my-website.git
-{% endhighlight %}
+```
 
 This command adds a remote called `origin` (the convention is to always call it
 `origin`), located at `bobbarker/my-website.git`.
@@ -234,7 +234,7 @@ At the moment, Bob's remote repo is empty, and although the local repo has
 stuff like `index.html` and other files and directories, none of them are being
 *tracked* by `git`.
 
-{% highlight bash %}
+```bash
 ~/website $ git status
 # On branch master
 #
@@ -246,20 +246,20 @@ stuff like `index.html` and other files and directories, none of them are being
 #   index.html
 #   ...
 nothing added to commit but untracked files present (use "git add" to track)
-{% endhighlight %}
+```
 
 What this means is that `git` is not tracking these files to look for changes.
 If changes are made, `git` won't know, because it has no baseline. The syntax
 for adding files to be tracked is the following.
 
-{% highlight bash %}
+```bash
 $ git add [FILENAME] # add a file, or list of files, to be tracked
 $ git add .          # add entire directory
-{% endhighlight %}
+```
 
 For simplicity, let's assume Bob has added his entire website directory.
 
-{% highlight bash %}
+```bash
 ~/website $ git add .
 ~/website $ git status
 # On branch master
@@ -272,7 +272,7 @@ For simplicity, let's assume Bob has added his entire website directory.
 #   new file:   index.html
 #   ...
 #
-{% endhighlight %}
+```
 
 Now that `git` is tracking the files, it tells Bob that there is a "change" to
 be committed, namely that there is a new file.
@@ -283,21 +283,21 @@ Before doing anything else, Bob should do a *commit*, essentially creates the
 first snapshot of his website, as far as `git` is concerned. Every commit must
 have a commit message, describing what changes have been made.
 
-{% highlight bash %}
+```bash
 ~/website $ git commit -m "first commit"
 [summary of what was committed]
 ~/website $ git status
 # On branch master
 nothing to commit, working directory clean
-{% endhighlight %}
+```
 
 #### Pushing to Remote
 
 This commit is now ready to be pushed to GitHub.
 
-{% highlight bash %}
+```bash
 $ git push -u origin master
-{% endhighlight %}
+```
 
 This command pushes (all the committed changes from) the `master` branch (more
 about branches later) over to the `origin` remote that was created earlier,
@@ -359,30 +359,30 @@ layout.
 Enter branches. Bob creates a new branch of his website repo called
 `new_layout`.
 
-{% highlight bash %}
+```bash
 ~/website $ git branch new_layout
 ~/website $ git branch
 * master
   new_layout
-{% endhighlight %}
+```
 
 The `branch` command with no arguments lists all branches, and the star
 indicates which branch you're currently working on. Bob switches over to the
 `new_layout` branch and does some hacking.
 
-{% highlight bash %}
+```bash
 ~/website $ git checkout new_layout
 Switched to branch 'new_layout'
-{% endhighlight %}
+```
 
 Bob does a bunch of edits and commits. He can view the results in his browser,
 etc. Finally, he pushes the commits to GitHub, which creates a `new_layout`
 branch there, too. And finally, he switches back to the master branch.
 
-{% highlight bash %}
+```bash
 ~/website $ git checkout master
 Switched to branch 'master'
-{% endhighlight %}
+```
 
 Bob now sees the old, untouched version of `index.html`. He can also add new
 papers, commit and push them, etc. without affecting the other branch, and he
@@ -391,18 +391,18 @@ can switch to `new_layout` whenever he wants to work on the new layout.
 A month passes and finally Bob is ready to use his new layout, so he must merge
 his `new_layout` branch into his `master` branch.
 
-{% highlight bash %}
+```bash
 ~/website $ git merge new_layout
-{% endhighlight %}
+```
 
 This command updates the `master` branch to include changes from `new_layout`.
 (Merging may require some human intervention if `git` can't figure everything
 out.) Once Bob is satisfied that everything is merged properly, he can delete
 the `new_layout` branch.
 
-{% highlight bash %}
+```bash
 ~/website $ git branch -d new_layout
-{% endhighlight %}
+```
 
 Note that all commits and commit messages made in `new_layout` become commits
 in `master`.

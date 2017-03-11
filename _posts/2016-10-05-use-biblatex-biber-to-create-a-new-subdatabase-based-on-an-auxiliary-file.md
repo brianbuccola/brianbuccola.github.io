@@ -37,12 +37,12 @@ and `refs.bib` to the journal.
 One quick follow-up note. By default, `biber` will put entry names like
 `@article` and entry fields like `author` in all caps:
 
-{% highlight latex %}
+```latex
 @ARTICLE{smith2016,
   AUTHOR = {Mary Smith},
   ...
 }
-{% endhighlight %}
+```
 
 I personally like having everything in all lower case, because I don't like my
 bib entries to yell at me (of course, as far as `biber` is concerned, it doesn't
@@ -56,9 +56,9 @@ in neat columns (`--output-align`), how many spaces to indent entry fields (e.g.
 `--output-indent=4`), and so on. See `biber --help`, in particular everything
 starting with `--output-*`. Here's an example command.
 
-{% highlight bash %}
+```bash
 $ biber --output-format=bibtex --output_fieldcase=lower --output-file=refs.bib paper.bcf
-{% endhighlight %}
+```
 
 [Biblatex]: http://biblatex-biber.sourceforge.net/
 [JabRef]: https://help.jabref.org/en/NewBasedOnAux

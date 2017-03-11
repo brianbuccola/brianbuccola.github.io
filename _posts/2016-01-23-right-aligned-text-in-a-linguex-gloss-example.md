@@ -10,9 +10,9 @@ numbering, indentations, indexed brackets, and the '\*' in grammaticality
 judgments." The main command is `\ex.`, which is used to produce a simple
 example like this:
 
-{% highlight latex %}
+```latex
 \ex. Colorless green ideas sleep furiously.
-{% endhighlight %}
+```
 
 It is common, of course, to add a bit of commentary text to an example, such as
 a parenthetical citation.[^parencite] An easy way to do this is to right-align
@@ -21,42 +21,42 @@ the text using `\hfill`:
 [^parencite]: You should of course use `\parencite` ([biblatex][]) or `\citep`
               ([natbib][]) instead of manually entering citations.
 
-{% highlight latex %}
+```latex
 \ex. Colorless green ideas sleep furiously. \hfill (Chomsky 1957)
-{% endhighlight %}
+```
 
 Importantly, linguex allows you to easily create glossed examples by using a
 slight variant of `\ex.`, namely the `\exg.` command. Instead of a single line,
 `\exg.` expects 2-3 lines: the example, the gloss, and (optionally) the
 translation.
 
-{% highlight latex %}
+```latex
 \exg. Il ne veut pas venir.\\
 he \textsc{ne} want.3sg not come.inf\\
 `He does not want to come.'
 
 \exg. Er will nicht kommen.\\
 he want.3sg not come.inf\\     % no translation necessary
-{% endhighlight %}
+```
 
 Now, what if you want to add some commentary text, for example the language
 being glossed? It turns out (due to the inner workings of linguex) that you can
 only `\hfill` some text on the third line, not the first. In other words, this
 works...
 
-{% highlight latex %}
+```latex
 \exg. Il ne veut pas venir.\\
 he \textsc{ne} want.3sg not come.inf\\
 `He does not want to come.' \hfill (French)
-{% endhighlight %}
+```
 
 ...but this doesn't...
 
-{% highlight latex %}
+```latex
 \exg. Il ne veut pas venir. \hfill (French)\\
 he \textsc{ne} want.3sg not come.inf\\
 `He does not want to come.'
-{% endhighlight %}
+```
 
 If all your glosses have translations, and if you don't mind the look of
 commentary text on the third line, then this is good enough. However, if some
@@ -75,11 +75,11 @@ commentary text on the first line, then here is a workaround.[^attrib]
            The advantage of using `\raisebox` is that it's a native LaTeX
            command; no extra package necessary.
 
-{% highlight latex %}
+```latex
 \exg. Il ne veut pas venir.\\
 he \textsc{ne} want.3sg not come.inf\\
 `He does not want to come.' \hfill \raisebox{1.9\baselineskip}[0pt][0pt]{(French)}
-{% endhighlight %}
+```
 
 What this does is put "(French)" inside of a `\raisebox`, which is a box that
 gets raised (almost) 2 lines up, so that "(French)" ends up on the same line as
@@ -89,14 +89,14 @@ complicated than that, but that's essentially the end result.)
 We can abstract over this particular case and define a new command to use
 throughout a document as follows:
 
-{% highlight latex %}
+```latex
 % Right-aligned comment in glossed example
 \newcommand{\rcommentg}[1]{\raisebox{1.9\baselineskip}[0pt][0pt]{#1}}
-{% endhighlight %}
+```
 
 Now, you can just do this:
 
-{% highlight latex %}
+```latex
 \exg. Il ne veut pas venir.\\
 he \textsc{ne} want.3sg not come.inf\\
 `He does not want to come.' \rcommentg{(French)}
@@ -104,7 +104,7 @@ he \textsc{ne} want.3sg not come.inf\\
 \exg. Er will nicht kommen.\\
 he want.3sg not come.inf\\
 `He does not want to come.' \rcommentg{(German)}
-{% endhighlight %}
+```
 
 A few caveats:
 
@@ -124,7 +124,7 @@ package, comes with its own `\rightcomment` command that can be used on *any*
 line of a gloss example. In expex, the French example above would look like
 this:
 
-{% highlight latex %}
+```latex
 \ex
 \begingl
 \gla \rightcomment{(French)}Il ne veut pas venir.//
@@ -132,7 +132,7 @@ this:
 \glft `He does not want to come.'//
 \endgl
 \xe
-{% endhighlight %}
+```
 
 (Note the lack of space between the comment and the word "Il", and note the use
 of *forward* double slashes to end a line.)

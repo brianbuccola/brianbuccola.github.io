@@ -109,9 +109,9 @@ Now, you might be thinking, *That's annoying. I don't want to manually add a
 space after every line break*. Thankfully, vim makes this extremely easy. Just
 add the `w` option to your `formatoptions`:
 
-{% highlight vim %}
+```vim
 set formatoptions+=w
-{% endhighlight %}
+```
 
 Now, as you're typing, when you hit 80 characters (or whatever your `textwidth`
 is set to), vim will hard-break the line *and* add the trailing white space for
@@ -122,13 +122,13 @@ you can set the `w` option only for files with the `mail` filetype, using an
 `autocmd`:
 
 
-{% highlight vim %}
+```vim
 " Add format option 'w' to add trailing white space, indicating that paragraph
 " continues on next line. This is to be used with mutt's 'text_flowed' option.
 augroup mail_trailing_whitespace " {
     autocmd!
     autocmd FileType mail setlocal formatoptions+=w
 augroup END " }
-{% endhighlight %}
+```
 
 See `:help fo-table` for more info.
