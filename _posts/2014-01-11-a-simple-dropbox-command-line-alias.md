@@ -12,7 +12,6 @@ Dropbox with `dropbox start`, all you see is
 ```bash
 $ dropbox start
 Starting...Done!
-$
 ```
 
 It starts Dropbox then brings you right back to the command-line prompt, at
