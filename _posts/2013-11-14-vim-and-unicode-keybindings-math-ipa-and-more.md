@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Vim and unicode keybindings: math, IPA, and more"
+title: "Vim and unicode keybindings: Math, IPA, and more"
 date: 2013-11-14 08:54
 redirect_from: /blog/2013-11-14-vim-and-unicode-keybindings-math-ipa-and-more.html
 ---

@@ -1,6 +1,6 @@
 ---
 layout: post
-title: A minimalist screen blank and screen lock setup for console and X
+title: "A minimalist screen blank and screen lock setup for console and X"
 date: 2016-06-18
 ---
 

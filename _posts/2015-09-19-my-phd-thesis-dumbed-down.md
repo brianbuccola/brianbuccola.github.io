@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "My PhD thesis, dumbed down"
+date: 2015-09-19
 ---
 
 **If less than five people did a certain thing, then is it not the case that

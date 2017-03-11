@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 'Ben Carson, "any", and context'
+title: "Ben Carson, \"any\", and context"
 date: 2017-01-15
 ---
 

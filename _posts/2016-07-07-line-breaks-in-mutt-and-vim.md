@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Line breaks in mutt and vim
+title: "Line breaks in mutt and vim"
 date: 2016-07-07
 ---
 

@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 'Donald Trump says "China"'
+title: "Donald Trump says \"China\""
 date: 2015-10-19
 ---
 

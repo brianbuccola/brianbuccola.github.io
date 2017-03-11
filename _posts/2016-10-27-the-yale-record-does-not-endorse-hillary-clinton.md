@@ -1,6 +1,6 @@
 ---
 layout: post
-title: The Yale Record does not endorse Hillary Clinton
+title: "The Yale Record does not endorse Hillary Clinton"
 date: 2016-10-27
 ---
 
