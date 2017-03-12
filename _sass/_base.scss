@@ -116,7 +116,7 @@ a {
  */
 blockquote {
     color: $grey-color-dark;
-    background-color: #eef;
+    background-color: $background-color-blocks;
     border: 1px solid $grey-color-light;
     border-radius: 3px;
     padding: 8px 12px;
@@ -138,7 +138,7 @@ code {
     font-size: 13px;
     border: 1px solid $grey-color-light;
     border-radius: 3px;
-    background-color: #eef;
+    background-color: $background-color-blocks;
 }
 
 code {
