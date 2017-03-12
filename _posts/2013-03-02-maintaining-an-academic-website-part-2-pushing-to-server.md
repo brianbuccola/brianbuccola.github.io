@@ -3,6 +3,7 @@ layout: post
 title: "Maintaining an academic website, part 2: Pushing to server"
 date: 2013-03-02 11:08
 redirect_from: /blog/2013-03-02-maintaining-an-academic-website-part-2-pushing-to-server.html
+tags: howto ssh rsync bash linux
 ---
 
 This is the second in a series of posts on how I currently maintain my academic

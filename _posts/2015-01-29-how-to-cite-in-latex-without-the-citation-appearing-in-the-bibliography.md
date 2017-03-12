@@ -3,6 +3,7 @@ layout: post
 title: "How to cite in LaTeX without the citation appearing in the bibliography"
 date: 2015-01-29 17:19
 redirect_from: /blog/2015-01-29-how-to-cite-in-latex-without-the-citation-appearing-in-the-bibliography.html
+tags: latex bibtex biblatex howto
 ---
 
 A friend and colleague of mine asked on Facebook if it's possible in

@@ -2,6 +2,7 @@
 layout: post
 title: "Right-aligned text in a linguex gloss example (LaTeX)"
 date: 2016-01-23
+tags: howto latex linguex expex linguistics
 ---
 
 [linguex][] is a LaTeX package, popular among linguists, which "facilitates the

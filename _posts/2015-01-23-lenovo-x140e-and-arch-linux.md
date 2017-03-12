@@ -3,6 +3,7 @@ layout: post
 title: "Lenovo X140e and (Arch) Linux"
 date: 2015-01-23 15:43
 redirect_from: /blog/2015-01-23-lenovo-x140e-and-arch-linux.html
+tags: [linux, bash, howto, thinkpad, arch linux]
 ---
 
 My previous laptop was an Asus that ran Linux beautifully, until, after a few

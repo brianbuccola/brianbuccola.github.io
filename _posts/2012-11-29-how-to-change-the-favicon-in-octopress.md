@@ -3,6 +3,7 @@ layout: post
 title: "How to change the favicon in Octopress"
 date: 2012-11-29 10:15
 redirect_from: /blog/2012-11-29-how-to-change-the-favicon-in-octopress.html
+tags: meta octopress
 ---
 
 ***Update:*** *I no longer maintain this blog using Octopress, but I will leave

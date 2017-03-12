@@ -3,6 +3,7 @@ layout: post
 title: "Dealing with acronyms in LaTeX"
 date: 2013-10-21 12:01
 redirect_from: /blog/2013-10-21-dealing-with-acronyms-in-latex.html
+tags: latex howto
 ---
 
 I recently stumbled on what looks to be a very useful $$\LaTeX{}$$ package

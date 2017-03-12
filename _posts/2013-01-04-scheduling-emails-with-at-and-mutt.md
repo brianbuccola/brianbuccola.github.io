@@ -3,6 +3,7 @@ layout: post
 title: "Scheduling emails with at and mutt"
 date: 2013-01-04 11:08
 redirect_from: /blog/2013-01-04-scheduling-emails-with-at-and-mutt.html
+tags: [linux, command line, mutt]
 ---
 
 I had assumed that most modern email services, like Gmail, allow users to

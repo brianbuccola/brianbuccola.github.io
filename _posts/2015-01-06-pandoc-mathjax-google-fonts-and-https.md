@@ -3,6 +3,7 @@ layout: post
 title: "Pandoc, MathJax, Google fonts, and HTTPS"
 date: 2015-01-06 13:25
 redirect_from: /blog/2015-01-06-pandoc-mathjax-google-fonts-and-https.html
+tags: meta pandoc latex
 ---
 
 **tl;dr** For any secure (`https`) webpage with URLs in its source code to

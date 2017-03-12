@@ -141,6 +141,21 @@
     font-size: $large-font-size;
 }
 
+.tag-list {
+    margin-left: 0;
+    list-style: none;
+    font-weight: bold;
+
+    > li {
+        margin-bottom: $spacing-unit;
+
+        > ul {
+            font-weight: normal;
+            list-style: disc;
+        }
+    }
+}
+
 
 
 /**

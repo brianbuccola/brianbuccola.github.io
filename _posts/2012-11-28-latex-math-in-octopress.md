@@ -3,6 +3,7 @@ layout: post
 title: "LaTeX math in Octopress"
 date: 2012-11-28 13:51
 redirect_from: /blog/2012-11-28-latex-math-in-octopress.html
+tags: latex meta octopress
 ---
 
 ***Update:*** *I no longer maintain this blog using Octopress, but I will leave

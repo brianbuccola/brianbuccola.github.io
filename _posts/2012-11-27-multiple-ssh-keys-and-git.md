@@ -3,6 +3,7 @@ layout: post
 title: "Multiple SSH keys and Git"
 date: 2012-11-27 09:26
 redirect_from: /blog/2012-11-27-multiple-ssh-keys-and-git.html
+tags: linux ssh git
 ---
 
 I have three different ssh keys set up: `id_rsa.mcgill` for my McGill site,

@@ -2,6 +2,7 @@
 layout: post
 title: "My new name is בריאן אנתוני בוקולה"
 date: 2015-10-08
+tags: linguistics hebrew humor
 ---
 
 I just opened an Israeli bank account, and my new name is: בריאן אנטוני בוקולה.

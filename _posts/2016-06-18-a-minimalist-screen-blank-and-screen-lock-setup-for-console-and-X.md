@@ -2,6 +2,7 @@
 layout: post
 title: "A minimalist screen blank and screen lock setup for console and X"
 date: 2016-06-18
+tags: linux howto
 ---
 
 For many years, I used [XScreenSaver][xscreensaver] as my trusty screen saver

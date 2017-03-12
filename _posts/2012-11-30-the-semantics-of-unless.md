@@ -3,6 +3,7 @@ layout: post
 title: "The semantics of \"unless\""
 date: 2012-11-30 17:48
 redirect_from: /blog/2012-11-30-the-semantics-of-unless.html
+tags: semantics
 ---
 
 Grading some assignments the other day on the syntax and semantics of "unless",

@@ -2,6 +2,7 @@
 layout: post
 title: "Ben Carson, \"any\", and context"
 date: 2017-01-15
+tags: semantics politics
 ---
 
 Dr. Ben Carson recently said:

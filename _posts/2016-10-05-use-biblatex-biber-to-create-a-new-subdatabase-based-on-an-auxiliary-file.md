@@ -2,6 +2,7 @@
 layout: post
 title: "Use Biblatex/Biber to create a new subdatabase based on an auxiliary file"
 date: 2016-10-05
+tags: latex biblatex howto
 ---
 
 *(NB: I discovered this feature of Biblatex/Biber by searching for a way to

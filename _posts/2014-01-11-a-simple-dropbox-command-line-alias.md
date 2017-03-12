@@ -3,6 +3,7 @@ layout: post
 title: "A simple Dropbox command-line alias"
 date: 2014-01-11 09:57
 redirect_from: /blog/2014-01-11-a-simple-dropbox-command-line-alias.html
+tags: [dropbox, command line, linux]
 ---
 
 Dropbox has a useful but rather simplistic command-line interface, which I use

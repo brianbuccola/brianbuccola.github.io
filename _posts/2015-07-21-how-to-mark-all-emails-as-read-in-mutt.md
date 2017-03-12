@@ -3,6 +3,7 @@ layout: post
 title: "How to mark all emails as read in Mutt"
 date: 2015-07-21 17:52
 redirect_from: /blog/2015-07-21-how-to-mark-all-emails-as-read-in-mutt.html
+tags: howto mutt linux
 ---
 
 Here's a simple macro to mark all new emails (messages) as read in Mutt. If you

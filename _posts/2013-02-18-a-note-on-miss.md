@@ -3,6 +3,7 @@ layout: post
 title: "A note on \"miss\""
 date: 2013-02-18 08:49
 redirect_from: /blog/2013-02-18-a-note-on-miss.html
+tags: semantics
 ---
 
 A question posted on [/r/vim](http://www.reddit.com/r/vim/), the subreddit
