@@ -83,12 +83,12 @@ works fine in console, but *not* in X11, where most people (including me) spend
 most of their time. I've read that a BIOS upgrade fixes this, but I haven't
 tried that.
 
-My workaround was to write a simple bash script, [brt.sh][brt]. The idea:
+My workaround was to write a simple bash script, [brt][brt]. The idea:
 
-- `brt.sh` (no argument): output current brightness level (0--255).
-- `brt.sh [n]`: set brightness level to *n* (0--255).
-- `brt.sh down`: decrease brightness level by 20 (bind this to `<Fn-F8>`).
-- `brt.sh up`: increase brightness level by 20 (bind this to `<Fn-F9>`).
+- `brt` (no argument): output current brightness level (0--255).
+- `brt [n]`: set brightness level to *n* (0--255).
+- `brt down`: decrease brightness level by 20 (bind this to `<Fn-F8>`).
+- `brt up`: increase brightness level by 20 (bind this to `<Fn-F9>`).
 
 I'll illustrate how the main part of it works, the `brt_change()` function (the
 rest of the script should be pretty self-explanatory):
@@ -189,8 +189,8 @@ to `tee`. To find that out on your system, run `which tee` in a terminal.
     gone" | sudo tee /path/to/important/file`.) Only do this if you're the only
     one with access to this user profile.
 
-Now the script can be run effectively. Just bind `brt.sh down` and `brt.sh up`
-to `<Fn-F8>` and `<Fn-F9>` (or whatever you want) in whatever way is required by
+Now the script can be run effectively. Just bind `brt down` and `brt up` to
+`<Fn-F8>` and `<Fn-F9>` (or whatever you want) in whatever way is required by
 your desktop environment or window manager. (For me, I bind keys in `xmonad.hs`
 since I use xmonad.)
 
@@ -222,5 +222,5 @@ insert, etc.; I then call the whole script from my `.xinitrc` file.)
 
 [b43]:     http://wireless.kernel.org/en/users/Drivers/b43
 [bc]:      https://aur.archlinux.org/packages/broadcom-wl/
-[brt]:     https://github.com/brianbuccola/scripts/blob/master/brt.sh
+[brt]:     https://github.com/brianbuccola/scripts/blob/master/brt
 [vp]:      http://www.vimperator.org/vimperator/

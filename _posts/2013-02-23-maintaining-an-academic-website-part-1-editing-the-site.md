@@ -298,23 +298,22 @@ pandoc
     -f markdown -t html5 -o "$OUT_FILE" "$IN_FILE"
 ```
 
-Save this as, say, `md2html.sh`, make it executable with `chmod +x md2html.sh`,
-plop it inside the website directory containing `index.markdown`, and simply
-run:
+Save this as, say, `md2html`, make it executable with `chmod +x md2html`, plop
+it inside the website directory containing `index.markdown`, and simply run:
 
 ```bash
-$ ./md2html.sh
+$ ./md2html
 ```
 
 You should now see `index.html` in the same directory, which you can open in
 your browser to inspect and make sure it looks good.
 
-And there you have it. Now, whenever you need to edit your webpage, you can
-deal entirely with `index.markdown` using your favorite text editor, save the
-changes, and run `md2html.sh` to (re--)generate `index.html`. Easy.
+And there you have it. Now, whenever you need to edit your webpage, you can deal
+entirely with `index.markdown` using your favorite text editor, save the
+changes, and run `md2html` to (re--)generate `index.html`. Easy.
 
 In the next post, I'll explain how to push your website onto a remote server,
 e.g., a university server, using ssh and rsync inside a script. The end result
-is that, in the same way that `md2html.sh` does the whole conversion in one
-fell swoop, so too will `push-website.sh` push your site in one fell swoop: no
-passwords or GUI clicking required.
+is that, in the same way that `md2html` does the whole conversion in one fell
+swoop, so too will `push-website` push your site in one fell swoop: no passwords
+or GUI clicking required.

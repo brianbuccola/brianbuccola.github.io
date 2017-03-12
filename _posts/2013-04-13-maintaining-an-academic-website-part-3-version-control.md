@@ -314,7 +314,7 @@ updating your website. Let's say you want to add new research paper,
 
 1. Add `paper.pdf` to a directory like `~/website/files/`.
 2. Update `index.markdown` to include a reference to `paper.pdf`.
-3. Run `md2html.sh` to convert `index.markdown` to `index.html`.
+3. Run `md2html` to convert `index.markdown` to `index.html`.
 4. Push changes to the university server.
 
 If you run `git status`, you'll see that `git` has noticed that some tracked

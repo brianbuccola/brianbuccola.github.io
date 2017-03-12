@@ -92,9 +92,9 @@ problem for people who rarely turn off their computers, or for dedicated
 servers).
 
 But if the computer is off and/or not online, there is still a way to ensure
-that the email is not sent until a wifi connection is established.  We just
-need to write a simple shell script, `check-wifi.sh`, which only exits once a
-wifi connection is established.
+that the email is not sent until a wifi connection is established.  We just need
+to write a simple shell script, `check-wifi`, which only exits once a wifi
+connection is established.
 
 ```bash
 #!/bin/bash
@@ -108,24 +108,23 @@ exit 0
 
 `iwgetid` is a command that returns the ESSID of the current wifi connection if
 there is one, and nothing otherwise. So this script does the following: keep
-waiting (sleeping) until `iwgetid` returns a string of nonzero length, then
-exit with status 0. (Remember to make it executable: `chmod a+x
-check-wifi.sh`.)
+waiting (sleeping) until `iwgetid` returns a string of nonzero length, then exit
+with status 0. (Remember to make it executable: `chmod a+x check-wifi`.)
 
 Now we can modify our `at` commands as follows:
 
 ```bash
 $ at 10am tomorrow
-at> /path/to/check-wifi.sh
+at> /path/to/check-wifi
 at> echo "Remember to call John." | mutt -s "Call John" -- me
 at> <EOT>
 ```
 
-Now the email won't try to be delivered until `check-wifi.sh` finishes running,
+Now the email won't try to be delivered until `check-wifi` finishes running,
 i.e., until a wifi connection is established.
 
-We can also modify `check-wifi.sh` to time out after, say, 3 minutes of no
-wifi, and to write something to a log file.
+We can also modify `check-wifi` to time out after, say, 3 minutes of no wifi,
+and to write something to a log file.
 
 ```bash
 #!/bin/bash

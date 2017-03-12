@@ -48,7 +48,7 @@ something like this.
         \--- pic-of-me.jpg
     index.html
     index.markdown
-    md2html.sh
+    md2html
     mystyle.css
 
 (Most of these files are optional; all you really need is `index.markdown`,
@@ -279,10 +279,10 @@ lists the *only* files that should be transferred.)
 ...and so forth.
 
 Since this post is already pretty long, I'll wrap up with a simple rsync script
-called `push-website.sh`, stored in Bob's `~/website` directory, which
-transfers Bob's website from his local PC to his remote server's `public_html`
-directory. It integrates an include file as well as a log file, both of which
-are stored in a (hidden) directory `~/website/.push-website`.
+called `push-website`, stored in Bob's `~/website` directory, which transfers
+Bob's website from his local PC to his remote server's `public_html` directory.
+It integrates an include file as well as a log file, both of which are stored in
+a (hidden) directory `~/website/.push-website`.
 
 ```bash
 #!/bin/bash
@@ -311,13 +311,13 @@ directory, rather than transfering `$SRC` itself. See `man rsync` for more
 info. It's useful to read about all the rsync options.
 
 So now Bob can update his site very simply by editing `index.markdown`, running
-`md2html.sh` to convert to HTML, and running `push-website.sh` to push the
-changes to his university server.
+`md2html` to convert to HTML, and running `push-website` to push the changes to
+his university server.
 
 ```bash
 ~/website $ vim index.markdown      # edit, edit, edit, save, quit
-~/website $ ./md2html.sh            # convert to HTML
-~/website $ ./push-website.sh       # push changes to remote server
+~/website $ ./md2html               # convert to HTML
+~/website $ ./push-website          # push changes to remote server
 ```
 
 Nice! By the way, here are some things that are good to keep in the exclude
@@ -330,9 +330,9 @@ file:
 - `footer.html`
 - etc.
 
-All of that is already integrated into `index.html` when `md2html.sh` is
-executed.  In fact, you also don't need to transfer over `md2html.sh` or
-`push-website.sh` either, or the directory `.push-website`.
+All of that is already integrated into `index.html` when `md2html` is executed.
+In fact, you also don't need to transfer over `md2html` or `push-website`
+either, or the directory `.push-website`.
 
 Really, you just need to transfer the main HTML file `index.html`, the
 stylesheet `mystyle.css`, and any downloadables, like stuff in `images/` and
