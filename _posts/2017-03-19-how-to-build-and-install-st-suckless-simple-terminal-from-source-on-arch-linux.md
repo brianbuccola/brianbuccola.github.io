@@ -113,9 +113,14 @@ source=("http://dl.suckless.org/st/$pkgname-$pkgver.tar.gz"
 ```
 
 Third, it turned out that any patches which tried to patch `config.def.h` would
-lead to an error. Therefore, I needed to remove from those patches the lines
-responsible for patching `config.def.h`, which happen to be the first 13 lines
-in the scrollback patch, and the first 12 lines in the copyurl patch:
+lead to an error. This is because those patches --- the scrollback and copyurl
+patches --- define new functions (for scrolling back and for copying a URL) and
+bind keys to those functions by modifying `config.def.h`, but `config.def.h` is
+overwritten by the custom `config.h` during the build stage, which leads to a
+patch error. Therefore, I needed to (i) manually modify `config.h` to bind the
+relevant functions to some keys (easy), and then (ii) remove from those patches
+the lines responsible for patching `config.def.h`, which happen to be the first
+13 lines in the scrollback patch, and the first 12 lines in the copyurl patch:
 
 ```bash
 # patch patches (don't let them patch config.def.h)
