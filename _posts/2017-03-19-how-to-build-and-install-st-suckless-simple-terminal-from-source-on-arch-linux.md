@@ -30,7 +30,7 @@ of the patches). Therefore, in the end, I decided to go with the stable release,
 which also has the advantage that my terminal, which I rely heavily on, won't
 break any time soon.
 
-### Step 1: follow the installation instructions
+### Step 1: Follow the installation instructions
 
 The first step (after untarring the tarball and `cd`-ing into the `st-x.x`
 directory) is to install st exactly as the `README` says:
@@ -54,13 +54,13 @@ run `st` no problem.
 
 Next, try and customize st a bit by editing `config.h` to your liking and
 applying some patches. Take note of exactly what you do. In my case, I applied
-the patches [copyurl][], [hidecursor][], and [scrollback][], by running `patch
+the patches [scrollback][], [hidecursor][], and [copyurl][], by running `patch
 -Np1 -i <patch>` for each patch. Once you're satisfied, it's time to create a
 PKGBUILD.
 
 ## Creating a PKGBUILD
 
-First off, read the Arch Wiki entries on [PKGBUILD][] and [creating packages][].
+First off, read the Arch Wiki entries on [PKGBUILD][] and [Creating packages][].
 You can either create one from scratch (while following the Arch Wiki), modify
 the skeleton PKGBUILD `/usr/share/pacman/PKGBUILD.proto`, or modify an actual
 existing PKGBUILD. I decided to opt for the latter, and the existing PKGBUILD I
@@ -69,16 +69,15 @@ chose to modify was the obvious one: `st` itself from `community`.
 There are a number of ways to acquire an official PKGBUILD. Traditionally, you'd
 go the [ABS][] route: install `abs`, clone the entire ABS tree (or at least the
 subtree of the repo containing `st`, i.e. `community`) onto `/var/abs`, then
-copy `/var/abs/community/st/*` over to something like `~/abs/st`.
+copy `/var/abs/community/st` over to something like `~/abs`.
 
 However, nowadays there are tools like [asp][] and [pbget][] that let you
-acquire the contents (PKGBUILD) of a single package without cloning an entire
-repo tree. So that's what I did:
+acquire the contents (PKGBUILD, etc.) of a single package without cloning an
+entire repo tree. So that's what I did:
 
 ```bash
 $ mkdir -p ~/.cache/asp
 $ mkdir -p ~/builds
-$ asp update
 $ cd ~/builds
 $ asp export st
 $ cd st
@@ -89,10 +88,10 @@ config.h PKGBUILD
 Here I've used `asp` to export the `st` package, which comes with `config.h`
 (the configuration file) and `PKGBUILD`, the PKGBUILD. Now I just need to edit
 `config.h` in the same way I did in step 2 (easy part), and modify the PKGBUILD
-to apply the three patches I want (harder part).
+to apply the three patches I want (slightly harder part).
 
-There are four main changes I made to the PKGBUILD. First, I added a variable
-`_patches` with links to the three patches I want to apply...
+There are four main changes I made to the PKGBUILD. First, I added an array
+`_patches` with links to the three patches I want to apply:
 
 ```bash
 _patches=("http://st.suckless.org/patches/st-scrollback-20170104-c63a87c.diff"
@@ -100,11 +99,8 @@ _patches=("http://st.suckless.org/patches/st-scrollback-20170104-c63a87c.diff"
           "http://st.suckless.org/patches/st-copyurl-20161105-8c99915.diff")
 ```
 
-...and of course added their corresponding hashes to the `md5sum` variable.
-(**Protip**: Run `updpkgsums` to automatically do this.)
-
-Second, I added the patches to the `source` variable by adding
-`"${_patches[@]}"`:
+Second, I added the patches to the `source` array by adding `"${_patches[@]}"`
+to it...
 
 ```bash
 source=("http://dl.suckless.org/st/$pkgname-$pkgver.tar.gz"
@@ -112,15 +108,19 @@ source=("http://dl.suckless.org/st/$pkgname-$pkgver.tar.gz"
         "${_patches[@]}")
 ```
 
+...and of course added the patches' corresponding hashes to the `md5sum` array.
+(**Protip**: Run `updpkgsums` to automatically do this.)
+
 Third, it turned out that any patches which tried to patch `config.def.h` would
-lead to an error. This is because those patches --- the scrollback and copyurl
-patches --- define new functions (for scrolling back and for copying a URL) and
-bind keys to those functions by modifying `config.def.h`, but `config.def.h` is
-overwritten by the custom `config.h` during the build stage, which leads to a
-patch error. Therefore, I needed to (i) manually modify `config.h` to bind the
-relevant functions to some keys (easy), and then (ii) remove from those patches
-the lines responsible for patching `config.def.h`, which happen to be the first
-13 lines in the scrollback patch, and the first 12 lines in the copyurl patch:
+lead to an error. This is because those patches --- specifically, the scrollback
+and copyurl patches --- define new functions (for scrolling back and for copying
+a URL) and bind keys to those functions by modifying `config.def.h`, but
+`config.def.h` is overwritten by the custom `config.h` during the build stage,
+which leads to a patch error. Therefore, I needed to (i) manually modify
+`config.h` to bind the relevant functions to some keys (easy), and then (ii)
+remove from those patches the lines responsible for patching `config.def.h`,
+which happen to be the first 13 lines in the scrollback patch, and the first 12
+lines in the copyurl patch:
 
 ```bash
 # patch patches (don't let them patch config.def.h)
@@ -212,7 +212,7 @@ let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 [hidecursor]: http://st.suckless.org/patches/hidecursor
 [scrollback]: http://st.suckless.org/patches/scrollback
 [PKGBUILD]: https://wiki.archlinux.org/index.php/PKGBUILD
-[creating packages]: https://wiki.archlinux.org/index.php/Creating_packages
+[Creating packages]: https://wiki.archlinux.org/index.php/Creating_packages
 [ABS]: https://wiki.archlinux.org/index.php/Arch_Build_System
 [asp]: https://github.com/falconindy/asp
 [pbget]: http://xyne.archlinux.ca/projects/pbget/
