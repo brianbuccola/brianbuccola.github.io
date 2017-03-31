@@ -108,19 +108,19 @@ source=("http://dl.suckless.org/st/$pkgname-$pkgver.tar.gz"
         "${_patches[@]}")
 ```
 
-...and of course added the patches' corresponding hashes to the `md5sum` array.
+...and of course added the patches' corresponding hashes to the `md5sums` array.
 (**Protip**: Run `updpkgsums` to automatically do this.)
 
 Third, it turned out that any patches which tried to patch `config.def.h` would
 lead to an error. This is because those patches --- specifically, the scrollback
 and copyurl patches --- define new functions (for scrolling back and for copying
-a URL) and bind keys to those functions by modifying `config.def.h`, but
-`config.def.h` is overwritten by the custom `config.h` during the build stage,
-which leads to a patch error. Therefore, I needed to (i) manually modify
-`config.h` to bind the relevant functions to some keys (easy), and then (ii)
-remove from those patches the lines responsible for patching `config.def.h`,
-which happen to be the first 13 lines in the scrollback patch, and the first 12
-lines in the copyurl patch:
+a URL) by modifying `st.c` and then bind keys to those functions by modifying
+`config.def.h`, but `config.def.h` is first overwritten by the custom `config.h`
+during the build stage, which later leads to a patch error. Therefore, I decided
+to (i) manually modify `config.h` to bind the relevant functions to some keys
+(easy), and then (ii) remove from those two patches the lines responsible for
+patching `config.def.h`, which happen to be the first 13 lines in the scrollback
+patch, and the first 12 lines in the copyurl patch:
 
 ```bash
 # patch patches (don't let them patch config.def.h)
@@ -147,14 +147,14 @@ and installs correctly. Once it does, you should also run `namcap` on `PKGBUILD`
 and on the resulting `*.pkg.tar.xz` file to make sure there's nothing wrong. In
 my case, `namcap` told me that the package didn't actually depend on `libxext`
 or `xorg-fonts-misc`, even though the official PKGBUILD included those in the
-`depends` variable, so I just removed them.
+`depends` array, so I just removed them.
 
 Before concluding, I want to mention two bonus tips.
 
 **Tip #1**: To avoid `config.h` from being overwritten by some future `asp
-export` (or whatever), and to keep my config located among all my other
-configuration files, I moved `config.h` into `~/.config/st` and then created a
-symlink:
+export` (supposedly, this can't happen, but just to be safe), and to keep my
+config located among all my other configuration files, I moved `config.h` into
+`~/.config/st` and then created a symlink to it from inside the build directory:
 
 ```bash
 $ mkdir -p ~/.config/st
@@ -191,9 +191,8 @@ diff -u a/st.c b/st.c > ../st-copyurl-bb.diff
 ...to create a patch `st-copyurl-bb.diff` in the base package directory
 (alongside the other three patches).
 
-Then I added this patch to the end of the `_patches` variable, updated the
-hashes with `updpkgsums`, and re-ran `makepkg -si`, and everything worked out
-great.
+Then I added this patch to the end of the `_patches` array, updated the hashes
+with `updpkgsums`, and re-ran `makepkg -si`, and everything worked out great.
 
 So far, I'm extremely happy with st. It's especially great to have a full range
 of colors in vim with minimal hassle, by adding these lines to my `vimrc`:
