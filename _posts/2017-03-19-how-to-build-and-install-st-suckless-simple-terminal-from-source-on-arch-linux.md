@@ -2,7 +2,7 @@
 layout: post
 title: "How to build and install st (suckless simple terminal) from source on Arch Linux"
 date: 2017-03-19 17:24
-tags: ["arch linux", "command line", suckless, linux]
+tags: ["arch linux", howto, "command line", suckless, linux]
 ---
 
 ## Background
