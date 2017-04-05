@@ -12,7 +12,7 @@ redirect_from: /research.html
 
 ## Journal Articles
 
-- Brian Buccola. 2016. [A new defense of a classic semantics for bare numerals][jos-lb]. Submitted.
+- Brian Buccola. 2017. [Bare numerals, collectivity, and genericity: A new puzzle][jos-lb]. Submitted.
 
 - Brian Buccola, Manuel Križ, and Emmanuel Chemla. 2016. [Conceptual alternatives][cog-lb]. Submitted.
 
@@ -20,7 +20,7 @@ redirect_from: /research.html
 
 - Bernhard Schwarz, Brian Buccola, and Michael Hamilton. 2012. [Two types of class B numeral modifiers: A reply to Nouwen 2010][sp]. *Semantics and Pragmatics* 5(1). 1--25.
 
-[jos-lb]: http://ling.auf.net/lingbuzz/003211
+[jos-lb]: http://ling.auf.net/lingbuzz/003400
 [cog-lb]: http://ling.auf.net/lingbuzz/003208
 [lp-doi]: http://dx.doi.org/10.1007/s10988-016-9187-2
 [lp-lb]: http://ling.auf.net/lingbuzz/002528
