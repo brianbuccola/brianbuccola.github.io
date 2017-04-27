@@ -92,7 +92,7 @@ throughout a document as follows:
 
 ```latex
 % Right-aligned comment in glossed example
-\newcommand{\rcommentg}[1]{\raisebox{1.9\baselineskip}[0pt][0pt]{#1}}
+\newcommand{\rcommentg}[1]{\hfill\raisebox{1.9\baselineskip}[0pt][0pt]{#1}}
 ```
 
 Now, you can just do this:
