@@ -13,8 +13,8 @@ redirect_from: /research.html
 ## Journal Articles
 
 - Brian Buccola and Andreas Haida. 2017. [Obligatory irrelevance and the computation of ignorance inferences][sp-lb]. Submitted.
-- Brian Buccola. 2017. [Bare numerals, collectivity, and genericity: A new puzzle][jos-lb]. Submitted.
-- Brian Buccola, Manuel Križ, and Emmanuel Chemla. 2016. [Conceptual alternatives][cog-lb]. Submitted.
+- Brian Buccola. 2017. [Bare numerals, collectivity, and genericity: A new puzzle][jos-lb]. In revision.
+- Brian Buccola, Manuel Križ, and Emmanuel Chemla. 2016. [Conceptual alternatives][cog-lb]. In revision.
 - Brian Buccola and Benjamin Spector. 2016. [Modified numerals and maximality][lp-doi]. *Linguistics and Philosophy* 39(3). 151--199. ([preprint][lp-lb])
 - Bernhard Schwarz, Brian Buccola, and Michael Hamilton. 2012. [Two types of class B numeral modifiers: A reply to Nouwen 2010][sp]. *Semantics and Pragmatics* 5(1). 1--25.
 
