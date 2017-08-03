@@ -30,9 +30,9 @@ Associates of the university -- attest that, since he has completed the
 prescribed curriculum of study with diligence and has duly carried out all the
 training charged to him, we have made Brian Anthony Buccola a Doctor of
 Philosophy and have granted him all the honors, rights, and privileges
-pertaining to that degree. In confirmation of this, we have taken care that
-this document be signed with the seal of the university and that the names of
-those in charge of academic affairs be signed below. Dated June 7, 2016.
+pertaining to that degree. To confirm this, we have taken care that this
+document be signed with the seal of the university and that the names of those
+in charge of academic affairs be signed below. Dated June 7, 2016.
 
 Dean · Secretary-General · Honourable Chancellor · Principal and Vice-Chancellor
 
