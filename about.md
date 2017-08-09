@@ -4,6 +4,14 @@ title: "About"
 permalink: /about/
 ---
 
+*As of September 1, 2017, I will be a postdoctoral researcher at the
+[Laboratoire de Sciences Cognitives et Psycholinguistique][lscp], a [CNRS][cnrs]
+lab, at the [École Normale Supérieure][ens] in Paris.*
+
+[lscp]: http://www.lscp.net/
+[cnrs]: http://www.cnrs.fr/
+[ens]: http://www.ens.fr/
+
 I am a linguist currently working as a postdoctoral fellow at the [Language,
 Logic, and Cognition Center][llcc] of the [Hebrew University of
 Jerusalem][huji]. Before that, I did my PhD at [McGill University][mcgill]. And
