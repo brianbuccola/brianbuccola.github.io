@@ -4,20 +4,17 @@ title: "About"
 permalink: /about/
 ---
 
-*As of September 1, 2017, I will be a postdoctoral researcher at the
-[Laboratoire de Sciences Cognitives et Psycholinguistique][lscp], a [CNRS][cnrs]
-lab, at the [École Normale Supérieure][ens] in Paris.*
+I am a linguist working as a postdoctoral researcher at the [Laboratoire de
+Sciences Cognitives et Psycholinguistique][lscp], a [CNRS][cnrs] lab, at the
+[École Normale Supérieure][ens] in Paris. Before that, I was a postdoctoral
+fellow at the [Language, Logic, and Cognition Center][llcc] of the [Hebrew
+University of Jerusalem][huji]. Before that, I did my PhD at [McGill
+University][mcgill]. And before that, I studied math and classics (Latin and
+Ancient Greek) at [Loyola University Chicago][luc].
 
 [lscp]: http://www.lscp.net/
 [cnrs]: http://www.cnrs.fr/
 [ens]: http://www.ens.fr/
-
-I am a linguist currently working as a postdoctoral fellow at the [Language,
-Logic, and Cognition Center][llcc] of the [Hebrew University of
-Jerusalem][huji]. Before that, I did my PhD at [McGill University][mcgill]. And
-before that, I studied math and classics (Latin and Ancient Greek) at [Loyola
-University Chicago][luc].
-
 [llcc]: https://scholars.huji.ac.il/llcc
 [huji]: https://new.huji.ac.il/
 [mcgill]: https://www.mcgill.ca/
