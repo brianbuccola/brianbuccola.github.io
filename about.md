@@ -9,9 +9,9 @@ Sciences Cognitives et Psycholinguistique][lscp], a [CNRS][cnrs] lab, at the
 [École Normale Supérieure][ens] in Paris. Before that, I was a postdoctoral
 fellow at the [Language, Logic, and Cognition Center][llcc] of the [Hebrew
 University of Jerusalem][huji]. Before that, I did my PhD at [McGill
-University][mcgill]. And before that, I studied math and classics (Latin and
-Ancient Greek) at [Loyola University Chicago][luc]. I am originally from New
-Orleans, Louisiana.
+University][mcgill] in Montreal. And before that, I studied math and classics
+(Latin and Ancient Greek) at [Loyola University Chicago][luc]. I am originally
+from New Orleans, Louisiana.
 
 [lscp]: http://www.lscp.net/
 [cnrs]: http://www.cnrs.fr/
