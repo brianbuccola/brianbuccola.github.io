@@ -167,7 +167,7 @@ ghc to recompile xmonad. (Borrowed from
 [pbrisbin](https://github.com/pbrisbin/dotfiles/blob/master/xmonad/build).)
 
 ```bash
-# ~/.xmobar/build
+# ~/.xmonad/build
 #!/bin/sh
 exec stack ghc -- \
   --make xmonad.hs \
