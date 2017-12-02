@@ -27,11 +27,13 @@ redirect_from: /research.html
 
 ## Proceedings Papers
 
+- Brian Buccola and Andreas Haida. 2017. [Expressing indifference in German][ac2017]. *Amsterdam Colloquium*.
 - Brian Buccola and Andreas Haida. 2017. [A surface-scope analysis of authoritative readings of modified numerals][sub21]. *Sinn und Bedeutung* 21.
 - Brian Buccola. 2016. [Severing maximality from *fewer than*: Evidence from genericity][sub20]. *Sinn und Bedeutung* 20. 127--144.
 - Brian Buccola. 2015. [Variable monotonicity and *less than*: When Van Benthem's problem is not a problem][nels45]. *North East Linguistic Society (NELS)* 45. 135--124.
 - Brian Buccola. 2013. [On the expressivity of Optimality Theory versus ordered rewrite rules][fg-doi]. *Formal Grammar*. 142--158. ([preprint][fg-lb])
 
+[ac2017]: http://ling.auf.net/lingbuzz/003763
 [sub21]: http://ling.auf.net/lingbuzz/003307
 [sub20]: http://ling.auf.net/lingbuzz/002847
 [nels45]: http://ling.auf.net/lingbuzz/002512
