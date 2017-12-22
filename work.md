@@ -27,7 +27,7 @@ redirect_from: /research.html
 
 ## Proceedings Papers
 
-- Brian Buccola and Andreas Haida. 2017. [Expressing agent indifference in German][ac2017]. *Amsterdam Colloquium*.
+- Brian Buccola and Andreas Haida. 2017. [Expressing agent indifference in German][ac2017]. *Amsterdam Colloquium* 21. 165--174.
 - Brian Buccola and Andreas Haida. 2017. [A surface-scope analysis of authoritative readings of modified numerals][sub21]. *Sinn und Bedeutung* 21.
 - Brian Buccola. 2016. [Severing maximality from *fewer than*: Evidence from genericity][sub20]. *Sinn und Bedeutung* 20. 127--144.
 - Brian Buccola. 2015. [Variable monotonicity and *less than*: When Van Benthem's problem is not a problem][nels45]. *North East Linguistic Society (NELS)* 45. 135--124.
