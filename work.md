@@ -12,18 +12,24 @@ redirect_from: /research.html
 
 ## Journal Articles
 
-- Brian Buccola and Andreas Haida. 2017. [Obligatory irrelevance and the computation of ignorance inferences][sp-lb]. Submitted.
-- Brian Buccola. 2017. [Bare numerals, collectivity, and genericity: A new puzzle][jos-lb]. In revision.
-- Brian Buccola, Manuel Križ, and Emmanuel Chemla. 2016. [Conceptual alternatives][cog-lb]. In revision.
 - Brian Buccola and Benjamin Spector. 2016. [Modified numerals and maximality][lp-doi]. *Linguistics and Philosophy* 39(3). 151--199. ([preprint][lp-lb])
 - Bernhard Schwarz, Brian Buccola, and Michael Hamilton. 2012. [Two types of class B numeral modifiers: A reply to Nouwen 2010][sp]. *Semantics and Pragmatics* 5(1). 1--25.
 
-[sp-lb]: http://ling.auf.net/lingbuzz/003600
-[jos-lb]: http://ling.auf.net/lingbuzz/003400
-[cog-lb]: http://ling.auf.net/lingbuzz/003208
 [lp-doi]: http://dx.doi.org/10.1007/s10988-016-9187-2
 [lp-lb]: http://ling.auf.net/lingbuzz/002528
 [sp]: http://dx.doi.org/10.3765/sp.5.1
+
+## Manuscripts
+
+- Brian Buccola, Manuel Križ, and Emmanuel Chemla. 2018. Conceptual alternatives. In prep. (Click [here][cog-lb] for an old version.)
+- Emmanuel Chemla, Brian Buccola, and Isabelle Dautriche. 2018. [Connecting content and logical words][connecting-sa]. Submitted.
+- Brian Buccola and Andreas Haida. 2017. [Obligatory irrelevance and the computation of ignorance inferences][sp-lb]. In revision.
+- Brian Buccola. 2017. [Bare numerals, collectivity, and genericity: A new puzzle][jos-lb]. In revision.
+
+[cog-lb]: http://ling.auf.net/lingbuzz/003208
+[connecting-sa]: http://semanticsarchive.net/Archive/WVhYzUwM/Chemla-Buccola-Dautriche-ConnectWords.html
+[sp-lb]: http://ling.auf.net/lingbuzz/003600
+[jos-lb]: http://ling.auf.net/lingbuzz/003400
 
 ## Proceedings Papers
 
