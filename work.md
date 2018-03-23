@@ -12,24 +12,24 @@ redirect_from: /research.html
 
 ## Journal Articles
 
-- Brian Buccola and Benjamin Spector. 2016. [Modified numerals and maximality][lp-doi]. *Linguistics and Philosophy* 39(3). 151--199. ([preprint][lp-lb])
-- Bernhard Schwarz, Brian Buccola, and Michael Hamilton. 2012. [Two types of class B numeral modifiers: A reply to Nouwen 2010][sp]. *Semantics and Pragmatics* 5(1). 1--25.
+- Brian Buccola and Benjamin Spector. 2016. [Modified numerals and maximality][mod-num-max-doi]. *Linguistics and Philosophy* 39(3). 151--199. ([preprint][mod-num-max-lb])
+- Bernhard Schwarz, Brian Buccola, and Michael Hamilton. 2012. [Two types of class B numeral modifiers: A reply to Nouwen 2010][reply-to-nouwen-doi]. *Semantics and Pragmatics* 5(1). 1--25.
 
-[lp-doi]: http://dx.doi.org/10.1007/s10988-016-9187-2
-[lp-lb]: http://ling.auf.net/lingbuzz/002528
-[sp]: http://dx.doi.org/10.3765/sp.5.1
+[mod-num-max-doi]: http://dx.doi.org/10.1007/s10988-016-9187-2
+[mod-num-max-lb]: http://ling.auf.net/lingbuzz/002528
+[reply-to-nouwen-doi]: http://dx.doi.org/10.3765/sp.5.1
 
 ## Manuscripts
 
 - Brian Buccola, Manuel Križ, and Emmanuel Chemla. 2018. [Conceptual alternatives: Competition in language and beyond][concepts-lb]. Submitted.
 - Emmanuel Chemla, Brian Buccola, and Isabelle Dautriche. 2018. [Connecting content and logical words][connecting-sa]. Submitted.
-- Brian Buccola and Andreas Haida. 2017. [Obligatory irrelevance and the computation of ignorance inferences][sp-lb]. In revision.
-- Brian Buccola. 2017. [Bare numerals, collectivity, and genericity: A new puzzle][jos-lb]. In revision.
+- Brian Buccola and Andreas Haida. 2017. [Obligatory irrelevance and the computation of ignorance inferences][oblig-irrel-lb]. In revision.
+- Brian Buccola. 2017. [Bare numerals, collectivity, and genericity: A new puzzle][bare-num-lb]. In revision.
 
 [concepts-lb]: http://ling.auf.net/lingbuzz/003208
 [connecting-sa]: http://semanticsarchive.net/Archive/WVhYzUwM/Chemla-Buccola-Dautriche-ConnectWords.html
-[sp-lb]: http://ling.auf.net/lingbuzz/003600
-[jos-lb]: http://ling.auf.net/lingbuzz/003400
+[oblig-irrel-lb]: http://ling.auf.net/lingbuzz/003600
+[bare-num-lb]: http://ling.auf.net/lingbuzz/003400
 
 ## Proceedings Papers
 
