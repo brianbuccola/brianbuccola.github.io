@@ -21,12 +21,12 @@ redirect_from: /research.html
 
 ## Manuscripts
 
-- Brian Buccola, Manuel Križ, and Emmanuel Chemla. 2018. Conceptual alternatives. In prep. (Click [here][cog-lb] for an old version.)
+- Brian Buccola, Manuel Križ, and Emmanuel Chemla. 2018. [Conceptual alternatives: Competition in language and beyond][concepts-lb]. Submitted.
 - Emmanuel Chemla, Brian Buccola, and Isabelle Dautriche. 2018. [Connecting content and logical words][connecting-sa]. Submitted.
 - Brian Buccola and Andreas Haida. 2017. [Obligatory irrelevance and the computation of ignorance inferences][sp-lb]. In revision.
 - Brian Buccola. 2017. [Bare numerals, collectivity, and genericity: A new puzzle][jos-lb]. In revision.
 
-[cog-lb]: http://ling.auf.net/lingbuzz/003208
+[concepts-lb]: http://ling.auf.net/lingbuzz/003208
 [connecting-sa]: http://semanticsarchive.net/Archive/WVhYzUwM/Chemla-Buccola-Dautriche-ConnectWords.html
 [sp-lb]: http://ling.auf.net/lingbuzz/003600
 [jos-lb]: http://ling.auf.net/lingbuzz/003400
