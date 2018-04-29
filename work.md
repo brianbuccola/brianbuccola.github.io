@@ -21,7 +21,7 @@ redirect_from: /research.html
 
 ## Manuscripts
 
-- Brian Buccola and Emmanuel Chemla. [Two notes on the disjunct alternatives of disjunction][or-snippet]. Submitted (snippet).
+- Brian Buccola and Emmanuel Chemla. 2018. [Two notes on the disjunct alternatives of disjunction][or-snippet]. Submitted (snippet).
 - Brian Buccola. 2018. [A restriction on the distribution of exclusive *only*][only-snippet]. Submitted (snippet).
 - Brian Buccola, Manuel Križ, and Emmanuel Chemla. 2018. [Conceptual alternatives: Competition in language and beyond][concepts-lb]. Submitted.
 - Emmanuel Chemla, Brian Buccola, and Isabelle Dautriche. 2018. [Connecting content and logical words][connecting-sa]. Submitted.
