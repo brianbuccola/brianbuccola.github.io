@@ -21,6 +21,7 @@ redirect_from: /research.html
 
 ## Manuscripts
 
+- Brian Buccola, Isabelle Dautriche, and Emmanuel Chemla. 2018. [Competition and symmetry in an artificial word learning task][competition-lb]. Submitted.
 - Brian Buccola and Emmanuel Chemla. 2018. [Two notes on the disjunct alternatives of disjunction][or-snippet]. Submitted (snippet).
 - Brian Buccola. 2018. [A restriction on the distribution of exclusive *only*][only-snippet]. Submitted (snippet).
 - Brian Buccola, Manuel Križ, and Emmanuel Chemla. 2018. [Conceptual alternatives: Competition in language and beyond][concepts-lb]. Submitted.
@@ -28,6 +29,7 @@ redirect_from: /research.html
 - Brian Buccola and Andreas Haida. 2017. [Obligatory irrelevance and the computation of ignorance inferences][oblig-irrel-lb]. In revision.
 - Brian Buccola. 2017. [Bare numerals, collectivity, and genericity: A new puzzle][bare-num-lb]. In revision.
 
+[competition-lb]: http://ling.auf.net/lingbuzz/003992
 [or-snippet]: http://ling.auf.net/lingbuzz/003967
 [only-snippet]: http://ling.auf.net/lingbuzz/003966
 [concepts-lb]: http://ling.auf.net/lingbuzz/003208
