@@ -12,9 +12,11 @@ redirect_from: /research.html
 
 ## Journal Articles
 
+- Emmanuel Chemla, Brian Buccola, and Isabelle Dautriche. To appear. [Connecting content and logical words][connecting-sa]. Accepted for publication (with minor revisions) in *Journal of Semantics*.
 - Brian Buccola and Benjamin Spector. 2016. [Modified numerals and maximality][mod-num-max-doi]. *Linguistics and Philosophy* 39(3). 151--199. ([preprint][mod-num-max-lb])
 - Bernhard Schwarz, Brian Buccola, and Michael Hamilton. 2012. [Two types of class B numeral modifiers: A reply to Nouwen 2010][reply-to-nouwen-sp]. *Semantics and Pragmatics* 5(1). 1--25.
 
+[connecting-sa]: http://semanticsarchive.net/Archive/WVhYzUwM/Chemla-Buccola-Dautriche-ConnectWords.pdf
 [mod-num-max-doi]: http://dx.doi.org/10.1007/s10988-016-9187-2
 [mod-num-max-lb]: http://ling.auf.net/lingbuzz/002528/current.pdf
 [reply-to-nouwen-sp]: http://semprag.org/article/download/sp.5.1/pdf
@@ -25,7 +27,6 @@ redirect_from: /research.html
 - Brian Buccola and Emmanuel Chemla. 2018. [Two notes on the disjunct alternatives of disjunction][or-snippet]. Submitted (snippet).
 - Brian Buccola. 2018. [A restriction on the distribution of exclusive *only*][only-snippet]. Submitted (snippet).
 - Brian Buccola, Manuel Križ, and Emmanuel Chemla. 2018. [Conceptual alternatives: Competition in language and beyond][concepts-lb]. Submitted.
-- Emmanuel Chemla, Brian Buccola, and Isabelle Dautriche. 2018. [Connecting content and logical words][connecting-sa]. Submitted.
 - Brian Buccola and Andreas Haida. 2017. [Obligatory irrelevance and the computation of ignorance inferences][oblig-irrel-lb]. In revision.
 - Brian Buccola. 2017. [Bare numerals, collectivity, and genericity: A new puzzle][bare-num-lb]. In revision.
 
@@ -33,7 +34,6 @@ redirect_from: /research.html
 [or-snippet]: http://ling.auf.net/lingbuzz/003967/current.pdf
 [only-snippet]: http://ling.auf.net/lingbuzz/003966/current.pdf
 [concepts-lb]: http://ling.auf.net/lingbuzz/003208/current.pdf
-[connecting-sa]: http://semanticsarchive.net/Archive/WVhYzUwM/Chemla-Buccola-Dautriche-ConnectWords.pdf
 [oblig-irrel-lb]: http://ling.auf.net/lingbuzz/003600/current.pdf
 [bare-num-lb]: http://ling.auf.net/lingbuzz/003400/current.pdf
 
