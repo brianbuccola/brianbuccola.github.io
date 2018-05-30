@@ -18,8 +18,8 @@ kramdown:
   input: GFM
   hard_wrap: false
 
-# Gems
-gems:
+# Plugins
+plugins:
   - jekyll-redirect-from
   - jekyll-feed
   - jekyll-sitemap
