@@ -12,7 +12,8 @@ redirect_from: /research.html
 
 ## Journal Articles
 
-- Emmanuel Chemla, Brian Buccola, and Isabelle Dautriche. To appear. [Connecting content and logical words][connecting-sa]. Accepted for publication (with minor revisions) in *Journal of Semantics*.
+- Emmanuel Chemla, Brian Buccola, and Isabelle Dautriche. Forthcoming. [Connecting content and logical words][connecting-sa]. *Journal of Semantics*.
+- Brian Buccola. Forthcoming. [A restriction on the distribution of exclusive *only*][only-snippet]. *Snippets*.
 - Brian Buccola and Benjamin Spector. 2016. [Modified numerals and maximality][mod-num-max-doi]. *Linguistics and Philosophy* 39(3). 151--199. ([preprint][mod-num-max-lb])
 - Bernhard Schwarz, Brian Buccola, and Michael Hamilton. 2012. [Two types of class B numeral modifiers: A reply to Nouwen 2010][reply-to-nouwen-sp]. *Semantics and Pragmatics* 5(1). 1--25.
 
@@ -25,8 +26,7 @@ redirect_from: /research.html
 
 - Brian Buccola and Andreas Haida. 2017. [Obligatory irrelevance and the computation of ignorance inferences][oblig-irrel-lb]. Submitted.
 - Brian Buccola, Isabelle Dautriche, and Emmanuel Chemla. 2018. [Competition and symmetry in an artificial word learning task][competition-lb]. Submitted.
-- Brian Buccola. 2018. [A restriction on the distribution of exclusive *only*][only-snippet]. Submitted (snippet).
-- Brian Buccola and Emmanuel Chemla. 2018. [Two notes on the disjunct alternatives of disjunction][or-snippet]. In revision (snippet).
+- Brian Buccola and Emmanuel Chemla. 2018. [Two notes on the disjunct alternatives of disjunction][or-snippet]. In revision.
 - Brian Buccola, Manuel Križ, and Emmanuel Chemla. 2018. [Conceptual alternatives: Competition in language and beyond][concepts-lb]. In revision.
 - Brian Buccola. 2017. [Bare numerals, collectivity, and genericity: A new puzzle][bare-num-lb]. In revision.
 
