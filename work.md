@@ -52,6 +52,12 @@ redirect_from: /research.html
 [fg-doi]: http://dx.doi.org/10.1007/978-3-642-39998-5_9
 [fg-lb]: http://ling.auf.net/lingbuzz/002513/current.pdf
 
+## Handouts and slides
+
+- Amir Anvari, Brian Buccola, and Andreas Haida. [Alternative questions in Farsi][miq2018]. Talk presented at the workshop Meaning in non-canonical Questions. Konstanz, Germany, June 8, 2018.
+
+[miq2018]: https://drive.google.com/file/d/1CNQIwA1OBSU7X3K7yU9qtSrQBDrTpKsZ/view
+
 ## Other
 
 - Brian Buccola. 2015. [*Maximality in the semantics of modified numerals*][dissertation]. Montreal, Canada: McGill University PhD thesis.
