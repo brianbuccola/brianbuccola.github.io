@@ -56,7 +56,7 @@ redirect_from: /research.html
 
 - Amir Anvari, Brian Buccola, and Andreas Haida. [Alternative questions in Farsi][miq2018]. Talk presented at the workshop Meaning in non-canonical Questions. Konstanz, Germany, June 8, 2018.
 
-[miq2018]: https://drive.google.com/file/d/1CNQIwA1OBSU7X3K7yU9qtSrQBDrTpKsZ/view
+[miq2018]: https://drive.google.com/file/d/1di75XXJOFL2iOjQEU_afrsbtGGnsHY8V/view
 
 ## Other
 
