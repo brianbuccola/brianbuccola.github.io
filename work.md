@@ -24,10 +24,10 @@ redirect_from: /research.html
 
 ## Manuscripts
 
-- Brian Buccola and Andreas Haida. 2017. [Obligatory irrelevance and the computation of ignorance inferences][oblig-irrel-lb]. Submitted.
+- Brian Buccola, Manuel Križ, and Emmanuel Chemla. 2018. [Conceptual alternatives: Competition in language and beyond][concepts-lb]. Submitted.
+- Brian Buccola and Andreas Haida. 2018. [Obligatory irrelevance and the computation of ignorance inferences][oblig-irrel-lb]. Submitted.
 - Brian Buccola, Isabelle Dautriche, and Emmanuel Chemla. 2018. [Competition and symmetry in an artificial word learning task][competition-lb]. Submitted.
 - Brian Buccola and Emmanuel Chemla. 2018. [Two notes on the disjunct alternatives of disjunction][or-snippet]. In revision.
-- Brian Buccola, Manuel Križ, and Emmanuel Chemla. 2018. [Conceptual alternatives: Competition in language and beyond][concepts-lb]. In revision.
 - Brian Buccola. 2017. [Bare numerals, collectivity, and genericity: A new puzzle][bare-num-lb]. In revision.
 
 [competition-lb]: http://ling.auf.net/lingbuzz/003992/current.pdf
