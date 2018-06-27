@@ -137,7 +137,21 @@ battery, wifi, etc.
 also install the
 [iwlib](http://www.hpl.hp.com/personal/Jean_Tourrilhes/Linux/Tools.html) C
 library and headers. In Arch Linux, just install `wireless_tools`; in
-Debian-based systems, `libiw-dev`.
+Debian-based systems, `libiw-dev`. Or, in your `stack.yaml`, change
+
+```yaml
+extra_deps: []
+```
+
+to
+
+```yaml
+extra_deps:
+    - iwlib-0.1.0
+```
+
+(The specific version you'll need will change over time. If `stack install` from
+step 5 produces an error, just see what stack recommends.)
 
 ## Step 5: Build and install everything
 
