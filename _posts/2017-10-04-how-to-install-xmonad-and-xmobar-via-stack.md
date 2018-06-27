@@ -36,10 +36,6 @@ There are couple ways to get stack. I installed
 [stack-static](https://aur.archlinux.org/packages/stack-static/) from the AUR,
 because it doesn't come with any Haskell dependencies.
 
-```bash
-pacaur -S stack-static
-```
-
 If you don't care about tracking stack with your package manager, then, as the
 [stack
 how-to-install](https://docs.haskellstack.org/en/stable/README/#how-to-install)
