@@ -13,11 +13,12 @@ redirect_from: /research.html
 ## Journal Articles
 
 - Emmanuel Chemla, Brian Buccola, and Isabelle Dautriche. Forthcoming. [Connecting content and logical words][connecting-sa]. *Journal of Semantics*.
-- Brian Buccola. Forthcoming. [A restriction on the distribution of exclusive *only*][only-snippet]. *Snippets*.
+- Brian Buccola. 2018. [A restriction on the distribution of exclusive *only*][only-snippet]. *Snippets*.
 - Brian Buccola and Benjamin Spector. 2016. [Modified numerals and maximality][mod-num-max-doi]. *Linguistics and Philosophy* 39(3). 151--199. ([preprint][mod-num-max-lb])
 - Bernhard Schwarz, Brian Buccola, and Michael Hamilton. 2012. [Two types of class B numeral modifiers: A reply to Nouwen 2010][reply-to-nouwen-sp]. *Semantics and Pragmatics* 5(1). 1--25.
 
 [connecting-sa]: http://semanticsarchive.net/Archive/WVhYzUwM/Chemla-Buccola-Dautriche-ConnectWords.pdf
+[only-snippet]: http://www.ledonline.it/snippets/allegati/snippets33002.pdf
 [mod-num-max-doi]: http://dx.doi.org/10.1007/s10988-016-9187-2
 [mod-num-max-lb]: http://ling.auf.net/lingbuzz/002528/current.pdf
 [reply-to-nouwen-sp]: http://semprag.org/article/download/sp.5.1/pdf
@@ -32,7 +33,6 @@ redirect_from: /research.html
 
 [competition-lb]: http://ling.auf.net/lingbuzz/003992/current.pdf
 [or-snippet]: http://ling.auf.net/lingbuzz/003967/current.pdf
-[only-snippet]: http://ling.auf.net/lingbuzz/003966/current.pdf
 [concepts-lb]: http://ling.auf.net/lingbuzz/003208/current.pdf
 [oblig-irrel-lb]: http://ling.auf.net/lingbuzz/003600/current.pdf
 [bare-num-lb]: http://ling.auf.net/lingbuzz/003400/current.pdf
