@@ -3,6 +3,9 @@ layout: page
 title: About
 ---
 
+<img src="/images/brian.jpeg" alt="A picture of me"
+style="height:200px; float:right; margin-left:10px; margin-bottom:10px; border-radius:10%;"/>
+
 I'm a linguist currently working
 as a postdoctoral researcher
 at the [Laboratoire de Sciences Cognitives et Psycholinguistique][lscp],
