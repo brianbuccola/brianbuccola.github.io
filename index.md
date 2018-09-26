@@ -1,5 +1,6 @@
 ---
 layout: page
+title: About
 ---
 
 I am a linguist working as a postdoctoral researcher at the [Laboratoire de
