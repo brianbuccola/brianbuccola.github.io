@@ -1,6 +1,5 @@
 ---
 layout: page
-title: About
 ---
 
 <img src="/images/brian.jpeg" alt="A picture of me"
