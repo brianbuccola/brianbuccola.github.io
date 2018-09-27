@@ -5,6 +5,15 @@ layout: page
 <img src="/images/brian.jpeg" alt="A picture of me"
 style="height:200px; float:right; margin-left:10px; margin-bottom:10px; border-radius:10%;"/>
 
+<pre style="border:0; background-color:#ffffff; padding:0;">
+<strong>Brian Buccola</strong>
+Laboratoire de Sciences Cognitives et Psycholinguistique
+École Normale Supérieure
+29, rue d'Ulm
+75005 Paris, France
+<a href="mailto:brian.buccola@gmail.com">brian.buccola@gmail.com</a>
+</pre>
+
 I'm a linguist currently working
 as a postdoctoral researcher
 at the [Laboratoire de Sciences Cognitives et Psycholinguistique][lscp],
@@ -39,8 +48,6 @@ You can read about some of that stuff [here](/blog/).
 
 The source code and license for the content of this website
 are available [on GitHub][repo].
-
-You can contact me by email at [brian.buccola@gmail.com][email].
 
 [me-gh]: https://github.com/brianbuccola
 [repo]: https://github.com/brianbuccola/brianbuccola.github.io
