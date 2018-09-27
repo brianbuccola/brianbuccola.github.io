@@ -5,7 +5,7 @@ permalink: /work/
 redirect_from: /research.html
 ---
 
-*NB: All of my work is hosted on [LingBuzz][]. If the LingBuzz server is down, just [email me][email].*
+*All of my work is hosted on [LingBuzz][]. If the LingBuzz server is down, just [email me][email].*
 
 [LingBuzz]: https://ling.auf.net/lingbuzz
 [email]: mailto:brian.buccola@gmail.com
