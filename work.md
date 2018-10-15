@@ -41,24 +41,20 @@ redirect_from: /research.html
 
 ## Proceedings Papers
 
+- Amir Anvari, Brian Buccola, and Andreas Haida. In prep. Alternative Questions in Farsi. *Sinn und Bedeutung* 23. ([slides][miq2018] from a previous workshop)
 - Brian Buccola and Andreas Haida. 2017. [Expressing agent indifference in German][ac2017]. *Amsterdam Colloquium* 21. 165--174.
 - Brian Buccola and Andreas Haida. 2017. [A surface-scope analysis of authoritative readings of modified numerals][sub21]. *Sinn und Bedeutung* 21. 233--248.
 - Brian Buccola. 2016. [Severing maximality from *fewer than*: Evidence from genericity][sub20]. *Sinn und Bedeutung* 20. 127--144.
 - Brian Buccola. 2015. [Variable monotonicity and *less than*: When Van Benthem's problem is not a problem][nels45]. *North East Linguistic Society (NELS)* 45. 135--124.
 - Brian Buccola. 2013. [On the expressivity of Optimality Theory versus ordered rewrite rules][fg-doi]. *Formal Grammar*. 142--158. ([preprint][fg-lb])
 
+[miq2018]: https://drive.google.com/file/d/1di75XXJOFL2iOjQEU_afrsbtGGnsHY8V/view
 [ac2017]: https://ling.auf.net/lingbuzz/003763/current.pdf
 [sub21]: https://ling.auf.net/lingbuzz/003307/current.pdf
 [sub20]: https://ling.auf.net/lingbuzz/002847/current.pdf
 [nels45]: https://ling.auf.net/lingbuzz/002512/current.pdf
 [fg-doi]: https://dx.doi.org/10.1007/978-3-642-39998-5_9
 [fg-lb]: https://ling.auf.net/lingbuzz/002513/current.pdf
-
-## Handouts and slides
-
-- Amir Anvari, Brian Buccola, and Andreas Haida. [Alternative questions in Farsi][miq2018]. Talk presented at the workshop Meaning in non-canonical Questions. Konstanz, Germany, June 8, 2018.
-
-[miq2018]: https://drive.google.com/file/d/1di75XXJOFL2iOjQEU_afrsbtGGnsHY8V/view
 
 ## Other
 
