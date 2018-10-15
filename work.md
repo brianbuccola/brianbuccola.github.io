@@ -13,7 +13,7 @@ redirect_from: /research.html
 ## Journal Articles
 
 - Emmanuel Chemla, Brian Buccola, and Isabelle Dautriche. Forthcoming. [Connecting content and logical words][connecting-sa]. *Journal of Semantics*.
-- Brian Buccola. 2018. [A restriction on the distribution of exclusive *only*][only-snippet]. *Snippets*.
+- Brian Buccola. 2018. [A restriction on the distribution of exclusive *only*][only-snippet]. *Snippets* 33. 3--4.
 - Brian Buccola and Benjamin Spector. 2016. [Modified numerals and maximality][mod-num-max-doi]. *Linguistics and Philosophy* 39(3). 151--199. ([preprint][mod-num-max-lb])
 - Bernhard Schwarz, Brian Buccola, and Michael Hamilton. 2012. [Two types of class B numeral modifiers: A reply to Nouwen 2010][reply-to-nouwen-sp]. *Semantics and Pragmatics* 5(1). 1--25.
 
