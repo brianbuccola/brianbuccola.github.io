@@ -12,11 +12,13 @@ redirect_from: /research.html
 
 ## Journal Articles
 
+- Brian Buccola, Isabelle Dautriche, and Emmanuel Chemla. Forthcoming. [Competition and symmetry in an artificial word learning task][competition-lb]. *Frontiers in Psychology*.
 - Emmanuel Chemla, Brian Buccola, and Isabelle Dautriche. Forthcoming. [Connecting content and logical words][connecting-sa]. *Journal of Semantics*.
 - Brian Buccola. 2018. [A restriction on the distribution of exclusive *only*][only-snippet]. *Snippets* 33. 3--4.
 - Brian Buccola and Benjamin Spector. 2016. [Modified numerals and maximality][mod-num-max-doi]. *Linguistics and Philosophy* 39(3). 151--199. ([preprint][mod-num-max-lb])
 - Bernhard Schwarz, Brian Buccola, and Michael Hamilton. 2012. [Two types of class B numeral modifiers: A reply to Nouwen 2010][reply-to-nouwen-sp]. *Semantics and Pragmatics* 5(1). 1--25.
 
+[competition-lb]: https://ling.auf.net/lingbuzz/003992/current.pdf
 [connecting-sa]: https://semanticsarchive.net/Archive/WVhYzUwM/Chemla-Buccola-Dautriche-ConnectWords.pdf
 [only-snippet]: http://www.ledonline.it/snippets/allegati/snippets33002.pdf
 [mod-num-max-doi]: https://dx.doi.org/10.1007/s10988-016-9187-2
@@ -26,14 +28,12 @@ redirect_from: /research.html
 ## Manuscripts
 
 - Brian Buccola and Andreas Haida. 2018. [Obligatory irrelevance and the computation of ignorance inferences][oblig-irrel-lb]. Under review (after minor revisions).
-- Brian Buccola, Isabelle Dautriche, and Emmanuel Chemla. 2018. [Competition and symmetry in an artificial word learning task][competition-lb]. Under review (after minor revisions).
 - Brian Buccola, Manuel Križ, and Emmanuel Chemla. 2018. [Conceptual alternatives: Competition in language and beyond][concepts-lb]. Under review.
 - Emmanuel Chemla, Isabelle Dautriche, Brian Buccola, and Joel Fagot. 2018. [Constraints on the lexicons of human languages have cognitive roots present in baboons (*Papio papio*)][baboons-lb]. In revision.
 - Brian Buccola and Emmanuel Chemla. 2018. [Two notes on the disjunct alternatives of disjunction][or-snippet]. In revision.
 - Brian Buccola. 2017. [Bare numerals, collectivity, and genericity: A new puzzle][bare-num-lb]. In revision.
 
 [baboons-lb]: https://ling.auf.net/lingbuzz/004172/current.pdf
-[competition-lb]: https://ling.auf.net/lingbuzz/003992/current.pdf
 [or-snippet]: https://ling.auf.net/lingbuzz/003967/current.pdf
 [concepts-lb]: https://ling.auf.net/lingbuzz/003208/current.pdf
 [oblig-irrel-lb]: https://ling.auf.net/lingbuzz/003600/current.pdf
