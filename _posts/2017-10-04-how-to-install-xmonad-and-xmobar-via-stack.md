@@ -167,6 +167,7 @@ dependencies). You'll now have two new binaries, `xmonad` and `xmobar`,
 installed into `~/.local/bin`.
 
 **NB:** You'll want to add `~/.local/bin` to your `PATH`, if it isn't already.
+(If you use a login manager, see Step 9 below.)
 
 ## Step 6: Write a build file
 
@@ -219,3 +220,50 @@ to rebuild and reinstall everything.
 
 **NB:** If you add a new flag or extra dependencies (in `stack.yaml`), you may
 need to run `stack clean` first.
+
+## (Step 9: Loose ends with login managers)
+
+If you use a login manager, such as LightDM, then you may need to take some
+additional steps. I don't use a login manager, nor do I know much about them,
+but I'll use LightDM as the working example since I've read a little about it.
+
+First off, LightDM uses `*.desktop` files located `/usr/share/xsessions` to know
+which desktop environments (or window managers) you have available to choose
+from. So, you'll probably need to create `xmonad.desktop`. The xmonad package
+from the official Arch repos installs the following file, so you can just copy
+it verbatim and place it into `/usr/share/xsessions`:
+
+```desktop
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Xmonad
+Comment=Lightweight X11 tiled window manager written in Haskell
+Exec=xmonad
+Icon=xmonad
+Terminal=false
+StartupNotify=false
+Categories=Application;
+```
+
+Second, running `xmonad --recompile` may not work yet. If it doesn't, make sure
+that you've added `~/.local/bin` to your `PATH` by adding it to one of your
+shell *profile* files, such as `~/.profile` or (if you only use one shell, e.g.
+Bash) `~/.bash_profile`, and *not* to your shell's configuration file (e.g.
+`~/.bashrc`). The reason is that LightDM (and by extension xmonad) is invoked
+from a login shell, which sources *profile* files like `~/.profile`, but not
+(necessarily) shell config files like `~/.bashrc`. See [this SE thread][SE] and
+[this Quora answer][Quora] to learn more about the difference.
+
+[SE]: https://superuser.com/questions/183870/difference-between-bashrc-and-bash-profile/183980#183980
+[Quora]: https://www.quora.com/What-is-profile-file-in-Linux
+
+If that still doesn't work, then it's possible that your login manager doesn't
+even source `~/.profile` (see the end of the SE thread linked above). In that
+case, a possible fix is to just manually symlink `~/.local/bin/xmonad` to
+`/usr/bin` (since the latter is definitely in your `PATH`; thanks to Ashesh in
+the comments below for this fix):
+
+```bash
+ln -s ~/.local/bin/xmonad /usr/bin
+```
