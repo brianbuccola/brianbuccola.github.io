@@ -12,13 +12,13 @@ redirect_from: /research.html
 
 ## Journal Articles
 
-- Brian Buccola, Isabelle Dautriche, and Emmanuel Chemla. Forthcoming. [Competition and symmetry in an artificial word learning task][competition-lb]. *Frontiers in Psychology*.
 - Emmanuel Chemla, Brian Buccola, and Isabelle Dautriche. Forthcoming. [Connecting content and logical words][connecting-sa]. *Journal of Semantics*.
+- Brian Buccola, Isabelle Dautriche, and Emmanuel Chemla. 2018. [Competition and symmetry in an artificial word learning task][competition]. *Frontiers in Psychology* 9(2176).
 - Brian Buccola. 2018. [A restriction on the distribution of exclusive *only*][only-snippet]. *Snippets* 33. 3--4.
 - Brian Buccola and Benjamin Spector. 2016. [Modified numerals and maximality][mod-num-max-doi]. *Linguistics and Philosophy* 39(3). 151--199. ([preprint][mod-num-max-lb])
 - Bernhard Schwarz, Brian Buccola, and Michael Hamilton. 2012. [Two types of class B numeral modifiers: A reply to Nouwen 2010][reply-to-nouwen-sp]. *Semantics and Pragmatics* 5(1). 1--25.
 
-[competition-lb]: https://ling.auf.net/lingbuzz/003992/current.pdf
+[competition]: https://dx.doi.org/10.3389/fpsyg.2018.02176
 [connecting-sa]: https://semanticsarchive.net/Archive/WVhYzUwM/Chemla-Buccola-Dautriche-ConnectWords.pdf
 [only-snippet]: http://www.ledonline.it/snippets/allegati/snippets33002.pdf
 [mod-num-max-doi]: https://dx.doi.org/10.1007/s10988-016-9187-2
