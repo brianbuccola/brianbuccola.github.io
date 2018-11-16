@@ -12,6 +12,7 @@ redirect_from: /research.html
 
 ## Journal Articles
 
+- Brian Buccola and Andreas Haida. 2018. [Obligatory irrelevance and the computation of ignorance inferences][oblig-irrel-lb]. Accepted (pending review of minor revisions) in *Journal of Semantics*.
 - Emmanuel Chemla, Brian Buccola, and Isabelle Dautriche. Forthcoming. [Connecting content and logical words][connecting-sa]. *Journal of Semantics*.
 - Brian Buccola, Isabelle Dautriche, and Emmanuel Chemla. 2018. [Competition and symmetry in an artificial word learning task][competition]. *Frontiers in Psychology* 9(2176).
 - Brian Buccola. 2018. [A restriction on the distribution of exclusive *only*][only-snippet]. *Snippets* 33. 3--4.
@@ -27,7 +28,6 @@ redirect_from: /research.html
 
 ## Manuscripts
 
-- Brian Buccola and Andreas Haida. 2018. [Obligatory irrelevance and the computation of ignorance inferences][oblig-irrel-lb]. Under review (after minor revisions).
 - Brian Buccola, Manuel Križ, and Emmanuel Chemla. 2018. [Conceptual alternatives: Competition in language and beyond][concepts-lb]. Under review.
 - Emmanuel Chemla, Isabelle Dautriche, Brian Buccola, and Joel Fagot. 2018. [Constraints on the lexicons of human languages have cognitive roots present in baboons (*Papio papio*)][baboons-lb]. Under review.
 - Brian Buccola and Emmanuel Chemla. 2018. [Two notes on the disjunct alternatives of disjunction][or-snippet]. In revision.
