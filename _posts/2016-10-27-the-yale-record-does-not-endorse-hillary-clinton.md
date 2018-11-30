@@ -2,7 +2,7 @@
 layout: post
 title: "The Yale Record does not endorse Hillary Clinton"
 date: 2016-10-27
-tags: politics humor semantics linguistics
+tags: politics humor semantics linguistics quotes
 ---
 
 This is just a bookmark to remind myself to use [this wonderful little article

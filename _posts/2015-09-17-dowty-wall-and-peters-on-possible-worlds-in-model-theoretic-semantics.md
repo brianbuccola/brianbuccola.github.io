@@ -2,7 +2,7 @@
 layout: post
 title: "Dowty, Wall, and Peters on possible worlds in model-theoretic semantics"
 date: 2015-09-17
-tags: semantics linguistics
+tags: semantics linguistics quotes
 ---
 
 In my free time, I'm reading the classic Dowty, Wall, and Peters 1981,

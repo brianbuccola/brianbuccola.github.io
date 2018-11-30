@@ -3,7 +3,7 @@ layout: post
 title: "Seattle cops sorry about arresting 70-year-old black vet"
 date: 2015-01-30 17:09
 redirect_from: /blog/2015-01-30-seattle-cops-sorry-about-arresting-70-year-old-black-vet.html
-tags: semantics headlines linguistics
+tags: semantics headlines quotes linguistics
 ---
 
 Here's an interesting headline:

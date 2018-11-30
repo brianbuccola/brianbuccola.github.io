@@ -2,7 +2,7 @@
 layout: post
 title: "Donald Trump says \"China\""
 date: 2015-10-19
-tags: [donald trump, politics, humor]
+tags: [donald trump, politics, humor, quotes]
 ---
 
 Came across this video recently of Donald Trump saying "China" over and over
