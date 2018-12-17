@@ -12,7 +12,7 @@ import           Text.Pandoc.Highlighting (pygments)
 --------------------------------------------------------------------------------
 
 main :: IO ()
-main = hakyllWith conf $ do
+main = hakyll $ do
     match "images/*" $ do
         route   idRoute
         compile copyFileCompiler
@@ -92,11 +92,6 @@ main = hakyllWith conf $ do
     match "templates/*" $ compile templateBodyCompiler
 
 --------------------------------------------------------------------------------
-
-conf :: Configuration
-conf = defaultConfiguration
-    { destinationDirectory = "docs"
-    }
 
 postCtx :: Context String
 postCtx =
