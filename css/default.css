@@ -3,7 +3,7 @@ html {
 }
 
 body {
-  font-family: "LinuxLibertineORegular", serif;
+  font-family: "Source Serif Pro", serif;
   font-size: 1.6rem;
   color: #000;
   line-height: 1.5;
@@ -43,7 +43,7 @@ h2 {
 h1, h2, h3, h4, h5, h6,
 .logo a,
 .nav a {
-  font-family: "LinuxBiolinumORegular", sans-serif;
+  font-family: "Source Sans Pro", sans-serif;
 }
 
 a:link {
@@ -67,7 +67,7 @@ a:active {
 
 pre,
 code {
-  font-family: "FiraMonoRegular", monospace;
+  font-family: "Source Code Pro", monospace;
   font-size: 1.3rem;
 }
 
