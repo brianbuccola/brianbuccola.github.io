@@ -1,8 +1,5 @@
 ---
-layout: page
-title: "CV"
-permalink: /cv/
-redirect_from: /cv.html
+title: CV
 ---
 
 You can find my CV [here][cv-pdf].
