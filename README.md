@@ -20,7 +20,7 @@ Just don't plagiarize.
 
 Everything else,
 including both the website source code (e.g. CSS and HTML files)
-and my blog posts(everything in `_posts`),
+and my blog posts (everything in `posts`),
 is licensed under a [Creative Commons Attribution 4.0 International License][cc],
 which means you are free to share and adapt that content,
 as long as you give appropriate credit.
