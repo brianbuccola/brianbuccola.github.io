@@ -17,7 +17,7 @@ main = hakyll $ do
         route   idRoute
         compile copyFileCompiler
 
-    match "CNAME" $ do
+    match (fromList ["CNAME", "README.md"]) $ do
         route   idRoute
         compile copyFileCompiler
 
