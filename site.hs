@@ -12,7 +12,7 @@ import           Text.Pandoc.Highlighting (pygments)
 --------------------------------------------------------------------------------
 
 main :: IO ()
-main = hakyll $ do
+main = hakyllWith conf $ do
     match "images/*" $ do
         route   idRoute
         compile copyFileCompiler
@@ -25,6 +25,13 @@ main = hakyll $ do
         route   idRoute
         compile compressCssCompiler
 
+    match "404.md" $ do
+        route   $ setExtension "html"
+        compile $ do
+            myPandocCompiler
+                >>= loadAndApplyTemplate "templates/default.html" defaultContext
+                >>= relativizeUrls
+
     match "index.md" $ do
         route   $ setExtension "html"
         compile $ do
@@ -36,7 +43,7 @@ main = hakyll $ do
                 >>= loadAndApplyTemplate "templates/default.html" indexCtx
                 >>= relativizeUrls
 
-    match "*.md" $ do
+    match (fromList ["cv.md", "work.md"]) $ do
         route   $ cleanRoute
         compile $ myPandocCompiler
             >>= loadAndApplyTemplate "templates/default.html" myContext
@@ -85,6 +92,11 @@ main = hakyll $ do
     match "templates/*" $ compile templateBodyCompiler
 
 --------------------------------------------------------------------------------
+
+conf :: Configuration
+conf = defaultConfiguration
+    { destinationDirectory = "docs"
+    }
 
 postCtx :: Context String
 postCtx =

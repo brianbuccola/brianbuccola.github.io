@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- Site info -->
+        <title>Brian Buccola · References and footnotes in HTML/CSS</title>
+        
+
+        <!-- Styling -->
+        <link rel="stylesheet" href="../css/default.css">
+        <link rel="stylesheet" href="../css/syntax.css">
+
+        <!-- Feeds -->
+        <link rel="alternate" type="application/atom+xml" href="../atom.xml" title="Brian Buccola">
+        <link rel="alternate" type="application/rss+xml" href="../rss.xml" title="Brian Buccola">
+
+        <!-- Fonts -->
+        <link href="https://fontlibrary.org/face/linux-libertine" media="screen" rel="stylesheet" type="text/css">
+        <link href="https://fontlibrary.org/face/linux-biolinum" media="screen" rel="stylesheet" type="text/css">
+        <link href="https://fontlibrary.org/face/fira-mono" media="screen" rel="stylesheet" type="text/css">
+
+        <!-- MathJax -->
+        <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({
+                CommonHTML: {
+                    scale: 90
+                }
+            });
+        </script>
+        <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML">
+        </script>
+
+        <!-- Google Analytics -->
+        <script>
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+            ga('create', 'UA-70938601-1', 'auto');
+            ga('send', 'pageview');
+        </script>
+    </head>
+    <body>
+        <header>
+            <div class="logo">
+                <a href="../">Brian Buccola</a>
+            </div>
+            <nav class="nav">
+                <a class="nav" href="../">Home</a>
+                <a class="nav" href="../work/">Work</a>
+                <a class="nav" href="../cv/">CV</a>
+                <a class="nav" href="../blog/">Blog</a>
+            </nav>
+        </header>
+
+        <main role="main">
+            <h1>References and footnotes in HTML/CSS</h1>
+            <article>
+    <section class="header">
+        <div class="info">
+            December  1, 2012
+            
+        </div>
+    </section>
+    <section>
+        <p><strong><em>Update:</em></strong> <em>Since I wrote this post, I discovered that markdown conversion programs like Pandoc and kramdown can convert extensions of markdown that include footnotes. For example, it suffices to do:</em></p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode markdown"><code class="sourceCode markdown"><a class="sourceLine" id="cb1-1" title="1">Blah blah blah.<span class="ot">[^fn]</span> Lorem ipsum...</a>
+<a class="sourceLine" id="cb1-2" title="2"></a>
+<a class="sourceLine" id="cb1-3" title="3"><span class="ot">[^fn]</span>: Here's a footnote!</a></code></pre></div>
+<p><em>But I will leave this post here since it may be a useful reference for people writing in pure html rather than markdown.</em></p>
+<p>I’ve been toying with how best to incorporate inline references and end–of–post footnotes into my blog posts, and here’s what I’ve come up with. I’ll start with my first, very simplistic attempt, then explain my slightly more complicated but also more flexible (I think) solution.</p>
+<p>This blog is (<strong><em>Update:</em></strong> <em>was</em>) powered by <a href="http://octopress.org/">Octopress</a>, which allows me to write blog posts in <a href="http://daringfireball.net/projects/markdown/">markdown</a> syntax, which is then parsed and converted into HTML by <a href="http://kramdown.rubyforge.org/">kramdown</a>.<a class="ref" id="ref:kd" href="#fn:kd">[1]</a> Markdown has a nice, easy, and highly legible way of creating simple links. Just type one of these.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode markdown"><code class="sourceCode markdown"><a class="sourceLine" id="cb2-1" title="1">Click <span class="ot">[here](url)</span> to see something awesome!</a>
+<a class="sourceLine" id="cb2-2" title="2"></a>
+<a class="sourceLine" id="cb2-3" title="3">Click <span class="ot">[here][blah] </span>to see something awesome!</a>
+<a class="sourceLine" id="cb2-4" title="4"><span class="ot">[blah]: url</span></a></code></pre></div>
+<p>Both are expanded into the following.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode markdown"><code class="sourceCode markdown"><a class="sourceLine" id="cb3-1" title="1">Click &lt;a href=&quot;url&quot;&gt;here&lt;/a&gt; to see something awesome!</a></code></pre></div>
+<p>Now, whether you write in markdown or in HTML, footnotes would seem really easy to do, and in some sense, they are. Simply create a footnote at the bottom of the page that has some sort of element with an <code>id</code>, preferably mnemonic, e.g., <code>&lt;a id=&quot;fn&quot;&gt;...</code>, and then refer to that <code>id</code> in your text in the normal way, by adding a #: either as <code>&lt;a href=&quot;#fn&quot;&gt;1&lt;/a&gt;</code> in HTML, or as <code>[1](#fn)</code> in markdown.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode markdown"><code class="sourceCode markdown"><a class="sourceLine" id="cb4-1" title="1">Blah blah blah blah.<span class="ot">[1](#fn)</span> More blah...</a>
+<a class="sourceLine" id="cb4-2" title="2"></a>
+<a class="sourceLine" id="cb4-3" title="3">---</a>
+<a class="sourceLine" id="cb4-4" title="4">1. <span class="fl"> &lt;a id=&quot;fn&quot;&gt;&lt;/a&gt; Even more blah...</span></a></code></pre></div>
+<p>But there are some problems with this method. First, it’s ugly.<a href="#fn:ugly">2</a> See how ugly that big underlined number looks? Second, and more importantly, as I’ve written it, there’s no link from the footnote back up to the reference, so once you’re done reading the footnote, you have to go find where you were before. Uncool. There’s nothing worse than a footnote with no link back to the reference.</p>
+<p>One potential solution to both problems is the following: wrap some <code>&lt;sup&gt;&lt;/sup&gt;</code> around the reference text to superscript it, and also use this element to declare an <code>id</code> for the reference. Then you can link from the footnote to the reference using the reference <code>id</code>, together with a useful symbol like ↑ as the link text (<code>&amp;uarr;</code> in HTML; stands for <strong>u</strong>p <strong>arr</strong>ow, of course).</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode markdown"><code class="sourceCode markdown"><a class="sourceLine" id="cb5-1" title="1">Blah blah blah blah.&lt;sup id=&quot;ref&quot;&gt;<span class="ot">[1](#fn)</span>&lt;/sup&gt; More blah...</a>
+<a class="sourceLine" id="cb5-2" title="2"></a>
+<a class="sourceLine" id="cb5-3" title="3">---</a>
+<a class="sourceLine" id="cb5-4" title="4">1. <span class="fl"> &lt;a id=&quot;fn&quot; href=&quot;#ref&quot;&gt;&amp;uarr;&lt;/a&gt; Even more blah...</span></a></code></pre></div>
+<p>This actually ain’t <em>that</em> bad.<sup id="ref:sup"><a href="#fn:sup">3</a></sup> However, what if we want to customize how the reference number looks? What if we don’t like underline, or we want a special color or font or size? Unfortunately, any style properties of a <code>sup</code> element get overridden if they are also style properties of the <code>a</code> element embedded inside the <code>&lt;sup&gt;&lt;/sup&gt;</code> tags: recall that</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode markdown"><code class="sourceCode markdown"><a class="sourceLine" id="cb6-1" title="1">&lt;sup ...&gt;<span class="ot">[text](url)</span>&lt;/sup&gt;</a></code></pre></div>
+<p>gets expanded to</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode markdown"><code class="sourceCode markdown"><a class="sourceLine" id="cb7-1" title="1">&lt;sup ...&gt;&lt;a href=&quot;url&quot;&gt;text&lt;/a&gt;&lt;/sup&gt;</a></code></pre></div>
+<p>In Octopress, that means that <code>sup {text-decoration: none;}</code>, <code>sup {font-size: small;}</code>, etc. have no effect on superscript reference links because <code>a</code> already has its own <code>text-decoration</code> and <code>font-size</code> values.</p>
+<p>The solution I’ve come up with to all these problems is to define two new classes of anchors (<code>a</code> elements): one for references and one for footnotes. I like my reference numbers to be small and superscript, with no underline, and I like my up arrow to be normal size and superscript, with no underline.</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode css"><code class="sourceCode css"><a class="sourceLine" id="cb8-1" title="1">a<span class="fu">.ref</span> {</a>
+<a class="sourceLine" id="cb8-2" title="2">  <span class="kw">vertical-align</span>: <span class="dv">super</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb8-3" title="3">  <span class="kw">font-size</span>: <span class="dv">small</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb8-4" title="4">  <span class="kw">text-decoration</span>: <span class="dv">none</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb8-5" title="5">  <span class="im">@include</span> link-colors<span class="fu">(</span>$link-color<span class="op">,</span></a>
+<a class="sourceLine" id="cb8-6" title="6">                       $hover: $link-color-hover<span class="op">,</span></a>
+<a class="sourceLine" id="cb8-7" title="7">                       $focus: $link-color-hover<span class="op">,</span></a>
+<a class="sourceLine" id="cb8-8" title="8">                       $visited: $link-color-visited<span class="op">,</span></a>
+<a class="sourceLine" id="cb8-9" title="9">                       $active: $link-color-active<span class="fu">)</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb8-10" title="10">}</a>
+<a class="sourceLine" id="cb8-11" title="11"></a>
+<a class="sourceLine" id="cb8-12" title="12">a<span class="fu">.fn</span> {</a>
+<a class="sourceLine" id="cb8-13" title="13">  <span class="kw">vertical-align</span>: <span class="dv">super</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb8-14" title="14">  <span class="kw">text-decoration</span>: <span class="dv">none</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb8-15" title="15">  <span class="im">@include</span> link-colors<span class="fu">(</span>$link-color<span class="op">,</span></a>
+<a class="sourceLine" id="cb8-16" title="16">                       $hover: $link-color-hover<span class="op">,</span></a>
+<a class="sourceLine" id="cb8-17" title="17">                       $focus: $link-color-hover<span class="op">,</span></a>
+<a class="sourceLine" id="cb8-18" title="18">                       $visited: $link-color-visited<span class="op">,</span></a>
+<a class="sourceLine" id="cb8-19" title="19">                       $active: $link-color-active<span class="fu">)</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb8-20" title="20">}</a></code></pre></div>
+<p>The <code>@include ...</code> stuff adds all the color variables from <code>/sass/custom/_colors.scss</code>. Without that, the links would be black.</p>
+<p>These two classes now mean I do references and footnotes as follows.</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode markdown"><code class="sourceCode markdown"><a class="sourceLine" id="cb9-1" title="1">Blah blah.&lt;a class=&quot;ref&quot; id=&quot;ref:blah&quot; href=&quot;#fn:blah&quot;&gt;[1]&lt;/a&gt; More blah</a>
+<a class="sourceLine" id="cb9-2" title="2"></a>
+<a class="sourceLine" id="cb9-3" title="3">Aoeu aoeu aoeu.&lt;a class=&quot;ref&quot; id=&quot;ref:aoeu&quot; href=&quot;#fn:aoeu&quot;&gt;[2]&lt;/a&gt; More aoeu</a>
+<a class="sourceLine" id="cb9-4" title="4"></a>
+<a class="sourceLine" id="cb9-5" title="5">---</a>
+<a class="sourceLine" id="cb9-6" title="6">1. <span class="fl"> &lt;a class=&quot;fn&quot; id=&quot;fn:blah&quot; href=&quot;#ref:blah&quot;&gt;&amp;uarr;&lt;/a&gt; Even more blah...</span></a>
+<a class="sourceLine" id="cb9-7" title="7"></a>
+<a class="sourceLine" id="cb9-8" title="8">2. <span class="fl"> &lt;a class=&quot;fn&quot; id=&quot;fn:aoeu&quot; href=&quot;#ref:aoeu&quot;&gt;&amp;uarr;&lt;/a&gt; Even more aoeu...</span></a></code></pre></div>
+<p>In other words, each <em>reference</em> consists of a number, like 1, surrounded by <code>a</code> tags of the <code>ref</code> class, with some mnemonic ref <code>id</code>, pointing to the corresponding fn anchor/<code>id</code>. The corresponding <em>footnote</em> consists of a ↑, surrounded by <code>a</code> tags of the <code>fn</code> class, with some mnemonic fn <code>id</code>, pointing back to the corresponding ref anchor/<code>id</code>.</p>
+<p>I think this works pretty well. Although it clutters my markdown with a bit of HTML, I think the flexibility is worth it. This way, I can easily change how my reference numbers look, or how my footnote arrow looks, or both, and it’ll trickle down to all my posts that use these classes.</p>
+<p>There may be a better way of handling footnotes, but I haven’t seen it or thought of it yet.</p>
+<hr />
+<ol type="1">
+<li><p><a class="fn" id="fn:kd" href="#ref:kd">↑</a> Octopress actually uses <a href="https://github.com/rtomayko/rdiscount">rdiscount</a> by default. Read <a href="../latex-math-in-octopress/">here</a> to find out why I switched to kramdown.</p></li>
+<li><p><a class="fn" id="fn:ugly"></a> The actual footnote doesn’t look too bad, but keep reading.</p></li>
+<li><p><a class="fn" id="fn:sup" href="#ref:sup">↑</a> At least it works. Note that in Octopress superscripts are not very superscript by default. You must add <code>sup {vertical-align: super;}</code> to your <code>/sass/custom/_styles.scss</code>.</p></li>
+</ol>
+    </section>
+</article>
+
+<div id="disqus_thread"></div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+**/
+
+var disqus_config = function () {
+this.page.url = 'https://brianbuccola.com/./references-and-footnotes-in-html-css/';  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = '/./references-and-footnotes-in-html-css/'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://brianbuccola.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+        </main>
+
+        <footer>
+            Site proudly generated by
+            <a href="https://jaspervdj.be/hakyll">Hakyll</a>
+            and
+            <a href="https://pandoc.org/">Pandoc</a>
+            and served by
+            <a href="https://pages.github.com/">Github Pages</a>.
+        </footer>
+    </body>
+</html>

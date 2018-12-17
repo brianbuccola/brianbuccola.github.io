@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- Site info -->
+        <title>Brian Buccola · How to change the favicon in Octopress</title>
+        
+
+        <!-- Styling -->
+        <link rel="stylesheet" href="../css/default.css">
+        <link rel="stylesheet" href="../css/syntax.css">
+
+        <!-- Feeds -->
+        <link rel="alternate" type="application/atom+xml" href="../atom.xml" title="Brian Buccola">
+        <link rel="alternate" type="application/rss+xml" href="../rss.xml" title="Brian Buccola">
+
+        <!-- Fonts -->
+        <link href="https://fontlibrary.org/face/linux-libertine" media="screen" rel="stylesheet" type="text/css">
+        <link href="https://fontlibrary.org/face/linux-biolinum" media="screen" rel="stylesheet" type="text/css">
+        <link href="https://fontlibrary.org/face/fira-mono" media="screen" rel="stylesheet" type="text/css">
+
+        <!-- MathJax -->
+        <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({
+                CommonHTML: {
+                    scale: 90
+                }
+            });
+        </script>
+        <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML">
+        </script>
+
+        <!-- Google Analytics -->
+        <script>
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+            ga('create', 'UA-70938601-1', 'auto');
+            ga('send', 'pageview');
+        </script>
+    </head>
+    <body>
+        <header>
+            <div class="logo">
+                <a href="../">Brian Buccola</a>
+            </div>
+            <nav class="nav">
+                <a class="nav" href="../">Home</a>
+                <a class="nav" href="../work/">Work</a>
+                <a class="nav" href="../cv/">CV</a>
+                <a class="nav" href="../blog/">Blog</a>
+            </nav>
+        </header>
+
+        <main role="main">
+            <h1>How to change the favicon in Octopress</h1>
+            <article>
+    <section class="header">
+        <div class="info">
+            November 29, 2012
+            
+        </div>
+    </section>
+    <section>
+        <p><strong><em>Update:</em></strong> <em>I no longer maintain this blog using Octopress, but I will leave this post here in case it may be of use to people.</em></p>
+<p>I found several suggestions for how to change the default Octopress favicon (a black and grey “O”), such as adding your <code>favicon.ico</code> to <code>source/</code>, and then editing <code>source/_includes/custom/head.html</code> with the line</p>
+<pre class="jekyll"><code>{% assign favicon = '/favicon.ico' %}</code></pre>
+<p>For some reason that didn’t work for me. Maybe it’s because my <code>favicon.ico</code> file was unreadable/corrupt. I used <a href="http://favicon-generator.org/editor/">favicon-generator</a> to create my favicon, which I downloaded as <code>favicon.ico</code>, but I couldn’t open it in <code>feh</code> either.</p>
+<p>The solution was to convert to <code>png</code> using <a href="http://www.imagemagick.org/script/index.php">ImageMagick</a>’s <code>convert</code> command:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb2-1" title="1">$ <span class="ex">convert</span> favicon.ico favicon.png</a></code></pre></div>
+<p>After that, I was able both to view the favicon in <code>feh</code> and to replace the default Octopress favicon, without even touching <code>source/_includes/custom/head.html</code>. The reason is that the default favicon was named <code>favicon.png</code>, which I simply overwrite. Very easy, and plus there’s no need to keep around the default favicon anyway.</p>
+<p>P.S. When testing if Octopress finds your favicon, refreshing your browser may not be enough. You may have to restart the browser first to clear the old favicon.</p>
+    </section>
+</article>
+
+<div id="disqus_thread"></div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+**/
+
+var disqus_config = function () {
+this.page.url = 'https://brianbuccola.com/./how-to-change-the-favicon-in-octopress/';  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = '/./how-to-change-the-favicon-in-octopress/'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://brianbuccola.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+        </main>
+
+        <footer>
+            Site proudly generated by
+            <a href="https://jaspervdj.be/hakyll">Hakyll</a>
+            and
+            <a href="https://pandoc.org/">Pandoc</a>
+            and served by
+            <a href="https://pages.github.com/">Github Pages</a>.
+        </footer>
+    </body>
+</html>

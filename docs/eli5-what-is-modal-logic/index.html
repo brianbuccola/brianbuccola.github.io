@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- Site info -->
+        <title>Brian Buccola · ELI5: What is modal logic?</title>
+        
+
+        <!-- Styling -->
+        <link rel="stylesheet" href="../css/default.css">
+        <link rel="stylesheet" href="../css/syntax.css">
+
+        <!-- Feeds -->
+        <link rel="alternate" type="application/atom+xml" href="../atom.xml" title="Brian Buccola">
+        <link rel="alternate" type="application/rss+xml" href="../rss.xml" title="Brian Buccola">
+
+        <!-- Fonts -->
+        <link href="https://fontlibrary.org/face/linux-libertine" media="screen" rel="stylesheet" type="text/css">
+        <link href="https://fontlibrary.org/face/linux-biolinum" media="screen" rel="stylesheet" type="text/css">
+        <link href="https://fontlibrary.org/face/fira-mono" media="screen" rel="stylesheet" type="text/css">
+
+        <!-- MathJax -->
+        <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({
+                CommonHTML: {
+                    scale: 90
+                }
+            });
+        </script>
+        <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML">
+        </script>
+
+        <!-- Google Analytics -->
+        <script>
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+            ga('create', 'UA-70938601-1', 'auto');
+            ga('send', 'pageview');
+        </script>
+    </head>
+    <body>
+        <header>
+            <div class="logo">
+                <a href="../">Brian Buccola</a>
+            </div>
+            <nav class="nav">
+                <a class="nav" href="../">Home</a>
+                <a class="nav" href="../work/">Work</a>
+                <a class="nav" href="../cv/">CV</a>
+                <a class="nav" href="../blog/">Blog</a>
+            </nav>
+        </header>
+
+        <main role="main">
+            <h1>ELI5: What is modal logic?</h1>
+            <article>
+    <section class="header">
+        <div class="info">
+            March 23, 2015
+            
+        </div>
+    </section>
+    <section>
+        <p>Someone recently asked me what sort of background knowledge is required to study modal logic. I thought I’d share my reply here, in case it might be of use to people.</p>
+<p>My first taste of modal logic was <a href="https://en.wikipedia.org/wiki/Richard_Montague">Richard Montague</a>’s intensional logic (IL), as applied to natural language. IL is a complex combination of higher-order typed logic (with typed λ-terms) and two types of modal logic (see the end of this post). Needless to say, I struggled long and hard to disentangle the pieces and understand them individually. In fact, for a while, I thought that modal logic <em>was</em> IL. It was only later that I discovered that, actually, even basic propositional logic can be modalized.</p>
+<p>I strongly believe now that the study of modal logic (be it in a logic course or in a natural language semantics course) should begin modal propositional logic, not modal predicate (quantificational) logic. Modality and quantification can much more easily be combined once they are each individually well understood.</p>
+<p>If you’re new to modal logic and have, up to now, felt a little intimidated or confused by it, then hopefully the preceding paragraphs have eased your mind. If not, then hopefully the rest of this post will.</p>
+<h2 id="explain-it-like-im-5-what-is-modal-logic">Explain it like I’m 5: What is modal logic?</h2>
+<p>Modal logic is an extension of other, more basic types of logic, primarily classical <em>propositional logic</em> and <em>predicate logic</em>. You can learn modal logic once you’ve learned propositional logic. You do <em>not</em> need to know predicate logic to learn modal logic, although in practice many modal logics are extensions of predicate logic, which itself is an extension of propositional logic.</p>
+<p>Here are some types of logic, in order (more or less) of increasing complexity.</p>
+<ul>
+<li><p><strong>Propositional logic</strong> is the simplest logic. It contains <em>propositional variables</em> (p, q, r, …) and <em>logical connectives</em> (¬, ∧, ∨, →, …). You can create formulas like p, p ∧ q, (p ∨ ¬q) → r, etc. The truth value of a complex formula ϕ (one containing logical connectives) is a function of the truth values of the immediate subformulas of ϕ, based on the <a href="https://en.wikipedia.org/wiki/Truth_table"><em>truth tables</em></a> for the logical connectives.</p></li>
+<li><p><strong>Non-quantificational predicate logic</strong> extends propositional logic by creating atomic formulas out of <em>n</em>-place <em>predicate symbols</em> (P, R, S, …), i.e. symbols that take <em>n</em> <em>individual symbols</em> (a, b, c, …) to create a formula, such as Pa, Rab, Sabc, etc. The individual symbols are taken from a <em>domain (or universe) of individuals</em>, D (or U). This logic still contains the logical connectives, so you can create complex formulas like Pa ∧ (Rab → ¬Sabc). As in propositional logic, the truth value of a complex formula ϕ is a function of the truth values of the immediate subformulas of ϕ, based on the truth tables for the logical connectives.</p></li>
+<li><p><strong>Quantificational (first-order) predicate logic</strong> extends non-quantificational predicate logic by adding <em>individual variables</em> (x, y, z, …) and <em>quantifier symbobls</em> (∃, ∀) that operate over individual variables. You can create formulas like ∀xPx, ∃x∃yRxy, Pa ∧ ∀x(Sxbc → Px), etc. The truth value of a formula ϕ with a quantifier depends on whether the formula in the immediate scope of the quantifier is true of some (in the case of ∃) or all (in the case of ∀) individuals in the domain (roughly speaking). For example, ∃xPx is true iff P is holds of <em>some</em> individual in the domain, and ∀xPx is true iff P holds of <em>every</em> individual in the domain (roughly speaking). (<strong>Second-</strong> and other <strong>higher-order predicate logics</strong> are extensions of first-order predicate logic, which allow quantification not only over individuals, but also over sets (of sets (…(of sets)…)) of individuals.)</p></li>
+<li><p><strong>Modal propositional logic</strong> extends propositional logic by adding <em>intensional operators</em> (e.g. ◇, □) and a <em>domain of possible worlds</em> and by making truth value assignments world-dependent, meaning that a formula ϕ only has a truth value relative to (or “in”) a possible world. This means that it no longer makes sense to say that ϕ is true or or that ϕ is false; rather, we say that ϕ is true in (relative to) w1, false in w2, and so on. (A formula generally has different truth values in different possible worlds.) You can make formulas like p, p ∧ q, □p, □p → ◇q, etc. The truth value of a formula ϕ with an intensional operator depends on whether the formula in the immediate scope of the operator is true in some (in the case of ◇) or all (in the case of □) worlds accessible from the world relative to which ϕ is evaluated. For example, ◇p is true in w iff p is true in <em>some</em> world v which is accessible from w, and □p is true in w iff p is true in <em>every</em> world v which is accessible from w. Which worlds are accessible from which other worlds is determined by an <em>accessibility relation</em>. Accessibility relations play a huge role in modal logic.</p></li>
+<li><p><strong>Modal predicate logic</strong> extends modal propositional logic in the same way that non-modal predicate logic extends non-modal propositional logic. It thus contains both intensional operators and quantifier symbols, so you can create complicated formulas like ◇(Rab → ∃x∀y(¬□Px ∧ □Sxy)).</p></li>
+</ul>
+<p>Different intensional operators and different accessibility relations give rise to different modal logics, some of which have been used to model various real-world phenomena. Some examples:</p>
+<ul>
+<li>possibility and necessity (<strong>alethic logic</strong>)</li>
+<li>permission and obligation (<strong>deontic logic</strong>)</li>
+<li>knowledge (<strong>epistemic logic</strong>)</li>
+<li>belief (<strong>doxastic logic</strong>)</li>
+<li>time (<strong>temporal logic</strong>)</li>
+</ul>
+<p>In the case of time, possible “worlds” model points in time and are ordered by an “earlier than” relation, e.g. “t1 &lt; t2” means t1 is earlier in time than t2. Thus, the domain of possible worlds/times/states can have quite a rich structure; that is, it need not be a simple set, but can in addition have structure (relations, etc.) defined on it.</p>
+<p>Montague’s intensional logic actually includes both worlds and times, so that a formula ϕ is said to be true (or false) in a particular world, at a particular time. Thus, ϕ can be true in w at time t1, but false in w at time t2; and ϕ can be true in w1 at time t, but false in w2 at time t; and so forth.</p>
+    </section>
+</article>
+
+<div id="disqus_thread"></div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+**/
+
+var disqus_config = function () {
+this.page.url = 'https://brianbuccola.com/./eli5-what-is-modal-logic/';  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = '/./eli5-what-is-modal-logic/'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://brianbuccola.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+        </main>
+
+        <footer>
+            Site proudly generated by
+            <a href="https://jaspervdj.be/hakyll">Hakyll</a>
+            and
+            <a href="https://pandoc.org/">Pandoc</a>
+            and served by
+            <a href="https://pages.github.com/">Github Pages</a>.
+        </footer>
+    </body>
+</html>
