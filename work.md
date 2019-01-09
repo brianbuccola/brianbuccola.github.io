@@ -10,9 +10,9 @@ If the LingBuzz server is down, just [email me][email].*
 
 ## Journal Articles
 
-- Brian Buccola and Andreas Haida. 2018.
+- Brian Buccola and Andreas Haida. Forthcoming.
   [Obligatory irrelevance and the computation of ignorance inferences][oblig-irrel-lb].
-  Accepted (pending review of minor revisions) in *Journal of Semantics*.
+  *Journal of Semantics*.
 - Emmanuel Chemla, Brian Buccola, and Isabelle Dautriche. Forthcoming.
   [Connecting content and logical words][connecting-sa].
   *Journal of Semantics*.
