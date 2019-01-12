@@ -75,7 +75,7 @@ If the LingBuzz server is down, just [email me][email].*
   *Sinn und Bedeutung* 20. 127--144.
 - Brian Buccola. 2015.
   [Variable monotonicity and *less than*: When Van Benthem's problem is not a problem][nels45].
-  *North East Linguistic Society (NELS)* 45. 135--124.
+  *North East Linguistic Society (NELS)* 45. 125--134.
 - Brian Buccola. 2013.
   [On the expressivity of Optimality Theory versus ordered rewrite rules][fg-doi].
   *Formal Grammar*. 142--158.
