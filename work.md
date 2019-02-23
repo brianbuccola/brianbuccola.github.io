@@ -13,9 +13,10 @@ If the LingBuzz server is down, just [email me][email].*
 - Brian Buccola and Andreas Haida. Forthcoming.
   [Obligatory irrelevance and the computation of ignorance inferences][oblig-irrel-lb].
   *Journal of Semantics*.
-- Emmanuel Chemla, Brian Buccola, and Isabelle Dautriche. Forthcoming.
-  [Connecting content and logical words][connecting-sa].
+- Emmanuel Chemla, Brian Buccola, and Isabelle Dautriche. 2019.
+  [Connecting content and logical words][connecting-doi].
   *Journal of Semantics*.
+  ([preprint][connecting-lb])
 - Brian Buccola, Isabelle Dautriche, and Emmanuel Chemla. 2018.
   [Competition and symmetry in an artificial word learning task][competition].
   *Frontiers in Psychology* 9(2176).
@@ -31,7 +32,8 @@ If the LingBuzz server is down, just [email me][email].*
   *Semantics and Pragmatics* 5(1). 1--25.
 
 [competition]: https://dx.doi.org/10.3389/fpsyg.2018.02176
-[connecting-sa]: https://semanticsarchive.net/Archive/WVhYzUwM/Chemla-Buccola-Dautriche-ConnectWords.pdf
+[connecting-doi]: https://doi.org/10.1093/jos/ffz001
+[connecting-lb]: https://ling.auf.net/lingbuzz/004481/current.pdf
 [only-snippet]: http://www.ledonline.it/snippets/allegati/snippets33002.pdf
 [mod-num-max-doi]: https://dx.doi.org/10.1007/s10988-016-9187-2
 [mod-num-max-lb]: https://ling.auf.net/lingbuzz/002528/current.pdf
