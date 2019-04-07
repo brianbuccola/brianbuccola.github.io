@@ -41,6 +41,9 @@ If the LingBuzz server is down, just [email me][email].*
 
 ## Manuscripts
 
+- Brian Buccola and Luka Crnič. 2019.
+  [NPIs, intervention, and collectivity][intcoll-lb].
+  Submitted.
 - Brian Buccola, Manuel Križ, and Emmanuel Chemla. 2018.
   [Conceptual alternatives: Competition in language and beyond][concepts-lb].
   Under review.
@@ -54,6 +57,7 @@ If the LingBuzz server is down, just [email me][email].*
   [Bare numerals, collectivity, and genericity: A new puzzle][bare-num-lb].
   In revision.
 
+[intcoll-lb]: https://ling.auf.net/lingbuzz/004553/current.pdf
 [baboons-lb]: https://ling.auf.net/lingbuzz/004172/current.pdf
 [or-snippet]: https://ling.auf.net/lingbuzz/003967/current.pdf
 [concepts-lb]: https://ling.auf.net/lingbuzz/003208/current.pdf
