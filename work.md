@@ -13,6 +13,7 @@ If the LingBuzz server is down, just [email me][email].*
 - Brian Buccola and Andreas Haida. Forthcoming.
   [Obligatory irrelevance and the computation of ignorance inferences][oblig-irrel-lb].
   *Journal of Semantics*.
+  (For the 2017 version that treats modified numerals, click [here][oblig-irrel-modnum-lb].)
 - Emmanuel Chemla, Brian Buccola, and Isabelle Dautriche. 2019.
   [Connecting content and logical words][connecting-doi].
   *Journal of Semantics*.
@@ -32,6 +33,7 @@ If the LingBuzz server is down, just [email me][email].*
   *Semantics and Pragmatics* 5(1). 1--25.
 
 [oblig-irrel-lb]: https://ling.auf.net/lingbuzz/003600/current.pdf
+[oblig-irrel-modnum-lb]: https://ling.auf.net/lingbuzz/003600/v1.pdf
 [competition]: https://dx.doi.org/10.3389/fpsyg.2018.02176
 [connecting-doi]: https://doi.org/10.1093/jos/ffz001
 [connecting-lb]: https://ling.auf.net/lingbuzz/004481/current.pdf
