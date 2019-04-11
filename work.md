@@ -31,6 +31,7 @@ If the LingBuzz server is down, just [email me][email].*
   [Two types of class B numeral modifiers: A reply to Nouwen 2010][reply-to-nouwen-sp].
   *Semantics and Pragmatics* 5(1). 1--25.
 
+[oblig-irrel-lb]: https://ling.auf.net/lingbuzz/003600/current.pdf
 [competition]: https://dx.doi.org/10.3389/fpsyg.2018.02176
 [connecting-doi]: https://doi.org/10.1093/jos/ffz001
 [connecting-lb]: https://ling.auf.net/lingbuzz/004481/current.pdf
@@ -61,7 +62,6 @@ If the LingBuzz server is down, just [email me][email].*
 [baboons-lb]: https://ling.auf.net/lingbuzz/004172/current.pdf
 [or-snippet]: https://ling.auf.net/lingbuzz/003967/current.pdf
 [concepts-lb]: https://ling.auf.net/lingbuzz/003208/current.pdf
-[oblig-irrel-lb]: https://ling.auf.net/lingbuzz/003600/current.pdf
 [bare-num-lb]: https://ling.auf.net/lingbuzz/003400/current.pdf
 
 ## Proceedings Papers
