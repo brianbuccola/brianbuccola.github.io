@@ -18,9 +18,10 @@ that modal logic *was* IL. It was only later that I discovered that, actually,
 even basic propositional logic can be modalized.
 
 I strongly believe now that the study of modal logic (be it in a logic course or
-in a natural language semantics course) should begin modal propositional logic,
-not modal predicate (quantificational) logic. Modality and quantification can
-much more easily be combined once they are each individually well understood.
+in a natural language semantics course) should begin with modal propositional
+logic, not modal predicate (quantificational) logic. Modality and quantification
+can much more easily be combined once they are each individually well
+understood.
 
 If you're new to modal logic and have, up to now, felt a little intimidated or
 confused by it, then hopefully the preceding paragraphs have eased your mind. If
