@@ -73,8 +73,8 @@ Here are some types of logic, in order (more or less) of increasing complexity.
   *intensional operators* (e.g. ◇, □) and a *domain of possible worlds* and by
   making truth value assignments world-dependent, meaning that a formula ϕ only
   has a truth value relative to (or "in") a possible world. This means that it
-  no longer makes sense to say that ϕ is true or or that ϕ is false; rather, we
-  say that ϕ is true in (relative to) w1, false in w2, and so on. (A formula
+  no longer makes sense to say that ϕ is true or that ϕ is false; rather, we say
+  that ϕ is true in (relative to) w1, false in w2, and so on. (A formula
   generally has different truth values in different possible worlds.) You can
   make formulas like p, p ∧ q, □p, □p → ◇q, etc. The truth value of a formula ϕ
   with an intensional operator depends on whether the formula in the immediate
