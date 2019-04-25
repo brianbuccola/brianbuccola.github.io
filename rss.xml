@@ -7,8 +7,30 @@
         <description><![CDATA[Brian Buccola is a linguist who specializes in formal and experimental semantics and pragmatics. He also blogs about language, logic, and Linux.]]></description>
         <atom:link href="https://brianbuccola.com//rss.xml" rel="self"
                    type="application/rss+xml" />
-        <lastBuildDate>Fri, 30 Nov 2018 00:00:00 UT</lastBuildDate>
+        <lastBuildDate>Thu, 25 Apr 2019 00:00:00 UT</lastBuildDate>
         <item>
+    <title>How to force pdflatex (PDF) over latex (DVI) compilation</title>
+    <link>https://brianbuccola.com//./how-to-force-pdflatex-pdf-over-latex-dvi-compilation/</link>
+    <description><![CDATA[<p><strong>PSA:</strong> If you’re submitting a latex source file to a journal, and their compiler is giving you errors related to DVI output, try adding <code>%&amp;pdflatex</code> to the top of the file (make it line 1, all by itself) to force using <code>pdflatex</code> over plain <code>latex</code> + <code>dvipdf</code>.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode latex"><code class="sourceCode latex"><a class="sourceLine" id="cb1-1" title="1"><span class="co">%&amp;pdflatex</span></a>
+<a class="sourceLine" id="cb1-2" title="2"><span class="bu">\documentclass</span>{<span class="ex">article</span>}</a>
+<a class="sourceLine" id="cb1-3" title="3"><span class="kw">\begin</span>{<span class="ex">document</span>}</a>
+<a class="sourceLine" id="cb1-4" title="4">Hello, world!</a>
+<a class="sourceLine" id="cb1-5" title="5"><span class="kw">\end</span>{<span class="ex">document</span>}</a></code></pre></div>
+<p>In my case, I was getting errors along the lines of</p>
+<pre><code>! LaTeX Error: Cannot determine size of graphic in figure.pdf (no BoundingBox)</code></pre>
+<p>This is an indication that the backend compiler is plain <code>latex</code> (trying to create a DVI), which is unable to determine the size of PDF, PNG, or JPG images. (If this is your only problem, then another solution is to use EPS images instead, which should be handled just fine by plain <code>latex</code>.)</p>
+<p>More info in the following TeX StackExchange threads:</p>
+<ul>
+<li><a href="https://tex.stackexchange.com/questions/17734/cannot-determine-size-of-graphic">Cannot determine size of graphic</a></li>
+<li><a href="https://tex.stackexchange.com/questions/347460/cannot-determine-the-size-of-the-image/347462">Cannot determine the size of the image</a></li>
+<li><a href="https://tex.stackexchange.com/questions/53600/pdflatex-producing-dvi-output-instead-of-pdf">pdflatex producing dvi output instead of pdf</a></li>
+</ul>]]></description>
+    <pubDate>Thu, 25 Apr 2019 00:00:00 UT</pubDate>
+    <guid>https://brianbuccola.com//./how-to-force-pdflatex-pdf-over-latex-dvi-compilation/</guid>
+    <dc:creator>Brian Buccola</dc:creator>
+</item>
+<item>
     <title>Benjamin Franklin on learning modern and ancient languages</title>
     <link>https://brianbuccola.com//./benjamin-franklin-on-learning-modern-and-ancient-languages/</link>
     <description><![CDATA[<p>I’m currently reading <a href="https://www.gutenberg.org/files/20203/20203-h/20203-h.htm">Benjamin Franklin’s autobiography</a>, and as a former student of Latin, Greek, and (afterwards) Romance languages, I was struck by the following passage.</p>
@@ -399,71 +421,6 @@ let &amp;t_8b = &quot;\&lt;Esc&gt;[48;2;%lu;%lu;%lum&quot;</code></pre>]]></desc
 <div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb2-1" title="1">$ <span class="ex">biber</span> --output-format=bibtex --output_fieldcase=lower --output-file=refs.bib paper.bcf</a></code></pre></div>]]></description>
     <pubDate>Wed, 05 Oct 2016 00:00:00 UT</pubDate>
     <guid>https://brianbuccola.com//./use-biblatex-biber-to-create-a-new-subdatabase-based-on-an-auxiliary-file/</guid>
-    <dc:creator>Brian Buccola</dc:creator>
-</item>
-<item>
-    <title>Line breaks in mutt and vim</title>
-    <link>https://brianbuccola.com//./line-breaks-in-mutt-and-vim/</link>
-    <description><![CDATA[<h2 id="the-problem">The problem</h2>
-<p>I’ve been using <a href="http://www.mutt.org/">mutt</a> as my primary email client, and <a href="http://www.vim.org/">vim</a> as my text editor for composing emails, for literally <em>years</em>, and I only just recently discovered that my email text comes out very funny looking on the recipient’s end when they view the email on a small screen, like a smartphone screen.</p>
-<p>By “funny looking”, what I mean is this. When I compose email text in vim, I hard-break lines at 80 characters, because imho it’s much easier to read 12 lines of 80 characters each than, say, 6 lines of 160 characters each. However (and this should’ve been painfully obvious to me long ago), if someone is viewing such text on a screen that can display fewer than 80 characters per line, then the screen wraps (soft-breaks) the line <em>before</em> the 80th character, while the email text itself <em>still</em> hard-breaks at the 80th character, so that you end up with (what looks like) <em>two</em> line breaks. In other words, you get the following, where “X” marks the spot where the smartphone display wraps the line, and “Y” marks where the email text hard-breaks the line (e.g. the 80th character):</p>
-<pre><code>text text text text text text text text text text text text X
-text text Y
-text text text text text text text text text text text text X
-text text Y
-text text text text text text text text text text text text X
-text text Y
-text text text text text text text text text text text text X
-text text Y</code></pre>
-<p>which obviously looks much uglier than</p>
-<pre><code>text text text text text text text text text text text text text text Y
-text text text text text text text text text text text text text text Y
-text text text text text text text text text text text text text text Y
-text text text text text text text text text text text text text text Y</code></pre>
-<p>A similar issue arises with quoted text in a reply email (which I also noticed long ago, but never really bothered to try and fix): quoted text is typically preceded by a “&gt;”, but doing that can cause an unwanted line break, so that you end up with the following, where “X” marks the new line break that occurs at, say, the 80th character, and “Y” marks the old line break that had occurred at the 80th character before “&gt;” was added:</p>
-<pre><code>&gt; text text text text text text text text text text text text X
-text text Y
-&gt; text text text text text text text text text text text text X
-text text Y
-&gt; text text text text text text text text text text text text X
-text text Y
-&gt; text text text text text text text text text text text text X
-text text Y</code></pre>
-<p>Again, this is much worse than</p>
-<pre><code>&gt; text text text text text text text text text text text text text text Y
-&gt; text text text text text text text text text text text text text text Y
-&gt; text text text text text text text text text text text text text text Y
-&gt; text text text text text text text text text text text text text text Y</code></pre>
-<h2 id="the-solution">The solution</h2>
-<h3 id="flowed-text-in-mutt">Flowed text in mutt</h3>
-<p>The solution to both problems is to use an email option called <em>flowed text</em>, or <em>flowed format</em>. In mutt, you just add the line</p>
-<pre><code>set text_flowed</code></pre>
-<p>to your <code>muttrc</code>. (Apparently all (or most) email clients support/respect this feature.)</p>
-<p>Flowed text essentially means this: a hard line break in the email text will <em>not</em> be interpreted and rendered (by the email client) as an actual line break <em>if</em> the line ends in white space; a hard line break <em>will</em> be interpreted and rendered as an actual line break <em>if</em> the line ends in a non-white-space character. (You can read more about flowed text <a href="http://joeclark.org/ffaq.html">here</a>.)</p>
-<p>For example, the following text, where <code>-</code> stands for a single white space character (not a hyphen)</p>
-<pre><code>text text text text-
-text text-
-text text text text text text text-</code></pre>
-<p>will pretty much be treated as if it had been written all on a single line: the email client will simply wrap the line wherever it sees fit (or maybe not at all, if it fits all on the screen), but not elsewhere. By contrast,</p>
-<pre><code>text text text text
-text text
-text text text text text text text</code></pre>
-<p>will be treated as three distinct lines (useful for haikus, maybe, or lists).</p>
-<p>So basically, you can write your email text, breaking at 80 characters just like before, <em>as long as</em> each line ends in a space. (And if you actually want a real line break, as in a haiku or list, just don’t add the trailing space.)</p>
-<h3 id="flowed-text-in-vim">Flowed text in vim</h3>
-<p>Now, you might be thinking, <em>That’s annoying. I don’t want to manually add a space after every line break</em>. Thankfully, vim makes this extremely easy. Just add the <code>w</code> option to your <code>formatoptions</code>:</p>
-<pre class="vim"><code>set formatoptions+=w</code></pre>
-<p>Now, as you’re typing, when you hit 80 characters (or whatever your <code>textwidth</code> is set to), vim will hard-break the line <em>and</em> add the trailing white space for you. Easy.</p>
-<p>You probably only want this to happen when you write emails. To ensure this, you can set the <code>w</code> option only for files with the <code>mail</code> filetype, using an <code>autocmd</code>:</p>
-<pre class="vim"><code>&quot; Add format option &#39;w&#39; to add trailing white space, indicating that paragraph
-&quot; continues on next line. This is to be used with mutt&#39;s &#39;text_flowed&#39; option.
-augroup mail_trailing_whitespace &quot; {
-    autocmd!
-    autocmd FileType mail setlocal formatoptions+=w
-augroup END &quot; }</code></pre>
-<p>See <code>:help fo-table</code> for more info.</p>]]></description>
-    <pubDate>Thu, 07 Jul 2016 00:00:00 UT</pubDate>
-    <guid>https://brianbuccola.com//./line-breaks-in-mutt-and-vim/</guid>
     <dc:creator>Brian Buccola</dc:creator>
 </item>
 

@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- Site info -->
+        <title>Brian Buccola · How to force pdflatex (PDF) over latex (DVI) compilation</title>
+        
+
+        <!-- Styling -->
+        <link rel="stylesheet" href="../css/default.css">
+        <link rel="stylesheet" href="../css/syntax.css">
+
+        <!-- Feeds -->
+        <link rel="alternate" type="application/atom+xml" href="../atom.xml" title="Brian Buccola">
+        <link rel="alternate" type="application/rss+xml" href="../rss.xml" title="Brian Buccola">
+
+        <!-- Fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Alegreya" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Alegreya+Sans" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Fira+Mono" rel="stylesheet">
+
+        <!-- MathJax -->
+        <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML">
+        </script>
+
+        <!-- Google Analytics -->
+        <script>
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+            ga('create', 'UA-70938601-1', 'auto');
+            ga('send', 'pageview');
+        </script>
+    </head>
+    <body>
+        <header>
+            <div class="logo">
+                <a href="../">Brian Buccola</a>
+            </div>
+            <nav class="nav">
+                <a class="nav" href="../">Home</a>
+                <a class="nav" href="../work/">Work</a>
+                <a class="nav" href="../cv/">CV</a>
+                <a class="nav" href="../blog/">Blog</a>
+            </nav>
+        </header>
+
+        <main role="main">
+            <h1>How to force pdflatex (PDF) over latex (DVI) compilation</h1>
+            <article>
+    <section class="header">
+        <div class="info">
+            April 25, 2019
+            
+        </div>
+    </section>
+    <section>
+        <p><strong>PSA:</strong> If you’re submitting a latex source file to a journal, and their compiler is giving you errors related to DVI output, try adding <code>%&amp;pdflatex</code> to the top of the file (make it line 1, all by itself) to force using <code>pdflatex</code> over plain <code>latex</code> + <code>dvipdf</code>.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode latex"><code class="sourceCode latex"><a class="sourceLine" id="cb1-1" title="1"><span class="co">%&amp;pdflatex</span></a>
+<a class="sourceLine" id="cb1-2" title="2"><span class="bu">\documentclass</span>{<span class="ex">article</span>}</a>
+<a class="sourceLine" id="cb1-3" title="3"><span class="kw">\begin</span>{<span class="ex">document</span>}</a>
+<a class="sourceLine" id="cb1-4" title="4">Hello, world!</a>
+<a class="sourceLine" id="cb1-5" title="5"><span class="kw">\end</span>{<span class="ex">document</span>}</a></code></pre></div>
+<p>In my case, I was getting errors along the lines of</p>
+<pre><code>! LaTeX Error: Cannot determine size of graphic in figure.pdf (no BoundingBox)</code></pre>
+<p>This is an indication that the backend compiler is plain <code>latex</code> (trying to create a DVI), which is unable to determine the size of PDF, PNG, or JPG images. (If this is your only problem, then another solution is to use EPS images instead, which should be handled just fine by plain <code>latex</code>.)</p>
+<p>More info in the following TeX StackExchange threads:</p>
+<ul>
+<li><a href="https://tex.stackexchange.com/questions/17734/cannot-determine-size-of-graphic">Cannot determine size of graphic</a></li>
+<li><a href="https://tex.stackexchange.com/questions/347460/cannot-determine-the-size-of-the-image/347462">Cannot determine the size of the image</a></li>
+<li><a href="https://tex.stackexchange.com/questions/53600/pdflatex-producing-dvi-output-instead-of-pdf">pdflatex producing dvi output instead of pdf</a></li>
+</ul>
+    </section>
+</article>
+
+<div id="disqus_thread"></div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+**/
+
+var disqus_config = function () {
+this.page.url = 'https://brianbuccola.com/./how-to-force-pdflatex-pdf-over-latex-dvi-compilation/';  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = '/./how-to-force-pdflatex-pdf-over-latex-dvi-compilation/'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://brianbuccola.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+        </main>
+
+        <footer>
+            Site proudly generated by
+            <a href="https://jaspervdj.be/hakyll">Hakyll</a>
+            and
+            <a href="https://pandoc.org/">Pandoc</a>
+            and served by
+            <a href="https://pages.github.com/">Github Pages</a>.
+        </footer>
+    </body>
+</html>
