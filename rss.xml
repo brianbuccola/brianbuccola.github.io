@@ -7,8 +7,45 @@
         <description><![CDATA[Brian Buccola is a linguist who specializes in formal and experimental semantics and pragmatics. He also blogs about language, logic, and Linux.]]></description>
         <atom:link href="https://brianbuccola.com//rss.xml" rel="self"
                    type="application/rss+xml" />
-        <lastBuildDate>Thu, 25 Apr 2019 00:00:00 UT</lastBuildDate>
+        <lastBuildDate>Thu, 16 May 2019 00:00:00 UT</lastBuildDate>
         <item>
+    <title>Troubleshooting LaTeX compilation errors when submitting to journals</title>
+    <link>https://brianbuccola.com//./troubleshooting-latex-compilation-errors-when-submitting-to-journals/</link>
+    <description><![CDATA[<p>I just spent several hours troubleshooting a number of problems I encountered while trying to submit the LaTeX source files of a forthcoming manuscript to a journal hosted by Manuscript Central / ScholarOne (<em>Journal of Semantics</em>). Since I (and/or others) will likely encounter these (or similar) problems in the future, I figured I’d document my solutions to the two problems that gave me the most trouble, plus my failure to solve a third problem. Given also my <a href="/how-to-force-pdflatex-pdf-over-latex-dvi-compilation/">previous post</a>, this may turn into a series of posts…</p>
+<p><strong>Pro-tip:</strong> The first step is always to inspect the log file produced by the compilation. In my case, I saw that the journal’s version of TeX Live is from 2013 — 6 years old! This turned out to be the source of both problems below.</p>
+<h2 id="fixing-old-versions-of-tex-live-with-fixltx2e">1. Fixing old versions of TeX Live with fixltx2e</h2>
+<p>The first problem was that I kept getting an error regarding my use of <code>\textsubscript</code>. It took me longer than I care to admit to just google the issue. The first result was <a href="https://tex.stackexchange.com/questions/1013/how-to-typeset-subscript-in-usual-text-mode">this Stack Exchange thread</a>, which reveals that before 2015, you needed to use the <code>fixltx2e</code> package to properly use <code>\textsubscript</code>. So I added</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode latex"><code class="sourceCode latex"><a class="sourceLine" id="cb1-1" title="1"><span class="co">% Fix LaTeX2e (needed for JoS&#39;s 2013 version of TeX Live)</span></a>
+<a class="sourceLine" id="cb1-2" title="2"><span class="bu">\usepackage</span>{<span class="ex">fixltx2e</span>}</a></code></pre></div>
+<p>to my preamble.</p>
+<p>If you’re using an up-to-date version of TeX Live, this will produce a warning letting you know that you don’t need this package anymore.</p>
+<h2 id="using-a-package-that-the-journal-doesnt-have">2. Using a package that the journal doesn’t have</h2>
+<p>The second problem was that the journal doesn’t have the <a href="https://ctan.org/tex-archive/macros/generic/expex"><em>ExPex</em></a> package. (This package was only written in 2014, a year after the journal’s version of TeX Live, and only available as part of TeX Live since 2017.)</p>
+<p>In theory, this shouldn’t pose a huge problem, because the journal allows you to upload “supplementary TeX/LaTeX files” — meaning you can just upload the source files to any package that’s missing.</p>
+<p>In the case of <em>ExPex</em>, those files would be:</p>
+<pre><code>expex.sty
+expex.tex
+epltxfn.sty</code></pre>
+<p>(<code>expex.sty</code> is just a wrapper for <code>expex.tex</code>. There’s also <code>epltxchapno.sty</code>, but that’s for works with chapters.)</p>
+<p>The problem I encountered was that the journal was trying to convert <code>expex.tex</code> to a PDF, which was producing a bunch of errors — because that file isn’t intended to be converted into a PDF — and the system won’t let you complete submission if there are any unconverted TeX files.</p>
+<p>On a hunch, I renamed <code>expex.tex</code> to <code>expex</code> (i.e. I removed the extension). Thankfully…</p>
+<ol type="1">
+<li>The journal didn’t complain much. (It did give me a warning about no extension, but it let me continue anyway.)</li>
+<li>It no longer tried to convert <code>expex</code> to PDF.</li>
+<li>The missing <em>ExPex</em> package worked seamlessly even with the missing <code>.tex</code> extension on the main file.</li>
+</ol>
+<h2 id="re-running-biber-or-bibtex-to-fix-citations">3. Re-running Biber (or BibTeX) to fix citations</h2>
+<p>This is something I <em>couldn’t</em> solve: although the system produced a PDF, it didn’t produce proper citations, or print a bibliography. Usually, this means that Biber (or BibTeX) needs to be re-run, but I couldn’t force the system to do that from my end.</p>
+<p>The problem could be because I use Biblatex/Biber instead of the traditional BibTeX. I tried forcing the Biber backend by <a href="https://tex.stackexchange.com/questions/78101/when-and-why-should-i-use-tex-ts-program-and-tex-encoding">adding the directive</a></p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode latex"><code class="sourceCode latex"><a class="sourceLine" id="cb3-1" title="1"><span class="co">% !BIB TS-program = biber</span></a></code></pre></div>
+<p>to the top of the TeX file, but that didn’t work. (This is apparently only for TeX Shop, which I guess the journal doesn’t use. I’m not sure if there’s a more general directive, or a directive for <code>latexmk</code>, similar to the <code>%&amp;pdflatex</code> directive that I discussed in my <a href="/how-to-force-pdflatex-pdf-over-latex-dvi-compilation/">previous post</a>.)</p>
+<p>The problem could also be because the journal uses plain <code>pdflatex</code> rather than something like <code>latexmk</code>, which takes care of Biber/Biblatex and multiple compilations.</p>
+<p>In any case, I was able to complete my submission (along with my own PDF, with all the citations and bibliography), because of the solutions to the first two problems.</p>]]></description>
+    <pubDate>Thu, 16 May 2019 00:00:00 UT</pubDate>
+    <guid>https://brianbuccola.com//./troubleshooting-latex-compilation-errors-when-submitting-to-journals/</guid>
+    <dc:creator>Brian Buccola</dc:creator>
+</item>
+<item>
     <title>How to force pdflatex (PDF) over latex (DVI) compilation</title>
     <link>https://brianbuccola.com//./how-to-force-pdflatex-pdf-over-latex-dvi-compilation/</link>
     <description><![CDATA[<p><strong>PSA:</strong> If you’re submitting a latex source file to a journal, and their compiler is giving you errors related to DVI output, try adding <code>%&amp;pdflatex</code> to the top of the file (make it line 1, all by itself) to force using <code>pdflatex</code> over plain <code>latex</code> + <code>dvipdf</code>.</p>
@@ -400,27 +437,6 @@ let &amp;t_8b = &quot;\&lt;Esc&gt;[48;2;%lu;%lu;%lum&quot;</code></pre>]]></desc
 </blockquote>]]></description>
     <pubDate>Thu, 27 Oct 2016 00:00:00 UT</pubDate>
     <guid>https://brianbuccola.com//./the-yale-record-does-not-endorse-hillary-clinton/</guid>
-    <dc:creator>Brian Buccola</dc:creator>
-</item>
-<item>
-    <title>Use Biblatex/Biber to create a new subdatabase based on an auxiliary file</title>
-    <link>https://brianbuccola.com//./use-biblatex-biber-to-create-a-new-subdatabase-based-on-an-auxiliary-file/</link>
-    <description><![CDATA[<p><em>(NB: I discovered this feature of Biblatex/Biber by searching for a way to replicate <a href="https://help.jabref.org/en/NewBasedOnAux">the very same feature in JabRef</a>, which I no longer use.)</em></p>
-<p>Sorry for the title gore. Here is what I mean. Suppose you’re writing a paper called <code>paper.tex</code> that uses a BibTeX database (bib file) called <code>master.bib</code> containing all of your references. Normally, of course, <code>paper.tex</code> doesn’t cite every single entry in <code>master.bib</code>, but only a subset of them. Suppose now that your paper has been accepted in some journal, and you need to submit your bib file to the typesetters. Obviously, you don’t really want to submit your entire <code>master.bib</code>, but you also don’t want to manually extract the subset of entries actually cited in your paper. Well, it turns out you don’t have to: you can automatically create a new bib file containing exactly that subset by using <code>biber</code> (the backend processor to <a href="http://biblatex-biber.sourceforge.net/">Biblatex</a>). Here’s how. (NB: In <code>paper.tex</code>, you have to use the <code>biblatex</code> package with <code>biber</code> as the backend processor. This won’t work with regular <code>bibtex</code>.)</p>
-<p><strong>Step 1.</strong> Run <code>pdflatex paper.tex</code>, which will generate the auxiliary file <code>paper.bcf</code>.</p>
-<p><strong>Step 2.</strong> Run <code>biber --output-format=bibtex paper.bcf</code>.</p>
-<p>(You can leave off the <code>.tex</code> and <code>.bcf</code> extension in both commands.)</p>
-<p>This will generate a file <code>paper_biber.bib</code> containing all entries in <code>master.bib</code> that are cited in <code>paper.tex</code>. At this point in our made-up scenario, you would probably rename <code>paper_biber.bib</code> to something like <code>refs.bib</code>, change the <code>\addbibresource</code> line in <code>paper.tex</code> to use <code>refs.bib</code>, recompile everything to make sure it all works, and finally submit <code>paper.tex</code> and <code>refs.bib</code> to the journal.</p>
-<p>One quick follow-up note. By default, <code>biber</code> will put entry names like <code>@article</code> and entry fields like <code>author</code> in all caps:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bibtex"><code class="sourceCode bibtex"><a class="sourceLine" id="cb1-1" title="1"><span class="va">@ARTICLE</span>{<span class="ot">smith2016</span>,</a>
-<a class="sourceLine" id="cb1-2" title="2">  <span class="dt">AUTHOR</span> = {Mary Smith},</a>
-<a class="sourceLine" id="cb1-3" title="3">  <span class="dt">...</span></a>
-<a class="sourceLine" id="cb1-4" title="4">}</a></code></pre></div>
-<p>I personally like having everything in all lower case, because I don’t like my bib entries to yell at me (of course, as far as <code>biber</code> is concerned, it doesn’t actually matter: it’s all cosmetics). You can tell <code>biber</code> what to do by using the <code>--output_fieldcase</code> flag. The possible options are <code>upper</code> (default), <code>lower</code> (my preference), or <code>title</code> (e.g. <code>InProceedings</code>).</p>
-<p>There are a bunch of other output options, too. For example, you can specify the output filename (e.g. <code>--output-file=refs.bib</code>), whether to align entry fields in neat columns (<code>--output-align</code>), how many spaces to indent entry fields (e.g. <code>--output-indent=4</code>), and so on. See <code>biber --help</code>, in particular everything starting with <code>--output-*</code>. Here’s an example command.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb2-1" title="1">$ <span class="ex">biber</span> --output-format=bibtex --output_fieldcase=lower --output-file=refs.bib paper.bcf</a></code></pre></div>]]></description>
-    <pubDate>Wed, 05 Oct 2016 00:00:00 UT</pubDate>
-    <guid>https://brianbuccola.com//./use-biblatex-biber-to-create-a-new-subdatabase-based-on-an-auxiliary-file/</guid>
     <dc:creator>Brian Buccola</dc:creator>
 </item>
 
