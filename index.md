@@ -2,6 +2,11 @@
 title: Home
 ---
 
+***News:***
+*Starting this August,
+I'll be an Assistant Professor of linguistics
+at Michigan State University.*
+
 ![me](/images/brian.jpeg "A picture of me"){.photo}
 I'm a linguist currently working
 as a postdoctoral researcher
