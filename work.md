@@ -10,6 +10,9 @@ If the LingBuzz server is down, just [email me][email].*
 
 ## Journal Articles
 
+- Emmanuel Chemla, Isabelle Dautriche, Brian Buccola, and Joel Fagot. 2019.
+  [Constraints on the lexicons of human languages have cognitive roots present in baboons (*Papio papio*)][baboons-lb].
+  Accepted in *Proceedings of the National Academy of Sciences*.
 - Brian Buccola and Andreas Haida. Forthcoming.
   [Obligatory irrelevance and the computation of ignorance inferences][oblig-irrel-lb].
   *Journal of Semantics*.
@@ -32,6 +35,7 @@ If the LingBuzz server is down, just [email me][email].*
   [Two types of class B numeral modifiers: A reply to Nouwen 2010][reply-to-nouwen-sp].
   *Semantics and Pragmatics* 5(1). 1--25.
 
+[baboons-lb]: https://ling.auf.net/lingbuzz/004172/current.pdf
 [oblig-irrel-lb]: https://ling.auf.net/lingbuzz/003600/current.pdf
 [oblig-irrel-modnum-lb]: https://ling.auf.net/lingbuzz/003600/v1.pdf
 [competition]: https://dx.doi.org/10.3389/fpsyg.2018.02176
@@ -50,9 +54,6 @@ If the LingBuzz server is down, just [email me][email].*
 - Brian Buccola, Manuel Križ, and Emmanuel Chemla. 2018.
   [Conceptual alternatives: Competition in language and beyond][concepts-lb].
   Under review.
-- Emmanuel Chemla, Isabelle Dautriche, Brian Buccola, and Joel Fagot. 2018.
-  [Constraints on the lexicons of human languages have cognitive roots present in baboons (*Papio papio*)][baboons-lb].
-  Under review.
 - Brian Buccola and Emmanuel Chemla. 2018.
   [Two notes on the disjunct alternatives of disjunction][or-snippet].
   In revision.
@@ -61,7 +62,6 @@ If the LingBuzz server is down, just [email me][email].*
   In revision.
 
 [intcoll-lb]: https://ling.auf.net/lingbuzz/004553/current.pdf
-[baboons-lb]: https://ling.auf.net/lingbuzz/004172/current.pdf
 [or-snippet]: https://ling.auf.net/lingbuzz/003967/current.pdf
 [concepts-lb]: https://ling.auf.net/lingbuzz/003208/current.pdf
 [bare-num-lb]: https://ling.auf.net/lingbuzz/003400/current.pdf
