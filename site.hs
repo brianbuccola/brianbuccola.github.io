@@ -2,6 +2,7 @@
 {-# LANGUAGE OverloadedStrings #-}
 import           Control.Applicative (empty)
 import           Data.List (isSuffixOf)
+import           Data.Monoid ((<>))
 import           Hakyll
 import           System.FilePath ( takeBaseName
                                  , takeDirectory
