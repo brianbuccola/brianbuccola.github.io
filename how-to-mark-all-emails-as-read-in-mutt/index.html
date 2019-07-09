@@ -60,7 +60,7 @@
         </div>
     </section>
     <section>
-        <p>Here’s a simple macro to mark all new emails (messages) as read in Mutt. If you want to use it, just add it to your Mutt configuration file (e.g. <code>~/.muttrc</code>).</p>
+        <p>Here’s a simple macro to mark all new emails (messages) as read in Mutt. If you want to use it, just add it to your Mutt configuration file (e.g. <code>~/.muttrc</code>).</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb1-1" title="1"><span class="ex">macro</span> index A \</a>
 <a class="sourceLine" id="cb1-2" title="2">    <span class="st">&quot;&lt;tag-pattern&gt;~N&lt;enter&gt;&lt;tag-prefix&gt;&lt;clear-flag&gt;N&lt;untag-pattern&gt;.&lt;enter&gt;&quot;</span> \</a>
 <a class="sourceLine" id="cb1-3" title="3">    <span class="st">&quot;mark all new as read&quot;</span></a></code></pre></div>
@@ -71,7 +71,7 @@
 <li><code>index</code> tells Mutt that the macro is defined only on the index, i.e. the screen that lists all your messages.</li>
 <li><code>A</code> is the key that the macro is bound to.</li>
 <li>The next part is the actual macro.</li>
-<li><code>&quot;mark all new as read&quot;</code> is the description you’ll see on the help page for the index.</li>
+<li><code>"mark all new as read"</code> is the description you’ll see on the help page for the index.</li>
 </ul>
 <p>Let’s now parse the actual macro command. Essentially, we just tag all new messages, then the clear the “new” flag from those tagged messages, then untag everything.</p>
 <ul>

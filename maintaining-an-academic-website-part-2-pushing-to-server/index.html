@@ -181,9 +181,9 @@ mystyle.css</code></pre>
 </ul>
 <p><strong>Important.</strong> The forward slash, <code>/</code>, in <code>$SRC/</code> is crucial. It tells rsync to transfer the <em>contents</em> of the source directory into the destination directory, rather than transfering <code>$SRC</code> itself. See <code>man rsync</code> for more info. It’s useful to read about all the rsync options.</p>
 <p>So now Bob can update his site very simply by editing <code>index.markdown</code>, running <code>md2html</code> to convert to HTML, and running <code>push-website</code> to push the changes to his university server.</p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb19-1" title="1"><span class="ex">~/website</span> $ vim index.markdown      # edit, edit, edit, save, quit</a>
-<a class="sourceLine" id="cb19-2" title="2"><span class="ex">~/website</span> $ ./md2html               # convert to HTML</a>
-<a class="sourceLine" id="cb19-3" title="3"><span class="ex">~/website</span> $ ./push-website          # push changes to remote server</a></code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb19-1" title="1"><span class="ex">~/website</span> $ vim index.markdown      <span class="co"># edit, edit, edit, save, quit</span></a>
+<a class="sourceLine" id="cb19-2" title="2"><span class="ex">~/website</span> $ ./md2html               <span class="co"># convert to HTML</span></a>
+<a class="sourceLine" id="cb19-3" title="3"><span class="ex">~/website</span> $ ./push-website          <span class="co"># push changes to remote server</span></a></code></pre></div>
 <p>Nice! By the way, here are some things that are good to keep in the exclude file:</p>
 <ul>
 <li><code>index.markdown</code></li>

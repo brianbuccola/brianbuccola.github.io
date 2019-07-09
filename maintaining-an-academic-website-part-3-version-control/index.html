@@ -88,7 +88,7 @@
 <p>But before you can push anything to GitHub, you need GitHub to give you access remote access to your account. Luckily, GitHub does this using <code>ssh</code>, which we already learned about in the <a href="../maintaining-an-academic-website-part-2-pushing-to-server/">previous post</a>. So the setup here is essentially the same: create a new <code>ssh</code> key pair (public and private keys), give GitHub your public key so it can recognize you, and add GitHub to your <code>ssh</code> config file to make your life easy.</p>
 <p>So then, first run</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb4-1" title="1">$ <span class="fu">mkdir</span> -p ~/.ssh <span class="co"># create this if it doesn't already exist</span></a>
-<a class="sourceLine" id="cb4-2" title="2">$ <span class="bu">cd</span> ~/.ssh       # cd into it</a>
+<a class="sourceLine" id="cb4-2" title="2">$ <span class="bu">cd</span> ~/.ssh       <span class="co"># cd into it</span></a>
 <a class="sourceLine" id="cb4-3" title="3">$ <span class="fu">ssh-keygen</span> -f github -t rsa -C <span class="st">'GitHub'</span></a></code></pre></div>
 <p>to generate the pair of RSA keys, giving them the filenames <code>github</code> and <code>github.pub</code>, respectively. Now go to your GitHub account settings, click “SSH Keys”, and click “Add SSH key”. Give the key a title, and then paste the contents of <code>github.pub</code> (<strong>NOT</strong> <code>github</code>: this is the private key, which you should never disclose) into the text field. One way get the contents of that file is</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb5-1" title="1">$ <span class="ex">xsel</span> -b <span class="op">&lt;</span> ~/.ssh/github</a></code></pre></div>
@@ -134,7 +134,7 @@
 <a class="sourceLine" id="cb11-11" title="11"><span class="ex">nothing</span> added to commit but untracked files present (use <span class="st">&quot;git add&quot;</span> to track)</a></code></pre></div>
 <p>What this means is that <code>git</code> is not tracking these files to look for changes. If changes are made, <code>git</code> won’t know, because it has no baseline. The syntax for adding files to be tracked is the following.</p>
 <div class="sourceCode" id="cb12"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb12-1" title="1">$ <span class="fu">git</span> add [FILENAME] <span class="co"># add a file, or list of files, to be tracked</span></a>
-<a class="sourceLine" id="cb12-2" title="2">$ <span class="fu">git</span> add .          # add entire directory</a></code></pre></div>
+<a class="sourceLine" id="cb12-2" title="2">$ <span class="fu">git</span> add .          <span class="co"># add entire directory</span></a></code></pre></div>
 <p>For simplicity, let’s assume Bob has added his entire website directory.</p>
 <div class="sourceCode" id="cb13"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb13-1" title="1"><span class="ex">~/website</span> $ git add .</a>
 <a class="sourceLine" id="cb13-2" title="2"><span class="ex">~/website</span> $ git status</a>
@@ -172,10 +172,10 @@
 <p>If you run <code>git status</code>, you’ll see that <code>git</code> has noticed that some tracked files have been modified. So you</p>
 <ol type="1">
 <li>Add all of modifications with <code>git add .</code> .</li>
-<li>Commit the added modifications with <code>git commit -m &quot;added new paper&quot;</code>.</li>
+<li>Commit the added modifications with <code>git commit -m "added new paper"</code>.</li>
 <li>Push to GitHub with <code>git push origin master</code>.</li>
 </ol>
-<h4 id="adding-vs.committing">Adding vs. Committing</h4>
+<h4 id="adding-vs.-committing">Adding vs. Committing</h4>
 <p>It took me a while to understand the differences between adding and committing, and I suggest you read a bit online somewhere about it. But basically, once you’ve modified some file, you <code>add</code> the changes to a so-called staging area, and when you’re ready, you <code>commit</code> those changes. (Or you can unstage the changes with <code>git reset</code>, do more work, and readd them, or you discard all changes and go back to a clean slate with <code>git checkout</code>.) The purpose of <code>add</code>, I believe, is to let you gather up a range of changes, possibly over several files, and commit them with a single commit. This would make sense if you’re committing a big “change” that spans several files, or several different parts of a file.</p>
 <p>Thus, with <code>add</code> and <code>commit</code>, you’re not really adding or committing <em>files</em>, but rather <em>changes</em>, which in turn means that you can add and commit different changes to a single file or multiple files at different times and with different commit messages. It’s very versatile.</p>
 <h2 id="git-branches">Git Branches</h2>

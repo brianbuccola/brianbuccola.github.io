@@ -72,7 +72,7 @@
 <p>You can run <code>atq</code> to view the queue of current jobs, <code>atrm JOBID</code> to remove a job, and <code>at -c JOBID</code> to view (<strong>c</strong>at) a queued job.</p>
 <p>Since <code>at</code> accepts any shell command, we can schedule emails using mutt’s command-line interface. The basic syntax for sending emails with mutt from the command line is</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb3-1" title="1">$ <span class="bu">echo</span> <span class="st">&quot;MSG&quot;</span> <span class="kw">|</span> <span class="ex">mutt</span> -s SUBJ -- RECIPIENT <span class="co"># for simple messages</span></a>
-<a class="sourceLine" id="cb3-2" title="2">$ <span class="ex">mutt</span> -s SUBJ -- RECIPIENT <span class="op">&lt;</span>MSG         # for longer messages (files)</a></code></pre></div>
+<a class="sourceLine" id="cb3-2" title="2">$ <span class="ex">mutt</span> -s SUBJ -- RECIPIENT <span class="op">&lt;</span>MSG         <span class="co"># for longer messages (files)</span></a></code></pre></div>
 <p>Suppose I want to email myself a reminder tomorrow at 10am to call John. Here’s what I do.<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a></p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb4-1" title="1">$ <span class="ex">at</span> 10am tomorrow</a>
 <a class="sourceLine" id="cb4-2" title="2"><span class="ex">warning</span>: commands will be executed using /bin/sh</a>

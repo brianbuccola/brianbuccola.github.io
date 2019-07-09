@@ -101,7 +101,7 @@
 <p>Use your package manager to download slock, and then try it out by running <code>slock</code> in the terminal. Try out other <a href="https://wiki.archlinux.org/index.php/List_of_applications#Screen_lockers">screen lockers</a>, too, if you like. (Note that one advantage of some other lockers, such as sflock and physlock, is that they block access to other TTYs, but I don’t care too much about this functionality since I never have other sessions open on other TTYs.)</p>
 <p>Once you’re satisfied that slock works and you like it (or once you pick a different locker), you can use the <code>xautolock</code> command to run <code>slock</code> every 10 minutes by adding this command to your <code>~/.xnitrc</code>.</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb7-1" title="1"><span class="ex">xautolock</span> -time 10 -locker slock <span class="kw">&amp;</span></a></code></pre></div>
-<p>(If you decided on a different locker, just replace <code>slock</code> with your locker’s name, e.g. <code>physlock</code>.)</p>
+<p>(If you decided on a different locker, just replace <code>slock</code> with your locker’s name, e.g. <code>physlock</code>.)</p>
 <p>Note the <code>&amp;</code> at the end, which runs the command in the background. If you omit this, then the other commands in your <code>~/.xinitrc</code> (such as the one that starts your window manager) won’t get executed, which is a problem.</p>
 <p>That’s it!</p>
 <h2 id="recap">Recap</h2>

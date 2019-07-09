@@ -123,10 +123,10 @@
 <p>and <code>foo</code> already exists, then Dropbox will actually <em>delete</em> <code>foo</code>! Therefore, if you decide you want to exclude a file from sync’ing over Dropbox, but it’s a file that you want to keep locally, be sure to <em>move</em> the file out of your project folder first (or make a copy of it).</p>
 <p>For example, let’s say that I’ve created a file <code>notes</code> that contains my own notes for a collaborative project. My colleagues don’t care to see that, so I decide to exclude it:</p>
 <div class="sourceCode" id="cb14"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb14-1" title="1"><span class="co"># From inside ~/Dropbox/project!</span></a>
-<a class="sourceLine" id="cb14-2" title="2">$ <span class="fu">mv</span> notes /tmp                # move notes to /tmp</a>
-<a class="sourceLine" id="cb14-3" title="3">$ <span class="ex">dropbox</span> start                # start Dropbox, if not already running</a>
-<a class="sourceLine" id="cb14-4" title="4">$ <span class="ex">dropbox</span> exclude add notes    # exclude notes</a>
-<a class="sourceLine" id="cb14-5" title="5">$ <span class="fu">mv</span> /tmp/notes .              # move notes back to project</a></code></pre></div>
+<a class="sourceLine" id="cb14-2" title="2">$ <span class="fu">mv</span> notes /tmp                <span class="co"># move notes to /tmp</span></a>
+<a class="sourceLine" id="cb14-3" title="3">$ <span class="ex">dropbox</span> start                <span class="co"># start Dropbox, if not already running</span></a>
+<a class="sourceLine" id="cb14-4" title="4">$ <span class="ex">dropbox</span> exclude add notes    <span class="co"># exclude notes</span></a>
+<a class="sourceLine" id="cb14-5" title="5">$ <span class="fu">mv</span> /tmp/notes .              <span class="co"># move notes back to project</span></a></code></pre></div>
 <p>If you accidentally <code>exclude add</code> a file that already exists, and Dropbox deletes it, don’t worry: you can manually download the deleted file by going to the Dropbox website, navigating to your project, and making sure to “Show deleted files”. Once you’ve downloaded the deleted file, move it into your <code>project</code> directory, and Dropbox won’t do anything with it, since it’s been excluded.</p>
 <h2 id="step-7-bonus-multiple-versions-of-a-file-or-directory">Step 7 (bonus): Multiple versions of a file or directory</h2>
 <p>Since your colleagues don’t use Git, they may be in the habit of creating entirely new files or directories when they implement (major) changes, which on first glance may look disastrous.</p>

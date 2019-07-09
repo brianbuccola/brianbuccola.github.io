@@ -66,7 +66,7 @@
 <p><strong>References</strong></p>
 <p>Smith, Mary. 2015. <em>All About Birds</em>. New York, NY: Bird Cage Press.</p>
 </blockquote>
-<p>Note that the <code>bibentry</code> package allows you to include a <em>whole</em> citation in the main text, e.g. “According to Johnson, Harry (2015) <em>More About Birds</em> …”. But here, we just want “Johnson (2015)”.</p>
+<p>Note that the <code>bibentry</code> package allows you to include a <em>whole</em> citation in the main text, e.g. “According to Johnson, Harry (2015) <em>More About Birds</em> …”. But here, we just want “Johnson (2015)”.</p>
 <h2 id="bibtex-solution">BibTeX solution</h2>
 <p>As far as I’m aware, this is not (natively) possible with BibTeX: the moment you do <code>\cite{&lt;key&gt;}</code> and then run <code>pdflatex</code> + <code>bibtex</code>, the <code>\bibitem</code> associated with <em>&lt;key&gt;</em> gets added to the <code>.bbl</code> auxiliary file, which is ultimately responsible for the bibliography. Any <code>\bibitems</code> in there appear in the bibliography.</p>
 <p>The hacky suggestion I originally gave was to write, cite, and compile everything just as one would normally do when writing a LaTeX document. For example, if the file you’re writing is <code>file.tex</code>, then run:</p>

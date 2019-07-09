@@ -159,13 +159,13 @@
 <h2 id="no-insert-key">No insert key</h2>
 <p>The laptop keyboard does not come with any physical <code>Insert</code> key. I guess that’s because most people nowadays don’t use it very often. But I do. One of the best features of Linux (well, X11) is the X clipboard: whenever you highlight something, it gets added to the X clipboard (no need to <code>&lt;Ctrl-C&gt;</code>), and you can paste it with <code>&lt;Shift-Insert&gt;</code>. (I also use <code>Insert</code> to go into ignore-mode in <a href="http://www.vimperator.org/vimperator/">Vimperator</a> for Firefox.)</p>
 <p>What I did was bind the Windows key (which was serving no purpose) to <code>Insert</code>. Here’s how:</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb9-1" title="1"><span class="fu">xmodmap</span> -e <span class="st">&quot;keycode 133 = Insert&quot;</span>    # map windows button to insert</a></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb9-1" title="1"><span class="fu">xmodmap</span> -e <span class="st">&quot;keycode 133 = Insert&quot;</span>    <span class="co"># map windows button to insert</span></a></code></pre></div>
 <p>You can find the keycode of a key by running <code>xev</code> (X event program) from a terminal, typing the key, and looking for “keycode” in the output. (Hit <code>&lt;Ctrl-C&gt;</code> to exit <code>xev</code>.)</p>
 <p>Now you can run this <code>xmodmap</code> command in a terminal, and it should work. But the best solution is to include it in your <code>.xinitrc</code> file so that it’s run every time X starts. (I have a whole <code>keyboard-adjust</code> script that adds the Dvorak layout, switches caps and control lock, etc., maps the Windows button to insert, etc.; I then call the whole script from my <code>.xinitrc</code> file.)</p>
 <section class="footnotes">
 <hr />
 <ol>
-<li id="fn1"><p>NB: This is a (potential) security risk, as it allows “brian”, or anyone logged in as “brian”, to overwrite <em>any</em> file! (Example: <code>echo &quot;all gone&quot; | sudo tee /path/to/important/file</code>.) Only do this if you’re the only one with access to this user profile.<a href="#fnref1" class="footnote-back">↩</a></p></li>
+<li id="fn1"><p>NB: This is a (potential) security risk, as it allows “brian”, or anyone logged in as “brian”, to overwrite <em>any</em> file! (Example: <code>echo "all gone" | sudo tee /path/to/important/file</code>.) Only do this if you’re the only one with access to this user profile.<a href="#fnref1" class="footnote-back">↩</a></p></li>
 </ol>
 </section>
     </section>
