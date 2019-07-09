@@ -48,6 +48,9 @@ If the LingBuzz server is down, just [email me][email].*
 
 ## Manuscripts
 
+- Amir Anvari, Brian Buccola, and Andreas Haida. In prep.
+  Alternative Questions in Farsi.
+  ([slides][miq2018] from a previous workshop)
 - Brian Buccola and Luka Crnič. 2019.
   [NPIs, intervention, and collectivity][intcoll-lb].
   Submitted.
@@ -68,10 +71,6 @@ If the LingBuzz server is down, just [email me][email].*
 
 ## Proceedings Papers
 
-- Amir Anvari, Brian Buccola, and Andreas Haida. In prep.
-  Alternative Questions in Farsi.
-  *Sinn und Bedeutung* 23.
-  ([slides][miq2018] from a previous workshop)
 - Brian Buccola and Andreas Haida. 2017.
   [Expressing agent indifference in German][ac2017].
   *Amsterdam Colloquium* 21. 165--174.
