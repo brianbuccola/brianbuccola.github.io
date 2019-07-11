@@ -10,13 +10,14 @@ If the LingBuzz server is down, just [email me][email].*
 
 ## Journal Articles
 
-- Emmanuel Chemla, Isabelle Dautriche, Brian Buccola, and Joel Fagot. 2019.
-  [Constraints on the lexicons of human languages have cognitive roots present in baboons (*Papio papio*)][baboons-lb].
-  Accepted in *Proceedings of the National Academy of Sciences*.
 - Brian Buccola and Andreas Haida. Forthcoming.
   [Obligatory irrelevance and the computation of ignorance inferences][oblig-irrel-lb].
   *Journal of Semantics*.
   (For the 2017 version that treats modified numerals, click [here][oblig-irrel-modnum-lb].)
+- Emmanuel Chemla, Isabelle Dautriche, Brian Buccola, and Joël Fagot. 2019.
+  [Constraints on the lexicons of human languages have cognitive roots present in baboons (*Papio papio*)][baboons-doi].
+  *Proceedings of the National Academy of Sciences*.
+  ([preprint][baboons-lb])
 - Emmanuel Chemla, Brian Buccola, and Isabelle Dautriche. 2019.
   [Connecting content and logical words][connecting-doi].
   *Journal of Semantics*.
@@ -35,9 +36,10 @@ If the LingBuzz server is down, just [email me][email].*
   [Two types of class B numeral modifiers: A reply to Nouwen 2010][reply-to-nouwen-sp].
   *Semantics and Pragmatics* 5(1). 1--25.
 
-[baboons-lb]: https://ling.auf.net/lingbuzz/004172/current.pdf
 [oblig-irrel-lb]: https://ling.auf.net/lingbuzz/003600/current.pdf
 [oblig-irrel-modnum-lb]: https://ling.auf.net/lingbuzz/003600/v1.pdf
+[baboons-doi]: https://doi.org/10.1073/pnas.1907023116
+[baboons-lb]: https://ling.auf.net/lingbuzz/004172/current.pdf
 [competition]: https://dx.doi.org/10.3389/fpsyg.2018.02176
 [connecting-doi]: https://doi.org/10.1093/jos/ffz001
 [connecting-lb]: https://ling.auf.net/lingbuzz/004481/current.pdf
