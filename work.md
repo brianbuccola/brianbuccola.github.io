@@ -16,7 +16,7 @@ If the LingBuzz server is down, just [email me][email].*
   (For the 2017 version that treats modified numerals, click [here][oblig-irrel-modnum-lb].)
 - Emmanuel Chemla, Isabelle Dautriche, Brian Buccola, and Joël Fagot. 2019.
   [Constraints on the lexicons of human languages have cognitive roots present in baboons (*Papio papio*)][baboons-doi].
-  *Proceedings of the National Academy of Sciences*.
+  *Proceedings of the National Academy of Sciences* 116(30). 14926--14930.
   ([preprint][baboons-lb])
 - Emmanuel Chemla, Brian Buccola, and Isabelle Dautriche. 2019.
   [Connecting content and logical words][connecting-doi].
