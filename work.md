@@ -10,9 +10,10 @@ If the LingBuzz server is down, just [email me][email].*
 
 ## Journal Articles
 
-- Brian Buccola and Andreas Haida. Forthcoming.
-  [Obligatory irrelevance and the computation of ignorance inferences][oblig-irrel-lb].
+- Brian Buccola and Andreas Haida. 2019.
+  [Obligatory irrelevance and the computation of ignorance inferences][oblig-irrel-doi].
   *Journal of Semantics*.
+  ([preprint][oblig-irrel-lb])
   (For the 2017 version that treats modified numerals, click [here][oblig-irrel-modnum-lb].)
 - Emmanuel Chemla, Isabelle Dautriche, Brian Buccola, and Joël Fagot. 2019.
   [Constraints on the lexicons of human languages have cognitive roots present in baboons (*Papio papio*)][baboons-doi].
@@ -36,6 +37,7 @@ If the LingBuzz server is down, just [email me][email].*
   [Two types of class B numeral modifiers: A reply to Nouwen 2010][reply-to-nouwen-sp].
   *Semantics and Pragmatics* 5(1). 1--25.
 
+[oblig-irrel-doi]: https://doi.org/10.1093/jos/ffz013
 [oblig-irrel-lb]: https://ling.auf.net/lingbuzz/003600/current.pdf
 [oblig-irrel-modnum-lb]: https://ling.auf.net/lingbuzz/003600/v1.pdf
 [baboons-doi]: https://doi.org/10.1073/pnas.1907023116
