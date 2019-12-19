@@ -12,7 +12,7 @@ If the LingBuzz server is down, just [email me][email].*
 
 - Brian Buccola and Andreas Haida. 2019.
   [Obligatory irrelevance and the computation of ignorance inferences][oblig-irrel-doi].
-  *Journal of Semantics*.
+  *Journal of Semantics* 36(4). 583--616.
   ([preprint][oblig-irrel-lb])
   (For the 2017 version that treats modified numerals, click [here][oblig-irrel-modnum-lb].)
 - Emmanuel Chemla, Isabelle Dautriche, Brian Buccola, and Joël Fagot. 2019.
