@@ -21,7 +21,7 @@ If the LingBuzz server is down, just [email me][email].*
   ([preprint][baboons-lb])
 - Emmanuel Chemla, Brian Buccola, and Isabelle Dautriche. 2019.
   [Connecting content and logical words][connecting-doi].
-  *Journal of Semantics*.
+  *Journal of Semantics* 36(3). 531--547.
   ([preprint][connecting-lb])
 - Brian Buccola, Isabelle Dautriche, and Emmanuel Chemla. 2018.
   [Competition and symmetry in an artificial word learning task][competition].
