@@ -10,6 +10,12 @@ If the LingBuzz server is down, just [email me][email].*
 
 ## Journal Articles
 
+- Brian Buccola and Emmanuel Chemla. 2019.
+  [Alternatives of disjunctions: When a disjunct contains the antecedent of a pronoun][disj-snippet].
+  *Snippets* 37. 16--18.
+- Luka Crnič and Brian Buccola. 2019.
+  [Scoping NPIs out of DPs][npi-snippet].
+  *Snippets* 37. 19--21.
 - Brian Buccola and Andreas Haida. 2019.
   [Obligatory irrelevance and the computation of ignorance inferences][oblig-irrel-doi].
   *Journal of Semantics* 36(4). 583--616.
@@ -37,6 +43,8 @@ If the LingBuzz server is down, just [email me][email].*
   [Two types of class B numeral modifiers: A reply to Nouwen 2010][reply-to-nouwen-sp].
   *Semantics and Pragmatics* 5(1). 1--25.
 
+[disj-snippet]: https://www.ledonline.it/snippets/allegati/snippets37007.pdf
+[npi-snippet]: https://www.ledonline.it/snippets/allegati/snippets37008.pdf
 [oblig-irrel-doi]: https://doi.org/10.1093/jos/ffz013
 [oblig-irrel-lb]: https://ling.auf.net/lingbuzz/003600/current.pdf
 [oblig-irrel-modnum-lb]: https://ling.auf.net/lingbuzz/003600/v1.pdf
