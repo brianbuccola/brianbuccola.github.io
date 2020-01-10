@@ -60,6 +60,9 @@ If the LingBuzz server is down, just [email me][email].*
 
 ## Manuscripts
 
+- Brian Buccola, Jeremy Kuhn, and David Nicolas. 2020.
+  [Groups vs. covers revisited: Evidence from symmetric readings of sentences with plurals][grpcov-lb].
+  Submitted.
 - Amir Anvari, Brian Buccola, and Andreas Haida. In prep.
   Alternative Questions in Farsi.
   ([slides][miq2018] from a previous workshop)
@@ -76,6 +79,7 @@ If the LingBuzz server is down, just [email me][email].*
   [Bare numerals, collectivity, and genericity: A new puzzle][bare-num-lb].
   In revision.
 
+[grpcov-lb]: https://ling.auf.net/lingbuzz/004969/current.pdf
 [intcoll-lb]: https://ling.auf.net/lingbuzz/004553/current.pdf
 [or-snippet]: https://ling.auf.net/lingbuzz/003967/current.pdf
 [concepts-lb]: https://ling.auf.net/lingbuzz/003208/current.pdf
