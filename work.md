@@ -60,24 +60,21 @@ If the LingBuzz server is down, just [email me][email].*
 
 ## Manuscripts
 
-- Brian Buccola, Jeremy Kuhn, and David Nicolas. 2020.
-  [Groups vs. covers revisited: Evidence from symmetric readings of sentences with plurals][grpcov-lb].
-  Submitted.
+*(in various stages of being in prep., under review, or in revision)*
+
 - Amir Anvari, Brian Buccola, and Andreas Haida. In prep.
   Alternative Questions in Farsi.
   ([slides][miq2018] from a previous workshop)
+- Brian Buccola, Jeremy Kuhn, and David Nicolas. 2020.
+  [Groups vs. covers revisited: Evidence from symmetric readings of sentences with plurals][grpcov-lb].
 - Brian Buccola and Luka Crnič. 2019.
   [NPIs, intervention, and collectivity][intcoll-lb].
-  Submitted.
 - Brian Buccola, Manuel Križ, and Emmanuel Chemla. 2018.
   [Conceptual alternatives: Competition in language and beyond][concepts-lb].
-  Under review.
 - Brian Buccola and Emmanuel Chemla. 2018.
   [Two notes on the disjunct alternatives of disjunction][or-snippet].
-  In revision.
 - Brian Buccola. 2017.
   [Bare numerals, collectivity, and genericity: A new puzzle][bare-num-lb].
-  In revision.
 
 [grpcov-lb]: https://ling.auf.net/lingbuzz/004969/current.pdf
 [intcoll-lb]: https://ling.auf.net/lingbuzz/004553/current.pdf
