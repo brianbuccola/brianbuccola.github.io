@@ -76,6 +76,7 @@ If the LingBuzz server is down, just [email me][email].*
 - Brian Buccola. 2017.
   [Bare numerals, collectivity, and genericity: A new puzzle][bare-num-lb].
 
+[miq2018]: https://drive.google.com/file/d/1di75XXJOFL2iOjQEU_afrsbtGGnsHY8V/view
 [grpcov-lb]: https://ling.auf.net/lingbuzz/004969/current.pdf
 [intcoll-lb]: https://ling.auf.net/lingbuzz/004553/current.pdf
 [or-snippet]: https://ling.auf.net/lingbuzz/003967/current.pdf
@@ -101,7 +102,6 @@ If the LingBuzz server is down, just [email me][email].*
   *Formal Grammar*. 142--158.
   ([preprint][fg-lb])
 
-[miq2018]: https://drive.google.com/file/d/1di75XXJOFL2iOjQEU_afrsbtGGnsHY8V/view
 [ac2017]: https://ling.auf.net/lingbuzz/003763/current.pdf
 [sub21]: https://ling.auf.net/lingbuzz/003307/current.pdf
 [sub20]: https://ling.auf.net/lingbuzz/002847/current.pdf
