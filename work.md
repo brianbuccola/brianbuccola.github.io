@@ -85,6 +85,9 @@ If the LingBuzz server is down, just [email me][email].*
 
 ## Proceedings Papers
 
+- Brian Buccola and Andreas Haida. 2020.
+  [How obligatory irrelevance, symmetric alternatives, and dense scales conspire: The case of modified numerals and ignorance][salt30-lb].
+  *Semantics and Linguistic Theory* (SALT) 30.
 - Brian Buccola and Andreas Haida. 2017.
   [Expressing agent indifference in German][ac2017].
   *Amsterdam Colloquium* 21. 165--174.
@@ -102,6 +105,7 @@ If the LingBuzz server is down, just [email me][email].*
   *Formal Grammar*. 142--158.
   ([preprint][fg-lb])
 
+[salt30-lb]: https://ling.auf.net/lingbuzz/005563/current.pdf
 [ac2017]: https://ling.auf.net/lingbuzz/003763/current.pdf
 [sub21]: https://ling.auf.net/lingbuzz/003307/current.pdf
 [sub20]: https://ling.auf.net/lingbuzz/002847/current.pdf
