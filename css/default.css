@@ -1,12 +1,12 @@
 html {
   font-size: 62.5%;
+  font-family: sans-serif;
+  line-height: 1.5;
 }
 
 body {
-  font-family: "Alegreya", serif;
   font-size: 1.6rem;
   color: #000;
-  line-height: 1.5;
 }
 
 header {
@@ -28,7 +28,7 @@ footer {
   margin-top: 3rem;
   padding: 1.2rem 0;
   border-top: 0.2rem solid #000;
-  font-size: 1.4rem;
+  font-size: 1.2rem;
   color: #555;
 }
 
@@ -38,12 +38,6 @@ h1 {
 
 h2 {
   font-size: 2rem;
-}
-
-h1, h2, h3, h4, h5, h6,
-.logo a,
-.nav a {
-  font-family: "Alegreya Sans", sans-serif;
 }
 
 a:link {
@@ -65,12 +59,6 @@ a:active {
   text-decoration: underline;
 }
 
-pre,
-code {
-  font-family: "Fira Mono", monospace;
-  font-size: 1.3rem;
-}
-
 code {
   border: 0.1rem solid #ccc;
   border-radius: 0.3rem;
@@ -87,7 +75,7 @@ pre code {
 blockquote {
   background-color: #eee;
   color: #333;
-  border: 0.1rem solid black;
+  border: 0.1rem solid #ccc;
   border-radius: 0.3rem;
   margin: 0;
   padding-left: 1.6rem;
@@ -114,6 +102,7 @@ article .header {
   height: 20rem;
   float: right;
   margin-left: 2rem;
+  margin-bottom: 2rem;
   border-radius: 10%;
 }
 
@@ -197,7 +186,7 @@ article .header {
 
 @media (min-width: 640px) {
   body {
-    width: 60rem;
+    width: 80rem;
     margin: 0 auto;
     padding: 0;
   }
