@@ -86,7 +86,7 @@ If the LingBuzz server is down, just [email me][email].*
 
 ## Unpublished
 
-*(in various stages of being in prep., under review, in revision, or given up on)*
+*(in various stages of being in prep., under review, in revision, or abandoned)*
 
 - Amir Anvari, Brian Buccola, and Andreas Haida. In prep.
   Alternative Questions in Farsi.
