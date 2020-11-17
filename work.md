@@ -86,17 +86,17 @@ If the LingBuzz server is down, just [email me][email].*
 
 ## Unpublished
 
-*(in various stages of being in prep., under review, in revision, or abandoned)*
+*(in various stages of being in prep., under review, in revision, defended, or abandoned)*
 
-- Amir Anvari, Brian Buccola, and Andreas Haida. In prep.
-  Alternative Questions in Farsi.
-  ([slides][miq2018] from a previous workshop)
 - Brian Buccola, Jeremy Kuhn, and David Nicolas. 2020.
   [Groups vs. covers revisited: Evidence from symmetric readings of sentences with plurals][grpcov-lb].
-- Brian Buccola and Luka Crnič. 2019.
+- Brian Buccola and Luka Crnič. 2020.
   [NPIs, intervention, and collectivity][intcoll-lb].
-- Brian Buccola, Manuel Križ, and Emmanuel Chemla. 2018.
+- Brian Buccola, Manuel Križ, and Emmanuel Chemla. 2020.
   [Conceptual alternatives: Competition in language and beyond][concepts-lb].
+- Amir Anvari, Brian Buccola, and Andreas Haida. 2018.
+  Alternative Questions in Farsi.
+  ([slides][miq2018] from a previous workshop)
 - Brian Buccola and Emmanuel Chemla. 2018.
   [Two notes on the disjunct alternatives of disjunction][or-snippet].
 - Brian Buccola. 2017.
