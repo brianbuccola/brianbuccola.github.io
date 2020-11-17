@@ -3,24 +3,11 @@
 # For more information, please see the documentation at:
 #   https://docs.haskellstack.org/en/stable/lock_files
 
-packages:
-- completed:
-    hackage: hakyll-4.12.5.2@sha256:435eec729639a4bf0d58f3c7c71929600f4130f10241275d5e7df856cc8aae90,8677
-    pantry-tree:
-      size: 7631
-      sha256: bd0cbe9051fae2b109d4b8955fd55a710b61c5dfd8b132d444c72c8f9e65c855
-  original:
-    hackage: hakyll-4.12.5.2@sha256:435eec729639a4bf0d58f3c7c71929600f4130f10241275d5e7df856cc8aae90,8677
-- completed:
-    hackage: lrucache-1.2.0.1@sha256:18fc3d7052012c7ab3cd395160f34b53c5e1ec5379cc45185baf35b90ffadc2e,1254
-    pantry-tree:
-      size: 619
-      sha256: 61b2a39a11873f2d8a577e1f6b5e848d2f465ea7f6837ce15436796d3a20eda0
-  original:
-    hackage: lrucache-1.2.0.1@sha256:18fc3d7052012c7ab3cd395160f34b53c5e1ec5379cc45185baf35b90ffadc2e,1254
+packages: []
 snapshots:
 - completed:
-    size: 499461
-    url: https://raw.githubusercontent.com/commercialhaskell/stackage-snapshots/master/lts/13/25.yaml
-    sha256: aed98969628e20615e96b06083c933c7e3354ae56b08b75e607a26569225d6c0
-  original: lts-13.25
+    size: 532414
+    url: https://raw.githubusercontent.com/commercialhaskell/stackage-snapshots/master/lts/16/22.yaml
+    sha256: e483fb88549fc0f454c190979bf35ac91c7aceff2c0e71e7d8edd11842d772d8
+  original:
+    url: https://raw.githubusercontent.com/commercialhaskell/stackage-snapshots/master/lts/16/22.yaml
