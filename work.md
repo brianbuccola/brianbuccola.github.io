@@ -3,7 +3,7 @@ title: Work
 ---
 
 *All of my work is hosted on [LingBuzz][].
-If the LingBuzz server is down, just [email me][email].*
+If the LingBuzz server is down, [just contact](/contact/) me for a copy.*
 
 [LingBuzz]: https://ling.auf.net/lingbuzz
 [email]: mailto:brian.buccola@gmail.com
