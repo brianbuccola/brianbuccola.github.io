@@ -18,7 +18,8 @@ actually cited in your paper. Well, it turns out you don't have to: you can
 automatically create a new bib file containing exactly that subset by using
 `biber` (the backend processor to [Biblatex][]). Here's how. (NB: In
 `paper.tex`, you have to use the `biblatex` package with `biber` as the backend
-processor. This won't work with regular `bibtex`.)
+processor. This won't work with regular `bibtex`. Use [`bibexport`][bibexport]
+instead.)
 
 **Step 1.** Run `pdflatex paper.tex`, which will generate the auxiliary file
 `paper.bcf`.
@@ -62,3 +63,4 @@ $ biber --output-format=bibtex --output_fieldcase=lower --output-file=refs.bib p
 
 [Biblatex]: http://biblatex-biber.sourceforge.net/
 [JabRef]: https://help.jabref.org/en/NewBasedOnAux
+[bibexport]: https://www.ctan.org/tex-archive/biblio/bibtex/utils/bibexport/
