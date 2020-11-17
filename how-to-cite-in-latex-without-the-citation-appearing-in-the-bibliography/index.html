@@ -41,6 +41,7 @@
                 <a class="nav" href="../">Home</a>
                 <a class="nav" href="../work/">Work</a>
                 <a class="nav" href="../cv/">CV</a>
+                <a class="nav" href="../contact/">Contact</a>
                 <a class="nav" href="../blog/">Blog</a>
             </nav>
         </header>
@@ -65,10 +66,10 @@
 <h2 id="bibtex-solution">BibTeX solution</h2>
 <p>As far as I’m aware, this is not (natively) possible with BibTeX: the moment you do <code>\cite{&lt;key&gt;}</code> and then run <code>pdflatex</code> + <code>bibtex</code>, the <code>\bibitem</code> associated with <em>&lt;key&gt;</em> gets added to the <code>.bbl</code> auxiliary file, which is ultimately responsible for the bibliography. Any <code>\bibitems</code> in there appear in the bibliography.</p>
 <p>The hacky suggestion I originally gave was to write, cite, and compile everything just as one would normally do when writing a LaTeX document. For example, if the file you’re writing is <code>file.tex</code>, then run:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb1-1" title="1">$ <span class="ex">pdflatex</span> file</a>
-<a class="sourceLine" id="cb1-2" title="2">$ <span class="ex">bibtex</span> file</a>
-<a class="sourceLine" id="cb1-3" title="3">$ <span class="ex">pdflatex</span> file</a>
-<a class="sourceLine" id="cb1-4" title="4">$ <span class="ex">pdflatex</span> file</a></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a>$ <span class="ex">pdflatex</span> file</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true"></a>$ <span class="ex">bibtex</span> file</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true"></a>$ <span class="ex">pdflatex</span> file</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true"></a>$ <span class="ex">pdflatex</span> file</span></code></pre></div>
 <p>or, if you’re using a LaTeX front-end/wrapper, then use whatever button/command is available for typesetting, such as “Typeset” in MacTeX (I think), or <code>latexmk file</code> if (like me) you use <code>latexmk</code>.</p>
 <p>Once you’re finished writing and are absolutely 100% sure you won’t be adding or removing or otherwise changing any citations, then open <code>file.bbl</code> and delete any of the bibitems that you wish not to appear in the bibliography. After that, simply run <code>pdflatex file</code> one more time, and you’re done.</p>
 <p>NB: <em>Don’t</em> rerun <code>bibtex file</code> (hence, <em>don’t</em> “Typeset” or run <code>latexmk</code> or do anything that would itself rerun <code>bibtex</code>), since that would overwrite <code>file.bbl</code>, and you’d be back to where you started.</p>
@@ -82,22 +83,22 @@
 <p>Normally, <code>\printbibliography</code> does just that: it prints the bibliography. But you can give it some options, such as <code>\printbibliography[category=&lt;blah&gt;]</code>, which prints a bibliography containing all and only entries of the category <em>blah</em>. Or you can do <code>\printbibliography[notcategory=&lt;blah&gt;]</code>, which prints a bibliography containing all and only entries that are <em>not</em> of the category <em>blah</em>.</p>
 <p>So the solution is to create a new category for the entries that we want to cite in the main text but suppress in the bibliography. We do that by issuing <code>\DeclareBibliographyCategory{ignore}</code> (the category name can be anything) in the preamble, and then tagging the entries we want to ignore by issuing <code>\addtocategory{ignore}{&lt;key&gt;}</code>.</p>
 <p>Here is a minimal working example:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode latex"><code class="sourceCode latex"><a class="sourceLine" id="cb2-1" title="1"><span class="bu">\documentclass</span>{<span class="ex">article</span>}</a>
-<a class="sourceLine" id="cb2-2" title="2"><span class="bu">\usepackage</span>[style=authoryear]{<span class="ex">biblatex</span>}</a>
-<a class="sourceLine" id="cb2-3" title="3"><span class="fu">\addbibresource</span>{/path/to/references.bib}</a>
-<a class="sourceLine" id="cb2-4" title="4"><span class="fu">\DeclareBibliographyCategory</span>{ignore}</a>
-<a class="sourceLine" id="cb2-5" title="5"><span class="fu">\addtocategory</span>{ignore}{johnson2015}</a>
-<a class="sourceLine" id="cb2-6" title="6"><span class="fu">\addtocategory</span>{ignore}{doe1986}</a>
-<a class="sourceLine" id="cb2-7" title="7"></a>
-<a class="sourceLine" id="cb2-8" title="8"><span class="kw">\begin</span>{<span class="ex">document</span>}</a>
-<a class="sourceLine" id="cb2-9" title="9"></a>
-<a class="sourceLine" id="cb2-10" title="10"><span class="kw">\cite</span>{<span class="ex">johnson2015</span>},</a>
-<a class="sourceLine" id="cb2-11" title="11"><span class="kw">\cite</span>{<span class="ex">smith2015</span>},</a>
-<a class="sourceLine" id="cb2-12" title="12"><span class="kw">\cite</span>{<span class="ex">doe1986</span>},</a>
-<a class="sourceLine" id="cb2-13" title="13"><span class="kw">\cite</span>{<span class="ex">samson2012</span>}</a>
-<a class="sourceLine" id="cb2-14" title="14"></a>
-<a class="sourceLine" id="cb2-15" title="15"><span class="fu">\printbibliography</span>[notcategory=ignore]</a>
-<a class="sourceLine" id="cb2-16" title="16"><span class="kw">\end</span>{<span class="ex">document</span>}</a></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode latex"><code class="sourceCode latex"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a><span class="bu">\documentclass</span>{<span class="ex">article</span>}</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true"></a><span class="bu">\usepackage</span>[style=authoryear]{<span class="ex">biblatex</span>}</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true"></a><span class="fu">\addbibresource</span>{/path/to/references.bib}</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true"></a><span class="fu">\DeclareBibliographyCategory</span>{ignore}</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true"></a><span class="fu">\addtocategory</span>{ignore}{johnson2015}</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true"></a><span class="fu">\addtocategory</span>{ignore}{doe1986}</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true"></a></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true"></a><span class="kw">\begin</span>{<span class="ex">document</span>}</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true"></a></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true"></a><span class="kw">\cite</span>{<span class="ex">johnson2015</span>},</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true"></a><span class="kw">\cite</span>{<span class="ex">smith2015</span>},</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true"></a><span class="kw">\cite</span>{<span class="ex">doe1986</span>},</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true"></a><span class="kw">\cite</span>{<span class="ex">samson2012</span>}</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true"></a></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true"></a><span class="fu">\printbibliography</span>[notcategory=ignore]</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true"></a><span class="kw">\end</span>{<span class="ex">document</span>}</span></code></pre></div>
 <p>With this code, all four references will get cited in the main text, but Johnson (2015) and Doe (1986) will not appear in the bibliography section.</p>
 <h3 id="advantage-1">Advantage</h3>
 <p>The overwhelming advantage here is that this is an elegant (non-hacky) solution that capitalizes on a feature of the Biblatex package that was designed precisely to solve sticky problems like this that BibTeX is unable to handle. No need to manually edit auxiliary files or anything.</p>

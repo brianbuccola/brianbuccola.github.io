@@ -41,6 +41,7 @@
                 <a class="nav" href="../">Home</a>
                 <a class="nav" href="../work/">Work</a>
                 <a class="nav" href="../cv/">CV</a>
+                <a class="nav" href="../contact/">Contact</a>
                 <a class="nav" href="../blog/">Blog</a>
             </nav>
         </header>
@@ -70,17 +71,17 @@
 <p>If you have a solution, please email me!</p>
 <h2 id="wifi">WiFi</h2>
 <p>By far the most serious (but luckily, easiest to solve) issue is the Broadcom wifi card BCM43228:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb1-1" title="1">$ <span class="ex">lspci</span> -vnn <span class="kw">|</span> <span class="fu">grep</span> Broadcom</a>
-<a class="sourceLine" id="cb1-2" title="2"><span class="ex">01</span>:00.0 Network controller [0280]: Broadcom Corporation BCM43228 802.11a/b/g/n [14e4:4359]</a></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a>$ <span class="ex">lspci</span> -vnn <span class="kw">|</span> <span class="fu">grep</span> Broadcom</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true"></a><span class="ex">01</span>:00.0 Network controller [0280]: Broadcom Corporation BCM43228 802.11a/b/g/n [14e4:4359]</span></code></pre></div>
 <p>This card was <a href="http://wireless.kernel.org/en/users/Drivers/b43">not supported</a> under the Linux kernel until kernel version 3.17. (We’re now on 3.18, as of this writing; when I bought the laptop, we were at 3.16.) The workaround for kernels below 3.17 is to use the AUR package <a href="https://aur.archlinux.org/packages/broadcom-wl/">broadcom-wl</a>. However, even once we arrived at 3.17, I found the native support (with the b43 driver and firmware) to be lacking: weak wifi connections, constant dropping, etc. So I still use broadcom-wl. Here’s how it works.</p>
 <p>First, download broadcom-wl with your favorite AUR helper, and install it. For example:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb2-1" title="1">$ <span class="ex">cower</span> -d broadcom-wl</a>
-<a class="sourceLine" id="cb2-2" title="2">$ <span class="bu">cd</span> ~/aur/broadcom-wl</a>
-<a class="sourceLine" id="cb2-3" title="3">$ <span class="ex">makepkg</span> -csi</a></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a>$ <span class="ex">cower</span> -d broadcom-wl</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true"></a>$ <span class="bu">cd</span> ~/aur/broadcom-wl</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true"></a>$ <span class="ex">makepkg</span> -csi</span></code></pre></div>
 <p>Second, restart computer.</p>
 <p>That’s all! Well, almost. Now, every time you update your kernel, you need to rebuild and reinstall broadcom-wl. For example:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb3-1" title="1">$ <span class="bu">cd</span> ~/aur/broadcom-wl</a>
-<a class="sourceLine" id="cb3-2" title="2">$ <span class="ex">makepkg</span> -csif</a></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a>$ <span class="bu">cd</span> ~/aur/broadcom-wl</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true"></a>$ <span class="ex">makepkg</span> -csif</span></code></pre></div>
 <p>The <code>-f</code> flag forces a rebuild and overwrites the current <code>.pkg.tar.xz</code> file.</p>
 <p>(Another option is to use broadcom-wl-dkms, which automatically rebuilds itself after a kernel update.)</p>
 <p>(This solution is obviously specific to Arch Linux, but most major distros should have some analog of the broadcom-wl package available, which should likewise solve the issue.)</p>
@@ -94,73 +95,73 @@
 <li><code>brt up</code>: increase brightness level by 20 (bind this to <code>&lt;Fn-F9&gt;</code>).</li>
 </ul>
 <p>I’ll illustrate how the main part of it works, the <code>brt_change()</code> function (the rest of the script should be pretty self-explanatory):</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb4-1" title="1"><span class="co">#!/bin/bash</span></a>
-<a class="sourceLine" id="cb4-2" title="2"></a>
-<a class="sourceLine" id="cb4-3" title="3"><span class="va">brightness_file=</span><span class="st">&quot;/sys/class/backlight/radeon_bl0/brightness&quot;</span></a>
-<a class="sourceLine" id="cb4-4" title="4"><span class="va">max_brightness=</span>255</a>
-<a class="sourceLine" id="cb4-5" title="5"><span class="va">min_brightness=</span>5</a>
-<a class="sourceLine" id="cb4-6" title="6"><span class="va">current_brightness=$(</span><span class="fu">cat</span> <span class="st">&quot;</span><span class="va">$brightness_file</span><span class="st">&quot;</span><span class="va">)</span></a>
-<a class="sourceLine" id="cb4-7" title="7"><span class="va">up_amt=</span>20</a>
-<a class="sourceLine" id="cb4-8" title="8"><span class="va">down_amt=</span>20</a>
-<a class="sourceLine" id="cb4-9" title="9"></a>
-<a class="sourceLine" id="cb4-10" title="10"><span class="fu">brt_change()</span> <span class="kw">{</span></a>
-<a class="sourceLine" id="cb4-11" title="11">  <span class="bu">echo</span> <span class="st">&quot;</span><span class="va">$1</span><span class="st">&quot;</span> <span class="kw">|</span> <span class="fu">sudo</span> tee <span class="st">&quot;</span><span class="va">$brightness_file</span><span class="st">&quot;</span></a>
-<a class="sourceLine" id="cb4-12" title="12"><span class="kw">}</span></a>
-<a class="sourceLine" id="cb4-13" title="13"></a>
-<a class="sourceLine" id="cb4-14" title="14"><span class="fu">brt_up()</span> <span class="kw">{</span></a>
-<a class="sourceLine" id="cb4-15" title="15">  <span class="bu">local</span> <span class="va">new_brightness=$(($current_brightness</span> + <span class="va">$up_amt))</span></a>
-<a class="sourceLine" id="cb4-16" title="16">  <span class="kw">if [[</span> <span class="va">$new_brightness</span> <span class="ot">-le</span> <span class="va">$max_brightness</span><span class="kw"> ]]</span>; <span class="kw">then</span></a>
-<a class="sourceLine" id="cb4-17" title="17">    <span class="ex">brt_change</span> <span class="st">&quot;</span><span class="va">$new_brightness</span><span class="st">&quot;</span></a>
-<a class="sourceLine" id="cb4-18" title="18">  <span class="kw">else</span></a>
-<a class="sourceLine" id="cb4-19" title="19">    <span class="ex">brt_change</span> <span class="st">&quot;</span><span class="va">$max_brightness</span><span class="st">&quot;</span></a>
-<a class="sourceLine" id="cb4-20" title="20">  <span class="kw">fi</span></a>
-<a class="sourceLine" id="cb4-21" title="21"><span class="kw">}</span></a>
-<a class="sourceLine" id="cb4-22" title="22"></a>
-<a class="sourceLine" id="cb4-23" title="23"><span class="fu">brt_down()</span> <span class="kw">{</span></a>
-<a class="sourceLine" id="cb4-24" title="24">  <span class="bu">local</span> <span class="va">new_brightness=$(($current_brightness</span> - <span class="va">$up_amt))</span></a>
-<a class="sourceLine" id="cb4-25" title="25">  <span class="kw">if [[</span> <span class="va">$new_brightness</span> <span class="ot">-ge</span> <span class="va">$min_brightness</span><span class="kw"> ]]</span>; <span class="kw">then</span></a>
-<a class="sourceLine" id="cb4-26" title="26">    <span class="ex">brt_change</span> <span class="st">&quot;</span><span class="va">$new_brightness</span><span class="st">&quot;</span></a>
-<a class="sourceLine" id="cb4-27" title="27">  <span class="kw">else</span></a>
-<a class="sourceLine" id="cb4-28" title="28">    <span class="ex">brt_change</span> <span class="st">&quot;</span><span class="va">$min_brightness</span><span class="st">&quot;</span></a>
-<a class="sourceLine" id="cb4-29" title="29">  <span class="kw">fi</span></a>
-<a class="sourceLine" id="cb4-30" title="30"><span class="kw">}</span></a>
-<a class="sourceLine" id="cb4-31" title="31"></a>
-<a class="sourceLine" id="cb4-32" title="32"><span class="kw">if [[</span> <span class="va">$#</span> <span class="ot">-eq</span> 1<span class="kw"> ]]</span>; <span class="kw">then</span></a>
-<a class="sourceLine" id="cb4-33" title="33">  <span class="kw">case</span> <span class="st">&quot;</span><span class="va">$1</span><span class="st">&quot;</span><span class="kw"> in</span></a>
-<a class="sourceLine" id="cb4-34" title="34">    [0-9]*<span class="kw">)</span> <span class="ex">brt_change</span> <span class="st">&quot;</span><span class="va">$1</span><span class="st">&quot;</span> <span class="kw">&amp;&amp;</span> <span class="bu">exit</span> 0<span class="kw">;;</span></a>
-<a class="sourceLine" id="cb4-35" title="35">        <span class="ex">up</span>) <span class="ex">brt_up</span> <span class="kw">&amp;&amp;</span> <span class="bu">exit</span> 0<span class="kw">;;</span></a>
-<a class="sourceLine" id="cb4-36" title="36">      <span class="ex">down</span>) <span class="ex">brt_down</span> <span class="kw">&amp;&amp;</span> <span class="bu">exit</span> 0<span class="kw">;;</span></a>
-<a class="sourceLine" id="cb4-37" title="37">         <span class="ex">*</span>) <span class="bu">echo</span> <span class="st">&quot;Error: invalid argument. Pick a brightness level (</span><span class="va">$min_brightness</span><span class="st">-</span><span class="va">$max_brightness</span><span class="st">), or say 'up' or 'down'.&quot;</span> <span class="kw">&amp;&amp;</span> <span class="bu">exit</span> 1<span class="kw">;;</span></a>
-<a class="sourceLine" id="cb4-38" title="38">  <span class="kw">esac</span></a>
-<a class="sourceLine" id="cb4-39" title="39"><span class="kw">elif [[</span> <span class="va">$#</span> <span class="ot">-eq</span> 0<span class="kw"> ]]</span>; <span class="kw">then</span></a>
-<a class="sourceLine" id="cb4-40" title="40">  <span class="bu">echo</span> <span class="st">&quot;</span><span class="va">$current_brightness</span><span class="st">&quot;</span></a>
-<a class="sourceLine" id="cb4-41" title="41">  <span class="bu">exit</span> 0</a>
-<a class="sourceLine" id="cb4-42" title="42"><span class="kw">else</span></a>
-<a class="sourceLine" id="cb4-43" title="43">  <span class="bu">echo</span> <span class="st">&quot;Error: too many arguments.&quot;</span></a>
-<a class="sourceLine" id="cb4-44" title="44">  <span class="bu">exit</span> 1</a>
-<a class="sourceLine" id="cb4-45" title="45"><span class="kw">fi</span></a></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true"></a><span class="va">brightness_file=</span><span class="st">&quot;/sys/class/backlight/radeon_bl0/brightness&quot;</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true"></a><span class="va">max_brightness=</span>255</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true"></a><span class="va">min_brightness=</span>5</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true"></a><span class="va">current_brightness=$(</span><span class="fu">cat</span> <span class="st">&quot;</span><span class="va">$brightness_file</span><span class="st">&quot;</span><span class="va">)</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true"></a><span class="va">up_amt=</span>20</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true"></a><span class="va">down_amt=</span>20</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true"></a></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true"></a><span class="fu">brt_change()</span> <span class="kw">{</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true"></a>  <span class="bu">echo</span> <span class="st">&quot;</span><span class="va">$1</span><span class="st">&quot;</span> <span class="kw">|</span> <span class="fu">sudo</span> tee <span class="st">&quot;</span><span class="va">$brightness_file</span><span class="st">&quot;</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true"></a><span class="kw">}</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true"></a></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true"></a><span class="fu">brt_up()</span> <span class="kw">{</span></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true"></a>  <span class="bu">local</span> <span class="va">new_brightness=$(($current_brightness</span> + <span class="va">$up_amt))</span></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true"></a>  <span class="kw">if [[</span> <span class="va">$new_brightness</span> <span class="ot">-le</span> <span class="va">$max_brightness</span><span class="kw"> ]]</span>; <span class="kw">then</span></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true"></a>    <span class="ex">brt_change</span> <span class="st">&quot;</span><span class="va">$new_brightness</span><span class="st">&quot;</span></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true"></a>  <span class="kw">else</span></span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true"></a>    <span class="ex">brt_change</span> <span class="st">&quot;</span><span class="va">$max_brightness</span><span class="st">&quot;</span></span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true"></a>  <span class="kw">fi</span></span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true"></a><span class="kw">}</span></span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true"></a></span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true"></a><span class="fu">brt_down()</span> <span class="kw">{</span></span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true"></a>  <span class="bu">local</span> <span class="va">new_brightness=$(($current_brightness</span> - <span class="va">$up_amt))</span></span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true"></a>  <span class="kw">if [[</span> <span class="va">$new_brightness</span> <span class="ot">-ge</span> <span class="va">$min_brightness</span><span class="kw"> ]]</span>; <span class="kw">then</span></span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true"></a>    <span class="ex">brt_change</span> <span class="st">&quot;</span><span class="va">$new_brightness</span><span class="st">&quot;</span></span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true"></a>  <span class="kw">else</span></span>
+<span id="cb4-28"><a href="#cb4-28" aria-hidden="true"></a>    <span class="ex">brt_change</span> <span class="st">&quot;</span><span class="va">$min_brightness</span><span class="st">&quot;</span></span>
+<span id="cb4-29"><a href="#cb4-29" aria-hidden="true"></a>  <span class="kw">fi</span></span>
+<span id="cb4-30"><a href="#cb4-30" aria-hidden="true"></a><span class="kw">}</span></span>
+<span id="cb4-31"><a href="#cb4-31" aria-hidden="true"></a></span>
+<span id="cb4-32"><a href="#cb4-32" aria-hidden="true"></a><span class="kw">if [[</span> <span class="va">$#</span> <span class="ot">-eq</span> 1<span class="kw"> ]]</span>; <span class="kw">then</span></span>
+<span id="cb4-33"><a href="#cb4-33" aria-hidden="true"></a>  <span class="kw">case</span> <span class="st">&quot;</span><span class="va">$1</span><span class="st">&quot;</span><span class="kw"> in</span></span>
+<span id="cb4-34"><a href="#cb4-34" aria-hidden="true"></a>    [0-9]*<span class="kw">)</span> <span class="ex">brt_change</span> <span class="st">&quot;</span><span class="va">$1</span><span class="st">&quot;</span> <span class="kw">&amp;&amp;</span> <span class="bu">exit</span> 0<span class="kw">;;</span></span>
+<span id="cb4-35"><a href="#cb4-35" aria-hidden="true"></a>        <span class="ex">up</span>) <span class="ex">brt_up</span> <span class="kw">&amp;&amp;</span> <span class="bu">exit</span> 0<span class="kw">;;</span></span>
+<span id="cb4-36"><a href="#cb4-36" aria-hidden="true"></a>      <span class="ex">down</span>) <span class="ex">brt_down</span> <span class="kw">&amp;&amp;</span> <span class="bu">exit</span> 0<span class="kw">;;</span></span>
+<span id="cb4-37"><a href="#cb4-37" aria-hidden="true"></a>         <span class="ex">*</span>) <span class="bu">echo</span> <span class="st">&quot;Error: invalid argument. Pick a brightness level (</span><span class="va">$min_brightness</span><span class="st">-</span><span class="va">$max_brightness</span><span class="st">), or say 'up' or 'down'.&quot;</span> <span class="kw">&amp;&amp;</span> <span class="bu">exit</span> 1<span class="kw">;;</span></span>
+<span id="cb4-38"><a href="#cb4-38" aria-hidden="true"></a>  <span class="kw">esac</span></span>
+<span id="cb4-39"><a href="#cb4-39" aria-hidden="true"></a><span class="kw">elif [[</span> <span class="va">$#</span> <span class="ot">-eq</span> 0<span class="kw"> ]]</span>; <span class="kw">then</span></span>
+<span id="cb4-40"><a href="#cb4-40" aria-hidden="true"></a>  <span class="bu">echo</span> <span class="st">&quot;</span><span class="va">$current_brightness</span><span class="st">&quot;</span></span>
+<span id="cb4-41"><a href="#cb4-41" aria-hidden="true"></a>  <span class="bu">exit</span> 0</span>
+<span id="cb4-42"><a href="#cb4-42" aria-hidden="true"></a><span class="kw">else</span></span>
+<span id="cb4-43"><a href="#cb4-43" aria-hidden="true"></a>  <span class="bu">echo</span> <span class="st">&quot;Error: too many arguments.&quot;</span></span>
+<span id="cb4-44"><a href="#cb4-44" aria-hidden="true"></a>  <span class="bu">exit</span> 1</span>
+<span id="cb4-45"><a href="#cb4-45" aria-hidden="true"></a><span class="kw">fi</span></span></code></pre></div>
 <p>The file <code>/sys/class/backlight/radeon_bl0/brightness</code> contains the current brightness level, which for my Lenovo X140e is between 0 and 255. To change the brightness, you just change this file. The problem is that since it’s located in <code>/sys/...</code>, you need root permission to change it. That means that</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb5-1" title="1"><span class="bu">echo</span> <span class="st">&quot;100&quot;</span> <span class="op">&gt;</span> /sys/...</a></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true"></a><span class="bu">echo</span> <span class="st">&quot;100&quot;</span> <span class="op">&gt;</span> /sys/...</span></code></pre></div>
 <p>won’t work, but neither will</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb6-1" title="1"><span class="fu">sudo</span> echo <span class="st">&quot;100&quot;</span> <span class="op">&gt;</span> /sys/...</a></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true"></a><span class="fu">sudo</span> echo <span class="st">&quot;100&quot;</span> <span class="op">&gt;</span> /sys/...</span></code></pre></div>
 <p>The reason is because in the latter, <code>sudo</code> is only operating on the <code>echo</code> command. It’s like saying, run <code>echo</code> as root, and now (not as root) append the output to <code>/sys/...</code>. To solve this, we use <code>tee</code>, which allows piping from stdin to a file, as root:</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb7-1" title="1"><span class="bu">echo</span> <span class="st">&quot;100&quot;</span> <span class="kw">|</span> <span class="fu">sudo</span> tee /sys/...</a></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true"></a><span class="bu">echo</span> <span class="st">&quot;100&quot;</span> <span class="kw">|</span> <span class="fu">sudo</span> tee /sys/...</span></code></pre></div>
 <p>This command will successfully set the brightness level to 100, and that’s the crux of the script.</p>
 <p>There’s one remaining issue, though: we don’t want to run this script in a terminal; we want to bind it to a key. But the script uses <code>sudo</code>, which requires a password to be typed, which you can’t really do outside of a terminal. The solution is to allow <code>tee</code> to be run as root without a password. To do this, you need to change the sudoers file by running <code>visudo</code> (as root) and adding this line:</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb8-1" title="1"><span class="co"># Add `tee' to list of commands that user `brian' can run without password</span></a>
-<a class="sourceLine" id="cb8-2" title="2"><span class="ex">brian</span> ALL = NOPASSWD: /usr/bin/tee</a></code></pre></div>
-<p>What this does is allow the user “brian” (that’s me) to run <code>tee</code> as root (<code>sudo tee</code>) without a password.<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a> <code>/usr/bin/tee</code> is of course the full path to <code>tee</code>. To find that out on your system, run <code>which tee</code> in a terminal.</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true"></a><span class="co"># Add `tee' to list of commands that user `brian' can run without password</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true"></a><span class="ex">brian</span> ALL = NOPASSWD: /usr/bin/tee</span></code></pre></div>
+<p>What this does is allow the user “brian” (that’s me) to run <code>tee</code> as root (<code>sudo tee</code>) without a password.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> <code>/usr/bin/tee</code> is of course the full path to <code>tee</code>. To find that out on your system, run <code>which tee</code> in a terminal.</p>
 <p>Now the script can be run effectively. Just bind <code>brt down</code> and <code>brt up</code> to <code>&lt;Fn-F8&gt;</code> and <code>&lt;Fn-F9&gt;</code> (or whatever you want) in whatever way is required by your desktop environment or window manager. (For me, I bind keys in <code>xmonad.hs</code> since I use xmonad.)</p>
 <h2 id="no-insert-key">No insert key</h2>
 <p>The laptop keyboard does not come with any physical <code>Insert</code> key. I guess that’s because most people nowadays don’t use it very often. But I do. One of the best features of Linux (well, X11) is the X clipboard: whenever you highlight something, it gets added to the X clipboard (no need to <code>&lt;Ctrl-C&gt;</code>), and you can paste it with <code>&lt;Shift-Insert&gt;</code>. (I also use <code>Insert</code> to go into ignore-mode in <a href="http://www.vimperator.org/vimperator/">Vimperator</a> for Firefox.)</p>
 <p>What I did was bind the Windows key (which was serving no purpose) to <code>Insert</code>. Here’s how:</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb9-1" title="1"><span class="fu">xmodmap</span> -e <span class="st">&quot;keycode 133 = Insert&quot;</span>    <span class="co"># map windows button to insert</span></a></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true"></a><span class="fu">xmodmap</span> -e <span class="st">&quot;keycode 133 = Insert&quot;</span>    # map windows button to insert</span></code></pre></div>
 <p>You can find the keycode of a key by running <code>xev</code> (X event program) from a terminal, typing the key, and looking for “keycode” in the output. (Hit <code>&lt;Ctrl-C&gt;</code> to exit <code>xev</code>.)</p>
 <p>Now you can run this <code>xmodmap</code> command in a terminal, and it should work. But the best solution is to include it in your <code>.xinitrc</code> file so that it’s run every time X starts. (I have a whole <code>keyboard-adjust</code> script that adds the Dvorak layout, switches caps and control lock, etc., maps the Windows button to insert, etc.; I then call the whole script from my <code>.xinitrc</code> file.)</p>
-<section class="footnotes">
+<section class="footnotes" role="doc-endnotes">
 <hr />
 <ol>
-<li id="fn1"><p>NB: This is a (potential) security risk, as it allows “brian”, or anyone logged in as “brian”, to overwrite <em>any</em> file! (Example: <code>echo "all gone" | sudo tee /path/to/important/file</code>.) Only do this if you’re the only one with access to this user profile.<a href="#fnref1" class="footnote-back">↩</a></p></li>
+<li id="fn1" role="doc-endnote"><p>NB: This is a (potential) security risk, as it allows “brian”, or anyone logged in as “brian”, to overwrite <em>any</em> file! (Example: <code>echo "all gone" | sudo tee /path/to/important/file</code>.) Only do this if you’re the only one with access to this user profile.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section>
     </section>

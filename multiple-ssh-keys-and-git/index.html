@@ -41,6 +41,7 @@
                 <a class="nav" href="../">Home</a>
                 <a class="nav" href="../work/">Work</a>
                 <a class="nav" href="../cv/">CV</a>
+                <a class="nav" href="../contact/">Contact</a>
                 <a class="nav" href="../blog/">Blog</a>
             </nav>
         </header>
@@ -56,30 +57,30 @@
     </section>
     <section>
         <p>I have three different ssh keys set up: <code>id_rsa.mcgill</code> for my McGill site, <code>id_rsa.github</code> for GitHub, and <code>id_rsa.bitbucket</code> for BitBucket. I also have the following in my <code>~/.ssh/config</code>:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb1-1" title="1"><span class="ex">Host</span> mcgill</a>
-<a class="sourceLine" id="cb1-2" title="2">  <span class="ex">User</span> brian.buccola</a>
-<a class="sourceLine" id="cb1-3" title="3">  <span class="ex">HostName</span> people.linguistics.mcgill.ca</a>
-<a class="sourceLine" id="cb1-4" title="4">  <span class="ex">IdentityFile</span> ~/.ssh/id_rsa.mcgill</a>
-<a class="sourceLine" id="cb1-5" title="5"></a>
-<a class="sourceLine" id="cb1-6" title="6"><span class="ex">Host</span> github</a>
-<a class="sourceLine" id="cb1-7" title="7">  <span class="ex">User</span> git</a>
-<a class="sourceLine" id="cb1-8" title="8">  <span class="ex">HostName</span> github.com</a>
-<a class="sourceLine" id="cb1-9" title="9">  <span class="ex">IdentityFile</span> ~/.ssh/id_rsa.github</a>
-<a class="sourceLine" id="cb1-10" title="10"></a>
-<a class="sourceLine" id="cb1-11" title="11"><span class="ex">Host</span> bitbucket</a>
-<a class="sourceLine" id="cb1-12" title="12">  <span class="ex">User</span> git</a>
-<a class="sourceLine" id="cb1-13" title="13">  <span class="ex">HostName</span> bitbucket.org</a>
-<a class="sourceLine" id="cb1-14" title="14">  <span class="ex">IdentityFile</span> ~/.ssh/id_rsa.bitbucket</a></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a><span class="ex">Host</span> mcgill</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true"></a>  <span class="ex">User</span> brian.buccola</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true"></a>  <span class="ex">HostName</span> people.linguistics.mcgill.ca</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true"></a>  <span class="ex">IdentityFile</span> ~/.ssh/id_rsa.mcgill</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true"></a><span class="ex">Host</span> github</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true"></a>  <span class="ex">User</span> git</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true"></a>  <span class="ex">HostName</span> github.com</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true"></a>  <span class="ex">IdentityFile</span> ~/.ssh/id_rsa.github</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true"></a></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true"></a><span class="ex">Host</span> bitbucket</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true"></a>  <span class="ex">User</span> git</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true"></a>  <span class="ex">HostName</span> bitbucket.org</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true"></a>  <span class="ex">IdentityFile</span> ~/.ssh/id_rsa.bitbucket</span></code></pre></div>
 <p>Now, it had been a while since I manually <code>ssh</code>-ed into GitHub or even McGill. I update my McGill site with a simple rsync command that includes the <code>-i</code> option specifying the <code>ssh</code> identity file to use.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb2-1" title="1"><span class="fu">rsync</span> -e <span class="st">&quot;ssh -i </span><span class="va">$HOME</span><span class="st">/.ssh/id_rsa.mcgill&quot;</span> src-path dest-path</a></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a><span class="fu">rsync</span> -e <span class="st">&quot;ssh -i </span><span class="va">$HOME</span><span class="st">/.ssh/id_rsa.mcgill&quot;</span> src-path dest-path</span></code></pre></div>
 <p>So I was confused recently when, each time I tried to <code>ssh</code> into GitHub or McGill, I would get this error:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb3-1" title="1">$ <span class="fu">ssh</span> git@github.com</a>
-<a class="sourceLine" id="cb3-2" title="2"><span class="ex">Permission</span> denied (publickey)</a></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a>$ <span class="fu">ssh</span> git@github.com</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true"></a><span class="ex">Permission</span> denied (publickey)</span></code></pre></div>
 <p>The solution, it turns out, is that if the identity file is named something <em>other than</em> <code>id_rsa</code> or <code>id_dsa</code>, then running <code>ssh user@hostname</code> (without the <code>-i</code> option) will not find it. That should’ve been immediately obvious to me: the whole point of an <code>ssh</code> config file like the one I set up months ago is to not have to type out <code>user@hostname</code>!</p>
 <p>So all I had to do was stop typing <code>git@github</code> and instead use simply <code>github</code> (or whatever comes after <code>Host</code> in the config; that’s up to you). So all of these should work, and they do:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb4-1" title="1">$ <span class="fu">ssh</span> mcgill</a>
-<a class="sourceLine" id="cb4-2" title="2">$ <span class="fu">ssh</span> github</a>
-<a class="sourceLine" id="cb4-3" title="3">$ <span class="fu">ssh</span> bitbucket</a></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true"></a>$ <span class="fu">ssh</span> mcgill</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true"></a>$ <span class="fu">ssh</span> github</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true"></a>$ <span class="fu">ssh</span> bitbucket</span></code></pre></div>
     </section>
 </article>
 

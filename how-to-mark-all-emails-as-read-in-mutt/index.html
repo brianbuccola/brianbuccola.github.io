@@ -41,6 +41,7 @@
                 <a class="nav" href="../">Home</a>
                 <a class="nav" href="../work/">Work</a>
                 <a class="nav" href="../cv/">CV</a>
+                <a class="nav" href="../contact/">Contact</a>
                 <a class="nav" href="../blog/">Blog</a>
             </nav>
         </header>
@@ -56,9 +57,9 @@
     </section>
     <section>
         <p>Here’s a simple macro to mark all new emails (messages) as read in Mutt. If you want to use it, just add it to your Mutt configuration file (e.g. <code>~/.muttrc</code>).</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb1-1" title="1"><span class="ex">macro</span> index A \</a>
-<a class="sourceLine" id="cb1-2" title="2">    <span class="st">&quot;&lt;tag-pattern&gt;~N&lt;enter&gt;&lt;tag-prefix&gt;&lt;clear-flag&gt;N&lt;untag-pattern&gt;.&lt;enter&gt;&quot;</span> \</a>
-<a class="sourceLine" id="cb1-3" title="3">    <span class="st">&quot;mark all new as read&quot;</span></a></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a><span class="ex">macro</span> index A <span class="kw">\</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true"></a>    <span class="st">&quot;&lt;tag-pattern&gt;~N&lt;enter&gt;&lt;tag-prefix&gt;&lt;clear-flag&gt;N&lt;untag-pattern&gt;.&lt;enter&gt;&quot;</span> <span class="kw">\</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true"></a>    <span class="st">&quot;mark all new as read&quot;</span></span></code></pre></div>
 <p>(You could remove the two backslashes and have the macro on a single line, but I split it up for legibility’s sake.)</p>
 <p>Let’s parse this bit by bit.</p>
 <ul>

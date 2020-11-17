@@ -41,6 +41,7 @@
                 <a class="nav" href="../">Home</a>
                 <a class="nav" href="../work/">Work</a>
                 <a class="nav" href="../cv/">CV</a>
+                <a class="nav" href="../contact/">Contact</a>
                 <a class="nav" href="../blog/">Blog</a>
             </nav>
         </header>
@@ -65,18 +66,18 @@
 <p>For the impatient: just jump to the <a href="#recap">recap</a> to see my setup.</p>
 <h2 id="console-setup">Console setup</h2>
 <p>To make the screen go blank in console after, say, 60 seconds, you just need to pass the option <code>consoleblank=60</code> to the kernel, e.g. by adding this option as a kernel parameter in your boot loader configuration file. I use <a href="https://wiki.archlinux.org/index.php/syslinux">Syslinux</a> as my boot loader, so for me, I simply edit the file</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb1-1" title="1"><span class="ex">/boot/syslinux/syslinux.cfg</span></a></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a><span class="ex">/boot/syslinux/syslinux.cfg</span></span></code></pre></div>
 <p>so that the line</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb2-1" title="1"><span class="ex">APPEND</span> root=/dev/sda1 rw</a></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a><span class="ex">APPEND</span> root=/dev/sda1 rw</span></code></pre></div>
 <p>becomes</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb3-1" title="1"><span class="ex">APPEND</span> root=/dev/sda1 rw consoleblank=60</a></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a><span class="ex">APPEND</span> root=/dev/sda1 rw consoleblank=60</span></code></pre></div>
 <p>If you use GRUB, you would do the same thing but edit the GRUB configuration file. See <a href="https://wiki.archlinux.org/index.php/Kernel_parameters">here</a> for more info about passing options to the kernel.</p>
 <h2 id="x-setup">X setup</h2>
 <p>Recall that in X we want to do two things after 10 minutes of activity: blank the screen <em>and</em> lock the screen. These are two separate things.</p>
 <h3 id="blanking-the-screen">Blanking the screen</h3>
 <p>To blank the screen, we use the <code>xset</code> command. First, let me mention that running <code>xset q</code> lists all the current settings—try that now and look at the output before reading further. The important sections are “Screen Saver” and “DPMS”.</p>
 <p>Now then, the <code>s</code> option lets you set screen saver parameters. For example,</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb4-1" title="1"><span class="fu">xset</span> s 600</a></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true"></a><span class="fu">xset</span> s 600</span></code></pre></div>
 <p>activates the “screen saver” after 600 seconds (10 minutes). For me, activating the “screen saver” is equivalent to blanking the screen—you can test this by running <code>xset s 1</code> and waiting 1 second— so this single command does the job we want. (NB: 600 seconds is also the default, so <code>xset s</code> would also work; it also resets any previous screen saver setting, such as <code>xset s 1</code> above.)</p>
 <p>You can also use DPMS (Energy Star) features with the <code>dpms</code> option. There are several DPMS states:</p>
 <ul>
@@ -86,16 +87,16 @@
 <li>on</li>
 </ul>
 <p>For me, standby, suspend, and off are all equivalent to blanking the screen, but I guess on some computers they will do different things. You can test them yourself by running, for example,</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb5-1" title="1"><span class="fu">xset</span> dpms force standby</a></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true"></a><span class="fu">xset</span> dpms force standby</span></code></pre></div>
 <p>To force standby, suspend, and off modes after 300s, 400s, and 500s, respectively, run</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb6-1" title="1"><span class="fu">xset</span> dpms 300 400 500</a></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true"></a><span class="fu">xset</span> dpms 300 400 500</span></code></pre></div>
 <p>Once you figure out the command that you want, just add it to your X startup file, <code>~/.xinitrc</code>, to run the command whenever you start X.</p>
 <p>See <a href="https://wiki.archlinux.org/index.php/Display_Power_Management_Signaling">here</a> for more info, as well as, of course, <code>man xset</code>.</p>
 <h3 id="locking-the-screen">Locking the screen</h3>
 <p>To lock the screen, first we need a screen locking program. I’ve tried several <a href="https://wiki.archlinux.org/index.php/List_of_applications#Screen_lockers">screen lockers</a>, and my favorite is <a href="http://tools.suckless.org/slock/">slock</a>, for one main reason: it’s super minimal. There is no login prompt or anything. The screen simply turns black when it locks. When you start typing your password, the screen turns blue. If you press <code>&lt;Enter&gt;</code> and the password was incorrect, it turns red. Start typing again, and it turns blue again. In other words, you only see three possible things: a black screen, a blue screen, or a red screen. I like that. It would thoroughly confuse anyone trying to mess with your computer.</p>
 <p>Use your package manager to download slock, and then try it out by running <code>slock</code> in the terminal. Try out other <a href="https://wiki.archlinux.org/index.php/List_of_applications#Screen_lockers">screen lockers</a>, too, if you like. (Note that one advantage of some other lockers, such as sflock and physlock, is that they block access to other TTYs, but I don’t care too much about this functionality since I never have other sessions open on other TTYs.)</p>
 <p>Once you’re satisfied that slock works and you like it (or once you pick a different locker), you can use the <code>xautolock</code> command to run <code>slock</code> every 10 minutes by adding this command to your <code>~/.xnitrc</code>.</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb7-1" title="1"><span class="ex">xautolock</span> -time 10 -locker slock <span class="kw">&amp;</span></a></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true"></a><span class="ex">xautolock</span> -time 10 -locker slock <span class="kw">&amp;</span></span></code></pre></div>
 <p>(If you decided on a different locker, just replace <code>slock</code> with your locker’s name, e.g. <code>physlock</code>.)</p>
 <p>Note the <code>&amp;</code> at the end, which runs the command in the background. If you omit this, then the other commands in your <code>~/.xinitrc</code> (such as the one that starts your window manager) won’t get executed, which is a problem.</p>
 <p>That’s it!</p>

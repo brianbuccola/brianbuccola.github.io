@@ -41,6 +41,7 @@
                 <a class="nav" href="../">Home</a>
                 <a class="nav" href="../work/">Work</a>
                 <a class="nav" href="../cv/">CV</a>
+                <a class="nav" href="../contact/">Contact</a>
                 <a class="nav" href="../blog/">Blog</a>
             </nav>
         </header>
@@ -59,8 +60,8 @@
 <p><strong>Pro-tip:</strong> The first step is always to inspect the log file produced by the compilation. In my case, I saw that the journal’s version of TeX Live is from 2013 — 6 years old! This turned out to be the source of both problems below.</p>
 <h2 id="fixing-old-versions-of-tex-live-with-fixltx2e">1. Fixing old versions of TeX Live with fixltx2e</h2>
 <p>The first problem was that I kept getting an error regarding my use of <code>\textsubscript</code>. It took me longer than I care to admit to just google the issue. The first result was <a href="https://tex.stackexchange.com/questions/1013/how-to-typeset-subscript-in-usual-text-mode">this Stack Exchange thread</a>, which reveals that before 2015, you needed to use the <code>fixltx2e</code> package to properly use <code>\textsubscript</code>. So I added</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode latex"><code class="sourceCode latex"><a class="sourceLine" id="cb1-1" title="1"><span class="co">% Fix LaTeX2e (needed for JoS's 2013 version of TeX Live)</span></a>
-<a class="sourceLine" id="cb1-2" title="2"><span class="bu">\usepackage</span>{<span class="ex">fixltx2e</span>}</a></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode latex"><code class="sourceCode latex"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a><span class="co">% Fix LaTeX2e (needed for JoS's 2013 version of TeX Live)</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true"></a><span class="bu">\usepackage</span>{<span class="ex">fixltx2e</span>}</span></code></pre></div>
 <p>to my preamble.</p>
 <p>If you’re using an up-to-date version of TeX Live, this will produce a warning letting you know that you don’t need this package anymore.</p>
 <h2 id="using-a-package-that-the-journal-doesnt-have">2. Using a package that the journal doesn’t have</h2>
@@ -81,7 +82,7 @@ epltxfn.sty</code></pre>
 <h2 id="re-running-biber-or-bibtex-to-fix-citations">3. Re-running Biber (or BibTeX) to fix citations</h2>
 <p>This is something I <em>couldn’t</em> solve: although the system produced a PDF, it didn’t produce proper citations, or print a bibliography. Usually, this means that Biber (or BibTeX) needs to be re-run, but I couldn’t force the system to do that from my end.</p>
 <p>The problem could be because I use Biblatex/Biber instead of the traditional BibTeX. I tried forcing the Biber backend by <a href="https://tex.stackexchange.com/questions/78101/when-and-why-should-i-use-tex-ts-program-and-tex-encoding">adding the directive</a></p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode latex"><code class="sourceCode latex"><a class="sourceLine" id="cb3-1" title="1"><span class="co">% !BIB TS-program = biber</span></a></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode latex"><code class="sourceCode latex"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a><span class="co">% !BIB TS-program = biber</span></span></code></pre></div>
 <p>to the top of the TeX file, but that didn’t work. (This is apparently only for TeX Shop, which I guess the journal doesn’t use. I’m not sure if there’s a more general directive, or a directive for <code>latexmk</code>, similar to the <code>%&amp;pdflatex</code> directive that I discussed in my <a href="../how-to-force-pdflatex-pdf-over-latex-dvi-compilation/">previous post</a>.)</p>
 <p>The problem could also be because the journal uses plain <code>pdflatex</code> rather than something like <code>latexmk</code>, which takes care of Biber/Biblatex and multiple compilations.</p>
 <p>In any case, I was able to complete my submission (along with my own PDF, with all the citations and bibliography), because of the solutions to the first two problems.</p>

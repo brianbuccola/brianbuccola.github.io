@@ -19,8 +19,8 @@
 <p><strong>Pro-tip:</strong> The first step is always to inspect the log file produced by the compilation. In my case, I saw that the journal’s version of TeX Live is from 2013 — 6 years old! This turned out to be the source of both problems below.</p>
 <h2 id="fixing-old-versions-of-tex-live-with-fixltx2e">1. Fixing old versions of TeX Live with fixltx2e</h2>
 <p>The first problem was that I kept getting an error regarding my use of <code>\textsubscript</code>. It took me longer than I care to admit to just google the issue. The first result was <a href="https://tex.stackexchange.com/questions/1013/how-to-typeset-subscript-in-usual-text-mode">this Stack Exchange thread</a>, which reveals that before 2015, you needed to use the <code>fixltx2e</code> package to properly use <code>\textsubscript</code>. So I added</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode latex"><code class="sourceCode latex"><a class="sourceLine" id="cb1-1" title="1"><span class="co">% Fix LaTeX2e (needed for JoS&#39;s 2013 version of TeX Live)</span></a>
-<a class="sourceLine" id="cb1-2" title="2"><span class="bu">\usepackage</span>{<span class="ex">fixltx2e</span>}</a></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode latex"><code class="sourceCode latex"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a><span class="co">% Fix LaTeX2e (needed for JoS&#39;s 2013 version of TeX Live)</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true"></a><span class="bu">\usepackage</span>{<span class="ex">fixltx2e</span>}</span></code></pre></div>
 <p>to my preamble.</p>
 <p>If you’re using an up-to-date version of TeX Live, this will produce a warning letting you know that you don’t need this package anymore.</p>
 <h2 id="using-a-package-that-the-journal-doesnt-have">2. Using a package that the journal doesn’t have</h2>
@@ -41,7 +41,7 @@ epltxfn.sty</code></pre>
 <h2 id="re-running-biber-or-bibtex-to-fix-citations">3. Re-running Biber (or BibTeX) to fix citations</h2>
 <p>This is something I <em>couldn’t</em> solve: although the system produced a PDF, it didn’t produce proper citations, or print a bibliography. Usually, this means that Biber (or BibTeX) needs to be re-run, but I couldn’t force the system to do that from my end.</p>
 <p>The problem could be because I use Biblatex/Biber instead of the traditional BibTeX. I tried forcing the Biber backend by <a href="https://tex.stackexchange.com/questions/78101/when-and-why-should-i-use-tex-ts-program-and-tex-encoding">adding the directive</a></p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode latex"><code class="sourceCode latex"><a class="sourceLine" id="cb3-1" title="1"><span class="co">% !BIB TS-program = biber</span></a></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode latex"><code class="sourceCode latex"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a><span class="co">% !BIB TS-program = biber</span></span></code></pre></div>
 <p>to the top of the TeX file, but that didn’t work. (This is apparently only for TeX Shop, which I guess the journal doesn’t use. I’m not sure if there’s a more general directive, or a directive for <code>latexmk</code>, similar to the <code>%&amp;pdflatex</code> directive that I discussed in my <a href="/how-to-force-pdflatex-pdf-over-latex-dvi-compilation/">previous post</a>.)</p>
 <p>The problem could also be because the journal uses plain <code>pdflatex</code> rather than something like <code>latexmk</code>, which takes care of Biber/Biblatex and multiple compilations.</p>
 <p>In any case, I was able to complete my submission (along with my own PDF, with all the citations and bibliography), because of the solutions to the first two problems.</p>]]></summary>
@@ -53,11 +53,11 @@ epltxfn.sty</code></pre>
     <published>2019-04-25T00:00:00Z</published>
     <updated>2019-04-25T00:00:00Z</updated>
     <summary type="html"><![CDATA[<p><strong>PSA:</strong> If you’re submitting a latex source file to a journal, and their compiler is giving you errors related to DVI output, try adding <code>%&amp;pdflatex</code> to the top of the file (make it line 1, all by itself) to force using <code>pdflatex</code> over plain <code>latex</code> + <code>dvipdf</code>.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode latex"><code class="sourceCode latex"><a class="sourceLine" id="cb1-1" title="1"><span class="co">%&amp;pdflatex</span></a>
-<a class="sourceLine" id="cb1-2" title="2"><span class="bu">\documentclass</span>{<span class="ex">article</span>}</a>
-<a class="sourceLine" id="cb1-3" title="3"><span class="kw">\begin</span>{<span class="ex">document</span>}</a>
-<a class="sourceLine" id="cb1-4" title="4">Hello, world!</a>
-<a class="sourceLine" id="cb1-5" title="5"><span class="kw">\end</span>{<span class="ex">document</span>}</a></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode latex"><code class="sourceCode latex"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a><span class="co">%&amp;pdflatex</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true"></a><span class="bu">\documentclass</span>{<span class="ex">article</span>}</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true"></a><span class="kw">\begin</span>{<span class="ex">document</span>}</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true"></a>Hello, world!</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true"></a><span class="kw">\end</span>{<span class="ex">document</span>}</span></code></pre></div>
 <p>In my case, I was getting errors along the lines of</p>
 <pre><code>! LaTeX Error: Cannot determine size of graphic in figure.pdf (no BoundingBox)</code></pre>
 <p>This is an indication that the backend compiler is plain <code>latex</code> (trying to create a DVI), which is unable to determine the size of PDF, PNG, or JPG images. (If this is your only problem, then another solution is to use EPS images instead, which should be handled just fine by plain <code>latex</code>.)</p>
@@ -100,101 +100,101 @@ epltxfn.sty</code></pre>
 <p>See <a href="https://www.dropboxwiki.com/tips-and-tricks/using-the-official-dropbox-command-line-interface-cli">this article</a> on the Dropbox wiki for more information.</p>
 <h2 id="step-2-start-dropbox">Step 2: Start Dropbox</h2>
 <p>At this point, you can already start Dropbox. So, in a terminal, run:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb1-1" title="1">$ <span class="ex">dropbox</span> start</a></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a>$ <span class="ex">dropbox</span> start</span></code></pre></div>
 <p><strong>Protip</strong>: Use the command</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb2-1" title="1">$ <span class="ex">dropbox</span> start <span class="kw">&amp;&amp;</span> <span class="ex">watch</span> -n1 dropbox status <span class="kw">&amp;&amp;</span> <span class="ex">dropbox</span> stop</a></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a>$ <span class="ex">dropbox</span> start <span class="kw">&amp;&amp;</span> <span class="ex">watch</span> -n1 dropbox status <span class="kw">&amp;&amp;</span> <span class="ex">dropbox</span> stop</span></code></pre></div>
 <p>to continually (every second) watch the Dropbox status, or better yet, create an alias for it called <code>db</code>, as I previously described in <a href="/a-simple-dropbox-command-line-alias/">this post</a>.</p>
 <h2 id="step-3-start-a-new-project">Step 3: Start a new project</h2>
 <p>Now we start our new project, e.g. LaTeX manuscript. (If you used the <code>db</code> alias/command above, then fire up a new terminal.) Let’s call the project <code>project</code>, because we’re not creative:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb3-1" title="1">$ <span class="fu">mkdir</span> ~/Dropbox/project</a>
-<a class="sourceLine" id="cb3-2" title="2">$ <span class="bu">cd</span> ~/Dropbox/project</a></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a>$ <span class="fu">mkdir</span> ~/Dropbox/project</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true"></a>$ <span class="bu">cd</span> ~/Dropbox/project</span></code></pre></div>
 <p>From here on out, I’m going to assume that every command is run from inside <code>~/Dropbox/project</code>.</p>
 <h2 id="step-4-exclude-git-files-from-dropbox-sync">Step 4: Exclude Git files from Dropbox sync</h2>
 <p>With Dropbox running, we’re going to preemptively exclude two Git-related things: the directory <code>.git</code> and the file <code>.gitignore</code>, both of which will be created in the next step.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb4-1" title="1"><span class="co"># Run this from inside ~/Dropbox/project!</span></a>
-<a class="sourceLine" id="cb4-2" title="2">$ <span class="ex">dropbox</span> exclude add .git .gitignore</a>
-<a class="sourceLine" id="cb4-3" title="3"><span class="ex">Excluded</span>:</a>
-<a class="sourceLine" id="cb4-4" title="4"><span class="ex">.git</span></a>
-<a class="sourceLine" id="cb4-5" title="5"><span class="ex">.gitignore</span></a></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true"></a><span class="co"># Run this from inside ~/Dropbox/project!</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true"></a>$ <span class="ex">dropbox</span> exclude add .git .gitignore</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true"></a><span class="ex">Excluded</span>:</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true"></a><span class="ex">.git</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true"></a><span class="ex">.gitignore</span></span></code></pre></div>
 <p>Dropbox confirms that it excluded the files, but you can double-check that it worked by running:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb5-1" title="1">$ <span class="ex">dropbox</span> exclude list</a>
-<a class="sourceLine" id="cb5-2" title="2"><span class="ex">Excluded</span>:</a>
-<a class="sourceLine" id="cb5-3" title="3"><span class="ex">.git</span></a>
-<a class="sourceLine" id="cb5-4" title="4"><span class="ex">.gitignore</span></a></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true"></a>$ <span class="ex">dropbox</span> exclude list</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true"></a><span class="ex">Excluded</span>:</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true"></a><span class="ex">.git</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true"></a><span class="ex">.gitignore</span></span></code></pre></div>
 <p>Note that <code>.git</code> and <code>.gitignore</code> don’t even exist yet! In other words, you can tell Dropbox to exclude stuff before even creating it. In fact, you <em>should</em> do this. More about that <a href="#important-warning">at the end</a>.</p>
 <h2 id="step-5-exclude-dropbox-files-from-git-tracking">Step 5: Exclude Dropbox files from Git tracking</h2>
 <p>Now we turn <code>project</code> into a Git repository in the usual way:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb6-1" title="1">$ <span class="fu">git</span> init</a></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true"></a>$ <span class="fu">git</span> init</span></code></pre></div>
 <p>This creates the directory <code>.git</code>. Since we previously excluded this directory from Dropbox sync, Dropbox won’t actually do anything here.</p>
 <p>If you check Git’s status:</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb7-1" title="1">$ <span class="fu">git</span> status</a></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true"></a>$ <span class="fu">git</span> status</span></code></pre></div>
 <p>you may see an untracked file called <code>.dropbox</code>. We want Git to ignore that, so we create the file <code>.gitignore</code> and add <code>.dropbox</code> to it:</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb8-1" title="1">$ <span class="bu">echo</span> <span class="st">&quot;.dropbox&quot;</span> <span class="op">&gt;</span> .gitignore</a></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true"></a>$ <span class="bu">echo</span> <span class="st">&quot;.dropbox&quot;</span> <span class="op">&gt;</span> .gitignore</span></code></pre></div>
 <p>Again, since we previously excluded <code>.gitignore</code>, Dropbox still won’t do anything.</p>
 <p>Now, when you run <code>git status</code>, you won’t see <code>.dropbox</code>.</p>
 <p><strong>Note</strong>: This step may no longer be necessary. When I tested this just now, Dropbox did not create a <code>.dropbox</code> file, and all the <code>.dropbox</code> files in my Dropbox are many months old. So it may be that the newest version of Dropbox no longer creates a <code>.dropbox</code> file (or that the <code>.dropbox</code> file is coming from one of my collaborators’ versions of Dropbox). Still, it can’t hurt to add it to your <code>.gitignore</code>.</p>
 <h2 id="step-6-profit">Step 6: Profit</h2>
 <p>Now you can work as usual, sync’ing to Dropbox and committing changes to Git as you normally would. The two will not step on each other’s toes.</p>
 <p>The really nice thing about this method is that when you sync your collaborators’ changes to your machine over Dropbox, you can run</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb9-1" title="1">$ <span class="fu">git</span> status</a></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true"></a>$ <span class="fu">git</span> status</span></code></pre></div>
 <p>to see which files were added, deleted, or changed, as well as</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb10-1" title="1">$ <span class="fu">git</span> diff</a></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true"></a>$ <span class="fu">git</span> diff</span></code></pre></div>
 <p>or (my preference)</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb11-1" title="1">$ <span class="fu">git</span> diff --word-diff=color</a></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true"></a>$ <span class="fu">git</span> diff --word-diff=color</span></code></pre></div>
 <p>to see <em>exactly</em> what changes were made by your collaborators since your last Git commit.</p>
 <p><strong>Protip</strong>: Before doing new work on your project, and definitely before sync’ing over Dropbox, I highly recommend checking <a href="https://www.dropbox.com/events" class="uri">https://www.dropbox.com/events</a> to see if anyone has made any changes. If so, then pull in the changes first, review and commit them with Git:</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb12-1" title="1">$ <span class="fu">git</span> commit -am <span class="st">&quot;Merge Alice&#39;s changes&quot;</span></a></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true"></a>$ <span class="fu">git</span> commit -am <span class="st">&quot;Merge Alice&#39;s changes&quot;</span></span></code></pre></div>
 <p>and then start your work. (Otherwise, Dropbox will create a conflicted copy, and then you’ll have to manually merge your conflicted copy with your collaborator’s copy.)</p>
 <h2 id="important-warning">Important warning!</h2>
 <p>For some reason that I don’t understand at all, if you run:</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb13-1" title="1">$ <span class="ex">dropbox</span> exclude add foo</a></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true"></a>$ <span class="ex">dropbox</span> exclude add foo</span></code></pre></div>
 <p>and <code>foo</code> already exists, then Dropbox will actually <em>delete</em> <code>foo</code>! Therefore, if you decide you want to exclude a file from sync’ing over Dropbox, but it’s a file that you want to keep locally, be sure to <em>move</em> the file out of your project folder first (or make a copy of it).</p>
 <p>For example, let’s say that I’ve created a file <code>notes</code> that contains my own notes for a collaborative project. My colleagues don’t care to see that, so I decide to exclude it:</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb14-1" title="1"><span class="co"># From inside ~/Dropbox/project!</span></a>
-<a class="sourceLine" id="cb14-2" title="2">$ <span class="fu">mv</span> notes /tmp                <span class="co"># move notes to /tmp</span></a>
-<a class="sourceLine" id="cb14-3" title="3">$ <span class="ex">dropbox</span> start                <span class="co"># start Dropbox, if not already running</span></a>
-<a class="sourceLine" id="cb14-4" title="4">$ <span class="ex">dropbox</span> exclude add notes    <span class="co"># exclude notes</span></a>
-<a class="sourceLine" id="cb14-5" title="5">$ <span class="fu">mv</span> /tmp/notes .              <span class="co"># move notes back to project</span></a></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true"></a><span class="co"># From inside ~/Dropbox/project!</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true"></a>$ <span class="fu">mv</span> notes /tmp                # move notes to /tmp</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true"></a>$ <span class="ex">dropbox</span> start                # start Dropbox, if not already running</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true"></a>$ <span class="ex">dropbox</span> exclude add notes    # exclude notes</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true"></a>$ <span class="fu">mv</span> /tmp/notes .              # move notes back to project</span></code></pre></div>
 <p>If you accidentally <code>exclude add</code> a file that already exists, and Dropbox deletes it, don’t worry: you can manually download the deleted file by going to the Dropbox website, navigating to your project, and making sure to “Show deleted files”. Once you’ve downloaded the deleted file, move it into your <code>project</code> directory, and Dropbox won’t do anything with it, since it’s been excluded.</p>
 <h2 id="step-7-bonus-multiple-versions-of-a-file-or-directory">Step 7 (bonus): Multiple versions of a file or directory</h2>
 <p>Since your colleagues don’t use Git, they may be in the habit of creating entirely new files or directories when they implement (major) changes, which on first glance may look disastrous.</p>
 <p>For example, suppose your project starts with the following state:</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb15-1" title="1">$ <span class="fu">ls</span> -a project</a>
-<a class="sourceLine" id="cb15-2" title="2"><span class="ex">./</span> ../ .git/ .gitignore paper.tex paper.pdf</a></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true"></a>$ <span class="fu">ls</span> -a project</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true"></a><span class="ex">./</span> ../ .git/ .gitignore paper.tex paper.pdf</span></code></pre></div>
 <p>You start Dropbox, and then when you run <code>git status</code>, you notice that all your files have been deleted, and in their place you now have two untracked directories!</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb16-1" title="1">$ <span class="fu">git</span> status</a>
-<a class="sourceLine" id="cb16-2" title="2"><span class="ex">Changes</span> not staged for commit:</a>
-<a class="sourceLine" id="cb16-3" title="3"></a>
-<a class="sourceLine" id="cb16-4" title="4">    <span class="ex">deleted</span>: paper.tex</a>
-<a class="sourceLine" id="cb16-5" title="5"></a>
-<a class="sourceLine" id="cb16-6" title="6"><span class="ex">Untracked</span> files:</a>
-<a class="sourceLine" id="cb16-7" title="7"></a>
-<a class="sourceLine" id="cb16-8" title="8">    <span class="ex">v1/</span></a>
-<a class="sourceLine" id="cb16-9" title="9">    <span class="ex">v2/</span></a></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true"></a>$ <span class="fu">git</span> status</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true"></a><span class="ex">Changes</span> not staged for commit:</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true"></a></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true"></a>    <span class="ex">deleted</span>: paper.tex</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true"></a></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true"></a><span class="ex">Untracked</span> files:</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true"></a></span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true"></a>    <span class="ex">v1/</span></span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true"></a>    <span class="ex">v2/</span></span></code></pre></div>
 <p>What happened, of course, was that your colleague moved the old <code>paper.tex</code> and <code>paper.pdf</code> into a new directory called <code>v1</code>, copied them into another new directory called <code>v2</code>, and then made their changes in the <code>v2</code> version.</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb17-1" title="1">$ <span class="fu">ls</span> -a project</a>
-<a class="sourceLine" id="cb17-2" title="2"><span class="ex">./</span> ../ .git/ .gitignore v1/ v2/</a>
-<a class="sourceLine" id="cb17-3" title="3">$ <span class="fu">ls</span> -a v1 v2</a>
-<a class="sourceLine" id="cb17-4" title="4"><span class="ex">v1</span>:</a>
-<a class="sourceLine" id="cb17-5" title="5"><span class="ex">./</span>  ../  paper.pdf  paper.tex</a>
-<a class="sourceLine" id="cb17-6" title="6"></a>
-<a class="sourceLine" id="cb17-7" title="7"><span class="ex">v2</span>:</a>
-<a class="sourceLine" id="cb17-8" title="8"><span class="ex">./</span>  ../  paper.pdf  paper.tex</a></code></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true"></a>$ <span class="fu">ls</span> -a project</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true"></a><span class="ex">./</span> ../ .git/ .gitignore v1/ v2/</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true"></a>$ <span class="fu">ls</span> -a v1 v2</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true"></a><span class="ex">v1</span>:</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true"></a><span class="ex">./</span>  ../  paper.pdf  paper.tex</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true"></a></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true"></a><span class="ex">v2</span>:</span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true"></a><span class="ex">./</span>  ../  paper.pdf  paper.tex</span></code></pre></div>
 <p>Assuming they haven’t made any filename changes, all you have to do is move <code>.git</code> and <code>.gitignore</code> from the top-level <code>project</code> directory to the new <code>v2</code> directory, and then run <code>git status</code> to see the new changes.</p>
 <p>However, <em>before</em> you do that, make sure to exclude <code>v2/.git</code> and <code>v2/.gitignore</code>!</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb18-1" title="1">$ <span class="ex">dropbox</span> exclude add v2/.git v2.gitignore</a>
-<a class="sourceLine" id="cb18-2" title="2"><span class="ex">Excluded</span>:</a>
-<a class="sourceLine" id="cb18-3" title="3"><span class="ex">v2/.git</span></a>
-<a class="sourceLine" id="cb18-4" title="4"><span class="ex">v2/.gitignore</span></a>
-<a class="sourceLine" id="cb18-5" title="5">$ <span class="fu">mv</span> .git .gitignore v2</a>
-<a class="sourceLine" id="cb18-6" title="6">$ <span class="bu">cd</span> v2</a>
-<a class="sourceLine" id="cb18-7" title="7">$ <span class="fu">git</span> status</a></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true"></a>$ <span class="ex">dropbox</span> exclude add v2/.git v2.gitignore</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true"></a><span class="ex">Excluded</span>:</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true"></a><span class="ex">v2/.git</span></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true"></a><span class="ex">v2/.gitignore</span></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true"></a>$ <span class="fu">mv</span> .git .gitignore v2</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true"></a>$ <span class="bu">cd</span> v2</span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true"></a>$ <span class="fu">git</span> status</span></code></pre></div>
 <p>You can also now un-exclude the old top-level Git files:</p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb19-1" title="1">$ <span class="bu">cd</span> .. <span class="co"># move back to ~/Dropbox/project</span></a>
-<a class="sourceLine" id="cb19-2" title="2">$ <span class="ex">dropbox</span> exclude remove .git .gitignore</a>
-<a class="sourceLine" id="cb19-3" title="3"><span class="ex">No</span> longer excluded:</a>
-<a class="sourceLine" id="cb19-4" title="4"><span class="ex">.git</span></a>
-<a class="sourceLine" id="cb19-5" title="5"><span class="ex">.gitignore</span></a></code></pre></div>]]></summary>
+<div class="sourceCode" id="cb19"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true"></a>$ <span class="bu">cd</span> .. <span class="co"># move back to ~/Dropbox/project</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true"></a>$ <span class="ex">dropbox</span> exclude remove .git .gitignore</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true"></a><span class="ex">No</span> longer excluded:</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true"></a><span class="ex">.git</span></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true"></a><span class="ex">.gitignore</span></span></code></pre></div>]]></summary>
 </entry>
 <entry>
     <title>How to install xmonad and xmobar via stack</title>
@@ -209,78 +209,78 @@ epltxfn.sty</code></pre>
 <h2 id="step-1-get-stack">Step 1: Get stack</h2>
 <p>There are couple ways to get stack. I installed <a href="https://aur.archlinux.org/packages/stack-static/">stack-static</a> from the AUR, because it doesn’t come with any Haskell dependencies.</p>
 <p>If you don’t care about tracking stack with your package manager, then, as the <a href="https://docs.haskellstack.org/en/stable/README/#how-to-install">stack how-to-install</a> explains, just run</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb1-1" title="1"><span class="ex">curl</span> -sSL https://get.haskellstack.org/ <span class="kw">|</span> <span class="fu">sh</span></a></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a><span class="ex">curl</span> -sSL https://get.haskellstack.org/ <span class="kw">|</span> <span class="fu">sh</span></span></code></pre></div>
 <p>or</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb2-1" title="1"><span class="fu">wget</span> -qO- https://get.haskellstack.org/ <span class="kw">|</span> <span class="fu">sh</span></a></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a><span class="fu">wget</span> -qO- https://get.haskellstack.org/ <span class="kw">|</span> <span class="fu">sh</span></span></code></pre></div>
 <h2 id="step-2-install-ghc-with-stack">Step 2: Install GHC with stack</h2>
 <p>To build and install Haskell packages, we need GHC. Simply run</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb3-1" title="1"><span class="ex">stack</span> setup</a></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a><span class="ex">stack</span> setup</span></code></pre></div>
 <p>to install GHC into <code>~/.stack</code>. Useful for the kind of sandboxing projects that we’re doing with xmonad.</p>
 <p><strong>NB:</strong> You can run <code>stack ghc</code> to do things with GHC, <code>stack ghci</code> to fire up interactive GHC, and so on.</p>
 <h2 id="step-3-get-xmonad-xmonad-contrib-and-xmobar">Step 3: Get xmonad, xmonad-contrib, and xmobar</h2>
 <p>We’ll be turning our <code>~/.xmonad</code> directory into a stack project, so first, head over there.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb4-1" title="1"><span class="bu">cd</span> ~/.xmonad</a></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true"></a><span class="bu">cd</span> ~/.xmonad</span></code></pre></div>
 <p>For the remainder of this post, I’ll assume you’re inside <code>~/.xmonad</code>.</p>
 <p>Next, download the xmonad, xmonad-contrib, and xmobar Git repositories, which contain the <code>.cabal</code> and <code>.yaml</code> files that stack will look for in the next step. I like to add <code>-git</code> to their directory names, just as a reminder.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb5-1" title="1"><span class="co"># From inside ~/.xmonad.</span></a>
-<a class="sourceLine" id="cb5-2" title="2"><span class="fu">git</span> clone <span class="st">&quot;https://github.com/xmonad/xmonad&quot;</span> xmonad-git</a>
-<a class="sourceLine" id="cb5-3" title="3"><span class="fu">git</span> clone <span class="st">&quot;https://github.com/xmonad/xmonad-contrib&quot;</span> xmonad-contrib-git</a>
-<a class="sourceLine" id="cb5-4" title="4"><span class="fu">git</span> clone <span class="st">&quot;https://github.com/jaor/xmobar&quot;</span> xmobar-git</a></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true"></a><span class="co"># From inside ~/.xmonad.</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true"></a><span class="fu">git</span> clone <span class="st">&quot;https://github.com/xmonad/xmonad&quot;</span> xmonad-git</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true"></a><span class="fu">git</span> clone <span class="st">&quot;https://github.com/xmonad/xmonad-contrib&quot;</span> xmonad-contrib-git</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true"></a><span class="fu">git</span> clone <span class="st">&quot;https://github.com/jaor/xmobar&quot;</span> xmobar-git</span></code></pre></div>
 <p>Your <code>~/.xmonad</code> directory should now contain <code>xmonad-git</code>, <code>xmonad-contrib-git</code>, and <code>xmobar-git</code>, each of which contains a <code>.cabal</code> file and a <code>.yaml</code> file.</p>
 <h2 id="step-4-initialize-stack">Step 4: Initialize stack</h2>
 <p>This step is easy: just run</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb6-1" title="1"><span class="co"># From inside ~/.xmonad.</span></a>
-<a class="sourceLine" id="cb6-2" title="2"><span class="ex">stack</span> init</a></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true"></a><span class="co"># From inside ~/.xmonad.</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true"></a><span class="ex">stack</span> init</span></code></pre></div>
 <p>Stack will find the <code>.cabal</code> and <code>.yaml</code> files and auto-create the file <code>stack.yaml</code> for you. It’ll look like this:</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode yaml"><code class="sourceCode yaml"><a class="sourceLine" id="cb7-1" title="1"><span class="co"># ~/.xmonad/stack.yaml</span></a>
-<a class="sourceLine" id="cb7-2" title="2"><span class="fu">resolver:</span><span class="at"> lts-9.6</span></a>
-<a class="sourceLine" id="cb7-3" title="3"><span class="fu">packages:</span></a>
-<a class="sourceLine" id="cb7-4" title="4"><span class="kw">-</span> xmobar-git</a>
-<a class="sourceLine" id="cb7-5" title="5"><span class="kw">-</span> xmonad-git</a>
-<a class="sourceLine" id="cb7-6" title="6"><span class="kw">-</span> xmonad-contrib-git</a>
-<a class="sourceLine" id="cb7-7" title="7"><span class="fu">extra-deps:</span><span class="at"> </span><span class="kw">[]</span></a>
-<a class="sourceLine" id="cb7-8" title="8"><span class="fu">flags:</span><span class="at"> </span><span class="kw">{}</span></a>
-<a class="sourceLine" id="cb7-9" title="9"><span class="fu">extra-package-dbs:</span><span class="at"> </span><span class="kw">[]</span></a></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true"></a><span class="co"># ~/.xmonad/stack.yaml</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true"></a><span class="fu">resolver</span><span class="kw">:</span><span class="at"> lts-9.6</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true"></a><span class="fu">packages</span><span class="kw">:</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true"></a><span class="kw">-</span><span class="at"> xmobar-git</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true"></a><span class="kw">-</span><span class="at"> xmonad-git</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true"></a><span class="kw">-</span><span class="at"> xmonad-contrib-git</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true"></a><span class="fu">extra-deps</span><span class="kw">:</span><span class="at"> </span><span class="kw">[]</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true"></a><span class="fu">flags</span><span class="kw">:</span><span class="at"> </span><span class="kw">{}</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true"></a><span class="fu">extra-package-dbs</span><span class="kw">:</span><span class="at"> </span><span class="kw">[]</span></span></code></pre></div>
 <p>At this point, you can modify <code>stack.yaml</code> to add flags, etc. The only change I made was to add the flag <code>all_extensions</code> to xmobar, by changing</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode yaml"><code class="sourceCode yaml"><a class="sourceLine" id="cb8-1" title="1"><span class="fu">flags:</span><span class="at"> </span><span class="kw">{}</span></a></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true"></a><span class="fu">flags</span><span class="kw">:</span><span class="at"> </span><span class="kw">{}</span></span></code></pre></div>
 <p>to</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode yaml"><code class="sourceCode yaml"><a class="sourceLine" id="cb9-1" title="1"><span class="fu">flags:</span></a>
-<a class="sourceLine" id="cb9-2" title="2">  <span class="fu">xmobar:</span></a>
-<a class="sourceLine" id="cb9-3" title="3">    <span class="fu">all_extensions:</span><span class="at"> </span><span class="ch">true</span></a></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true"></a><span class="fu">flags</span><span class="kw">:</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true"></a><span class="at">  </span><span class="fu">xmobar</span><span class="kw">:</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true"></a><span class="at">    </span><span class="fu">all_extensions</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span></code></pre></div>
 <p>This flag provides all the xmobar bells &amp; whistles, like support for xft, mpd, battery, wifi, etc.</p>
 <p><strong>NB:</strong> If you add the <code>with_iwlib</code> flag (or <code>all_extensions</code>), you’ll need to also install the <a href="http://www.hpl.hp.com/personal/Jean_Tourrilhes/Linux/Tools.html">iwlib</a> C library and headers. In Arch Linux, just install <code>wireless_tools</code>; in Debian-based systems, <code>libiw-dev</code>. Or, in your <code>stack.yaml</code>, change</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode yaml"><code class="sourceCode yaml"><a class="sourceLine" id="cb10-1" title="1"><span class="fu">extra_deps:</span><span class="at"> </span><span class="kw">[]</span></a></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true"></a><span class="fu">extra_deps</span><span class="kw">:</span><span class="at"> </span><span class="kw">[]</span></span></code></pre></div>
 <p>to</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode yaml"><code class="sourceCode yaml"><a class="sourceLine" id="cb11-1" title="1"><span class="fu">extra_deps:</span></a>
-<a class="sourceLine" id="cb11-2" title="2">    <span class="kw">-</span> iwlib-0.1.0</a></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true"></a><span class="fu">extra_deps</span><span class="kw">:</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true"></a><span class="at">    </span><span class="kw">-</span><span class="at"> iwlib-0.1.0</span></span></code></pre></div>
 <p>(The specific version you’ll need will change over time. If <code>stack install</code> from step 5 produces an error, just see what stack recommends.)</p>
 <h2 id="step-5-build-and-install-everything">Step 5: Build and install everything</h2>
 <p>Next, run</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb12-1" title="1"><span class="co"># From inside ~/.xmonad.</span></a>
-<a class="sourceLine" id="cb12-2" title="2"><span class="ex">stack</span> install</a></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true"></a><span class="co"># From inside ~/.xmonad.</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true"></a><span class="ex">stack</span> install</span></code></pre></div>
 <p>to build and install xmonad, xmonad-contrib, and xmobar (and all their dependencies). You’ll now have two new binaries, <code>xmonad</code> and <code>xmobar</code>, installed into <code>~/.local/bin</code>.</p>
 <p><strong>NB:</strong> You’ll want to add <code>~/.local/bin</code> to your <code>PATH</code>, if it isn’t already. (If you use a login manager, see Step 9 below.)</p>
 <h2 id="step-6-write-a-build-file">Step 6: Write a build file</h2>
 <p>Since we’re doing everything via stack, rather than ghc directly, <code>xmonad --recompile</code> won’t quite work yet. As of xmonad 0.13, we can write a custom build script, named <code>build</code> and located inside <code>~/.xmonad</code>, which will use stack ghc to recompile xmonad. (Borrowed from <a href="https://github.com/pbrisbin/dotfiles/blob/master/xmonad/build">pbrisbin</a>.)</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb13-1" title="1"><span class="co"># ~/.xmonad/build</span></a>
-<a class="sourceLine" id="cb13-2" title="2"><span class="co">#!/bin/sh</span></a>
-<a class="sourceLine" id="cb13-3" title="3"><span class="bu">exec</span> stack ghc -- \</a>
-<a class="sourceLine" id="cb13-4" title="4">  --make xmonad.hs \</a>
-<a class="sourceLine" id="cb13-5" title="5">  -i \</a>
-<a class="sourceLine" id="cb13-6" title="6">  -ilib \</a>
-<a class="sourceLine" id="cb13-7" title="7">  -fforce-recomp \</a>
-<a class="sourceLine" id="cb13-8" title="8">  -main-is main \</a>
-<a class="sourceLine" id="cb13-9" title="9">  -v0 \</a>
-<a class="sourceLine" id="cb13-10" title="10">  -o <span class="st">&quot;</span><span class="va">$1</span><span class="st">&quot;</span></a></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true"></a><span class="co"># ~/.xmonad/build</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true"></a><span class="co">#!/bin/sh</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true"></a><span class="bu">exec</span> stack ghc -- <span class="kw">\</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true"></a>  <span class="ex">--make</span> xmonad.hs <span class="kw">\</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true"></a>  <span class="ex">-i</span> <span class="kw">\</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true"></a>  <span class="ex">-ilib</span> <span class="kw">\</span></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true"></a>  <span class="ex">-fforce-recomp</span> <span class="kw">\</span></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true"></a>  <span class="ex">-main-is</span> main <span class="kw">\</span></span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true"></a>  <span class="ex">-v0</span> <span class="kw">\</span></span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true"></a>  <span class="ex">-o</span> <span class="st">&quot;</span><span class="va">$1</span><span class="st">&quot;</span></span></code></pre></div>
 <p>Make sure it’s executable:</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb14-1" title="1"><span class="fu">chmod</span> a+x build</a></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true"></a><span class="fu">chmod</span> a+x build</span></code></pre></div>
 <h2 id="step-7-recompile-and-restart-xmonad">Step 7: Recompile and restart xmonad</h2>
 <p>You should now be able to recompile and restart xmonad (and xmobar) with</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb15-1" title="1"><span class="ex">xmonad</span> --recompile <span class="kw">&amp;&amp;</span> <span class="ex">xmonad</span> --restart</a></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true"></a><span class="ex">xmonad</span> --recompile <span class="kw">&amp;&amp;</span> <span class="ex">xmonad</span> --restart</span></code></pre></div>
 <p><strong>NB:</strong> I had to restart my computer in order for xmobar to start up properly – probably because xmonad couldn’t find the xmobar binary.</p>
 <h2 id="step-8-updating">Step 8: Updating</h2>
 <p>Whenever you update your xmonad, xmonad-contrib, or xmobar repositories, just <code>cd ~/.xmonad</code> and run</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb16-1" title="1"><span class="ex">stack</span> install</a></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true"></a><span class="ex">stack</span> install</span></code></pre></div>
 <p>to rebuild and reinstall everything.</p>
 <p><strong>NB:</strong> If you add a new flag or extra dependencies (in <code>stack.yaml</code>), you may need to run <code>stack clean</code> first.</p>
 <h2 id="step-9-loose-ends-with-login-managers">(Step 9: Loose ends with login managers)</h2>
@@ -298,7 +298,7 @@ StartupNotify=false
 Categories=Application;</code></pre>
 <p>Second, running <code>xmonad --recompile</code> may not work yet. If it doesn’t, make sure that you’ve added <code>~/.local/bin</code> to your <code>PATH</code> by adding it to one of your shell <em>profile</em> files, such as <code>~/.profile</code> or (if you only use one shell, e.g. Bash) <code>~/.bash_profile</code>, and <em>not</em> to your shell’s configuration file (e.g. <code>~/.bashrc</code>). The reason is that LightDM (and by extension xmonad) is invoked from a login shell, which sources <em>profile</em> files like <code>~/.profile</code>, but not (necessarily) shell config files like <code>~/.bashrc</code>. See <a href="https://superuser.com/questions/183870/difference-between-bashrc-and-bash-profile/183980#183980">this SE thread</a> and <a href="https://www.quora.com/What-is-profile-file-in-Linux">this Quora answer</a> to learn more about the difference.</p>
 <p>If that still doesn’t work, then it’s possible that your login manager doesn’t even source <code>~/.profile</code> (see the end of the SE thread linked above). In that case, a possible fix is to just manually symlink <code>~/.local/bin/xmonad</code> to <code>/usr/bin</code> (since the latter is definitely in your <code>PATH</code>; thanks to Ashesh in the comments below for this fix):</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb18-1" title="1"><span class="fu">ln</span> -s ~/.local/bin/xmonad /usr/bin</a></code></pre></div>]]></summary>
+<div class="sourceCode" id="cb18"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true"></a><span class="fu">ln</span> -s ~/.local/bin/xmonad /usr/bin</span></code></pre></div>]]></summary>
 </entry>
 <entry>
     <title>Latin to English translation of McGill diploma</title>
@@ -328,15 +328,15 @@ DECANUS · SCRIBUS MAXIMUS · RECTOR HONORARIUS · RECTRIX
 <p>The first step is to decide whether you want to use the stable release (currently <a href="http://dl.suckless.org/st/st-0.7.tar.gz">st-0.7.tar.gz</a>) or the development version (<a href="http://git.suckless.org/st" class="uri">http://git.suckless.org/st</a>). I originally went with the development version, but I was unable to apply patches (because the patches were created for the stable release, and I couldn’t find any more up-to-date versions of the patches). Therefore, in the end, I decided to go with the stable release, which also has the advantage that my terminal, which I rely heavily on, won’t break any time soon.</p>
 <h3 id="step-1-follow-the-installation-instructions">Step 1: Follow the installation instructions</h3>
 <p>The first step (after untarring the tarball and <code>cd</code>-ing into the <code>st-x.x</code> directory) is to install st exactly as the <code>README</code> says:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode markdown"><code class="sourceCode markdown"><a class="sourceLine" id="cb1-1" title="1">Installation</a>
-<a class="sourceLine" id="cb1-2" title="2">------------</a>
-<a class="sourceLine" id="cb1-3" title="3">Edit config.mk to match your local setup (st is installed into</a>
-<a class="sourceLine" id="cb1-4" title="4">the /usr/local namespace by default).</a>
-<a class="sourceLine" id="cb1-5" title="5"></a>
-<a class="sourceLine" id="cb1-6" title="6">Afterwards enter the following command to build and install st (if</a>
-<a class="sourceLine" id="cb1-7" title="7">necessary as root):</a>
-<a class="sourceLine" id="cb1-8" title="8"></a>
-<a class="sourceLine" id="cb1-9" title="9"><span class="bn">    make clean install</span></a></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a>Installation</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true"></a>------------</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true"></a>Edit config.mk to match your local setup (st is installed into</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true"></a>the /usr/local namespace by default).</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true"></a>Afterwards enter the following command to build and install st (if</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true"></a>necessary as root):</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true"></a><span class="in">    make clean install</span></span></code></pre></div>
 <p>Literally all I did was run <code>sudo make clean install</code>, and it worked. I could run <code>st</code> no problem.</p>
 <h3 id="step-2-configure-config.h-and-apply-some-patches">Step 2: Configure <code>config.h</code> and apply some patches</h3>
 <p>Next, try and customize st a bit by editing <code>config.h</code> to your liking and applying some patches. Take note of exactly what you do. In my case, I applied the patches <a href="http://st.suckless.org/patches/scrollback">scrollback</a>, <a href="http://st.suckless.org/patches/hidecursor">hidecursor</a>, and <a href="http://st.suckless.org/patches/copyurl">copyurl</a>, by running <code>patch -Np1 -i &lt;patch&gt;</code> for each patch. Once you’re satisfied, it’s time to create a PKGBUILD.</p>
@@ -344,45 +344,45 @@ DECANUS · SCRIBUS MAXIMUS · RECTOR HONORARIUS · RECTRIX
 <p>First off, read the Arch Wiki entries on <a href="https://wiki.archlinux.org/index.php/PKGBUILD">PKGBUILD</a> and <a href="https://wiki.archlinux.org/index.php/Creating_packages">Creating packages</a>. You can either create one from scratch (while following the Arch Wiki), modify the skeleton PKGBUILD <code>/usr/share/pacman/PKGBUILD.proto</code>, or modify an actual existing PKGBUILD. I decided to opt for the latter, and the existing PKGBUILD I chose to modify was the obvious one: <code>st</code> itself from <code>community</code>.</p>
 <p>There are a number of ways to acquire an official PKGBUILD. Traditionally, you’d go the <a href="https://wiki.archlinux.org/index.php/Arch_Build_System">ABS</a> route: install <code>abs</code>, clone the entire ABS tree (or at least the subtree of the repo containing <code>st</code>, i.e. <code>community</code>) onto <code>/var/abs</code>, then copy <code>/var/abs/community/st</code> over to something like <code>~/abs</code>.</p>
 <p>However, nowadays there are tools like <a href="https://github.com/falconindy/asp">asp</a> and <a href="http://xyne.archlinux.ca/projects/pbget/">pbget</a> that let you acquire the contents (PKGBUILD, etc.) of a single package without cloning an entire repo tree. So that’s what I did:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb2-1" title="1">$ <span class="fu">mkdir</span> -p ~/.cache/asp</a>
-<a class="sourceLine" id="cb2-2" title="2">$ <span class="fu">mkdir</span> -p ~/builds</a>
-<a class="sourceLine" id="cb2-3" title="3">$ <span class="bu">cd</span> ~/builds</a>
-<a class="sourceLine" id="cb2-4" title="4">$ <span class="ex">asp</span> export st</a>
-<a class="sourceLine" id="cb2-5" title="5">$ <span class="bu">cd</span> st</a>
-<a class="sourceLine" id="cb2-6" title="6">$ <span class="fu">ls</span></a>
-<a class="sourceLine" id="cb2-7" title="7"><span class="ex">config.h</span> PKGBUILD</a></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a>$ <span class="fu">mkdir</span> -p ~/.cache/asp</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true"></a>$ <span class="fu">mkdir</span> -p ~/builds</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true"></a>$ <span class="bu">cd</span> ~/builds</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true"></a>$ <span class="ex">asp</span> export st</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true"></a>$ <span class="bu">cd</span> st</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true"></a>$ <span class="fu">ls</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true"></a><span class="ex">config.h</span> PKGBUILD</span></code></pre></div>
 <p>Here I’ve used <code>asp</code> to export the <code>st</code> package, which comes with <code>config.h</code> (the configuration file) and <code>PKGBUILD</code>, the PKGBUILD. Now I just need to edit <code>config.h</code> in the same way I did in step 2 (easy part), and modify the PKGBUILD to apply the three patches I want (slightly harder part).</p>
 <p>There are four main changes I made to the PKGBUILD. First, I added an array <code>_patches</code> with links to the three patches I want to apply:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb3-1" title="1"><span class="va">_patches=(</span><span class="st">&quot;http://st.suckless.org/patches/st-scrollback-20170104-c63a87c.diff&quot;</span></a>
-<a class="sourceLine" id="cb3-2" title="2">          <span class="st">&quot;http://st.suckless.org/patches/st-hidecursor-20160727-308bfbf.diff&quot;</span></a>
-<a class="sourceLine" id="cb3-3" title="3">          <span class="st">&quot;http://st.suckless.org/patches/st-copyurl-20161105-8c99915.diff&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a><span class="va">_patches=(</span><span class="st">&quot;http://st.suckless.org/patches/st-scrollback-20170104-c63a87c.diff&quot;</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true"></a>          <span class="st">&quot;http://st.suckless.org/patches/st-hidecursor-20160727-308bfbf.diff&quot;</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true"></a>          <span class="st">&quot;http://st.suckless.org/patches/st-copyurl-20161105-8c99915.diff&quot;</span>)</span></code></pre></div>
 <p>Second, I added the patches to the <code>source</code> array by adding <code>"${_patches[@]}"</code> to it…</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb4-1" title="1"><span class="va">source=(</span><span class="st">&quot;http://dl.suckless.org/st/</span><span class="va">$pkgname</span><span class="st">-</span><span class="va">$pkgver</span><span class="st">.tar.gz&quot;</span></a>
-<a class="sourceLine" id="cb4-2" title="2">        <span class="st">&quot;config.h&quot;</span></a>
-<a class="sourceLine" id="cb4-3" title="3">        <span class="st">&quot;</span><span class="va">${_patches[@]}</span><span class="st">&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true"></a><span class="va">source=(</span><span class="st">&quot;http://dl.suckless.org/st/</span><span class="va">$pkgname</span><span class="st">-</span><span class="va">$pkgver</span><span class="st">.tar.gz&quot;</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true"></a>        <span class="st">&quot;config.h&quot;</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true"></a>        <span class="st">&quot;</span><span class="va">${_patches[@]}</span><span class="st">&quot;</span>)</span></code></pre></div>
 <p>…and of course added the patches’ corresponding hashes to the <code>md5sums</code> array. (<strong>Protip</strong>: Run <code>updpkgsums</code> to automatically do this.)</p>
 <p>Third, it turned out that any patches which tried to patch <code>config.def.h</code> would lead to an error. This is because those patches — specifically, the scrollback and copyurl patches — define new functions (for scrolling back and for copying a URL) by modifying <code>st.c</code> and then bind keys to those functions by modifying <code>config.def.h</code>, but <code>config.def.h</code> is first overwritten by the custom <code>config.h</code> during the build stage, which later leads to a patch error. Therefore, I decided to (i) manually modify <code>config.h</code> to bind the relevant functions to some keys (easy), and then (ii) remove from those two patches the lines responsible for patching <code>config.def.h</code>, which happen to be the first 13 lines in the scrollback patch, and the first 12 lines in the copyurl patch:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb5-1" title="1"><span class="co"># patch patches (don&#39;t let them patch config.def.h)</span></a>
-<a class="sourceLine" id="cb5-2" title="2"><span class="fu">sed</span> -i <span class="st">&#39;1,13d&#39;</span> <span class="st">&quot;</span><span class="va">$srcdir</span><span class="st">/</span><span class="va">$(</span><span class="fu">basename</span> <span class="va">${_patches[0]})</span><span class="st">&quot;</span></a>
-<a class="sourceLine" id="cb5-3" title="3"><span class="fu">sed</span> -i <span class="st">&#39;1,12d&#39;</span> <span class="st">&quot;</span><span class="va">$srcdir</span><span class="st">/</span><span class="va">$(</span><span class="fu">basename</span> <span class="va">${_patches[2]})</span><span class="st">&quot;</span></a></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true"></a><span class="co"># patch patches (don&#39;t let them patch config.def.h)</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true"></a><span class="fu">sed</span> -i <span class="st">&#39;1,13d&#39;</span> <span class="st">&quot;</span><span class="va">$srcdir</span><span class="st">/</span><span class="va">$(</span><span class="fu">basename</span> <span class="va">${_patches[0]})</span><span class="st">&quot;</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true"></a><span class="fu">sed</span> -i <span class="st">&#39;1,12d&#39;</span> <span class="st">&quot;</span><span class="va">$srcdir</span><span class="st">/</span><span class="va">$(</span><span class="fu">basename</span> <span class="va">${_patches[2]})</span><span class="st">&quot;</span></span></code></pre></div>
 <p>Fourth, and finally, inside of the <code>prepare()</code> function, I looped over each patch and applied them in the same way as I did in step 2 above:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb6-1" title="1"><span class="kw">for</span> <span class="fu">patch</span> in <span class="st">&quot;</span><span class="va">${_patches[@]}</span><span class="st">&quot;</span><span class="kw">;</span> <span class="kw">do</span></a>
-<a class="sourceLine" id="cb6-2" title="2">  <span class="bu">echo</span> <span class="st">&quot;Applying patch </span><span class="va">$(</span><span class="fu">basename</span> <span class="va">$patch)</span><span class="st">...&quot;</span></a>
-<a class="sourceLine" id="cb6-3" title="3">  <span class="fu">patch</span> -Np1 -i <span class="st">&quot;</span><span class="va">$srcdir</span><span class="st">/</span><span class="va">$(</span><span class="fu">basename</span> <span class="va">$patch)</span><span class="st">&quot;</span></a>
-<a class="sourceLine" id="cb6-4" title="4"><span class="kw">done</span></a></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true"></a><span class="kw">for</span> <span class="fu">patch</span> in <span class="st">&quot;</span><span class="va">${_patches[@]}</span><span class="st">&quot;</span><span class="kw">;</span> <span class="kw">do</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true"></a>  <span class="bu">echo</span> <span class="st">&quot;Applying patch </span><span class="va">$(</span><span class="fu">basename</span> <span class="va">$patch)</span><span class="st">...&quot;</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true"></a>  <span class="fu">patch</span> -Np1 -i <span class="st">&quot;</span><span class="va">$srcdir</span><span class="st">/</span><span class="va">$(</span><span class="fu">basename</span> <span class="va">$patch)</span><span class="st">&quot;</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true"></a><span class="kw">done</span></span></code></pre></div>
 <p>See <a href="https://wiki.archlinux.org/index.php/Patching_in_ABS">Patching in ABS</a> for further details.</p>
 <h2 id="putting-it-all-together">Putting it all together</h2>
 <p>That’s basically it. Now just run <code>makepkg -si</code> and make sure everything applies and installs correctly. Once it does, you should also run <code>namcap</code> on <code>PKGBUILD</code> and on the resulting <code>*.pkg.tar.xz</code> file to make sure there’s nothing wrong. In my case, <code>namcap</code> told me that the package didn’t actually depend on <code>libxext</code> or <code>xorg-fonts-misc</code>, even though the official PKGBUILD included those in the <code>depends</code> array, so I just removed them.</p>
 <p>Before concluding, I want to mention two bonus tips.</p>
 <p><strong>Tip #1</strong>: To avoid <code>config.h</code> from being overwritten by some future <code>asp export</code> (supposedly, this can’t happen, but just to be safe), and to keep my config located among all my other configuration files, I moved <code>config.h</code> into <code>~/.config/st</code> and then created a symlink to it from inside the build directory:</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb7-1" title="1">$ <span class="fu">mkdir</span> -p ~/.config/st</a>
-<a class="sourceLine" id="cb7-2" title="2">$ <span class="fu">mv</span> ~/builds/st/config.h ~/.config/st</a>
-<a class="sourceLine" id="cb7-3" title="3">$ <span class="fu">ln</span> -s ~/.config/st/config.h ~/builds/st</a></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true"></a>$ <span class="fu">mkdir</span> -p ~/.config/st</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true"></a>$ <span class="fu">mv</span> ~/builds/st/config.h ~/.config/st</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true"></a>$ <span class="fu">ln</span> -s ~/.config/st/config.h ~/builds/st</span></code></pre></div>
 <p>The directory <code>~/.config/st</code> is not actually recognized by st in any way, but <code>~/.config</code> is where most other apps put their configuration files, so it makes things tidier, especially since I version-control most things inside <code>~/.config</code> with git.</p>
 <p><strong>Tip #2</strong>: What if you want to modify the patches themselves, i.e. patch a patch (apart from removing the error-prone lines mentioned above)? In my case, I wanted to modify the copyurl patch. By default, this patch patches <code>st.c</code> so that it allows you to copy any URL starting with <code>http://</code> or <code>https://</code>, but I wanted to also be able to copy anything starting with <code>ftp://</code>, <code>mailto:</code>, or simply <code>www.</code>. So, here’s what I did.</p>
 <p>First, I edited <code>st.c</code> by hand (<em>after</em> the copyurl patch had applied to it) in the way that I wanted, then manually reinstalled st to make sure it worked as expected. It did. I could’ve stopped here, but this isn’t really the elegant way to do things.</p>
 <p>Next, I created a directory <code>~/builds/st/mypatches</code>, and within that, two subdirectories, <code>a</code> and <code>b</code>. Inside <code>a</code>, I placed the post-copyurl-patched <code>st.c</code> file, and inside <code>b</code>, I placed my revised post-copyurl-patched <code>st.c</code> file, and then ran…</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb8-1" title="1"><span class="fu">diff</span> -u a/st.c b/st.c <span class="op">&gt;</span> ../st-copyurl-bb.diff</a></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true"></a><span class="fu">diff</span> -u a/st.c b/st.c <span class="op">&gt;</span> ../st-copyurl-bb.diff</span></code></pre></div>
 <p>…to create a patch <code>st-copyurl-bb.diff</code> in the base package directory (alongside the other three patches).</p>
 <p>Then I added this patch to the end of the <code>_patches</code> array, updated the hashes with <code>updpkgsums</code>, and re-ran <code>makepkg -si</code>, and everything worked out great.</p>
 <p>So far, I’m extremely happy with st. It’s especially great to have a full range of colors in vim with minimal hassle, by adding these lines to my <code>vimrc</code>:</p>
@@ -410,7 +410,7 @@ let &amp;t_8b = &quot;\&lt;Esc&gt;[48;2;%lu;%lu;%lum&quot;</code></pre>]]></summ
 <p><strong>Carson:</strong> “It will not be my intention to do anything to benefit ANY American. It’s for ALL Americans, everything that we do.”</p>
 </blockquote>
 <p>Oh, I see now!</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode default"><code class="sourceCode default"><a class="sourceLine" id="cb1-1" title="1">not [[an American]_x [it will be my intention [something_y [I do y to benefit x]]]]</a></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode default"><code class="sourceCode default"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a>not [[an American]_x [it will be my intention [something_y [I do y to benefit x]]]]</span></code></pre></div>
 <p>Shout out to Andreas Haida for discussing this LF with me.</p>]]></summary>
 </entry>
 <entry>

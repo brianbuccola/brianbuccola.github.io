@@ -41,6 +41,7 @@
                 <a class="nav" href="../">Home</a>
                 <a class="nav" href="../work/">Work</a>
                 <a class="nav" href="../cv/">CV</a>
+                <a class="nav" href="../contact/">Contact</a>
                 <a class="nav" href="../blog/">Blog</a>
             </nav>
         </header>
@@ -56,65 +57,65 @@
     </section>
     <section>
         <p><strong><em>Update:</em></strong> <em>Since I wrote this post, I discovered that markdown conversion programs like Pandoc and kramdown can convert extensions of markdown that include footnotes. For example, it suffices to do:</em></p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode markdown"><code class="sourceCode markdown"><a class="sourceLine" id="cb1-1" title="1">Blah blah blah.<span class="ot">[^fn]</span> Lorem ipsum...</a>
-<a class="sourceLine" id="cb1-2" title="2"></a>
-<a class="sourceLine" id="cb1-3" title="3"><span class="ot">[^fn]</span>: Here's a footnote!</a></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a>Blah blah blah.<span class="ot">[^fn]</span> Lorem ipsum...</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true"></a><span class="ot">[^fn]: </span>Here's a footnote!</span></code></pre></div>
 <p><em>But I will leave this post here since it may be a useful reference for people writing in pure html rather than markdown.</em></p>
 <p>I’ve been toying with how best to incorporate inline references and end–of–post footnotes into my blog posts, and here’s what I’ve come up with. I’ll start with my first, very simplistic attempt, then explain my slightly more complicated but also more flexible (I think) solution.</p>
 <p>This blog is (<strong><em>Update:</em></strong> <em>was</em>) powered by <a href="http://octopress.org/">Octopress</a>, which allows me to write blog posts in <a href="http://daringfireball.net/projects/markdown/">markdown</a> syntax, which is then parsed and converted into HTML by <a href="http://kramdown.rubyforge.org/">kramdown</a>.<a class="ref" id="ref:kd" href="#fn:kd">[1]</a> Markdown has a nice, easy, and highly legible way of creating simple links. Just type one of these.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode markdown"><code class="sourceCode markdown"><a class="sourceLine" id="cb2-1" title="1">Click <span class="ot">[here](url)</span> to see something awesome!</a>
-<a class="sourceLine" id="cb2-2" title="2"></a>
-<a class="sourceLine" id="cb2-3" title="3">Click <span class="ot">[here][blah] </span>to see something awesome!</a>
-<a class="sourceLine" id="cb2-4" title="4"><span class="ot">[blah]: url</span></a></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a>Click <span class="co">[</span><span class="ot">here</span><span class="co">](url)</span> to see something awesome!</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true"></a>Click <span class="co">[</span><span class="ot">here</span><span class="co">][blah]</span> to see something awesome!</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true"></a><span class="ot">[blah]: </span>url</span></code></pre></div>
 <p>Both are expanded into the following.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode markdown"><code class="sourceCode markdown"><a class="sourceLine" id="cb3-1" title="1">Click &lt;a href=&quot;url&quot;&gt;here&lt;/a&gt; to see something awesome!</a></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a>Click <span class="kw">&lt;a</span><span class="ot"> href=</span><span class="st">&quot;url&quot;</span><span class="kw">&gt;</span>here<span class="kw">&lt;/a&gt;</span> to see something awesome!</span></code></pre></div>
 <p>Now, whether you write in markdown or in HTML, footnotes would seem really easy to do, and in some sense, they are. Simply create a footnote at the bottom of the page that has some sort of element with an <code>id</code>, preferably mnemonic, e.g., <code>&lt;a id="fn"&gt;...</code>, and then refer to that <code>id</code> in your text in the normal way, by adding a #: either as <code>&lt;a href="#fn"&gt;1&lt;/a&gt;</code> in HTML, or as <code>[1](#fn)</code> in markdown.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode markdown"><code class="sourceCode markdown"><a class="sourceLine" id="cb4-1" title="1">Blah blah blah blah.<span class="ot">[1](#fn)</span> More blah...</a>
-<a class="sourceLine" id="cb4-2" title="2"></a>
-<a class="sourceLine" id="cb4-3" title="3">---</a>
-<a class="sourceLine" id="cb4-4" title="4">1. <span class="fl"> &lt;a id=&quot;fn&quot;&gt;&lt;/a&gt; Even more blah...</span></a></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true"></a>Blah blah blah blah.<span class="co">[</span><span class="ot">1</span><span class="co">](#fn)</span> More blah...</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true"></a>---</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true"></a><span class="ss">1.  </span><span class="kw">&lt;a</span><span class="ot"> id=</span><span class="st">&quot;fn&quot;</span><span class="kw">&gt;&lt;/a&gt;</span> Even more blah...</span></code></pre></div>
 <p>But there are some problems with this method. First, it’s ugly.<a href="#fn:ugly">2</a> See how ugly that big underlined number looks? Second, and more importantly, as I’ve written it, there’s no link from the footnote back up to the reference, so once you’re done reading the footnote, you have to go find where you were before. Uncool. There’s nothing worse than a footnote with no link back to the reference.</p>
 <p>One potential solution to both problems is the following: wrap some <code>&lt;sup&gt;&lt;/sup&gt;</code> around the reference text to superscript it, and also use this element to declare an <code>id</code> for the reference. Then you can link from the footnote to the reference using the reference <code>id</code>, together with a useful symbol like ↑ as the link text (<code>&amp;uarr;</code> in HTML; stands for <strong>u</strong>p <strong>arr</strong>ow, of course).</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode markdown"><code class="sourceCode markdown"><a class="sourceLine" id="cb5-1" title="1">Blah blah blah blah.&lt;sup id=&quot;ref&quot;&gt;<span class="ot">[1](#fn)</span>&lt;/sup&gt; More blah...</a>
-<a class="sourceLine" id="cb5-2" title="2"></a>
-<a class="sourceLine" id="cb5-3" title="3">---</a>
-<a class="sourceLine" id="cb5-4" title="4">1. <span class="fl"> &lt;a id=&quot;fn&quot; href=&quot;#ref&quot;&gt;&amp;uarr;&lt;/a&gt; Even more blah...</span></a></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true"></a>Blah blah blah blah.<span class="kw">&lt;sup</span><span class="ot"> id=</span><span class="st">&quot;ref&quot;</span><span class="kw">&gt;</span><span class="co">[</span><span class="ot">1</span><span class="co">](#fn)</span><span class="kw">&lt;/sup&gt;</span> More blah...</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true"></a>---</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true"></a><span class="ss">1.  </span><span class="kw">&lt;a</span><span class="ot"> id=</span><span class="st">&quot;fn&quot;</span><span class="ot"> href=</span><span class="st">&quot;#ref&quot;</span><span class="kw">&gt;</span><span class="dv">&amp;uarr;</span><span class="kw">&lt;/a&gt;</span> Even more blah...</span></code></pre></div>
 <p>This actually ain’t <em>that</em> bad.<sup id="ref:sup"><a href="#fn:sup">3</a></sup> However, what if we want to customize how the reference number looks? What if we don’t like underline, or we want a special color or font or size? Unfortunately, any style properties of a <code>sup</code> element get overridden if they are also style properties of the <code>a</code> element embedded inside the <code>&lt;sup&gt;&lt;/sup&gt;</code> tags: recall that</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode markdown"><code class="sourceCode markdown"><a class="sourceLine" id="cb6-1" title="1">&lt;sup ...&gt;<span class="ot">[text](url)</span>&lt;/sup&gt;</a></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true"></a><span class="kw">&lt;sup</span> <span class="er">...</span><span class="kw">&gt;</span><span class="co">[</span><span class="ot">text</span><span class="co">](url)</span><span class="kw">&lt;/sup&gt;</span></span></code></pre></div>
 <p>gets expanded to</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode markdown"><code class="sourceCode markdown"><a class="sourceLine" id="cb7-1" title="1">&lt;sup ...&gt;&lt;a href=&quot;url&quot;&gt;text&lt;/a&gt;&lt;/sup&gt;</a></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true"></a><span class="kw">&lt;sup</span> <span class="er">...</span><span class="kw">&gt;&lt;a</span><span class="ot"> href=</span><span class="st">&quot;url&quot;</span><span class="kw">&gt;</span>text<span class="kw">&lt;/a&gt;&lt;/sup&gt;</span></span></code></pre></div>
 <p>In Octopress, that means that <code>sup {text-decoration: none;}</code>, <code>sup {font-size: small;}</code>, etc. have no effect on superscript reference links because <code>a</code> already has its own <code>text-decoration</code> and <code>font-size</code> values.</p>
 <p>The solution I’ve come up with to all these problems is to define two new classes of anchors (<code>a</code> elements): one for references and one for footnotes. I like my reference numbers to be small and superscript, with no underline, and I like my up arrow to be normal size and superscript, with no underline.</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode css"><code class="sourceCode css"><a class="sourceLine" id="cb8-1" title="1">a<span class="fu">.ref</span> {</a>
-<a class="sourceLine" id="cb8-2" title="2">  <span class="kw">vertical-align</span>: <span class="dv">super</span><span class="op">;</span></a>
-<a class="sourceLine" id="cb8-3" title="3">  <span class="kw">font-size</span>: <span class="dv">small</span><span class="op">;</span></a>
-<a class="sourceLine" id="cb8-4" title="4">  <span class="kw">text-decoration</span>: <span class="dv">none</span><span class="op">;</span></a>
-<a class="sourceLine" id="cb8-5" title="5">  <span class="im">@include</span> link-colors<span class="fu">(</span>$link-color<span class="op">,</span></a>
-<a class="sourceLine" id="cb8-6" title="6">                       $hover: $link-color-hover<span class="op">,</span></a>
-<a class="sourceLine" id="cb8-7" title="7">                       $focus: $link-color-hover<span class="op">,</span></a>
-<a class="sourceLine" id="cb8-8" title="8">                       $visited: $link-color-visited<span class="op">,</span></a>
-<a class="sourceLine" id="cb8-9" title="9">                       $active: $link-color-active<span class="fu">)</span><span class="op">;</span></a>
-<a class="sourceLine" id="cb8-10" title="10">}</a>
-<a class="sourceLine" id="cb8-11" title="11"></a>
-<a class="sourceLine" id="cb8-12" title="12">a<span class="fu">.fn</span> {</a>
-<a class="sourceLine" id="cb8-13" title="13">  <span class="kw">vertical-align</span>: <span class="dv">super</span><span class="op">;</span></a>
-<a class="sourceLine" id="cb8-14" title="14">  <span class="kw">text-decoration</span>: <span class="dv">none</span><span class="op">;</span></a>
-<a class="sourceLine" id="cb8-15" title="15">  <span class="im">@include</span> link-colors<span class="fu">(</span>$link-color<span class="op">,</span></a>
-<a class="sourceLine" id="cb8-16" title="16">                       $hover: $link-color-hover<span class="op">,</span></a>
-<a class="sourceLine" id="cb8-17" title="17">                       $focus: $link-color-hover<span class="op">,</span></a>
-<a class="sourceLine" id="cb8-18" title="18">                       $visited: $link-color-visited<span class="op">,</span></a>
-<a class="sourceLine" id="cb8-19" title="19">                       $active: $link-color-active<span class="fu">)</span><span class="op">;</span></a>
-<a class="sourceLine" id="cb8-20" title="20">}</a></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode css"><code class="sourceCode css"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true"></a>a<span class="fu">.ref</span> {</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true"></a>  <span class="kw">vertical-align</span>: <span class="dv">super</span><span class="op">;</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true"></a>  <span class="kw">font-size</span>: <span class="dv">small</span><span class="op">;</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true"></a>  <span class="kw">text-decoration</span>: <span class="dv">none</span><span class="op">;</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true"></a>  <span class="im">@include</span> link-colors<span class="fu">(</span>$link-color<span class="op">,</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true"></a>                       $hover: $link-color-hover<span class="op">,</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true"></a>                       $focus: $link-color-hover<span class="op">,</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true"></a>                       $visited: $link-color-visited<span class="op">,</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true"></a>                       $active: $link-color-active<span class="fu">)</span><span class="op">;</span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true"></a>}</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true"></a></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true"></a>a<span class="fu">.fn</span> {</span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true"></a>  <span class="kw">vertical-align</span>: <span class="dv">super</span><span class="op">;</span></span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true"></a>  <span class="kw">text-decoration</span>: <span class="dv">none</span><span class="op">;</span></span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true"></a>  <span class="im">@include</span> link-colors<span class="fu">(</span>$link-color<span class="op">,</span></span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true"></a>                       $hover: $link-color-hover<span class="op">,</span></span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true"></a>                       $focus: $link-color-hover<span class="op">,</span></span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true"></a>                       $visited: $link-color-visited<span class="op">,</span></span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true"></a>                       $active: $link-color-active<span class="fu">)</span><span class="op">;</span></span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true"></a>}</span></code></pre></div>
 <p>The <code>@include ...</code> stuff adds all the color variables from <code>/sass/custom/_colors.scss</code>. Without that, the links would be black.</p>
 <p>These two classes now mean I do references and footnotes as follows.</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode markdown"><code class="sourceCode markdown"><a class="sourceLine" id="cb9-1" title="1">Blah blah.&lt;a class=&quot;ref&quot; id=&quot;ref:blah&quot; href=&quot;#fn:blah&quot;&gt;[1]&lt;/a&gt; More blah</a>
-<a class="sourceLine" id="cb9-2" title="2"></a>
-<a class="sourceLine" id="cb9-3" title="3">Aoeu aoeu aoeu.&lt;a class=&quot;ref&quot; id=&quot;ref:aoeu&quot; href=&quot;#fn:aoeu&quot;&gt;[2]&lt;/a&gt; More aoeu</a>
-<a class="sourceLine" id="cb9-4" title="4"></a>
-<a class="sourceLine" id="cb9-5" title="5">---</a>
-<a class="sourceLine" id="cb9-6" title="6">1. <span class="fl"> &lt;a class=&quot;fn&quot; id=&quot;fn:blah&quot; href=&quot;#ref:blah&quot;&gt;&amp;uarr;&lt;/a&gt; Even more blah...</span></a>
-<a class="sourceLine" id="cb9-7" title="7"></a>
-<a class="sourceLine" id="cb9-8" title="8">2. <span class="fl"> &lt;a class=&quot;fn&quot; id=&quot;fn:aoeu&quot; href=&quot;#ref:aoeu&quot;&gt;&amp;uarr;&lt;/a&gt; Even more aoeu...</span></a></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true"></a>Blah blah.<span class="kw">&lt;a</span><span class="ot"> class=</span><span class="st">&quot;ref&quot;</span><span class="ot"> id=</span><span class="st">&quot;ref:blah&quot;</span><span class="ot"> href=</span><span class="st">&quot;#fn:blah&quot;</span><span class="kw">&gt;</span><span class="co">[</span><span class="ot">1</span><span class="co">]</span><span class="kw">&lt;/a&gt;</span> More blah</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true"></a></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true"></a>Aoeu aoeu aoeu.<span class="kw">&lt;a</span><span class="ot"> class=</span><span class="st">&quot;ref&quot;</span><span class="ot"> id=</span><span class="st">&quot;ref:aoeu&quot;</span><span class="ot"> href=</span><span class="st">&quot;#fn:aoeu&quot;</span><span class="kw">&gt;</span><span class="co">[</span><span class="ot">2</span><span class="co">]</span><span class="kw">&lt;/a&gt;</span> More aoeu</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true"></a></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true"></a>---</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true"></a><span class="ss">1.  </span><span class="kw">&lt;a</span><span class="ot"> class=</span><span class="st">&quot;fn&quot;</span><span class="ot"> id=</span><span class="st">&quot;fn:blah&quot;</span><span class="ot"> href=</span><span class="st">&quot;#ref:blah&quot;</span><span class="kw">&gt;</span><span class="dv">&amp;uarr;</span><span class="kw">&lt;/a&gt;</span> Even more blah...</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true"></a></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true"></a><span class="ss">2.  </span><span class="kw">&lt;a</span><span class="ot"> class=</span><span class="st">&quot;fn&quot;</span><span class="ot"> id=</span><span class="st">&quot;fn:aoeu&quot;</span><span class="ot"> href=</span><span class="st">&quot;#ref:aoeu&quot;</span><span class="kw">&gt;</span><span class="dv">&amp;uarr;</span><span class="kw">&lt;/a&gt;</span> Even more aoeu...</span></code></pre></div>
 <p>In other words, each <em>reference</em> consists of a number, like 1, surrounded by <code>a</code> tags of the <code>ref</code> class, with some mnemonic ref <code>id</code>, pointing to the corresponding fn anchor/<code>id</code>. The corresponding <em>footnote</em> consists of a ↑, surrounded by <code>a</code> tags of the <code>fn</code> class, with some mnemonic fn <code>id</code>, pointing back to the corresponding ref anchor/<code>id</code>.</p>
 <p>I think this works pretty well. Although it clutters my markdown with a bit of HTML, I think the flexibility is worth it. This way, I can easily change how my reference numbers look, or how my footnote arrow looks, or both, and it’ll trickle down to all my posts that use these classes.</p>
 <p>There may be a better way of handling footnotes, but I haven’t seen it or thought of it yet.</p>

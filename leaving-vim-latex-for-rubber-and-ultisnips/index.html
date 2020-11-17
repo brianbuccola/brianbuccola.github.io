@@ -41,6 +41,7 @@
                 <a class="nav" href="../">Home</a>
                 <a class="nav" href="../work/">Work</a>
                 <a class="nav" href="../cv/">CV</a>
+                <a class="nav" href="../contact/">Contact</a>
                 <a class="nav" href="../blog/">Blog</a>
             </nav>
         </header>
@@ -59,10 +60,10 @@
 <p>Several years ago when I started using <a href="http://www.vim.org/">vim</a>, I needed a way to integrate <span class="math inline">\(\LaTeX{}\)</span> and stumbled on the hugely popular <a href="http://vim-latex.sourceforge.net/">vim-latex</a> plugin. It comes with a ton of bells and whistles, like automatic text replacement, shortcuts for inserting environments, and macros for compiling <code>tex</code> code and for opening the resulting <code>pdf</code> in your favorite viewer. Also, for users of graphical vim, vim-latex adds a ton of new menus that list various environments, commands, packages and their options, etc.</p>
 <p>Over the years, however, I’ve realized that I don’t actually use any of the features other than the two macros above, plus a few basic text replacements and environment shortcuts. In fact, some of the features can be quite annoying and (as far as I’ve been able to learn) are not easily disabled. For example, if I want to write an expression in single quotes that starts with ‘a’, such as ‘arm’, the moment I type <code>`a</code>, the replacement mechanim kicks in and replaces it with <code>\alpha</code>. And similar for a bunch of other character combinations.</p>
 <p>So the other day, I finally decided to get rid of vim-latex all together and write my own macros for compiling and viewing. Initially, I was just going to use <code>pdflatex</code>, but then I remembered about the awesome <a href="https://launchpad.net/rubber/">rubber</a>, a program for handling “all tasks related to the compilation of LaTeX documents”. That especially means compiling multiple times to fix labels as well as doing the whole</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb1-1" title="1">$ <span class="ex">pdflatex</span></a>
-<a class="sourceLine" id="cb1-2" title="2">$ <span class="ex">bibtex</span></a>
-<a class="sourceLine" id="cb1-3" title="3">$ <span class="ex">pdflatex</span></a>
-<a class="sourceLine" id="cb1-4" title="4">$ <span class="ex">pdflatex</span></a></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a>$ <span class="ex">pdflatex</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true"></a>$ <span class="ex">bibtex</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true"></a>$ <span class="ex">pdflatex</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true"></a>$ <span class="ex">pdflatex</span></span></code></pre></div>
 <p>runaround. As expected, <code>rubber</code> also comes with a slew of options and can compile to any of the usual formats.</p>
 <p>Here are the two macros I wrote:</p>
 <pre class="vim"><code>&quot; LaTeX (rubber) macro

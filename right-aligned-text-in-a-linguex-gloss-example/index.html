@@ -41,6 +41,7 @@
                 <a class="nav" href="../">Home</a>
                 <a class="nav" href="../work/">Work</a>
                 <a class="nav" href="../cv/">CV</a>
+                <a class="nav" href="../contact/">Contact</a>
                 <a class="nav" href="../blog/">Blog</a>
             </nav>
         </header>
@@ -56,40 +57,40 @@
     </section>
     <section>
         <p><a href="https://www.ctan.org/pkg/linguex">linguex</a> is a LaTeX package, popular among linguists, which “facilitates the formatting of linguistics examples, automatically taking care of example numbering, indentations, indexed brackets, and the ‘*’ in grammaticality judgments.” The main command is <code>\ex.</code>, which is used to produce a simple example like this:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode latex"><code class="sourceCode latex"><a class="sourceLine" id="cb1-1" title="1"><span class="fu">\ex</span>. Colorless green ideas sleep furiously.</a></code></pre></div>
-<p>It is common, of course, to add a bit of commentary text to an example, such as a parenthetical citation.<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a> An easy way to do this is to right-align the text using <code>\hfill</code>:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode latex"><code class="sourceCode latex"><a class="sourceLine" id="cb2-1" title="1"><span class="fu">\ex</span>. Colorless green ideas sleep furiously. <span class="fu">\hfill</span> (Chomsky 1957)</a></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode latex"><code class="sourceCode latex"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a><span class="fu">\ex</span>. Colorless green ideas sleep furiously.</span></code></pre></div>
+<p>It is common, of course, to add a bit of commentary text to an example, such as a parenthetical citation.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> An easy way to do this is to right-align the text using <code>\hfill</code>:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode latex"><code class="sourceCode latex"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a><span class="fu">\ex</span>. Colorless green ideas sleep furiously. <span class="fu">\hfill</span> (Chomsky 1957)</span></code></pre></div>
 <p>Importantly, linguex allows you to easily create glossed examples by using a slight variant of <code>\ex.</code>, namely the <code>\exg.</code> command. Instead of a single line, <code>\exg.</code> expects 2-3 lines: the example, the gloss, and (optionally) the translation.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode latex"><code class="sourceCode latex"><a class="sourceLine" id="cb3-1" title="1"><span class="fu">\exg</span>. Il ne veut pas venir.<span class="fu">\\</span></a>
-<a class="sourceLine" id="cb3-2" title="2">he <span class="fu">\textsc</span>{ne} want.3sg not come.inf<span class="fu">\\</span></a>
-<a class="sourceLine" id="cb3-3" title="3">`He does not want to come.'</a>
-<a class="sourceLine" id="cb3-4" title="4"></a>
-<a class="sourceLine" id="cb3-5" title="5"><span class="fu">\exg</span>. Er will nicht kommen.<span class="fu">\\</span></a>
-<a class="sourceLine" id="cb3-6" title="6">he want.3sg not come.inf<span class="fu">\\</span>     <span class="co">% no translation necessary</span></a></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode latex"><code class="sourceCode latex"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a><span class="fu">\exg</span>. Il ne veut pas venir.<span class="fu">\\</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true"></a>he <span class="fu">\textsc</span>{ne} want.3sg not come.inf<span class="fu">\\</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true"></a>`He does not want to come.'</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true"></a><span class="fu">\exg</span>. Er will nicht kommen.<span class="fu">\\</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true"></a>he want.3sg not come.inf<span class="fu">\\</span>     <span class="co">% no translation necessary</span></span></code></pre></div>
 <p>Now, what if you want to add some commentary text, for example the language being glossed? It turns out (due to the inner workings of linguex) that you can only <code>\hfill</code> some text on the third line, not the first. In other words, this works…</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode latex"><code class="sourceCode latex"><a class="sourceLine" id="cb4-1" title="1"><span class="fu">\exg</span>. Il ne veut pas venir.<span class="fu">\\</span></a>
-<a class="sourceLine" id="cb4-2" title="2">he <span class="fu">\textsc</span>{ne} want.3sg not come.inf<span class="fu">\\</span></a>
-<a class="sourceLine" id="cb4-3" title="3">`He does not want to come.' <span class="fu">\hfill</span> (French)</a></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode latex"><code class="sourceCode latex"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true"></a><span class="fu">\exg</span>. Il ne veut pas venir.<span class="fu">\\</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true"></a>he <span class="fu">\textsc</span>{ne} want.3sg not come.inf<span class="fu">\\</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true"></a>`He does not want to come.' <span class="fu">\hfill</span> (French)</span></code></pre></div>
 <p>…but this doesn’t…</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode latex"><code class="sourceCode latex"><a class="sourceLine" id="cb5-1" title="1"><span class="fu">\exg</span>. Il ne veut pas venir. <span class="fu">\hfill</span> (French)<span class="fu">\\</span></a>
-<a class="sourceLine" id="cb5-2" title="2">he <span class="fu">\textsc</span>{ne} want.3sg not come.inf<span class="fu">\\</span></a>
-<a class="sourceLine" id="cb5-3" title="3">`He does not want to come.'</a></code></pre></div>
-<p>If all your glosses have translations, and if you don’t mind the look of commentary text on the third line, then this is good enough. However, if some of your examples don’t need translations, or if you simply prefer the look of commentary text on the first line, then here is a workaround.<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a></p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode latex"><code class="sourceCode latex"><a class="sourceLine" id="cb6-1" title="1"><span class="fu">\exg</span>. Il ne veut pas venir.<span class="fu">\\</span></a>
-<a class="sourceLine" id="cb6-2" title="2">he <span class="fu">\textsc</span>{ne} want.3sg not come.inf<span class="fu">\\</span></a>
-<a class="sourceLine" id="cb6-3" title="3">`He does not want to come.' <span class="fu">\hfill</span> <span class="fu">\raisebox</span>{1.9<span class="fu">\baselineskip</span>}[0pt][0pt]{(French)}</a></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode latex"><code class="sourceCode latex"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true"></a><span class="fu">\exg</span>. Il ne veut pas venir. <span class="fu">\hfill</span> (French)<span class="fu">\\</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true"></a>he <span class="fu">\textsc</span>{ne} want.3sg not come.inf<span class="fu">\\</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true"></a>`He does not want to come.'</span></code></pre></div>
+<p>If all your glosses have translations, and if you don’t mind the look of commentary text on the third line, then this is good enough. However, if some of your examples don’t need translations, or if you simply prefer the look of commentary text on the first line, then here is a workaround.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode latex"><code class="sourceCode latex"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true"></a><span class="fu">\exg</span>. Il ne veut pas venir.<span class="fu">\\</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true"></a>he <span class="fu">\textsc</span>{ne} want.3sg not come.inf<span class="fu">\\</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true"></a>`He does not want to come.' <span class="fu">\hfill</span> <span class="fu">\raisebox</span>{1.9<span class="fu">\baselineskip</span>}[0pt][0pt]{(French)}</span></code></pre></div>
 <p>What this does is put “(French)” inside of a <code>\raisebox</code>, which is a box that gets raised (almost) 2 lines up, so that “(French)” ends up on the same line as the French example. (Actually, what’s going on under the LaTeX hood is more complicated than that, but that’s essentially the end result.)</p>
 <p>We can abstract over this particular case and define a new command to use throughout a document as follows:</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode latex"><code class="sourceCode latex"><a class="sourceLine" id="cb7-1" title="1"><span class="co">% Right-aligned comment in glossed example</span></a>
-<a class="sourceLine" id="cb7-2" title="2"><span class="fu">\newcommand</span>{<span class="ex">\rcommentg</span>}[1]{<span class="fu">\hfill\raisebox</span>{1.9<span class="fu">\baselineskip</span>}[0pt][0pt]{#1}}</a></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode latex"><code class="sourceCode latex"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true"></a><span class="co">% Right-aligned comment in glossed example</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true"></a><span class="fu">\newcommand</span>{<span class="ex">\rcommentg</span>}[1]{<span class="fu">\hfill\raisebox</span>{1.9<span class="fu">\baselineskip</span>}[0pt][0pt]{#1}}</span></code></pre></div>
 <p>Now, you can just do this:</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode latex"><code class="sourceCode latex"><a class="sourceLine" id="cb8-1" title="1"><span class="fu">\exg</span>. Il ne veut pas venir.<span class="fu">\\</span></a>
-<a class="sourceLine" id="cb8-2" title="2">he <span class="fu">\textsc</span>{ne} want.3sg not come.inf<span class="fu">\\</span></a>
-<a class="sourceLine" id="cb8-3" title="3">`He does not want to come.' <span class="fu">\rcommentg</span>{(French)}</a>
-<a class="sourceLine" id="cb8-4" title="4"></a>
-<a class="sourceLine" id="cb8-5" title="5"><span class="fu">\exg</span>. Er will nicht kommen.<span class="fu">\\</span></a>
-<a class="sourceLine" id="cb8-6" title="6">he want.3sg not come.inf<span class="fu">\\</span></a>
-<a class="sourceLine" id="cb8-7" title="7">`He does not want to come.' <span class="fu">\rcommentg</span>{(German)}</a></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode latex"><code class="sourceCode latex"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true"></a><span class="fu">\exg</span>. Il ne veut pas venir.<span class="fu">\\</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true"></a>he <span class="fu">\textsc</span>{ne} want.3sg not come.inf<span class="fu">\\</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true"></a>`He does not want to come.' <span class="fu">\rcommentg</span>{(French)}</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true"></a></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true"></a><span class="fu">\exg</span>. Er will nicht kommen.<span class="fu">\\</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true"></a>he want.3sg not come.inf<span class="fu">\\</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true"></a>`He does not want to come.' <span class="fu">\rcommentg</span>{(German)}</span></code></pre></div>
 <p>A few caveats:</p>
 <ol type="1">
 <li>You may have to fiddle with the <code>1.9</code> value, depending on font, etc.</li>
@@ -97,20 +98,20 @@
 <li>If your example spills over to the next page, i.e. the example sentence is on one page while the translation is on the next page, then <code>\rcommentg</code> won’t work. My suggestion in this case is to wait until your manuscript is otherwise completely finished, and then add a <code>\clearpage</code> before the offending example. (Glossed examples really should not split across more than one page anyway, IMO.)</li>
 </ol>
 <p>Lastly, I should mention that <a href="https://www.ctan.org/pkg/expex">expex</a>, a much more sophisticated example package, comes with its own <code>\rightcomment</code> command that can be used on <em>any</em> line of a gloss example. In expex, the French example above would look like this:</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode latex"><code class="sourceCode latex"><a class="sourceLine" id="cb9-1" title="1"><span class="fu">\ex</span></a>
-<a class="sourceLine" id="cb9-2" title="2"><span class="fu">\begingl</span></a>
-<a class="sourceLine" id="cb9-3" title="3"><span class="fu">\gla</span> <span class="fu">\rightcomment</span>{(French)}Il ne veut pas venir.//</a>
-<a class="sourceLine" id="cb9-4" title="4"><span class="fu">\glb</span> he <span class="fu">\textsc</span>{ne} want.3sg not come.inf//</a>
-<a class="sourceLine" id="cb9-5" title="5"><span class="fu">\glft</span> `He does not want to come.'//</a>
-<a class="sourceLine" id="cb9-6" title="6"><span class="fu">\endgl</span></a>
-<a class="sourceLine" id="cb9-7" title="7"><span class="fu">\xe</span></a></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode latex"><code class="sourceCode latex"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true"></a><span class="fu">\ex</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true"></a><span class="fu">\begingl</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true"></a><span class="fu">\gla</span> <span class="fu">\rightcomment</span>{(French)}Il ne veut pas venir.//</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true"></a><span class="fu">\glb</span> he <span class="fu">\textsc</span>{ne} want.3sg not come.inf//</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true"></a><span class="fu">\glft</span> `He does not want to come.'//</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true"></a><span class="fu">\endgl</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true"></a><span class="fu">\xe</span></span></code></pre></div>
 <p>(Note the lack of space between the comment and the word “Il”, and note the use of <em>forward</em> double slashes to end a line.)</p>
 <p>expex automatically handles all the caveats above. The downside (which is very subjective, of course) is that expex’s syntax is more cumbersome than linguex’s. However, if you find yourself doing quite a bit of complex examples, requiring sophisticated commenting, spacing, formatting, etc., then you should definitely consider switching to expex.</p>
-<section class="footnotes">
+<section class="footnotes" role="doc-endnotes">
 <hr />
 <ol>
-<li id="fn1"><p>You should of course use <code>\parencite</code> (<a href="https://www.ctan.org/pkg/biblatex">biblatex</a>) or <code>\citep</code> (<a href="https://www.ctan.org/pkg/natbib">natbib</a>) instead of manually entering citations.<a href="#fnref1" class="footnote-back">↩</a></p></li>
-<li id="fn2"><p>This solution is a modification of a solution I came across on Facebook (which inspired this blog post), posted by Laura Kalin in response to a LaTeX question by Keir Moulton. Laura’s solution, which she attributed to Byron Ahn, involved using <code>\rput</code> instead of <code>\raisebox</code>. <code>\rput</code> comes from the PSTricks package. A problem with this solution is that PSTricks does not work with PDFLaTeX (at least not by default), which means you need to first compile to PS/DVI and then convert PS/DVI to PDF, or else use XeLaTeX instead. (Also, PSTricks does not play nicely with certain other packages, IIRC.) The advantage of using <code>\raisebox</code> is that it’s a native LaTeX command; no extra package necessary.<a href="#fnref2" class="footnote-back">↩</a></p></li>
+<li id="fn1" role="doc-endnote"><p>You should of course use <code>\parencite</code> (<a href="https://www.ctan.org/pkg/biblatex">biblatex</a>) or <code>\citep</code> (<a href="https://www.ctan.org/pkg/natbib">natbib</a>) instead of manually entering citations.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2" role="doc-endnote"><p>This solution is a modification of a solution I came across on Facebook (which inspired this blog post), posted by Laura Kalin in response to a LaTeX question by Keir Moulton. Laura’s solution, which she attributed to Byron Ahn, involved using <code>\rput</code> instead of <code>\raisebox</code>. <code>\rput</code> comes from the PSTricks package. A problem with this solution is that PSTricks does not work with PDFLaTeX (at least not by default), which means you need to first compile to PS/DVI and then convert PS/DVI to PDF, or else use XeLaTeX instead. (Also, PSTricks does not play nicely with certain other packages, IIRC.) The advantage of using <code>\raisebox</code> is that it’s a native LaTeX command; no extra package necessary.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section>
     </section>

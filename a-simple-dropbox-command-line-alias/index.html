@@ -41,6 +41,7 @@
                 <a class="nav" href="../">Home</a>
                 <a class="nav" href="../work/">Work</a>
                 <a class="nav" href="../cv/">CV</a>
+                <a class="nav" href="../contact/">Contact</a>
                 <a class="nav" href="../blog/">Blog</a>
             </nav>
         </header>
@@ -56,31 +57,31 @@
     </section>
     <section>
         <p>Dropbox has a useful but rather simplistic command-line interface, which I use almost exclusively. The reason I call it simplistic is that when you start Dropbox with <code>dropbox start</code>, all you see is</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb1-1" title="1">$ <span class="ex">dropbox</span> start</a>
-<a class="sourceLine" id="cb1-2" title="2"><span class="ex">Starting...Done</span>!</a></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a>$ <span class="ex">dropbox</span> start</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true"></a><span class="ex">Starting...Done</span>!</span></code></pre></div>
 <p>It starts Dropbox then brings you right back to the command-line prompt, at which point you have no idea what Dropbox is doing in the background. For me it’s important to know when Dropbox is finished syncing because I prefer to leave Dropbox off otherwise; that is, once the sync is done, I want to know that and then stop Dropbox.</p>
 <p>There is a command <code>dropbox status</code>, but all that does is check the status (whether Dropbox is idle, uploading, downloading, indexing, etc.) at the <em>particular</em> moment you call <code>dropbox status</code>, and that’s it. I could of course keep calling <code>dropbox status</code> until it starts to return <code>Idle</code> every time</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb2-1" title="1">$ <span class="ex">dropbox</span> status</a>
-<a class="sourceLine" id="cb2-2" title="2"><span class="ex">Connecting...</span></a>
-<a class="sourceLine" id="cb2-3" title="3">$ <span class="ex">dropbox</span> status</a>
-<a class="sourceLine" id="cb2-4" title="4"><span class="ex">Initializing...</span></a>
-<a class="sourceLine" id="cb2-5" title="5">$ <span class="ex">dropbox</span> status</a>
-<a class="sourceLine" id="cb2-6" title="6"><span class="ex">Starting...</span></a>
-<a class="sourceLine" id="cb2-7" title="7">$ <span class="ex">dropbox</span> status</a>
-<a class="sourceLine" id="cb2-8" title="8"><span class="ex">Downloading</span> file list...</a>
-<a class="sourceLine" id="cb2-9" title="9">$ <span class="ex">dropbox</span> status</a>
-<a class="sourceLine" id="cb2-10" title="10"><span class="ex">Updating</span> (4 files)</a>
-<a class="sourceLine" id="cb2-11" title="11"><span class="ex">Indexing</span> (4 files)</a>
-<a class="sourceLine" id="cb2-12" title="12">$ <span class="ex">dropbox</span> status</a>
-<a class="sourceLine" id="cb2-13" title="13"><span class="ex">Idle</span></a>
-<a class="sourceLine" id="cb2-14" title="14">$ <span class="ex">dropbox</span> status</a>
-<a class="sourceLine" id="cb2-15" title="15"><span class="ex">Idle</span></a></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a>$ <span class="ex">dropbox</span> status</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true"></a><span class="ex">Connecting...</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true"></a>$ <span class="ex">dropbox</span> status</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true"></a><span class="ex">Initializing...</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true"></a>$ <span class="ex">dropbox</span> status</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true"></a><span class="ex">Starting...</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true"></a>$ <span class="ex">dropbox</span> status</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true"></a><span class="ex">Downloading</span> file list...</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true"></a>$ <span class="ex">dropbox</span> status</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true"></a><span class="ex">Updating</span> (4 files)</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true"></a><span class="ex">Indexing</span> (4 files)</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true"></a>$ <span class="ex">dropbox</span> status</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true"></a><span class="ex">Idle</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true"></a>$ <span class="ex">dropbox</span> status</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true"></a><span class="ex">Idle</span></span></code></pre></div>
 <p>but there is an easier way to do this: the Linux command <code>watch</code>, which “execute[s] a program periodically, showing output fullscreen.” Suppose I want to check Dropbox’s status every one second. Then I just run</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb3-1" title="1"><span class="ex">watch</span> -n1 dropbox status</a></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a><span class="ex">watch</span> -n1 dropbox status</span></code></pre></div>
 <p>(The option <code>-n1</code> is short for <code>--interval 1</code> and always refers to seconds.)</p>
 <p>To stop watching the program (to exit <code>watch</code>), just hit <code>Ctrl-C</code>.</p>
 <p>When I run Dropbox, I basically just want to start it, watch what it does until it returns <code>Idle</code> every time, and then stop Dropbox. Here is simple alias (to put in <code>.bashrc</code> or <code>.zshrc</code> or whatever) that lets me do that:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb4-1" title="1"><span class="bu">alias</span> db=<span class="st">'dropbox start &amp;&amp; watch -n1 dropbox status &amp;&amp; dropbox stop'</span></a></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true"></a><span class="bu">alias</span> db=<span class="st">'dropbox start &amp;&amp; watch -n1 dropbox status &amp;&amp; dropbox stop'</span></span></code></pre></div>
 <p>With this alias, I just type <code>db</code> at the command line, watch what Dropbox does until I keep seeing <code>Idle</code>, hit <code>Ctrl-C</code>, and then Dropbox stops automatically.</p>
     </section>
 </article>

@@ -41,6 +41,7 @@
                 <a class="nav" href="../">Home</a>
                 <a class="nav" href="../work/">Work</a>
                 <a class="nav" href="../cv/">CV</a>
+                <a class="nav" href="../contact/">Contact</a>
                 <a class="nav" href="../blog/">Blog</a>
             </nav>
         </header>
@@ -56,11 +57,11 @@
     </section>
     <section>
         <p><strong>PSA:</strong> If you’re submitting a latex source file to a journal, and their compiler is giving you errors related to DVI output, try adding <code>%&amp;pdflatex</code> to the top of the file (make it line 1, all by itself) to force using <code>pdflatex</code> over plain <code>latex</code> + <code>dvipdf</code>.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode latex"><code class="sourceCode latex"><a class="sourceLine" id="cb1-1" title="1"><span class="co">%&amp;pdflatex</span></a>
-<a class="sourceLine" id="cb1-2" title="2"><span class="bu">\documentclass</span>{<span class="ex">article</span>}</a>
-<a class="sourceLine" id="cb1-3" title="3"><span class="kw">\begin</span>{<span class="ex">document</span>}</a>
-<a class="sourceLine" id="cb1-4" title="4">Hello, world!</a>
-<a class="sourceLine" id="cb1-5" title="5"><span class="kw">\end</span>{<span class="ex">document</span>}</a></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode latex"><code class="sourceCode latex"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a><span class="co">%&amp;pdflatex</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true"></a><span class="bu">\documentclass</span>{<span class="ex">article</span>}</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true"></a><span class="kw">\begin</span>{<span class="ex">document</span>}</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true"></a>Hello, world!</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true"></a><span class="kw">\end</span>{<span class="ex">document</span>}</span></code></pre></div>
 <p>In my case, I was getting errors along the lines of</p>
 <pre><code>! LaTeX Error: Cannot determine size of graphic in figure.pdf (no BoundingBox)</code></pre>
 <p>This is an indication that the backend compiler is plain <code>latex</code> (trying to create a DVI), which is unable to determine the size of PDF, PNG, or JPG images. (If this is your only problem, then another solution is to use EPS images instead, which should be handled just fine by plain <code>latex</code>.)</p>

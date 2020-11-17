@@ -41,6 +41,7 @@
                 <a class="nav" href="../">Home</a>
                 <a class="nav" href="../work/">Work</a>
                 <a class="nav" href="../cv/">CV</a>
+                <a class="nav" href="../contact/">Contact</a>
                 <a class="nav" href="../blog/">Blog</a>
             </nav>
         </header>
@@ -65,15 +66,15 @@
 <li>Html becomes pretty (via mathjax): <span class="math inline">\(f(x) = x^2 + 4x -3\)</span></li>
 </ol>
 <p>MathJax is run as a script within the html source code. All you need is something like this, which links to some MathJax JavaScript:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode html"><code class="sourceCode html"><a class="sourceLine" id="cb1-1" title="1"><span class="kw">&lt;script</span><span class="ot"> src=</span><span class="st">&quot;http://cdn.mathjax.org/mathjax/...&quot;</span><span class="ot"> type=</span><span class="st">&quot;text/javascript&quot;</span><span class="kw">&gt;&lt;/script&gt;</span></a></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a><span class="kw">&lt;script</span><span class="ot"> src=</span><span class="st">&quot;http://cdn.mathjax.org/mathjax/...&quot;</span><span class="ot"> type=</span><span class="st">&quot;text/javascript&quot;</span><span class="kw">&gt;&lt;/script&gt;</span></span></code></pre></div>
 <p>(The full MathJax source URL is <a href="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">here</a>.)</p>
 <p>The pandoc option <code>--mathjax</code> is supposed to automagically add the source URL, and it did, until the recent pandoc update. After the update, I noticed that the <code>http:</code> part was completely missing. <a href="https://github.com/jgm/pandoc/issues/1847">Apparently</a>, this isn’t really a bug; it was removed for principled reasons. The solution, I thought, was simply to change from using <code>--mathjax</code> to explicitly using</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb2-1" title="1"><span class="ex">--mathjax</span>=<span class="st">&quot;http://cdn.mathjax.org/mathjax/...&quot;</span></a></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a><span class="ex">--mathjax</span>=<span class="st">&quot;http://cdn.mathjax.org/mathjax/...&quot;</span></span></code></pre></div>
 <p>I tried that, and it worked! At least, on my <em>local</em> copy of the blog (<code>file:///home/brian/blog/...</code>). It did <em>not</em> work when I pushed the changes to github (<code>http://brianbuccola.github.io/blog/...</code>). The MathJax wasn’t rendering there. Huh.</p>
 <p>I also noticed something else: my Google fonts were rendering on my local copy of my blog, but not on the GitHub blog. Were the issues related? Yes, they were. Here’s how.</p>
 <p>I use the Firefox extension HTTPS-Everywhere, which tries to use the more secure <code>https://blah.com/</code> instead of <code>http://blah.com/</code> whenever possible. It turns out that when using the secure version of my blog, <code>https://brianbuccola.github.io/</code>, any insecure (<code>http</code>) Google font URLs or MathJax URLs <em>won’t work</em>. They need to all be changed to <code>https</code>. So that’s what I did</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb3-1" title="1"><span class="ex">--mathjax</span>=<span class="st">&quot;https://cdn.mathjax.org/mathjax/...&quot;</span></a></code></pre></div>
-<div class="sourceCode" id="cb4"><pre class="sourceCode html"><code class="sourceCode html"><a class="sourceLine" id="cb4-1" title="1"><span class="kw">&lt;script</span><span class="ot"> src=</span><span class="st">&quot;https://cdn.mathjax.org/mathjax/...&quot;</span><span class="ot"> type=</span><span class="st">&quot;text/javascript&quot;</span><span class="kw">&gt;&lt;/script&gt;</span></a></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a><span class="ex">--mathjax</span>=<span class="st">&quot;https://cdn.mathjax.org/mathjax/...&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true"></a><span class="kw">&lt;script</span><span class="ot"> src=</span><span class="st">&quot;https://cdn.mathjax.org/mathjax/...&quot;</span><span class="ot"> type=</span><span class="st">&quot;text/javascript&quot;</span><span class="kw">&gt;&lt;/script&gt;</span></span></code></pre></div>
 <p>and voilà, everything works again.</p>
 <p>Moreover, using <code>https</code> URLs for Google fonts and MathJax <em>still</em> works when using the normal <code>http</code> version of my blog. So as far as I can tell, there’s no downside to always using the secure <code>https</code> URLs in your html source code, as far as text rendering goes.</p>
     </section>
