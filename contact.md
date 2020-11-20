@@ -9,7 +9,8 @@ title: Contact
 B404 Wells Hall  
 619 Red Cedar Road  
 Michigan State University  
-East Lansing, MI 48824
+East Lansing, MI 48824  
+USA
 
 [email]: mailto:buccola@msu.edu
 [msu]: https://msu.edu/
