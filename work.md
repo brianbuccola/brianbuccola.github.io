@@ -10,6 +10,8 @@ If the LingBuzz server is down, just [contact me](/contact/) for a copy.*
 
 ## Published
 
+- Brian Buccola, Manuel Križ, and Emmanuel Chemla. Accepted (with minor revisions) in *Linguistics and Philosophy*.
+  [Conceptual alternatives: Competition in language and beyond][concepts-lb].
 - Brian Buccola and Andreas Haida. To appear.
   [How obligatory irrelevance, symmetric alternatives, and dense scales conspire: The case of modified numerals and ignorance][salt30-lb].
   *Semantics and Linguistic Theory* (SALT) 30.
@@ -92,8 +94,6 @@ If the LingBuzz server is down, just [contact me](/contact/) for a copy.*
   [Groups vs. covers revisited: Evidence from symmetric readings of sentences with plurals][grpcov-lb].
 - Brian Buccola and Luka Crnič. 2020.
   [NPIs, intervention, and collectivity][intcoll-lb].
-- Brian Buccola, Manuel Križ, and Emmanuel Chemla. 2020.
-  [Conceptual alternatives: Competition in language and beyond][concepts-lb].
 - Amir Anvari, Brian Buccola, and Andreas Haida. 2018.
   Alternative Questions in Farsi.
   ([slides][miq2018] from a previous workshop)
