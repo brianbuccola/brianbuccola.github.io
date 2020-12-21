@@ -12,9 +12,9 @@ If the LingBuzz server is down, just [contact me](/contact/) for a copy.*
 
 - Brian Buccola, Manuel Križ, and Emmanuel Chemla. Accepted (with minor revisions) in *Linguistics and Philosophy*.
   [Conceptual alternatives: Competition in language and beyond][concepts-lb].
-- Brian Buccola and Andreas Haida. To appear.
+- Brian Buccola and Andreas Haida. 2020.
   [How obligatory irrelevance, symmetric alternatives, and dense scales conspire: The case of modified numerals and ignorance][salt30-lb].
-  *Semantics and Linguistic Theory* (SALT) 30.
+  *Semantics and Linguistic Theory* (SALT) 30. 464--484.
 - Brian Buccola and Emmanuel Chemla. 2019.
   [Alternatives of disjunctions: When a disjunct contains the antecedent of a pronoun][disj-snippet].
   *Snippets* 37. 16--18.
