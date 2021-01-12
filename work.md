@@ -10,8 +10,12 @@ If the LingBuzz server is down, just [contact me](/contact/) for a copy.*
 
 ## Published
 
-- Brian Buccola, Manuel Križ, and Emmanuel Chemla. Accepted (with minor revisions) in *Linguistics and Philosophy*.
+- Brian Buccola and Luka Crnič. 2020.
+  [NPIs, intervention, and collectivity][intcoll-lb].
+  Accepted (with minor revisions) in *Semantics and Pragmatics*.
+- Brian Buccola, Manuel Križ, and Emmanuel Chemla. 2020.
   [Conceptual alternatives: Competition in language and beyond][concepts-lb].
+  Accepted (with minor revisions) in *Linguistics and Philosophy*.
 - Brian Buccola and Andreas Haida. 2020.
   [How obligatory irrelevance, symmetric alternatives, and dense scales conspire: The case of modified numerals and ignorance][salt30-lb].
   *Semantics and Linguistic Theory* (SALT) 30. 464--484.
@@ -73,6 +77,7 @@ If the LingBuzz server is down, just [contact me](/contact/) for a copy.*
 [disj-snippet]: https://www.ledonline.it/snippets/allegati/snippets37007.pdf
 [fg-doi]: https://dx.doi.org/10.1007/978-3-642-39998-5_9
 [fg-lb]: https://ling.auf.net/lingbuzz/002513/current.pdf
+[intcoll-lb]: https://ling.auf.net/lingbuzz/004553/current.pdf
 [mod-num-max-doi]: https://dx.doi.org/10.1007/s10988-016-9187-2
 [mod-num-max-lb]: https://ling.auf.net/lingbuzz/002528/current.pdf
 [nels45]: https://ling.auf.net/lingbuzz/002512/current.pdf
@@ -92,8 +97,6 @@ If the LingBuzz server is down, just [contact me](/contact/) for a copy.*
 
 - Brian Buccola, Jeremy Kuhn, and David Nicolas. 2020.
   [Groups vs. covers revisited: Evidence from symmetric readings of sentences with plurals][grpcov-lb].
-- Brian Buccola and Luka Crnič. 2020.
-  [NPIs, intervention, and collectivity][intcoll-lb].
 - Amir Anvari, Brian Buccola, and Andreas Haida. 2018.
   Alternative Questions in Farsi.
   ([slides][miq2018] from a previous workshop)
@@ -118,6 +121,5 @@ If the LingBuzz server is down, just [contact me](/contact/) for a copy.*
 [eval1]: https://ling.auf.net/lingbuzz/003037/current.pdf
 [eval2]: https://ling.auf.net/lingbuzz/003038/current.pdf
 [grpcov-lb]: https://ling.auf.net/lingbuzz/004969/current.pdf
-[intcoll-lb]: https://ling.auf.net/lingbuzz/004553/current.pdf
 [miq2018]: https://drive.google.com/file/d/1di75XXJOFL2iOjQEU_afrsbtGGnsHY8V/view
 [or-snippet]: https://ling.auf.net/lingbuzz/003967/current.pdf
