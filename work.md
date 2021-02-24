@@ -10,15 +10,15 @@ If the LingBuzz server is down, just [contact me](/contact/) for a copy.*
 
 ## Published
 
-- Brian Buccola, Jeremy Kuhn, and David Nicolas. 2020.
-  [Groups vs. covers revisited: Evidence from symmetric readings of sentences with plurals][grpcov-lb].
-  Accepted (with minor revisions) in *Natural Language Semantics*.
-- Brian Buccola and Luka Crnič. 2020.
+- Brian Buccola and Luka Crnič. 2021.
   [NPIs, intervention, and collectivity][intcoll-lb].
-  Accepted (with minor revisions) in *Semantics and Pragmatics*.
-- Brian Buccola, Manuel Križ, and Emmanuel Chemla. 2020.
+  Forthcoming in *Semantics and Pragmatics*.
+- Brian Buccola, Manuel Križ, and Emmanuel Chemla. 2021.
   [Conceptual alternatives: Competition in language and beyond][concepts-lb].
-  Accepted (with minor revisions) in *Linguistics and Philosophy*.
+  Forthcoming in *Linguistics and Philosophy*.
+- Brian Buccola, Jeremy Kuhn, and David Nicolas. 2021.
+  [Groups vs. covers revisited: Structured pluralities and symmetric readings][grpcov-lb].
+  Forthcoming in *Natural Language Semantics*.
 - Brian Buccola and Andreas Haida. 2020.
   [How obligatory irrelevance, symmetric alternatives, and dense scales conspire: The case of modified numerals and ignorance][salt30-lb].
   *Semantics and Linguistic Theory* (SALT) 30. 464--484.
