@@ -10,15 +10,15 @@ If the LingBuzz server is down, just [contact me](/contact/) for a copy.*
 
 ## Published
 
-- Brian Buccola and Luka Crnič. 2021.
-  [NPIs, intervention, and collectivity][intcoll-lb].
-  Forthcoming in *Semantics and Pragmatics*.
 - Brian Buccola, Manuel Križ, and Emmanuel Chemla. 2021.
   [Conceptual alternatives: Competition in language and beyond][concepts-lb].
   Forthcoming in *Linguistics and Philosophy*.
 - Brian Buccola, Jeremy Kuhn, and David Nicolas. 2021.
   [Groups vs. covers revisited: Structured pluralities and symmetric readings][grpcov-lb].
   Forthcoming in *Natural Language Semantics*.
+- Brian Buccola and Luka Crnič. 2021.
+  [NPIs, intervention, and collectivity][intcoll-doi].
+  *Semantics and Pragmatics* 14.
 - Brian Buccola and Andreas Haida. 2020.
   [How obligatory irrelevance, symmetric alternatives, and dense scales conspire: The case of modified numerals and ignorance][salt30-lb].
   *Semantics and Linguistic Theory* (SALT) 30. 464--484.
@@ -81,7 +81,7 @@ If the LingBuzz server is down, just [contact me](/contact/) for a copy.*
 [fg-doi]: https://dx.doi.org/10.1007/978-3-642-39998-5_9
 [fg-lb]: https://ling.auf.net/lingbuzz/002513/current.pdf
 [grpcov-lb]: https://ling.auf.net/lingbuzz/004969/current.pdf
-[intcoll-lb]: https://ling.auf.net/lingbuzz/004553/current.pdf
+[intcoll-doi]: http://dx.doi.org/10.3765/sp.14.2
 [mod-num-max-doi]: https://dx.doi.org/10.1007/s10988-016-9187-2
 [mod-num-max-lb]: https://ling.auf.net/lingbuzz/002528/current.pdf
 [nels45]: https://ling.auf.net/lingbuzz/002512/current.pdf
