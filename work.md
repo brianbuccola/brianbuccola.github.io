@@ -38,7 +38,8 @@ If the LingBuzz server is down, just [contact me](/contact/) for a copy.*
   [Obligatory irrelevance and the computation of ignorance inferences][oblig-irrel-doi].
   *Journal of Semantics* 36(4). 583--616.
   ([preprint][oblig-irrel-lb])
-  (For the 2017 version that treats modified numerals, click [here][oblig-irrel-modnum-lb].)
+
+  For the 2017 version that treats modified numerals, click [here][oblig-irrel-modnum-lb].
 
 - Emmanuel Chemla, Isabelle Dautriche, Brian Buccola, and Joël Fagot. 2019.
   [Constraints on the lexicons of human languages have cognitive roots present in baboons (*Papio papio*)][baboons-doi].
