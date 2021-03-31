@@ -90,7 +90,7 @@ If the LingBuzz server is down, just [contact me](/contact/) for a copy.*
 [oblig-irrel-lb]: https://ling.auf.net/lingbuzz/003600/current.pdf
 [oblig-irrel-modnum-lb]: https://ling.auf.net/lingbuzz/003600/v1.pdf
 [only-snippet]: http://www.ledonline.it/snippets/allegati/snippets33002.pdf
-[reply-to-nouwen-sp]: http://semprag.org/article/download/sp.5.1/pdf
+[reply-to-nouwen-sp]: http://dx.doi.org/10.3765/sp.5.1
 [salt30-lb]: https://ling.auf.net/lingbuzz/005563/current.pdf
 [sub20]: https://ling.auf.net/lingbuzz/002847/current.pdf
 [sub21]: https://ling.auf.net/lingbuzz/003307/current.pdf
