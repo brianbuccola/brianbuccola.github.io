@@ -23,7 +23,7 @@ If the LingBuzz server is down, just [contact me](/contact/) for a copy.*
   *Semantics and Pragmatics* 14.
 
 - Brian Buccola and Andreas Haida. 2020.
-  [How obligatory irrelevance, symmetric alternatives, and dense scales conspire: The case of modified numerals and ignorance][salt30-lb].
+  [How obligatory irrelevance, symmetric alternatives, and dense scales conspire: The case of modified numerals and ignorance][salt30-doi].
   *Semantics and Linguistic Theory* (SALT) 30. 464--484.
 
 - Brian Buccola and Emmanuel Chemla. 2019.
@@ -109,7 +109,7 @@ If the LingBuzz server is down, just [contact me](/contact/) for a copy.*
 [oblig-irrel-modnum-lb]: https://ling.auf.net/lingbuzz/003600/v1.pdf
 [only-snippet]: http://www.ledonline.it/snippets/allegati/snippets33002.pdf
 [reply-to-nouwen-sp]: http://doi.org/10.3765/sp.5.1
-[salt30-lb]: https://ling.auf.net/lingbuzz/005563/current.pdf
+[salt30-doi]: https://doi.org/10.3765/salt.v30i0.4853
 [sub20]: https://ling.auf.net/lingbuzz/002847/current.pdf
 [sub21]: https://ling.auf.net/lingbuzz/003307/current.pdf
 
