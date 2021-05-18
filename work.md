@@ -15,8 +15,9 @@ If the LingBuzz server is down, just [contact me](/contact/) for a copy.*
   Forthcoming in *Linguistics and Philosophy*.
 
 - Brian Buccola, Jeremy Kuhn, and David Nicolas. 2021.
-  [Groups vs. covers revisited: Structured pluralities and symmetric readings][grpcov-lb].
-  Forthcoming in *Natural Language Semantics*.
+  [Groups vs. covers revisited: Structured pluralities and symmetric readings][grpcov-doi].
+  *Natural Language Semantics*.
+  ([preprint][grpcov-lb])
 
 - Brian Buccola and Luka Crnič. 2021.
   [NPIs, intervention, and collectivity][intcoll-doi].
@@ -98,6 +99,7 @@ If the LingBuzz server is down, just [contact me](/contact/) for a copy.*
 [disj-snippet]: https://www.ledonline.it/snippets/allegati/snippets37007.pdf
 [fg-doi]: https://doi.org/10.1007/978-3-642-39998-5_9
 [fg-lb]: https://ling.auf.net/lingbuzz/002513/current.pdf
+[grpcov-doi]: https://doi.org/10.1007/s11050-021-09179-x
 [grpcov-lb]: https://ling.auf.net/lingbuzz/004969/current.pdf
 [intcoll-doi]: http://doi.org/10.3765/sp.14.2
 [mod-num-max-doi]: https://doi.org/10.1007/s10988-016-9187-2
