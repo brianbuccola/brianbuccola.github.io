@@ -17,7 +17,7 @@ If the LingBuzz server is down, just [contact me](/contact/) for a copy.*
 - Brian Buccola, Jeremy Kuhn, and David Nicolas. 2021.
   [Groups vs. covers revisited: Structured pluralities and symmetric readings][grpcov-doi].
   *Natural Language Semantics*.
-  ([preprint][grpcov-lb])
+  ([free view][grpcov-free] | [preprint][grpcov-lb])
 
 - Brian Buccola and Luka Crnič. 2021.
   [NPIs, intervention, and collectivity][intcoll-doi].
@@ -36,21 +36,18 @@ If the LingBuzz server is down, just [contact me](/contact/) for a copy.*
   *Snippets* 37. 19--21.
 
 - Brian Buccola and Andreas Haida. 2019.
-  [Obligatory irrelevance and the computation of ignorance inferences][oblig-irrel-doi].
+  [Obligatory irrelevance and the computation of ignorance inferences][oblig-irrel-free].
   *Journal of Semantics* 36(4). 583--616.
-  ([preprint][oblig-irrel-lb])
 
   For the 2017 version that treats modified numerals, click [here][oblig-irrel-modnum-lb].
 
 - Emmanuel Chemla, Isabelle Dautriche, Brian Buccola, and Joël Fagot. 2019.
   [Constraints on the lexicons of human languages have cognitive roots present in baboons (*Papio papio*)][baboons-doi].
   *Proceedings of the National Academy of Sciences* 116(30). 14926--14930.
-  ([preprint][baboons-lb])
 
 - Emmanuel Chemla, Brian Buccola, and Isabelle Dautriche. 2019.
-  [Connecting content and logical words][connecting-doi].
+  [Connecting content and logical words][connecting-free].
   *Journal of Semantics* 36(3). 531--547.
-  ([preprint][connecting-lb])
 
 - Brian Buccola, Isabelle Dautriche, and Emmanuel Chemla. 2018.
   [Competition and symmetry in an artificial word learning task][competition].
@@ -92,22 +89,20 @@ If the LingBuzz server is down, just [contact me](/contact/) for a copy.*
 
 [ac2017]: https://ling.auf.net/lingbuzz/003763/current.pdf
 [baboons-doi]: https://doi.org/10.1073/pnas.1907023116
-[baboons-lb]: https://ling.auf.net/lingbuzz/004172/current.pdf
 [competition]: https://doi.org/10.3389/fpsyg.2018.02176
-[connecting-doi]: https://doi.org/10.1093/jos/ffz001
-[connecting-lb]: https://ling.auf.net/lingbuzz/004481/current.pdf
+[connecting-free]: https://academic.oup.com/jos/article/36/3/531/5357453?guestAccessKey=56c2ee7a-5258-44d1-b7b0-0e431faa41b2
 [disj-snippet]: https://www.ledonline.it/snippets/allegati/snippets37007.pdf
 [fg-doi]: https://doi.org/10.1007/978-3-642-39998-5_9
 [fg-lb]: https://ling.auf.net/lingbuzz/002513/current.pdf
 [grpcov-doi]: https://doi.org/10.1007/s11050-021-09179-x
+[grpcov-free]: https://rdcu.be/ckRVl
 [grpcov-lb]: https://ling.auf.net/lingbuzz/004969/current.pdf
 [intcoll-doi]: http://doi.org/10.3765/sp.14.2
 [mod-num-max-doi]: https://doi.org/10.1007/s10988-016-9187-2
 [mod-num-max-lb]: https://ling.auf.net/lingbuzz/002528/current.pdf
 [nels45]: https://ling.auf.net/lingbuzz/002512/current.pdf
 [npi-snippet]: https://www.ledonline.it/snippets/allegati/snippets37008.pdf
-[oblig-irrel-doi]: https://doi.org/10.1093/jos/ffz013
-[oblig-irrel-lb]: https://ling.auf.net/lingbuzz/003600/current.pdf
+[oblig-irrel-free]: https://academic.oup.com/jos/article/36/4/583/5552011?guestAccessKey=c1591117-b3fe-442e-ab03-0b58dd79646e
 [oblig-irrel-modnum-lb]: https://ling.auf.net/lingbuzz/003600/v1.pdf
 [only-snippet]: http://www.ledonline.it/snippets/allegati/snippets33002.pdf
 [reply-to-nouwen-sp]: http://doi.org/10.3765/sp.5.1
