@@ -11,8 +11,9 @@ If the LingBuzz server is down, just [contact me](/contact/) for a copy.*
 ## Published
 
 - Brian Buccola, Manuel Križ, and Emmanuel Chemla. 2021.
-  [Conceptual alternatives: Competition in language and beyond][concepts-lb].
-  Forthcoming in *Linguistics and Philosophy*.
+  [Conceptual alternatives: Competition in language and beyond][concepts-doi].
+  *Linguistics and Philosophy*.
+  ([preprint][concepts-lb])
 
 - Brian Buccola, Jeremy Kuhn, and David Nicolas. 2021.
   [Groups vs. covers revisited: Structured pluralities and symmetric readings][grpcov-doi].
@@ -90,6 +91,8 @@ If the LingBuzz server is down, just [contact me](/contact/) for a copy.*
 [ac2017]: https://ling.auf.net/lingbuzz/003763/current.pdf
 [baboons-doi]: https://doi.org/10.1073/pnas.1907023116
 [competition]: https://doi.org/10.3389/fpsyg.2018.02176
+[concepts-doi]: https://doi.org/10.1007/s10988-021-09327-w
+[concepts-lb]: https://ling.auf.net/lingbuzz/003208/current.pdf
 [connecting-free]: https://academic.oup.com/jos/article/36/3/531/5357453?guestAccessKey=56c2ee7a-5258-44d1-b7b0-0e431faa41b2
 [disj-snippet]: https://www.ledonline.it/snippets/allegati/snippets37007.pdf
 [fg-doi]: https://doi.org/10.1007/978-3-642-39998-5_9
@@ -138,7 +141,6 @@ If the LingBuzz server is down, just [contact me](/contact/) for a copy.*
   Montreal, Canada: McGill University first evaluation paper.
 
 [bare-num-lb]: https://ling.auf.net/lingbuzz/003400/current.pdf
-[concepts-lb]: https://ling.auf.net/lingbuzz/003208/current.pdf
 [dissertation]: https://ling.auf.net/lingbuzz/003039/current.pdf
 [eval1]: https://ling.auf.net/lingbuzz/003037/current.pdf
 [eval2]: https://ling.auf.net/lingbuzz/003038/current.pdf
