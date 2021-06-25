@@ -45,8 +45,8 @@ I completed my PhD in linguistics at [McGill University][mcgill].
 
 Apart from linguistics,
 I enjoy tinkering with Linux,
-learning about functional programming (like Haskell),
-and (when I have time) brewing beer.
+lifting things,
+and brewing beer.
 You can read about some of that stuff [here](/blog/).
 
 The source code and license for the content of this website
