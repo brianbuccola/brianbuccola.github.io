@@ -120,7 +120,7 @@ If the LingBuzz server is down, just [contact me](/contact/) for a copy.*
 
 - Amir Anvari, Brian Buccola, and Andreas Haida. 2018.
   Alternative Questions in Farsi.
-  ([slides][miq2018] from a previous workshop)
+  ([slides][miq2018] from the workshop "Meaning in non-canonical questions", University of Konstanz)
 
 - Brian Buccola and Emmanuel Chemla. 2018.
   [Two notes on the disjunct alternatives of disjunction][or-snippet].
