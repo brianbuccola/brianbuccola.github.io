@@ -116,7 +116,7 @@ If the LingBuzz server is down, just [contact me](/contact/) for a copy.*
 
 ## Unpublished
 
-*(in various stages of being in prep., under review, in revision, defended, or abandoned)*
+*(in various stages of being in preparation, under review, in revision, defended, or abandoned)*
 
 - Amir Anvari, Brian Buccola, and Andreas Haida. 2018.
   Alternative Questions in Farsi.
