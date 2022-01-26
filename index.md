@@ -14,7 +14,7 @@ transmit thoughts back and forth,
 often using experimental methods along the way
 to help refine the models.
 
-[msu]: http://linglang.msu.edu/
+[msu]: https://lilac.msu.edu/linguistics/
 
 Specific research topics include
 numerical expressions,
