@@ -2,6 +2,9 @@
 title: Teaching
 ---
 
+*If you'd like to see a syllabus for a course I've taught, just [contact
+me](/contact/) for a copy.*
+
 ## At MSU
 
 - **Introduction to Linguistics (LIN 401)**  
