@@ -44,7 +44,7 @@ main = hakyll $ do
                 >>= loadAndApplyTemplate "templates/default.html" indexCtx
                 >>= relativizeUrls
 
-    match (fromList ["cv.md", "work.md", "contact.md"]) $ do
+    match (fromList ["work.md", "teaching.md", "cv.md", "contact.md"]) $ do
         route   $ cleanRoute
         compile $ myPandocCompiler
             >>= loadAndApplyTemplate "templates/default.html" myContext
