@@ -12,10 +12,9 @@ If the LingBuzz server is down, just [contact me](/contact/) for a copy.*
 
 - Ye Ma, Brian Buccola, Zinan Wang, Aline Godfroid, Shannon Cousins,
   and Alan Beretta.
-  Expressions with aspectual verbs elicit slower reading times
+  [Expressions with aspectual verbs elicit slower reading times
   than those with psychological verbs:
-  An eye-tracking study in Mandarin Chinese.
-  Accepted for publication in
+  An eye-tracking study in Mandarin Chinese][aspv-jpr-doi].
   *Journal of Psycholinguistic Research*.
 
 - Brian Buccola, Manuel Križ, and Emmanuel Chemla. 2021.
@@ -97,6 +96,7 @@ If the LingBuzz server is down, just [contact me](/contact/) for a copy.*
   *Semantics and Pragmatics* 5(1). 1--25.
 
 [ac2017]: https://ling.auf.net/lingbuzz/003763/current.pdf
+[aspv-jpr-doi]: https://doi.org/10.1007/s10936-022-09846-y
 [baboons-doi]: https://doi.org/10.1073/pnas.1907023116
 [competition]: https://doi.org/10.3389/fpsyg.2018.02176
 [concepts-doi]: https://doi.org/10.1007/s10988-021-09327-w
