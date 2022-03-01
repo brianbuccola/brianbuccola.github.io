@@ -2,7 +2,7 @@
 title: Work
 ---
 
-*All of my non-open-access work is hosted on [LingBuzz][].
+*Most of my work is also hosted on [LingBuzz][].
 If the LingBuzz server is down, just [contact me](/contact/) for a copy.*
 
 [LingBuzz]: https://ling.auf.net/lingbuzz
