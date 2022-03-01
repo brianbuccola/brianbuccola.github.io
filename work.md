@@ -11,7 +11,7 @@ If the LingBuzz server is down, just [contact me](/contact/) for a copy.*
 ## Published
 
 - Ye Ma, Brian Buccola, Zinan Wang, Aline Godfroid, Shannon Cousins,
-  and Alan Beretta.
+  and Alan Beretta. 2022.
   [Expressions with aspectual verbs elicit slower reading times
   than those with psychological verbs:
   An eye-tracking study in Mandarin Chinese][aspv-jpr-doi].
