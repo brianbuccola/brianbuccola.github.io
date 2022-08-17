@@ -10,6 +10,11 @@ If the LingBuzz server is down, just [contact me](/contact/) for a copy.*
 
 ## Published
 
+- Jeremy Kuhn, David Nicolas, and Brian Buccola.
+  [Deriving dimensions of comparison][dim-snippet-lb].
+  To appear.
+  *Snippets*.
+
 - Ye Ma, Brian Buccola, Zinan Wang, Aline Godfroid, Shannon Cousins,
   and Alan Beretta. 2022.
   [Expressions with aspectual verbs elicit slower reading times
@@ -105,6 +110,7 @@ If the LingBuzz server is down, just [contact me](/contact/) for a copy.*
 [concepts-free]: https://rdcu.be/clHm8
 [concepts-lb]: https://ling.auf.net/lingbuzz/003208/current.pdf
 [connecting-free]: https://academic.oup.com/jos/article/36/3/531/5357453?guestAccessKey=56c2ee7a-5258-44d1-b7b0-0e431faa41b2
+[dim-snippet-lb]: https://ling.auf.net/lingbuzz/006776/current.pdf
 [disj-snippet]: https://www.ledonline.it/snippets/allegati/snippets37007.pdf
 [fg-doi]: https://doi.org/10.1007/978-3-642-39998-5_9
 [fg-lb]: https://ling.auf.net/lingbuzz/002513/current.pdf
