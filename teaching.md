@@ -19,13 +19,13 @@ me](/contact/) for a copy.*
   (cross-listed with LIN 437 as of Spring 2022)
 
 - **Semantics & Pragmatics II (LIN 838)**  
-  Spring 2020 (numerals, plurality), 2021 (λ-calculus, dynamic turn), 2022 (presupposition, anaphora)
+  Fall 2022 (intensional semantics, question semantics)  
+  Spring 2022 (presupposition, anaphora)  
+  Spring 2021 (λ-calculus, dynamic turn)  
+  Spring 2020 (numerals, plurality)
 
 - **Independent Study (LIN 890)**  
   Spring 2022 (focus & intonation)
-
-- **Special Topics (LIN 891)**  
-  Fall 2022 (topic tbd)
 
 ## Previous teaching
 
