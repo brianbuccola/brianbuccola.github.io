@@ -10,6 +10,10 @@ If the LingBuzz server is down, just [contact me](/contact/) for a copy.*
 
 ## Published
 
+- Isabelle Dautriche, Brian Buccola, Mélissa Berthet, Joël Fagot, and Emmanuel Chemla. 2022.
+  [Evidence for compositionality in baboons (*Papio papio*) through the test case of negation][baboons-sr-doi]
+  *Scientific Reports* 12(19181). 1--12.
+
 - Jeremy Kuhn, David Nicolas, and Brian Buccola. 2022.
   [Deriving dimensions of comparison][dim-snippet].
   *Snippets* 43. 1--3.
@@ -55,7 +59,7 @@ If the LingBuzz server is down, just [contact me](/contact/) for a copy.*
   For the 2017 version that treats modified numerals, click [here][oblig-irrel-modnum-lb].
 
 - Emmanuel Chemla, Isabelle Dautriche, Brian Buccola, and Joël Fagot. 2019.
-  [Constraints on the lexicons of human languages have cognitive roots present in baboons (*Papio papio*)][baboons-doi].
+  [Constraints on the lexicons of human languages have cognitive roots present in baboons (*Papio papio*)][baboons-pnas-doi].
   *Proceedings of the National Academy of Sciences* 116(30). 14926--14930.
 
 - Emmanuel Chemla, Brian Buccola, and Isabelle Dautriche. 2019.
@@ -103,7 +107,8 @@ If the LingBuzz server is down, just [contact me](/contact/) for a copy.*
 [ac2017]: https://ling.auf.net/lingbuzz/003763/current.pdf
 [aspv-jpr-doi]: https://doi.org/10.1007/s10936-022-09846-y
 [aspv-jpr-free]: https://rdcu.be/cH2yS
-[baboons-doi]: https://doi.org/10.1073/pnas.1907023116
+[baboons-pnas-doi]: https://doi.org/10.1073/pnas.1907023116
+[baboons-sr-doi]: https://doi.org/10.1038/s41598-022-21143-1
 [competition]: https://doi.org/10.3389/fpsyg.2018.02176
 [concepts-doi]: https://doi.org/10.1007/s10988-021-09327-w
 [concepts-free]: https://rdcu.be/clHm8
