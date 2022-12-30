@@ -10,6 +10,10 @@ If the LingBuzz server is down, just [contact me](/contact/) for a copy.*
 
 ## Published
 
+- Brian Buccola. 2022.
+  [A higher-order plurality solution to Xiang's (2021) puzzle][hop-salt-doi].
+  *Semantics and Linguistic Theory* (SALT) 32. 413--419.
+
 - Isabelle Dautriche, Brian Buccola, Mélissa Berthet, Joël Fagot, and Emmanuel Chemla. 2022.
   [Evidence for compositionality in baboons (*Papio papio*) through the test case of negation][baboons-sr-doi]
   *Scientific Reports* 12(19181). 1--12.
@@ -121,6 +125,7 @@ If the LingBuzz server is down, just [contact me](/contact/) for a copy.*
 [grpcov-doi]: https://doi.org/10.1007/s11050-021-09179-x
 [grpcov-free]: https://rdcu.be/ckRVl
 [grpcov-lb]: https://ling.auf.net/lingbuzz/004969/current.pdf
+[hop-salt-doi]: https://doi.org/10.3765/salt.v1i0.5386
 [intcoll-doi]: http://doi.org/10.3765/sp.14.2
 [mod-num-max-doi]: https://doi.org/10.1007/s10988-016-9187-2
 [mod-num-max-lb]: https://ling.auf.net/lingbuzz/002528/current.pdf
