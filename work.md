@@ -10,103 +10,106 @@ If the LingBuzz server is down, just [contact me](/contact/) for a copy.*
 
 ## Published
 
-- Brian Buccola. 2022.
-  [A higher-order plurality solution to Xiang's (2021) puzzle][hop-salt-doi].
-  *Semantics and Linguistic Theory* (SALT) 32. 413--419.
+<ol reversed>
+<li><p>Brian Buccola. 2022.
+[A higher-order plurality solution to Xiang's (2021) puzzle][hop-salt-doi].
+*Semantics and Linguistic Theory* (SALT) 32. 413--419.</p></li>
 
-- Isabelle Dautriche, Brian Buccola, Mélissa Berthet, Joël Fagot, and Emmanuel Chemla. 2022.
-  [Evidence for compositionality in baboons (*Papio papio*) through the test case of negation][baboons-sr-doi]
-  *Scientific Reports* 12(19181). 1--12.
+<li><p>Isabelle Dautriche, Brian Buccola, Mélissa Berthet, Joël Fagot, and Emmanuel Chemla. 2022.
+[Evidence for compositionality in baboons (*Papio papio*) through the test case of negation][baboons-sr-doi]
+*Scientific Reports* 12(19181). 1--12.</p></li>
 
-- Jeremy Kuhn, David Nicolas, and Brian Buccola. 2022.
-  [Deriving dimensions of comparison][dim-snippet].
-  *Snippets* 43. 1--3.
+<li><p>Jeremy Kuhn, David Nicolas, and Brian Buccola. 2022.
+[Deriving dimensions of comparison][dim-snippet].
+*Snippets* 43. 1--3.</p></li>
 
-- Ye Ma, Brian Buccola, Zinan Wang, Aline Godfroid, Shannon Cousins,
-  and Alan Beretta. 2022.
-  [Expressions with aspectual verbs elicit slower reading times
-  than those with psychological verbs:
-  An eye-tracking study in Mandarin Chinese][aspv-jpr-doi].
-  *Journal of Psycholinguistic Research*.
-  ([free view][aspv-jpr-free])
+<li><p>Ye Ma, Brian Buccola, Zinan Wang, Aline Godfroid, Shannon Cousins,
+and Alan Beretta. 2022.
+[Expressions with aspectual verbs elicit slower reading times
+than those with psychological verbs:
+An eye-tracking study in Mandarin Chinese][aspv-jpr-doi].
+*Journal of Psycholinguistic Research*.
+([free view][aspv-jpr-free])</p></li>
 
-- Brian Buccola, Manuel Križ, and Emmanuel Chemla. 2021.
-  [Conceptual alternatives: Competition in language and beyond][concepts-doi].
-  *Linguistics and Philosophy*.
-  ([free view][concepts-free] | [preprint][concepts-lb])
+<li><p>Brian Buccola, Manuel Križ, and Emmanuel Chemla. 2021.
+[Conceptual alternatives: Competition in language and beyond][concepts-doi].
+*Linguistics and Philosophy*.
+([free view][concepts-free] | [preprint][concepts-lb])</p></li>
 
-- Brian Buccola, Jeremy Kuhn, and David Nicolas. 2021.
-  [Groups vs. covers revisited: Structured pluralities and symmetric readings][grpcov-doi].
-  *Natural Language Semantics*.
-  ([free view][grpcov-free] | [preprint][grpcov-lb])
+<li><p>Brian Buccola, Jeremy Kuhn, and David Nicolas. 2021.
+[Groups vs. covers revisited: Structured pluralities and symmetric readings][grpcov-doi].
+*Natural Language Semantics*.
+([free view][grpcov-free] | [preprint][grpcov-lb])</p></li>
 
-- Brian Buccola and Luka Crnič. 2021.
-  [NPIs, intervention, and collectivity][intcoll-doi].
-  *Semantics and Pragmatics* 14.
+<li><p>Brian Buccola and Luka Crnič. 2021.
+[NPIs, intervention, and collectivity][intcoll-doi].
+*Semantics and Pragmatics* 14.</p></li>
 
-- Brian Buccola and Andreas Haida. 2020.
-  [How obligatory irrelevance, symmetric alternatives, and dense scales conspire: The case of modified numerals and ignorance][salt30-doi].
-  *Semantics and Linguistic Theory* (SALT) 30. 464--484.
+<li><p>Brian Buccola and Andreas Haida. 2020.
+[How obligatory irrelevance, symmetric alternatives, and dense scales conspire: The case of modified numerals and ignorance][salt30-doi].
+*Semantics and Linguistic Theory* (SALT) 30. 464--484.</p></li>
 
-- Brian Buccola and Emmanuel Chemla. 2019.
-  [Alternatives of disjunctions: When a disjunct contains the antecedent of a pronoun][disj-snippet].
-  *Snippets* 37. 16--18.
+<li><p>Brian Buccola and Emmanuel Chemla. 2019.
+[Alternatives of disjunctions: When a disjunct contains the antecedent of a pronoun][disj-snippet].
+*Snippets* 37. 16--18.</p></li>
 
-- Luka Crnič and Brian Buccola. 2019.
-  [Scoping NPIs out of DPs][npi-snippet].
-  *Snippets* 37. 19--21.
+<li><p>Luka Crnič and Brian Buccola. 2019.
+[Scoping NPIs out of DPs][npi-snippet].
+*Snippets* 37. 19--21.</p></li>
 
-- Brian Buccola and Andreas Haida. 2019.
-  [Obligatory irrelevance and the computation of ignorance inferences][oblig-irrel-free].
-  *Journal of Semantics* 36(4). 583--616.
+<li><p>Brian Buccola and Andreas Haida. 2019.
+[Obligatory irrelevance and the computation of ignorance inferences][oblig-irrel-free].
+*Journal of Semantics* 36(4). 583--616.</p>
 
-  For the 2017 version that treats modified numerals, click [here][oblig-irrel-modnum-lb].
+<p>For the 2017 version that treats modified numerals, click [here][oblig-irrel-modnum-lb].</p></li>
 
-- Emmanuel Chemla, Isabelle Dautriche, Brian Buccola, and Joël Fagot. 2019.
-  [Constraints on the lexicons of human languages have cognitive roots present in baboons (*Papio papio*)][baboons-pnas-doi].
-  *Proceedings of the National Academy of Sciences* 116(30). 14926--14930.
+<li><p>Emmanuel Chemla, Isabelle Dautriche, Brian Buccola, and Joël Fagot. 2019.
+[Constraints on the lexicons of human languages have cognitive roots present in baboons (*Papio papio*)][baboons-pnas-doi].
+*Proceedings of the National Academy of Sciences* 116(30).
+14926--14930.</p></li>
 
-- Emmanuel Chemla, Brian Buccola, and Isabelle Dautriche. 2019.
-  [Connecting content and logical words][connecting-free].
-  *Journal of Semantics* 36(3). 531--547.
+<li><p>Emmanuel Chemla, Brian Buccola, and Isabelle Dautriche. 2019.
+[Connecting content and logical words][connecting-free].
+*Journal of Semantics* 36(3). 531--547.</p></li>
 
-- Brian Buccola, Isabelle Dautriche, and Emmanuel Chemla. 2018.
-  [Competition and symmetry in an artificial word learning task][competition].
-  *Frontiers in Psychology* 9(2176).
+<li><p>Brian Buccola, Isabelle Dautriche, and Emmanuel Chemla. 2018.
+[Competition and symmetry in an artificial word learning task][competition].
+*Frontiers in Psychology* 9(2176).</p></li>
 
-- Brian Buccola. 2018.
-  [A restriction on the distribution of exclusive *only*][only-snippet].
-  *Snippets* 33. 3--4.
+<li><p>Brian Buccola. 2018.
+[A restriction on the distribution of exclusive *only*][only-snippet].
+*Snippets* 33. 3--4.</p></li>
 
-- Brian Buccola and Andreas Haida. 2017.
-  [Expressing agent indifference in German][ac2017].
-  *Amsterdam Colloquium* 21. 165--174.
+<li><p>Brian Buccola and Andreas Haida. 2017.
+[Expressing agent indifference in German][ac2017].
+*Amsterdam Colloquium* 21. 165--174.</p></li>
 
-- Brian Buccola and Andreas Haida. 2017.
-  [A surface-scope analysis of authoritative readings of modified numerals][sub21].
-  *Sinn und Bedeutung* 21. 233--248.
+<li><p>Brian Buccola and Andreas Haida. 2017.
+[A surface-scope analysis of authoritative readings of modified numerals][sub21].
+*Sinn und Bedeutung* 21. 233--248.</p></li>
 
-- Brian Buccola and Benjamin Spector. 2016.
-  [Modified numerals and maximality][mod-num-max-doi].
-  *Linguistics and Philosophy* 39(3). 151--199.
-  ([preprint][mod-num-max-lb])
+<li><p>Brian Buccola and Benjamin Spector. 2016.
+[Modified numerals and maximality][mod-num-max-doi].
+*Linguistics and Philosophy* 39(3). 151--199.
+([preprint][mod-num-max-lb])</p></li>
 
-- Brian Buccola. 2016.
-  [Severing maximality from *fewer than*: Evidence from genericity][sub20].
-  *Sinn und Bedeutung* 20. 127--144.
+<li><p>Brian Buccola. 2016.
+[Severing maximality from *fewer than*: Evidence from genericity][sub20].
+*Sinn und Bedeutung* 20. 127--144.</p></li>
 
-- Brian Buccola. 2015.
-  [Variable monotonicity and *less than*: When Van Benthem's problem is not a problem][nels45].
-  *North East Linguistic Society (NELS)* 45. 125--134.
+<li><p>Brian Buccola. 2015.
+[Variable monotonicity and *less than*: When Van Benthem's problem is not a problem][nels45].
+*North East Linguistic Society (NELS)* 45. 125--134.</p></li>
 
-- Brian Buccola. 2013.
-  [On the expressivity of Optimality Theory versus ordered rewrite rules][fg-doi].
-  *Formal Grammar*. 142--158.
-  ([preprint][fg-lb])
+<li><p>Brian Buccola. 2013.
+[On the expressivity of Optimality Theory versus ordered rewrite rules][fg-doi].
+*Formal Grammar*. 142--158.
+([preprint][fg-lb])</p></li>
 
-- Bernhard Schwarz, Brian Buccola, and Michael Hamilton. 2012.
-  [Two types of class B numeral modifiers: A reply to Nouwen 2010][reply-to-nouwen-sp].
-  *Semantics and Pragmatics* 5(1). 1--25.
+<li><p>Bernhard Schwarz, Brian Buccola, and Michael Hamilton. 2012.
+[Two types of class B numeral modifiers: A reply to Nouwen 2010][reply-to-nouwen-sp].
+*Semantics and Pragmatics* 5(1). 1--25.</p></li>
+</ol>
 
 [ac2017]: https://ling.auf.net/lingbuzz/003763/current.pdf
 [aspv-jpr-doi]: https://doi.org/10.1007/s10936-022-09846-y
@@ -143,28 +146,31 @@ If the LingBuzz server is down, just [contact me](/contact/) for a copy.*
 
 *(in various stages of being in preparation, under review, in revision, defended, or abandoned)*
 
-- Amir Anvari, Brian Buccola, and Andreas Haida. 2018.
+<ol reversed>
+<li><p>Amir Anvari, Brian Buccola, and Andreas Haida. 2018.
   Alternative Questions in Farsi.
-  ([slides][miq2018] from the workshop "Meaning in non-canonical questions", University of Konstanz)
+  ([slides][miq2018] from the workshop "Meaning in non-canonical questions", University of Konstanz)</p></li>
 
-- Brian Buccola and Emmanuel Chemla. 2018.
-  [Two notes on the disjunct alternatives of disjunction][or-snippet].
+<li><p>Brian Buccola and Emmanuel Chemla. 2018.
+  [Two notes on the disjunct alternatives of disjunction][or-snippet].</p></li>
 
-- Brian Buccola. 2017.
-  [Bare numerals, collectivity, and genericity: A new puzzle][bare-num-lb].
+<li><p>Brian Buccola. 2017.
+  [Bare numerals, collectivity, and genericity: A new
+  puzzle][bare-num-lb].</p></li>
 
-- Brian Buccola. 2015.
+<li><p>Brian Buccola. 2015.
   [*Maximality in the semantics of modified numerals*][dissertation].
-  Montreal, Canada: McGill University PhD thesis.
+  Montreal, Canada: McGill University PhD thesis.</p></li>
 
-- Brian Buccola. 2013.
+<li><p>Brian Buccola. 2013.
   [Two proofs that classic Optimality Theory is expressively weaker than ordered rewrite rules][eval2].
   Montreal, Canada: McGill University second evaluation paper.
-  (Mostly superseded by Buccola 2013, *Formal Grammar*; see above.)
+  (Mostly superseded by Buccola 2013, *Formal Grammar*; see above.)</p></li>
 
-- Brian Buccola. 2012.
+<li><p>Brian Buccola. 2012.
   [Some remarks on inference patterns involving epistemic modality][eval1].
-  Montreal, Canada: McGill University first evaluation paper.
+  Montreal, Canada: McGill University first evaluation paper.</p></li>
+</ol>
 
 [bare-num-lb]: https://ling.auf.net/lingbuzz/003400/current.pdf
 [dissertation]: https://ling.auf.net/lingbuzz/003039/current.pdf
