@@ -41,21 +41,21 @@ h2 {
 }
 
 a:link {
-  color: #076678;
+  color: #008208;
   text-decoration: none;
 }
 
 a:visited {
-  color: #076678;
+  color: #008208;
 }
 
 a:hover {
-  color: #9d0006;
+  color: #cb5a28;
   text-decoration: underline;
 }
 
 a:active {
-  color: #cc241d;
+  color: #f08521;
   text-decoration: underline;
 }
 
