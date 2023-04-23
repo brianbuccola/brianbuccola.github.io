@@ -2,7 +2,7 @@
 title: Home
 ---
 
-![me](/images/brian.jpeg "A picture of me"){.photo}
+![me](/images/brian2.jpg "A picture of me"){.photo}
 Welcome!
 I'm an Assistant Professor of linguistics
 at [Michigan State University][msu].
