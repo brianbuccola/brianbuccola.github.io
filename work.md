@@ -31,7 +31,7 @@ An eye-tracking study in Mandarin Chinese][aspv-jpr-doi].
 *Journal of Psycholinguistic Research*.
 ([free view][aspv-jpr-free])</p></li>
 
-<li><p>Brian Buccola, Manuel Križ, and Emmanuel Chemla. 2021.
+<li><p>Brian Buccola, Manuel Križ, and Emmanuel Chemla. 2022.
 [Conceptual alternatives: Competition in language and beyond][concepts-doi].
 *Linguistics and Philosophy*.
 ([free view][concepts-free] | [preprint][concepts-lb])</p></li>
