@@ -11,43 +11,43 @@ If the LingBuzz server is down, just [contact me](/contact/) for a copy.*
 ## Published
 
 <ol reversed>
+<li><p>Ye Ma, Brian Buccola, Zinan Wang, Aline Godfroid, Shannon Cousins,
+and Alan Beretta. 2023.
+[Expressions with aspectual verbs elicit slower reading times
+than those with psychological verbs:
+An eye-tracking study in Mandarin Chinese][aspv-jpr-doi].
+*Journal of Psycholinguistic Research* 52. 179--215.
+([free view][aspv-jpr-free])</p></li>
+
 <li><p>Brian Buccola. 2022.
 [A higher-order plurality solution to Xiang's (2021) puzzle][hop-salt-doi].
-*Semantics and Linguistic Theory* (SALT) 32. 413--419.</p></li>
+*Semantics and Linguistic Theory (SALT)* 32. 413--419.</p></li>
 
 <li><p>Isabelle Dautriche, Brian Buccola, Mélissa Berthet, Joël Fagot, and Emmanuel Chemla. 2022.
-[Evidence for compositionality in baboons (*Papio papio*) through the test case of negation][baboons-sr-doi]
+[Evidence for compositionality in baboons (*Papio papio*) through the test case of negation][baboons-sr-doi].
 *Scientific Reports* 12(19181). 1--12.</p></li>
 
 <li><p>Jeremy Kuhn, David Nicolas, and Brian Buccola. 2022.
 [Deriving dimensions of comparison][dim-snippet].
 *Snippets* 43. 1--3.</p></li>
 
-<li><p>Ye Ma, Brian Buccola, Zinan Wang, Aline Godfroid, Shannon Cousins,
-and Alan Beretta. 2022.
-[Expressions with aspectual verbs elicit slower reading times
-than those with psychological verbs:
-An eye-tracking study in Mandarin Chinese][aspv-jpr-doi].
-*Journal of Psycholinguistic Research*.
-([free view][aspv-jpr-free])</p></li>
-
 <li><p>Brian Buccola, Manuel Križ, and Emmanuel Chemla. 2022.
 [Conceptual alternatives: Competition in language and beyond][concepts-doi].
-*Linguistics and Philosophy*.
+*Linguistics and Philosophy* 45. 265--291.
 ([free view][concepts-free] | [preprint][concepts-lb])</p></li>
 
 <li><p>Brian Buccola, Jeremy Kuhn, and David Nicolas. 2021.
 [Groups vs. covers revisited: Structured pluralities and symmetric readings][grpcov-doi].
-*Natural Language Semantics*.
+*Natural Language Semantics* 29. 509--525.
 ([free view][grpcov-free] | [preprint][grpcov-lb])</p></li>
 
 <li><p>Brian Buccola and Luka Crnič. 2021.
 [NPIs, intervention, and collectivity][intcoll-doi].
-*Semantics and Pragmatics* 14.</p></li>
+*Semantics and Pragmatics* 14. 1--24.</p></li>
 
 <li><p>Brian Buccola and Andreas Haida. 2020.
 [How obligatory irrelevance, symmetric alternatives, and dense scales conspire: The case of modified numerals and ignorance][salt30-doi].
-*Semantics and Linguistic Theory* (SALT) 30. 464--484.</p></li>
+*Semantics and Linguistic Theory (SALT)* 30. 464--484.</p></li>
 
 <li><p>Brian Buccola and Emmanuel Chemla. 2019.
 [Alternatives of disjunctions: When a disjunct contains the antecedent of a pronoun][disj-snippet].
