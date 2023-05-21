@@ -12,8 +12,7 @@ me](/contact/) for a copy.*
   Spring 2023
 
 - **Introduction to Semantics & Pragmatics (LIN 437)**  
-  Fall 2019, 2020, 2022  
-  Spring 2020--2023
+  every Fall and Spring
 
 - **Semantics & Pragmatics I (LIN 837)**  
   (cross-listed with LIN 437 as of Spring 2022)
