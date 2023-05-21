@@ -26,6 +26,10 @@ me](/contact/) for a copy.*
 - **Independent Study (LIN 890)**  
   Spring 2022 (focus & intonation)
 
+- **Special Topics in Semantics and Pragmatics (LIN 891)**  
+  Fall 2023 (topic tbd)  
+  Spring 2024 (topic tbd)
+
 ## Previous teaching
 
 - **Introduction to Linguistics (LING 201)**  
