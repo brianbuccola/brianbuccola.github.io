@@ -11,6 +11,10 @@ If the LingBuzz server is down, just [contact me](/contact/) for a copy.*
 ## Published
 
 <ol reversed>
+<li><p>Brian Buccola and Daniel Goodhue. 2023.
+[The effect of intonation on scalar and ignorance inferences][cls59].
+*Chicago Linguistic Society (CLS)* 59.</p></li>
+
 <li><p>Ye Ma, Brian Buccola, Zinan Wang, Aline Godfroid, Shannon Cousins,
 and Alan Beretta. 2023.
 [Expressions with aspectual verbs elicit slower reading times
@@ -116,6 +120,7 @@ An eye-tracking study in Mandarin Chinese][aspv-jpr-doi].
 [aspv-jpr-free]: https://rdcu.be/cH2yS
 [baboons-pnas-doi]: https://doi.org/10.1073/pnas.1907023116
 [baboons-sr-doi]: https://doi.org/10.1038/s41598-022-21143-1
+[cls59]: https://ling.auf.net/lingbuzz/007464/current.pdf
 [competition]: https://doi.org/10.3389/fpsyg.2018.02176
 [concepts-doi]: https://doi.org/10.1007/s10988-021-09327-w
 [concepts-free]: https://rdcu.be/clHm8
