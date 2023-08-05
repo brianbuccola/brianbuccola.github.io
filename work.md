@@ -11,13 +11,13 @@ If the LingBuzz server is down, just [contact me](/contact/) for a copy.*
 ## Published
 
 <ol reversed>
-<li><p>Brian Buccola and Daniel Goodhue. 2023.
-[The effect of intonation on scalar and ignorance inferences][cls59].
-*Chicago Linguistic Society (CLS)* 59.</p></li>
-
 <li><p>Yaxuan Wang and Brian Buccola. 2023.
 [Weakening the trivalent semantics of quantifiers: Evidence from Mandarin Chinese][wccfl41].
 *West Coast Conference on Formal Linguistics (WCCFL)* 41.</p></li>
+
+<li><p>Brian Buccola and Daniel Goodhue. 2023.
+[The effect of intonation on scalar and ignorance inferences][cls59].
+*Chicago Linguistic Society (CLS)* 59.</p></li>
 
 <li><p>Ye Ma, Brian Buccola, Zinan Wang, Aline Godfroid, Shannon Cousins,
 and Alan Beretta. 2023.
