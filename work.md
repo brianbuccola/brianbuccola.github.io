@@ -15,6 +15,10 @@ If the LingBuzz server is down, just [contact me](/contact/) for a copy.*
 [The effect of intonation on scalar and ignorance inferences][cls59].
 *Chicago Linguistic Society (CLS)* 59.</p></li>
 
+<li><p>Yaxuan Wang and Brian Buccola. 2023.
+[Weakening the trivalent semantics of quantifiers: Evidence from Mandarin Chinese][wccfl41].
+*West Coast Conference on Formal Linguistics (WCCFL)* 41.</p></li>
+
 <li><p>Ye Ma, Brian Buccola, Zinan Wang, Aline Godfroid, Shannon Cousins,
 and Alan Beretta. 2023.
 [Expressions with aspectual verbs elicit slower reading times
@@ -146,6 +150,7 @@ An eye-tracking study in Mandarin Chinese][aspv-jpr-doi].
 [salt30-doi]: https://doi.org/10.3765/salt.v30i0.4853
 [sub20]: https://ling.auf.net/lingbuzz/002847/current.pdf
 [sub21]: https://ling.auf.net/lingbuzz/003307/current.pdf
+[wccfl41]: https://ling.auf.net/lingbuzz/007483/current.pdf
 
 ## Unpublished
 
