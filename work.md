@@ -11,6 +11,10 @@ If the LingBuzz server is down, just [contact me](/contact/) for a copy.*
 ## Published
 
 <ol reversed>
+<li><p>Ye Ma, Brian Buccola, Shannon Cousins, and Alan Beretta. 2023.
+[A self-paced reading study of context effects in the processing of aspectual verbs in Mandarin][aspv-laco].
+*Language and Cognition*. 1--25.</p></li>
+
 <li><p>Yaxuan Wang and Brian Buccola. 2023.
 [Weakening the trivalent semantics of quantifiers: Evidence from Mandarin Chinese][wccfl41].
 *West Coast Conference on Formal Linguistics (WCCFL)* 41.</p></li>
@@ -122,6 +126,7 @@ An eye-tracking study in Mandarin Chinese][aspv-jpr-doi].
 [ac2017]: https://ling.auf.net/lingbuzz/003763/current.pdf
 [aspv-jpr-doi]: https://doi.org/10.1007/s10936-022-09846-y
 [aspv-jpr-free]: https://rdcu.be/cH2yS
+[aspv-laco]: https://doi.org/10.1017/langcog.2023.57
 [baboons-pnas-doi]: https://doi.org/10.1073/pnas.1907023116
 [baboons-sr-doi]: https://doi.org/10.1038/s41598-022-21143-1
 [cls59]: https://ling.auf.net/lingbuzz/007464/current.pdf
