@@ -4,7 +4,7 @@ title: Home
 
 ![me](/images/brian2.jpg "A picture of me"){.photo}
 Welcome!
-I'm an Assistant Professor of linguistics
+I'm an Associate Professor of linguistics
 at [Michigan State University][msu].
 I specialize in
 formal and experimental semantics and pragmatics.
