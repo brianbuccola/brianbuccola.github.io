@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <!-- Site info -->
-        <title>Brian Buccola · $title$</title>
+        <title>Brian Buccola$if(title)$ · $title$$endif$</title>
         $if(description)$<meta name="description" content="$description$">$endif$
 
         <!-- Styling -->
@@ -38,17 +38,15 @@
                 <a href="/">Brian Buccola</a>
             </div>
             <nav class="nav">
-                <a class="nav" href="/">Home</a>
-                <a class="nav" href="/work/">Work</a>
-                <a class="nav" href="/teaching/">Teaching</a>
-                <a class="nav" href="/cv/">CV</a>
-                <a class="nav" href="/contact/">Contact</a>
-                <a class="nav" href="/blog/">Blog</a>
+                <a href="/bio/">Bio</a>
+                <a href="/research/">Research</a>
+                <a href="/teaching/">Teaching</a>
+                <a href="/blog/">Blog</a>
             </nav>
         </header>
 
         <main role="main">
-            <h1>$title$</h1>
+            $if(title)$<h1>$title$</h1>$endif$
             $body$
         </main>
 

@@ -10,26 +10,44 @@ body {
 }
 
 header {
-  border-bottom: 0.2rem solid #000;
+  border-bottom: 0.2rem solid #18453b;
 }
 
 nav {
   text-align: right;
 }
 
-nav a {
+nav a:link {
   font-size: 1.8rem;
   font-weight: bold;
-  color: black;
+  color: #18453b;
   text-decoration: none;
+}
+
+nav a:visited {
+  color: #18453b;
+}
+
+nav a:hover {
+  color: #008208;
+  text-decoration: underline;
+}
+
+nav a:active {
+  color: #7bbd00;
+  text-decoration: underline;
 }
 
 footer {
   margin-top: 3rem;
   padding: 1.2rem 0;
-  border-top: 0.2rem solid #000;
+  border-top: 0.2rem solid #18453b;
   font-size: 1.2rem;
   color: #555;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #18453b;
 }
 
 h1 {
@@ -88,18 +106,38 @@ article .header {
   color: #555;
 }
 
-.logo a {
+.email {
+  font-family: monospace;
+  border: none;
+  padding: 0;
+}
+
+.logo a:link {
   font-weight: bold;
-  color: #000;
+  color: #18453b;
   text-decoration: none;
 }
 
+.logo a:visited{
+  color: #18453b;
+}
+
+.logo a:hover{
+  color: #008208;
+  text-decoration: underline;
+}
+
+.logo a:active{
+  color: #f08521;
+  text-decoration: underline;
+}
+
 .nav a {
-  color: #000;
+  color: #18453b;
 }
 
 .photo {
-  height: 20rem;
+  height: 16rem;
   float: right;
   margin-left: 2rem;
   margin-bottom: 2rem;

@@ -38,13 +38,13 @@ main = hakyll $ do
         compile $ do
             let indexCtx =
                     constField "description" myDescription <>
-                    myContext
+                    myIndexContext
 
             myPandocCompiler
                 >>= loadAndApplyTemplate "templates/default.html" indexCtx
                 >>= relativizeUrls
 
-    match (fromList ["work.md", "teaching.md", "cv.md", "contact.md"]) $ do
+    match (fromList ["bio.md", "research.md", "teaching.md"]) $ do
         route   $ cleanRoute
         compile $ myPandocCompiler
             >>= loadAndApplyTemplate "templates/default.html" myContext
@@ -98,6 +98,18 @@ postCtx :: Context String
 postCtx =
     dateField "date" "%B %e, %Y" <>
     myContext
+
+-- Don't take title from filename (index.html).
+-- Allows index.html to have no title of its own.
+-- Modification of defaultContext from:
+-- https://github.com/jaspervdj/hakyll/blob/master/lib/Hakyll/Web/Template/Context.hs
+myIndexContext :: Context String
+myIndexContext =
+    bodyField     "body"     `mappend`
+    metadataField            `mappend`
+    urlField      "url"      `mappend`
+    pathField     "path"  -- `mappend`
+    -- titleField "title"
 
 myContext :: Context String
 myContext =
