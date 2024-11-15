@@ -1,5 +1,5 @@
 ---
-title: Work
+title: Research
 ---
 
 *Most of my work is also hosted on [LingBuzz][].
@@ -11,6 +11,10 @@ If the LingBuzz server is down, just [contact me](/contact/) for a copy.*
 ## Published
 
 <ol reversed>
+<li><p>Yaxuan Wang and Brian Buccola. 2024.
+[Speaker-oriented additives][pwpl31].
+*University of Pennsylvania Working Papers in Linguistics* 31(1).</p></li>
+
 <li><p>Ye Ma, Brian Buccola, Shannon Cousins, and Alan Beretta. 2023.
 [A self-paced reading study of context effects in the processing of aspectual verbs in Mandarin][aspv-laco].
 *Language and Cognition*. 1--25.</p></li>
@@ -151,6 +155,7 @@ An eye-tracking study in Mandarin Chinese][aspv-jpr-doi].
 [oblig-irrel-free]: https://academic.oup.com/jos/article/36/4/583/5552011?guestAccessKey=c1591117-b3fe-442e-ab03-0b58dd79646e
 [oblig-irrel-modnum-lb]: https://ling.auf.net/lingbuzz/003600/v1.pdf
 [only-snippet]: http://www.ledonline.it/snippets/allegati/snippets33002.pdf
+[pwpl31]: https://ling.auf.net/lingbuzz/008296/current.pdf
 [reply-to-nouwen-sp]: http://doi.org/10.3765/sp.5.1
 [salt30-doi]: https://doi.org/10.3765/salt.v30i0.4853
 [sub20]: https://ling.auf.net/lingbuzz/002847/current.pdf
