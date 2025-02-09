@@ -30,7 +30,7 @@ me][email] for a copy.*
   Spring 2021 (λ-calculus, dynamic turn)  
   Spring 2022 (presupposition, anaphora)  
   Fall 2022 (intensional semantics, question semantics)  
-  Spring 2025 (topic tbd)
+  Spring 2025 (indefinites and anaphora, Heim's dissertation)
 
 - **Independent Study (LIN 890)**  
   Spring 2022 (focus & intonation)
