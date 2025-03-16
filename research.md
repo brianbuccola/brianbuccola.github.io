@@ -11,6 +11,10 @@ If the LingBuzz server is down, just [contact me](/contact/) for a copy.*
 ## Published
 
 <ol reversed>
+<li><p>Brian Buccola. To appear.
+[Higher-order plurality: To what degree?][sub29].
+*Sinn und Bedeutung* 29.</p></li>
+
 <li><p>Yaxuan Wang and Brian Buccola. 2024.
 [Speaker-oriented additives][pwpl31].
 *University of Pennsylvania Working Papers in Linguistics* 31(1).</p></li>
@@ -160,6 +164,7 @@ An eye-tracking study in Mandarin Chinese][aspv-jpr-doi].
 [salt30-doi]: https://doi.org/10.3765/salt.v30i0.4853
 [sub20]: https://ling.auf.net/lingbuzz/002847/current.pdf
 [sub21]: https://ling.auf.net/lingbuzz/003307/current.pdf
+[sub29]: https://ling.auf.net/lingbuzz/008871/current.pdf
 [wccfl41]: https://ling.auf.net/lingbuzz/007483/current.pdf
 
 ## Unpublished
