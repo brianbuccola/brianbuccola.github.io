@@ -5,7 +5,7 @@ Associate Professor
 
 🚀 [**buccola@msu.edu**](mailto:buccola@msu.edu){.email}
 
-🐌 B404 Wells Hall,
+🐌 B469 Wells Hall,
 619 Red Cedar Rd,
 East Lansing, MI 48824
 
