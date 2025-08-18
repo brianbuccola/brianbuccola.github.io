@@ -1,4 +1,4 @@
-![me](/images/brian2.jpg "A picture of me"){.photo}
+![me](/images/brian.jpeg "Me (pixelated)"){.photo}
 Associate Professor  
 [Department of Linguistics, Languages, & Cultures][lilac]  
 [Michigan State University][msu]
