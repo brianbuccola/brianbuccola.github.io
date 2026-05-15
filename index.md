@@ -1,5 +1,6 @@
 ![me](/images/brian.jpeg "Me (pixelated)"){.photo}
 Associate Professor  
+Undergraduate Program Director (Linguistics)  
 [Department of Linguistics, Languages, & Cultures][lilac]  
 [Michigan State University][msu]
 
