@@ -15,7 +15,7 @@ me][email] for a copy.*
   Fall 2019, 2020; Spring 2023
 
 - **Introduction to Semantics & Pragmatics (LIN 437)**  
-  every Fall and Spring
+  every Fall and Spring (except when on leave)
 
 - **Special Topics in Semantics & Pragmatics (LIN 491)**  
   Fall 2024 (counting and measuring)
@@ -34,7 +34,7 @@ me][email] for a copy.*
   Spring 2026 (categorial grammar, Lambek calculus, type-logical semantics)
 
 - **Independent Study (LIN 890)**  
-  Spring 2022 (focus & intonation)
+  Spring 2022 (focus and intonation)
 
 - **Special Topics in Semantics & Pragmatics (LIN 891)**  
   Fall 2023 (current debates on exhaustivity)  
